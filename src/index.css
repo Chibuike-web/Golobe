@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: "TradeGothic LT Extended";
+	src: url("./fonts/primary/TradeGothicLT-Extended.woff") format("woff2"),
+		url("./fonts/primary/TradeGothicLT-Extended.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "TradeGothic LT Extended";
+	src: url("./fonts/primary/TradeGothicLT-BoldExtended.woff2") format("woff2"),
+		url("./fonts/primary/TradeGothicLT-BoldExtended.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* html {
+	font-size: clamp(0.5rem, 0.5vw + 0.5rem, 2.5rem);
+} */
+
+body {
+	font-family: "Montserrat";
+	background-color: #fafbfc;
+}
