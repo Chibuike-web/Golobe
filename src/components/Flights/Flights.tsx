@@ -69,7 +69,7 @@ const travelOptions: TravelOption[] = [
 // Main component
 export default function Flights() {
 	return (
-		<section className="mt-20  w-full max-w-[1232px]">
+		<section className="mt-20 w-full max-w-[1232px] mx-auto">
 			<header className="mb-10 flex justify-between items-center">
 				<div>
 					<h2 className="font-semibold text-[2rem]">Plan Your Perfect Trip</h2>
@@ -123,7 +123,7 @@ const FlightCard: React.FC<FlightCardProps> = ({ destination, services, image })
 };
 
 // FlightBox component
-const FlightBox: React.FC = () => {
+const FlightBox = () => {
 	return (
 		<aside className="flex flex-wrap gap-6 my-20">
 			<div className={styles.flights}>

@@ -1,10 +1,11 @@
 import Olga from "../../assets/Olga.png";
 import Thomas from "../../assets/Thomas.png";
 import Eliot from "../../assets/Eliot.png";
-
 import { GoogleIcon, StarIcon } from "../../assets/icons";
+import styles from "./reviews.module.css";
+import { useState } from "react";
 
-// Define a type for travel options
+// Define a type for Reviews
 type Reviews = {
 	tagline: string;
 	message: string;
@@ -58,9 +59,18 @@ const reviews: Reviews[] = [
 
 export default function Reviews() {
 	return (
-		<section className="flex">
-			{reviews.map((review, index) => (
-				<div>
+		<section className="flex flex-col mt-20 w-full max-w-[1232px] mx-auto">
+			<header className="w-full flex items-center justify-between">
+				<aside>
+					<h2 className="text-[2rem] font-bold">Reviews</h2>
+					<p className="text-black">What people says about Golobe facilities</p>
+				</aside>
+				<button className="text-[14px] px-4 py-3 rounded-[4px] text-blackishGreen border-mintGreen border-[1px]">
+					See All
+				</button>
+			</header>
+			<div className="flex gap-[74px] mt-[2.5rem]">
+				{reviews.map((review, index) => (
 					<ReviewCard
 						key={index}
 						tagline={review.tagline}
@@ -73,13 +83,13 @@ export default function Reviews() {
 						reviewSources={review.reviewSources}
 						image={review.image}
 					/>
-				</div>
-			))}
+				))}
+			</div>
 		</section>
 	);
 }
 
-type ReviewsProps = {
+type ReviewCardProps = {
 	tagline: string;
 	message: string;
 	extra: string;
@@ -91,7 +101,7 @@ type ReviewsProps = {
 	image: string;
 };
 
-const ReviewCard: React.FC<ReviewsProps> = ({
+const ReviewCard: React.FC<ReviewCardProps> = ({
 	tagline,
 	message,
 	extra,
@@ -102,11 +112,25 @@ const ReviewCard: React.FC<ReviewsProps> = ({
 	reviewSources,
 	image,
 }) => {
+	const [isExpanded, setIsExpanded] = useState(false);
 	return (
-		<div>
-			<h2>{tagline}</h2>
-			<p>{message}</p>
-			<p>{extra}</p>
+		<aside className={styles["review-card"]}>
+			<h2 className="font-primary text-blackishGreen text-2xl font-bold h-[80px] mb-4">
+				{tagline}
+			</h2>
+			<p
+				className={`text-blackishGreen opacity-50 mb-3 ${!isExpanded ? styles["clamp-text"] : ""}`}
+			>
+				{message}
+			</p>
+			<button
+				className="self-end cursor-pointer"
+				onClick={() => {
+					setIsExpanded(!isExpanded);
+				}}
+			>
+				{!isExpanded ? extra : ""}
+			</button>
 			<div className="mt-4">
 				<figure className="flex gap-3">
 					{[...Array(5)].map((index) => (
@@ -119,8 +143,8 @@ const ReviewCard: React.FC<ReviewsProps> = ({
 					{reviewSourceIcon}
 					<p className="opacity-50">{reviewSources}</p>
 				</figure>
-				<img src={image} alt={sender} />
+				<img src={image} alt={sender} className="w-full" />
 			</div>
-		</div>
+		</aside>
 	);
 };
