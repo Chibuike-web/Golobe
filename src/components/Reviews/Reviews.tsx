@@ -59,7 +59,7 @@ const reviews: Reviews[] = [
 
 export default function Reviews() {
 	return (
-		<section className="flex flex-col mt-20 w-full max-w-[1232px] mx-auto">
+		<section className="flex flex-col mt-20 w-full max-w-[1232px] mx-auto px-4">
 			<header className="w-full flex items-center justify-between">
 				<aside>
 					<h2 className="text-[2rem] font-bold">Reviews</h2>
@@ -69,7 +69,7 @@ export default function Reviews() {
 					See All
 				</button>
 			</header>
-			<div className="flex gap-[74px] mt-[2.5rem]">
+			<div className="flex gap-[74px] mt-[2.5rem] overflow-scroll">
 				{reviews.map((review, index) => (
 					<ReviewCard
 						key={index}
@@ -129,7 +129,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 					setIsExpanded(!isExpanded);
 				}}
 			>
-				{!isExpanded ? extra : ""}
+				{extra}
 			</button>
 			<div className="mt-4">
 				<figure className="flex gap-3">

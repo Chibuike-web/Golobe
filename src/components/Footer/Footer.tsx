@@ -3,7 +3,7 @@ import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../../ass
 import FooterLogo from "../../assets/Logo.svg";
 export default function FooterSection() {
 	return (
-		<section className="bg-mintGreen mt-[241px]">
+		<section className="bg-mintGreen mt-[241px] px-4">
 			<CTA />
 			<Footer />
 		</section>

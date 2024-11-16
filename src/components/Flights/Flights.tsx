@@ -69,7 +69,7 @@ const travelOptions: TravelOption[] = [
 // Main component
 export default function Flights() {
 	return (
-		<section className="mt-20 w-full max-w-[1232px] mx-auto">
+		<section className="mt-20 w-full max-w-[1232px] mx-auto px-4">
 			<header className="mb-10 flex justify-between items-center">
 				<div>
 					<h2 className="font-semibold text-[2rem]">Plan Your Perfect Trip</h2>
