@@ -14,13 +14,13 @@ const CTA = () => {
 	return (
 		<section
 			aria-labelledby="cta-heading"
-			className=" w-full mt-[-151px] max-w-[77rem] mx-auto flex items-end justify-between bg-[#CDEAE1] px-6 rounded-[20px]"
+			className=" w-full mt-[-151px] max-w-[77rem] mx-auto flex items-end justify-between bg-[#CDEAE1] px-6 rounded-[20px] lg:flex-col lg:items-start"
 		>
 			<div className="py-6 w-full max-w-[600px]">
 				<header>
 					<h2
 						id="cta-heading"
-						className="font-primary text-blackishGreen font-bold text-[44px] w-full max-w-[364px] leading-[54px] mb-[24px]"
+						className="font-primary text-blackishGreen font-bold text-[44px] md:text-[2rem] md:leading-[40px] w-full max-w-[364px] leading-[54px] mb-[24px]"
 					>
 						Subscribe Newsletter
 					</h2>
@@ -35,7 +35,7 @@ const CTA = () => {
 					action="/submit-email"
 					method="post"
 					aria-label="Subscribe to newsletter"
-					className="w-full flex gap-4"
+					className="w-full flex gap-4 md:flex-col"
 				>
 					<input
 						type="email"
@@ -61,7 +61,7 @@ const CTA = () => {
 
 const Footer = () => {
 	return (
-		<footer className="max-w-[77rem] my-[4rem] mx-auto flex gap-[140px]">
+		<footer className="max-w-[77rem] my-[4rem] mx-auto flex gap-[140px] md:gap-[70px] md:flex-col">
 			<div className="w-max">
 				<img src={FooterLogo} alt="Footer logo" />
 				<div className="flex justify-between mt-6">
@@ -71,10 +71,7 @@ const Footer = () => {
 					<InstagramIcon />
 				</div>
 			</div>
-			<div
-				className="grid gap-6 w-full"
-				style={{ gridTemplateColumns: "repeat(auto-fill, minmax(10.9375rem, 1fr))" }}
-			>
+			<div className="grid gap-6 w-full grid-cols-[repeat(auto-fit,_minmax(11rem,1fr))]">
 				<section className="flex flex-col gap-4">
 					<h2 className="text-blackishGreen font-bold font-primary">Our Destinations</h2>
 					<div className="flex flex-col gap-3 text-[14px] font-medium text-blackishGreen opacity-70">

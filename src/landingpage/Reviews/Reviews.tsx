@@ -60,7 +60,7 @@ const reviews: Reviews[] = [
 export default function Reviews() {
 	return (
 		<section className="flex flex-col mt-20 w-full max-w-[1232px] mx-auto px-4">
-			<header className="w-full flex items-center justify-between">
+			<header className="w-full flex items-center justify-between md:flex-col md:items-start md:gap-4">
 				<aside>
 					<h2 className="text-[2rem] font-bold">Reviews</h2>
 					<p className="text-black">What people says about Golobe facilities</p>
@@ -69,7 +69,9 @@ export default function Reviews() {
 					See All
 				</button>
 			</header>
-			<div className="flex gap-[74px] mt-[2.5rem] overflow-scroll">
+			<div
+				className={`flex items-start gap-[74px] mt-[2.5rem] overflow-x-scroll overflow-y-hidden h-[650px] ${styles["scroll-container"]}`}
+			>
 				{reviews.map((review, index) => (
 					<ReviewCard
 						key={index}
@@ -101,7 +103,7 @@ type ReviewCardProps = {
 	image: string;
 };
 
-const ReviewCard: React.FC<ReviewCardProps> = ({
+const ReviewCard = ({
 	tagline,
 	message,
 	extra,
@@ -111,13 +113,11 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
 	reviewSourceIcon,
 	reviewSources,
 	image,
-}) => {
+}: ReviewCardProps) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<aside className={styles["review-card"]}>
-			<h2 className="font-primary text-blackishGreen text-2xl font-bold h-[80px] mb-4">
-				{tagline}
-			</h2>
+			<h2 className="font-primary text-blackishGreen text-2xl font-bold mb-4">{tagline}</h2>
 			<p
 				className={`text-blackishGreen opacity-50 mb-3 ${!isExpanded ? styles["clamp-text"] : ""}`}
 			>

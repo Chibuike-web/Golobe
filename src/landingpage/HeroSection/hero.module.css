@@ -8,7 +8,11 @@
 	background-image: url("../../assets/HeroImage.png");
 	background-size: cover;
 	background-position: center;
-	overflow: hidden; /* Ensures backdrop effect stays within rounded borders */
+	overflow: hidden;
+
+	@media (max-width: 760px) {
+		min-height: 24rem;
+	}
 }
 
 .backdrop {

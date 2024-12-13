@@ -69,10 +69,10 @@ const travelOptions: TravelOption[] = [
 // Main component
 export default function Flights() {
 	return (
-		<section className="mt-20 w-full max-w-[1232px] mx-auto px-4">
-			<header className="mb-10 flex justify-between items-center">
+		<section className="mt-20 md:mt-40 w-full max-w-[1232px] mx-auto px-4">
+			<header className="mb-10 flex justify-between items-center md:flex-col md:items-start md:gap-4">
 				<div>
-					<h2 className="font-semibold text-[2rem]">Plan Your Perfect Trip</h2>
+					<h2 className="font-semibold text-[2rem] md:text-[1.8rem]">Plan Your Perfect Trip</h2>
 					<p className="opacity-75">
 						Search flights & places to hire in our most popular destinations
 					</p>
@@ -81,7 +81,7 @@ export default function Flights() {
 					See more places
 				</button>
 			</header>
-			<div className="grid grid-cols-[repeat(auto-fit,_minmax(389.33px,_1fr))] place-items-center gap-4">
+			<div className="grid grid-cols-[repeat(auto-fill,minmax(389.33px,1fr))] md:grid-cols-1 place-items-center gap-4 w-full">
 				{travelOptions.map(({ destination, services, image }, index) => (
 					<FlightCard key={index} destination={destination} services={services} image={image} />
 				))}
@@ -102,14 +102,16 @@ type FlightCardProps = {
 const FlightCard: React.FC<FlightCardProps> = ({ destination, services, image }) => {
 	return (
 		<article
-			className="flight-card flex items-center gap-4 p-4 rounded-2xl w-full bg-white"
+			className="flight-card flex items-center gap-4 md:gap-2 p-4 rounded-2xl w-full bg-white"
 			style={{ boxShadow: "0px 4px 16px rgba(17, 34, 17, 0.05)" }}
 			aria-label={`Flight details for ${destination}`}
 		>
 			<img src={image} alt={`View of ${destination}`} className="destination-image" />
 			<div className="flex flex-col w-full gap-2">
-				<h3 className="text-blackishGreen font-semibold opacity-70 text-lg">{destination}</h3>
-				<ul className="flex items-center text-[14px] font-medium gap-2">
+				<h3 className="text-blackishGreen font-semibold opacity-70 text-lg md:text-[16px]">
+					{destination}
+				</h3>
+				<ul className="flex items-center text-[14px] md:text-[12px] font-medium gap-2 w-full">
 					{services.map((service, index) => (
 						<li key={index} className="flex gap-2 items-center">
 							<span>{service}</span>

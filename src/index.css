@@ -33,4 +33,8 @@
 body {
 	font-family: "Montserrat";
 	background-color: #fafbfc;
+
+	@media (max-width: 560px) {
+		font-size: 14px;
+	}
 }
