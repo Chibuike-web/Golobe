@@ -16,7 +16,7 @@ function Navbar() {
 	return (
 		<header className="w-full bg-white" role="banner">
 			<nav
-				className="mx-auto max-w-[90rem] px-[104px] py-6 flex items-center justify-between h-max md:px-4 md:py-4"
+				className="mx-auto max-w-[90rem] px-[104px] py-6 flex items-center justify-between h-max lg:px-4 md:py-4"
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">
@@ -53,7 +53,7 @@ function Navbar() {
 function HeroContent() {
 	return (
 		<div className={`text-white w-full min-h-[537px] ${styles.heroimage}`}>
-			<div className="mx-auto max-w-[90rem] px-[104px]">
+			<div className="mx-auto max-w-[90rem] px-[104px] lg:px-4">
 				<h2 className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]">
 					Make your travel whishlist, we’ll do the rest
 				</h2>
