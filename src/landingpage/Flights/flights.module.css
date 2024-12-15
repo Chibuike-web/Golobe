@@ -1,6 +1,6 @@
 .flights {
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)),
-		url("../../assets/Flights.png");
+		url("../../assets/LandingPage/Flights.png");
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100% 280px, auto;
 	background-position: bottom; /* Position gradient on the left and image as needed */
@@ -19,7 +19,7 @@
 
 .hotels {
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)),
-		url("../../assets/Hotels.png");
+		url("../../assets/LandingPage/Hotels.png");
 	background-repeat: no-repeat, no-repeat;
 	background-size: 100% 280px, auto;
 	background-position: bottom; /* Position gradient on the left and image as needed */
