@@ -1,12 +1,12 @@
-import Istanbul from "../../assets/Istanbul.png";
-import Sydney from "../../assets/Sydney.png";
-import Baku from "../../assets/Baku.png";
-import Male from "../../assets/Male.png";
-import Paris from "../../assets/Paris.png";
-import NewYork from "../../assets/NewYork.png";
-import London from "../../assets/London.png";
-import Tokyo from "../../assets/Tokyo.png";
-import Dubai from "../../assets/Dubai.png";
+import Istanbul from "../../assets/LandingPage/Istanbul.png";
+import Sydney from "../../assets/LandingPage/Sydney.png";
+import Baku from "../../assets/LandingPage/Baku.png";
+import Male from "../../assets/LandingPage/Male.png";
+import Paris from "../../assets/LandingPage/Paris.png";
+import NewYork from "../../assets/LandingPage/NewYork.png";
+import London from "../../assets/LandingPage/London.png";
+import Tokyo from "../../assets/LandingPage/Tokyo.png";
+import Dubai from "../../assets/LandingPage/Dubai.png";
 import { PaperPlaneIcon } from "../../assets/icons";
 import styles from "./flights.module.css";
 

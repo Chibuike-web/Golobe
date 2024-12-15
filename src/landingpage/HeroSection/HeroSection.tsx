@@ -1,7 +1,7 @@
 import styles from "./hero.module.css";
 import { Link } from "react-router-dom";
 import { AirplaneIcon, BedIcon, AddIcon, PaperPlaneIcon } from "../../assets/icons";
-import GolobeLogo from "../../assets/golobelogo.svg";
+import GolobeLogo from "../../assets/LandingPage/golobelogo.svg";
 
 export default function HeroSection() {
 	return (

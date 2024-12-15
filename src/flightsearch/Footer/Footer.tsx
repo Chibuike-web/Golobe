@@ -1,6 +1,6 @@
-import CTAImage from "../../assets/emojione-v1_open-mailbox-with-lowered-flag.svg";
+import CTAImage from "../../assets/LandingPage/emojione-v1_open-mailbox-with-lowered-flag.svg";
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../../assets/icons";
-import FooterLogo from "../../assets/Logo.svg";
+import FooterLogo from "../../assets/LandingPage/Logo.svg";
 export default function FooterSection() {
 	return (
 		<section className="bg-mintGreen mt-[241px] px-4">

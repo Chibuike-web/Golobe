@@ -1,15 +1,19 @@
 import Herosection from "./Herosection/Herosection";
 import styles from "./flightsearch.module.css";
-import FirstImage from "../assets/FirstImage.png";
-import FirstArrow from "../assets/FirstArrow.svg";
-import SecondImage from "../assets/SecondImage.png";
-import SecondArrow from "../assets/SecondArrow.svg";
-import ThirdImage from "../assets/ThirdImage.png";
-import ThirdArrow from "../assets/ThirdArrow.svg";
-import FourthImage from "../assets/FourthImage.png";
-import FourthArrow from "../assets/FourthArrow.svg";
-import FifthImage from "../assets/FifthImage.png";
-import FifthArrow from "../assets/FifthArrow.svg";
+import FirstImage from "../assets/FlightSearch/FirstImage.png";
+import FirstArrow from "../assets/FlightSearch/FirstArrow.svg";
+import SecondImage from "../assets/FlightSearch/SecondImage.png";
+import SecondArrow from "../assets/FlightSearch/SecondArrow.svg";
+import ThirdImage from "../assets/FlightSearch/ThirdImage.png";
+import ThirdArrow from "../assets/FlightSearch/ThirdArrow.svg";
+import FourthImage from "../assets/FlightSearch/FourthImage.png";
+import FourthArrow from "../assets/FlightSearch/FourthArrow.svg";
+import FifthImage from "../assets/FlightSearch/FifthImage.png";
+import FifthArrow from "../assets/FlightSearch/FifthArrow.svg";
+import Forest from "../assets/FlightSearch/Forest.png";
+import Trees from "../assets/FlightSearch/Trees.png";
+import Ocean from "../assets/FlightSearch/Ocean.png";
+import Beach from "../assets/FlightSearch/Beach.png";
 import Footer from "./Footer/Footer";
 import Bookings from "./Bookings/Bookings";
 
@@ -134,6 +138,60 @@ export default function FlightSearch() {
 				</figure>
 			</section>
 			<Bookings />
+			<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
+				<header className="w-full mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+					<div>
+						<h2 className="text-[32px] mb-4">Fall into travel</h2>
+						<p className="w-full max-w-[851px]">
+							Going somewhere to celebrate this season? Whether you’re going home or somewhere to
+							roam, we’ve got the travel tools to get you to your destination.
+						</p>
+					</div>
+					<button
+						className="text-[14px] px-4 py-3 rounded-[4px] text-blackishGreen border-mintGreen border-[1px]"
+						aria-label="See all offers"
+					>
+						See all
+					</button>
+				</header>
+
+				<div className="flex gap-6">
+					<article className="w-full flex flex-col max-w-[552px] p-6 bg-mintGreen rounded-[20px] ">
+						<header className="flex justify-between items-start mb-6">
+							<h2 className="font-primary font-bold text-[40px] leading-[51px] max-w-[363px] w-full">
+								Backpacking Sri Lanka
+							</h2>
+							<div className="bg-white flex flex-col p-2 items-center rounded-[8px]">
+								<span className="text-[14px] text-blackishGreen">From</span>
+								<span className="text-[20px] font-semibold text-blackishGreen">$700</span>
+							</div>
+						</header>
+						<p className="text-[14px] text-blackishGreen ">
+							Traveling is a unique experience as it's the best way to unplug from the pushes and
+							pulls of daily life. It helps us to forget about our problems, frustrations, and fears
+							at home. During our journey, we experience life in different ways. We explore new
+							places, cultures, cuisines, traditions, and ways of living.
+						</p>
+						<button className="w-full bg-white py-[15px] rounded-[4px] mt-auto">Book Flight</button>
+					</article>
+
+					<aside className="grid grid-cols-2 w-full gap-6">
+						<figure>
+							<img src={Forest} alt="A serene forest view" />
+						</figure>
+						<figure>
+							<img src={Ocean} alt="The beautiful ocean waves" />
+						</figure>
+						<figure>
+							<img src={Trees} alt="Lush green trees" />
+						</figure>
+						<figure>
+							<img src={Beach} alt="Sunny beach" />
+						</figure>
+					</aside>
+				</div>
+			</section>
+
 			<Footer />
 		</div>
 	);

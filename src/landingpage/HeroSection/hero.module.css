@@ -5,7 +5,7 @@
 	width: 100%;
 	border-radius: 1.5rem;
 	position: relative; /* Allows backdrop to align with content */
-	background-image: url("../../assets/HeroImage.png");
+	background-image: url("../../assets/landingpage/HeroImage.png");
 	background-size: cover;
 	background-position: center;
 	overflow: hidden;

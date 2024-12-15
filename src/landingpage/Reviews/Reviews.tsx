@@ -1,6 +1,6 @@
-import Olga from "../../assets/Olga.png";
-import Thomas from "../../assets/Thomas.png";
-import Eliot from "../../assets/Eliot.png";
+import Olga from "../../assets/LandingPage/Olga.png";
+import Thomas from "../../assets/LandingPage/Thomas.png";
+import Eliot from "../../assets/LandingPage/Eliot.png";
 import { GoogleIcon, StarIcon } from "../../assets/icons";
 import styles from "./reviews.module.css";
 import { useState } from "react";
