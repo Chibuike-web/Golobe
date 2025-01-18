@@ -43,15 +43,15 @@ function Navbar() {
 					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
 				</figure>
 				<div className="flex gap-[1.875rem] items-center md:hidden">
-					<a href="#login" className="text-white text-sm font-semibold">
+					<Link to="./login" className="text-white text-sm font-semibold">
 						Login
-					</a>
-					<a
-						href="#signup"
+					</Link>
+					<Link
+						to="/signup"
 						className="text-sm font-semibold bg-white text-blackishGreen px-[1.5rem] py-[0.75rem] rounded-[0.5rem]"
 					>
 						Sign up
-					</a>
+					</Link>
 				</div>
 			</nav>
 		</header>
