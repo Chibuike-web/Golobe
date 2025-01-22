@@ -50,6 +50,7 @@ input[type="password"] {
 	padding: 18px 18px;
 	line-height: 1;
 	color: #1c1b1f;
+	background-color: none;
 }
 
 input::placeholder {
@@ -59,7 +60,13 @@ input::placeholder {
 
 input:focus {
 	border-color: #6200ea;
-	box-shadow: 0 0 4px rgba(98, 0, 234, 0.4);
+	background-color: none;
+}
+
+input:-webkit-autofill {
+	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
+	box-shadow: 0 0 0px 1000px white inset !important;
+	-webkit-text-fill-color: #000 !important;
 }
 
 input.error {

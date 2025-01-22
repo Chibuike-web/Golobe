@@ -3,6 +3,7 @@ import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import styles from "./Login.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon } from "../../assets/icons";
 import { useFormState } from "../Hooks";
+import { useState } from "react";
 
 export default function Login() {
 	const {
@@ -10,13 +11,25 @@ export default function Login() {
 		setEmail,
 		password,
 		setPassword,
-		termsAccepted,
-		setTermsAccepted,
 		emailError,
 		setEmailError,
 		passwordError,
 		setPasswordError,
 	} = useFormState();
+
+	const [rememberMe, setRememberMe] = useState<boolean>(false);
+
+	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
+
+	const handleFocus = (id: string) => {
+		setFocusedInput(id);
+	};
+
+	const handleBlur = (id: string, value: string) => {
+		if (!value.trim() && focusedInput === id) {
+			setFocusedInput(null);
+		}
+	};
 
 	const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value, checked } = target;
@@ -29,6 +42,9 @@ export default function Login() {
 			case "email":
 				setEmail(value);
 				if (value.trim() && value.includes("@")) setEmailError("");
+				break;
+			case "rememberMe":
+				setRememberMe(checked);
 				break;
 			default:
 				console.warn(`Unhandled field: ${id}`);
@@ -71,17 +87,21 @@ export default function Login() {
 					{/* Email */}
 					<div className="flex flex-col gap-6">
 						<div className="relative w-full">
-							<label
-								htmlFor="email"
-								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-							>
-								Email
-							</label>
+							{(focusedInput === "email" || email) && (
+								<label
+									htmlFor="email"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Email
+								</label>
+							)}
 							<input
 								id="email"
 								value={email}
 								type="email"
 								placeholder="Enter your email"
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
 							{emailError && <p className="text-red-600 text-[14px] mt-2">{emailError}</p>}
@@ -89,30 +109,34 @@ export default function Login() {
 
 						{/* Password */}
 						<div className="relative w-full">
-							<label
-								htmlFor="password"
-								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-							>
-								Password
-							</label>
+							{(focusedInput === "password" || password) && (
+								<label
+									htmlFor="password"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Password
+								</label>
+							)}
 							<input
 								id="password"
 								value={password}
 								type="password"
 								placeholder="Enter your password"
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
 							{passwordError && <p className="text-red-600 text-[14px] mt-2">{passwordError}</p>}
 						</div>
 					</div>
 
-					{/* Accept Terms and Conditions */}
+					{/* Remember me*/}
 					<div className="my-4">
 						<div className="flex items-center">
 							<input
-								id="rem"
+								id="rememberMe"
 								type="checkbox"
-								checked={termsAccepted}
+								checked={rememberMe}
 								onChange={handleChange}
 								className="mr-2"
 							/>

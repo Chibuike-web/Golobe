@@ -3,6 +3,7 @@ import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import styles from "./Signup.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon } from "../../assets/icons";
 import { useFormState } from "../Hooks";
+import { useState } from "react";
 
 export default function Signup() {
 	const {
@@ -35,6 +36,18 @@ export default function Signup() {
 		termsAcceptedError,
 		setTermsAcceptedError,
 	} = useFormState();
+
+	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
+
+	const handleFocus = (id: string) => {
+		setFocusedInput(id);
+	};
+
+	const handleBlur = (id: string, value: string) => {
+		if (!value.trim() && focusedInput === id) {
+			setFocusedInput(null);
+		}
+	};
 
 	const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value, checked } = target;
@@ -120,18 +133,21 @@ export default function Signup() {
 					<div className="grid grid-cols-2 gap-6 mb-6 md:grid-cols-1">
 						{/* First Name */}
 						<div className="relative w-full">
-							<label
-								htmlFor="firstName"
-								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-								style={{ display: "hidden" }}
-							>
-								First Name
-							</label>
+							{(focusedInput === "firstName" || firstName) && (
+								<label
+									htmlFor="firstName"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									First Name
+								</label>
+							)}
 							<input
 								id="firstName"
 								value={firstName}
 								type="text"
 								placeholder="Enter your first name"
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
 							{firstNameError && <p className="text-red-600 text-[14px] mt-2">{firstNameError}</p>}
@@ -139,17 +155,21 @@ export default function Signup() {
 
 						{/* Last Name */}
 						<div className="relative w-full">
-							<label
-								htmlFor="lastName"
-								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-							>
-								Last Name
-							</label>
+							{(focusedInput === "lastName" || lastName) && (
+								<label
+									htmlFor="lastName"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Last Name
+								</label>
+							)}
 							<input
 								id="lastName"
 								value={lastName}
 								type="text"
 								placeholder="Enter your last name"
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
 							{lastNameError && <p className="text-red-600 text-[14px] mt-2">{lastNameError}</p>}
@@ -157,17 +177,21 @@ export default function Signup() {
 
 						{/* Email */}
 						<div className="relative w-full">
-							<label
-								htmlFor="email"
-								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-							>
-								Email
-							</label>
+							{(focusedInput === "email" || email) && (
+								<label
+									htmlFor="email"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Email
+								</label>
+							)}
 							<input
 								id="email"
 								value={email}
 								type="email"
 								placeholder="Enter your email"
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
 							{emailError && <p className="text-red-600 text-[14px] mt-2">{emailError}</p>}
@@ -175,17 +199,21 @@ export default function Signup() {
 
 						{/* Phone Number */}
 						<div className="relative w-full">
-							<label
-								htmlFor="phoneNumber"
-								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-							>
-								Phone Number
-							</label>
+							{(focusedInput === "phoneNumber" || phoneNumber) && (
+								<label
+									htmlFor="phoneNumber"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Phone Number
+								</label>
+							)}
 							<input
 								id="phoneNumber"
 								value={phoneNumber}
 								type="tel"
 								placeholder="Enter your phone number"
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
 							{phoneNumberError && (
@@ -196,17 +224,21 @@ export default function Signup() {
 
 					{/* Password */}
 					<div className="relative w-full mb-6">
-						<label
-							htmlFor="password"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-						>
-							Password
-						</label>
+						{(focusedInput === "password" || password) && (
+							<label
+								htmlFor="password"
+								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							>
+								Password
+							</label>
+						)}
 						<input
 							id="password"
 							value={password}
 							type="password"
 							placeholder="Enter your password"
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
 						{passwordError && <p className="text-red-600 text-[14px] mt-2">{passwordError}</p>}
@@ -214,21 +246,25 @@ export default function Signup() {
 
 					{/* Confirm Password */}
 					<div className="relative w-full mb-6">
-						<label
-							htmlFor="confirmPassword"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-						>
-							Confirm Password
-						</label>
+						{(focusedInput === "confirmPassword" || confirmPassword) && (
+							<label
+								htmlFor="confirmPassword"
+								className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							>
+								Confirm Password
+							</label>
+						)}
 						<input
 							id="confirmPassword"
 							value={confirmPassword}
 							type="password"
 							placeholder="Confirm your password"
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
 						{confirmPasswordError && (
-							<p className="text-red-600 text-[14px]">{confirmPasswordError}</p>
+							<p className="text-red-600 text-[14px] mt-2">{confirmPasswordError}</p>
 						)}
 					</div>
 
