@@ -143,3 +143,17 @@ export function AppleIcon({ color = "currentColor" }) {
 		</svg>
 	);
 }
+
+export function LeftArrowIcon({ color = "currentColor" }) {
+	return (
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M15.75 18.75L9 12L15.75 5.25"
+				stroke={color}
+				strokeWidth="1.5"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+			/>
+		</svg>
+	);
+}

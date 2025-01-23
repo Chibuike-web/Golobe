@@ -80,7 +80,7 @@ export default function Login() {
 				</figure>
 				<header>
 					<h1 className="font-primary font-bold text-[40px] mb-4">Login</h1>
-					<p className="mb-12">Login to access your Golobe account </p>
+					<p className="mb-12 opacity-75">Login to access your Golobe account </p>
 				</header>
 
 				<form onSubmit={handleSubmit}>
@@ -131,7 +131,7 @@ export default function Login() {
 					</div>
 
 					{/* Remember me*/}
-					<div className="my-4">
+					<div className="my-4 flex justify-between">
 						<div className="flex items-center">
 							<input
 								id="rememberMe"
@@ -144,6 +144,9 @@ export default function Login() {
 								Remember me
 							</label>
 						</div>
+						<Link to="/forgetpassword" className="text-slamon font-medium text-[0.875rem]">
+							Forgot Password
+						</Link>
 					</div>
 
 					{/* Submit Button */}
@@ -151,21 +154,25 @@ export default function Login() {
 						type="submit"
 						className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
 					>
-						Create Account
+						Login
 					</button>
 				</form>
 
 				{/* Already have an account */}
-				<footer className="mt-4 flex flex-col items-center gap-10">
+				<footer className="mt-4 flex flex-col items-center text-[0.875rem] gap-10">
 					<p>
 						Don’t have an account?{" "}
 						<Link to="/signup" className="text-slamon font-semibold">
 							Sign up
 						</Link>
 					</p>
-					<p>
-						<span></span>Or login with<span></span>
-					</p>
+					<div className="flex items-center gap-2 w-full">
+						<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+						<p className="text-nowrap leading-[1] text-[0.875rem] text-blackishGreen opacity-50">
+							Or login with
+						</p>
+						<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+					</div>
 					<div className="flex gap-2 w-full">
 						<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
 							<FacebookIcon color="#1877F2" />

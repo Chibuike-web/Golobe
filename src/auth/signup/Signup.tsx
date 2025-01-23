@@ -298,16 +298,20 @@ export default function Signup() {
 				</form>
 
 				{/* Already have an account */}
-				<footer className="mt-4 flex flex-col items-center gap-10">
+				<footer className="mt-4 flex flex-col items-center text-[0.875rem] gap-10">
 					<p>
 						Already have an account?{" "}
 						<Link to="/login" className="text-slamon font-semibold">
 							Login
 						</Link>
 					</p>
-					<p>
-						<span></span>Or Sign up with <span></span>
-					</p>
+					<div className="flex items-center gap-2 w-full">
+						<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+						<p className="text-nowrap leading-[1] text-[0.875rem] text-blackishGreen opacity-50">
+							Or Sign up with
+						</p>
+						<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+					</div>
 					<div className="flex gap-2 w-full">
 						<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
 							<FacebookIcon color="#1877F2" />
