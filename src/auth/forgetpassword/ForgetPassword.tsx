@@ -84,7 +84,7 @@ export default function ForgetPassword() {
 								id="email"
 								value={email}
 								type="email"
-								placeholder="Enter your email"
+								placeholder={`${focusedInput === "email" || email ? "" : "Enter your email"}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -102,7 +102,6 @@ export default function ForgetPassword() {
 					</button>
 				</form>
 
-				{/* Already have an account */}
 				<footer className="mt-12 flex flex-col items-center text-[0.875rem] gap-10">
 					<div className="flex items-center gap-2 w-full">
 						<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>

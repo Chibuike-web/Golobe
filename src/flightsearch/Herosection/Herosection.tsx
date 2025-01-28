@@ -1,6 +1,7 @@
 import styles from "./hero.module.css";
 import { AirplaneIcon, BedIcon, AddIcon, PaperPlaneIcon } from "../../assets/icons";
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
+import { Link } from "react-router-dom";
 
 export default function Herosection() {
 	return (
@@ -35,15 +36,15 @@ function Navbar() {
 					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
 				</figure>
 				<div className="flex gap-[1.875rem] items-center md:hidden">
-					<a href="#login" className="text-blackishGreen text-sm font-semibold">
+					<Link to="/login" className="text-blackishGreen text-sm font-semibold">
 						Login
-					</a>
-					<a
-						href="#signup"
+					</Link>
+					<Link
+						to="/signup"
 						className="text-sm font-semibold bg-blackishGreen text-white px-[1.5rem] py-[0.75rem] rounded-[0.5rem]"
 					>
 						Sign up
-					</a>
+					</Link>
 				</div>
 			</nav>
 		</header>

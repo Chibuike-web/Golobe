@@ -145,7 +145,9 @@ export default function Signup() {
 								id="firstName"
 								value={firstName}
 								type="text"
-								placeholder="Enter your first name"
+								placeholder={`${
+									focusedInput === "firstName" || firstName ? "" : "Enter your first name"
+								}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -167,7 +169,9 @@ export default function Signup() {
 								id="lastName"
 								value={lastName}
 								type="text"
-								placeholder="Enter your last name"
+								placeholder={`${
+									focusedInput === "lastName" || lastName ? "" : "Enter your last name"
+								}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -189,7 +193,7 @@ export default function Signup() {
 								id="email"
 								value={email}
 								type="email"
-								placeholder="Enter your email"
+								placeholder={`${focusedInput === "email" || email ? "" : "Enter your email"}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -211,7 +215,9 @@ export default function Signup() {
 								id="phoneNumber"
 								value={phoneNumber}
 								type="tel"
-								placeholder="Enter your phone number"
+								placeholder={`${
+									focusedInput === "phoneNumber" || phoneNumber ? "" : "Enter your phone number"
+								}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -236,7 +242,9 @@ export default function Signup() {
 							id="password"
 							value={password}
 							type="password"
-							placeholder="Enter your password"
+							placeholder={`${
+								focusedInput === "password" || password ? "" : "Enter your password"
+							}`}
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
@@ -258,7 +266,9 @@ export default function Signup() {
 							id="confirmPassword"
 							value={confirmPassword}
 							type="password"
-							placeholder="Confirm your password"
+							placeholder={`${
+								focusedInput === "confirmPassword" || confirmPassword ? "" : "Confirm your password"
+							}`}
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
@@ -297,7 +307,6 @@ export default function Signup() {
 					</button>
 				</form>
 
-				{/* Already have an account */}
 				<footer className="mt-4 flex flex-col items-center text-[0.875rem] gap-10">
 					<p>
 						Already have an account?{" "}

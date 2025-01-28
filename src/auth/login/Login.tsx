@@ -99,7 +99,7 @@ export default function Login() {
 								id="email"
 								value={email}
 								type="email"
-								placeholder="Enter your email"
+								placeholder={`${focusedInput === "email" || email ? "" : "Enter your email"}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -121,7 +121,9 @@ export default function Login() {
 								id="password"
 								value={password}
 								type="password"
-								placeholder="Enter your password"
+								placeholder={`${
+									focusedInput === "password" || password ? "" : "Enter your password"
+								}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -150,15 +152,16 @@ export default function Login() {
 					</div>
 
 					{/* Submit Button */}
-					<button
-						type="submit"
-						className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
-					>
-						Login
-					</button>
+					<Link to="/verifycode">
+						<button
+							type="submit"
+							className="bg-mintGreen text-blackishGreen mt-8 text-[0.875rem] font-medium p-2 rounded w-full py-4"
+						>
+							Submit
+						</button>
+					</Link>
 				</form>
 
-				{/* Already have an account */}
 				<footer className="mt-4 flex flex-col items-center text-[0.875rem] gap-10">
 					<p>
 						Don’t have an account?{" "}
