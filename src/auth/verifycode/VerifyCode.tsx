@@ -1,14 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
-import { LeftArrowIcon } from "../../assets/icons";
+import { LeftArrowIcon, Eye, EyeSlash } from "../../assets/icons";
 import styles from "./VerifyCode.module.css";
 
 export default function VerifyPassword() {
 	const [focusedInput, setFocusedInput] = useState<string | null>(null);
 	const [code, setCode] = useState<string>("");
 	const [codeError, setCodeError] = useState<string>("");
+	const [showCode, setShowCode] = useState(false);
 
+	const toggleCodeVisibility = (id: string) => {
+		if (id === "code") {
+			setShowCode((prev) => !prev);
+		}
+	};
 	const handleFocus = (id: string) => {
 		setFocusedInput(id);
 	};
@@ -52,20 +58,21 @@ export default function VerifyPassword() {
 				</header>
 				<form onSubmit={handleSubmit}>
 					{/* Verification Code */}
-					<div className="flex flex-col gap-6">
-						<div className="relative w-full">
-							{(focusedInput === "code" || code) && (
-								<label
-									htmlFor="code"
-									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-								>
-									Enter Code
-								</label>
-							)}
+
+					<div className="relative w-full">
+						{(focusedInput === "code" || code) && (
+							<label
+								htmlFor="code"
+								className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							>
+								Enter Code
+							</label>
+						)}
+						<div className="relative">
 							<input
 								id="code"
 								value={code}
-								type="tel"
+								type={showCode ? "text" : "password"}
 								placeholder={`${
 									focusedInput === "code" || code ? "" : "Enter your verification code"
 								}`}
@@ -73,8 +80,17 @@ export default function VerifyPassword() {
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
 							/>
-							{codeError && <p className="text-red-600 text-[14px] mt-2">{codeError}</p>}
+							<button
+								type="button"
+								className="absolute right-[16px] top-[50%] -translate-y-1/2"
+								onClick={() => {
+									toggleCodeVisibility("code");
+								}}
+							>
+								{showCode ? <EyeSlash /> : <Eye />}
+							</button>
 						</div>
+						{codeError && <p className="text-red-600 text-[14px] mt-2">{codeError}</p>}
 					</div>
 
 					{/* Submit Button */}

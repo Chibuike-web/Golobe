@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import styles from "./Login.module.css";
-import { FacebookIcon, GoogleIcon, AppleIcon } from "../../assets/icons";
+import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../assets/icons";
 import { useFormState } from "../Hooks";
 import { useState } from "react";
 
@@ -18,6 +18,14 @@ export default function Login() {
 	} = useFormState();
 
 	const [rememberMe, setRememberMe] = useState<boolean>(false);
+
+	const [showPassword, setShowPassword] = useState(false);
+
+	const togglePasswordVisibility = (id: string) => {
+		if (id === "password") {
+			setShowPassword((prev) => !prev);
+		}
+	};
 
 	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
 
@@ -112,22 +120,33 @@ export default function Login() {
 							{(focusedInput === "password" || password) && (
 								<label
 									htmlFor="password"
-									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+									className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Password
 								</label>
 							)}
-							<input
-								id="password"
-								value={password}
-								type="password"
-								placeholder={`${
-									focusedInput === "password" || password ? "" : "Enter your password"
-								}`}
-								onFocus={(e) => handleFocus(e.target.id)}
-								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
-								onChange={handleChange}
-							/>
+							<div className="relative">
+								<input
+									id="password"
+									value={password}
+									type={showPassword ? "text" : "password"}
+									placeholder={`${
+										focusedInput === "password" || password ? "" : "Enter your password"
+									}`}
+									onFocus={(e) => handleFocus(e.target.id)}
+									onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+									onChange={handleChange}
+								/>
+								<button
+									type="button"
+									className="absolute right-[16px] top-[50%] -translate-y-1/2"
+									onClick={() => {
+										togglePasswordVisibility("password");
+									}}
+								>
+									{showPassword ? <EyeSlash /> : <Eye />}
+								</button>
+							</div>
 							{passwordError && <p className="text-red-600 text-[14px] mt-2">{passwordError}</p>}
 						</div>
 					</div>
