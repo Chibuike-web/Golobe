@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import styles from "./Signup.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../assets/icons";
 import { useFormState } from "../Hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Signup() {
+	const navigate = useNavigate();
+
 	const {
 		firstName,
 		setFirstName,
@@ -39,6 +41,19 @@ export default function Signup() {
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
+	const [registrationError, setRegistrationError] = useState("");
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		const userData = localStorage.getItem("user");
+
+		if (token && userData) {
+			const parsedUser = JSON.parse(userData);
+			console.log("User already registered. Token:", token);
+			console.log("Registered user details:", parsedUser);
+		}
+	}, []);
 
 	const togglePasswordVisibility = (id: string) => {
 		if (id === "password") {
@@ -47,8 +62,6 @@ export default function Signup() {
 			setShowConfirmPassword(!showConfirmPassword);
 		}
 	};
-
-	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
 
 	const handleFocus = (id: string) => {
 		setFocusedInput(id);
@@ -77,7 +90,7 @@ export default function Signup() {
 				if (value.trim() && value.includes("@")) setEmailError("");
 				break;
 			case "phoneNumber":
-				if (!Number.isNaN(Number(value)) && value.length <= 10) {
+				if (!Number.isNaN(Number(value)) && value.length <= 11) {
 					setPhoneNumber(value);
 					if (value.trim()) setPhoneNumberError("");
 				}
@@ -99,7 +112,7 @@ export default function Signup() {
 		}
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
 		// Basic Validation
@@ -122,6 +135,58 @@ export default function Signup() {
 		}
 
 		// Password validation
+		if (password.length < 8) {
+			setPasswordError("Password must be at least 8 characters");
+		} else {
+			setPasswordError("");
+		}
+
+		// If there are any errors, stop the submission
+		if (
+			firstNameError ||
+			lastNameError ||
+			emailError ||
+			passwordError ||
+			confirmPasswordError ||
+			termsAcceptedError
+		) {
+			return;
+		}
+
+		// Prepare the data to send to the backend
+		const userData = {
+			firstName,
+			lastName,
+			email,
+			phoneNumber,
+			password,
+		};
+
+		try {
+			// Send the data to the backend using fetch
+			const res = await fetch("http://127.0.0.1:5000/api/auth/register", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(userData),
+			});
+
+			if (!res.ok) {
+				const errorData = await res.json();
+				setRegistrationError(errorData.message);
+				throw new Error(errorData.message || "Registration failed");
+			}
+			const data = await res.json();
+			console.log("Registration successful:", data);
+
+			localStorage.setItem("token", data.token);
+			localStorage.setItem("user", JSON.stringify(userData));
+
+			navigate("/login");
+		} catch (error) {
+			console.error("Registration error:", (error as any).message);
+		}
 	};
 
 	return (
@@ -134,12 +199,15 @@ export default function Signup() {
 					<img src={GolobeLogo} alt="Golobe Logo" />
 				</figure>
 				<header>
+					{registrationError && (
+						<div className="mb-4 p-4 bg-yellow-100 text-yellow-800">{registrationError}</div>
+					)}
+
 					<h1 className="font-primary font-bold text-[40px] mb-4">Sign Up</h1>
 					<p className="mb-12">
 						Let’s get you all signed up so you can access your personal account.
 					</p>
 				</header>
-
 				<form onSubmit={handleSubmit}>
 					<div className="grid grid-cols-2 gap-6 mb-6 md:grid-cols-1">
 						{/* First Name */}
