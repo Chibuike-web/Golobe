@@ -7,6 +7,7 @@ import Login from "./auth/login/Login";
 import VerifyCode from "./auth/verifycode/VerifyCode";
 import ForgetPassword from "./auth/forgetpassword/ForgetPassword";
 import ResetPassword from "./auth/resetpassword/ResetPassword";
+import FlightListing from "./flightlisting/FlightListing";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path="/forgetpassword" element={<ForgetPassword />} />
 				<Route path="/verifycode" element={<VerifyCode />} />
 				<Route path="/resetpassword" element={<ResetPassword />} />
+				<Route path="/flightlisting" element={<FlightListing />} />
 			</Routes>
 		</Router>
 	);

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useFormState } from "../Hooks";
+import { useFormState } from "../../Hooks";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import { FacebookIcon, GoogleIcon, AppleIcon, LeftArrowIcon } from "../../assets/icons";
 import styles from "./ForgetPassword.module.css";
@@ -40,6 +40,7 @@ export default function ForgetPassword() {
 	};
 
 	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
+
 	const handleFocus = (id: string) => {
 		setFocusedInput(id);
 	};
@@ -49,6 +50,7 @@ export default function ForgetPassword() {
 			setFocusedInput(null);
 		}
 	};
+
 	return (
 		<main className="w-full m-[104px] max-w-[77rem] mx-auto flex gap-[104px] lg:flex-col lg:px-4">
 			<section className="w-full ">

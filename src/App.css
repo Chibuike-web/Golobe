@@ -54,7 +54,7 @@ input[type="password"] {
 }
 
 input::placeholder {
-	color: #1c1b1f;
+	color: rgba(28, 27, 31, 0.5);
 	font-size: 400;
 }
 
@@ -63,13 +63,29 @@ input:focus {
 	background-color: none;
 }
 
-input:-webkit-autofill {
+/* input:-webkit-autofill {
 	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
 	box-shadow: 0 0 0px 1000px white inset !important;
 	-webkit-text-fill-color: #000 !important;
-}
+} */
 
 input.error {
 	border-color: #d32f2f;
 	background-color: #ffebee;
+}
+
+/* Remove the default border and outline */
+.custom-input {
+	border: none !important;
+	outline: none !important;
+	padding: 0 !important;
+	line-height: 1 !important;
+	background: transparent !important;
+	width: 100%;
+}
+
+/* Also ensure no focus styling appears */
+.custom-input:focus {
+	outline: none;
+	box-shadow: none;
 }
