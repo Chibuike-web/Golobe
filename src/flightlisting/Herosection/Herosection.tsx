@@ -1,6 +1,13 @@
 import { useState } from "react";
 import styles from "./hero.module.css";
-import { AirplaneIcon, BedIcon, AddIcon, PaperPlaneIcon } from "../../assets/icons";
+import {
+	AirplaneIcon,
+	BedIcon,
+	AddIcon,
+	PaperPlaneIcon,
+	SwapIcon,
+	DownArrowIcon,
+} from "../../assets/icons";
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
 import { Link } from "react-router-dom";
 import { useFlightSearchFormState } from "../../Hooks";
@@ -95,6 +102,10 @@ function FlightSearchForm() {
 				break;
 			case "departDate":
 				setDepartDate(value);
+				break;
+			case "returnDate":
+				setReturnDate(value);
+				break;
 		}
 	};
 	return (
@@ -141,6 +152,7 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
+						<SwapIcon style={"flex-shrink-0"} />
 					</div>
 				</div>
 
@@ -154,26 +166,56 @@ function FlightSearchForm() {
 							Trip
 						</label>
 					)}
-					<input
-						id="trip"
-						value={trip}
-						type="text"
-						placeholder="Return"
-						onFocus={(e) => handleFocus(e.target.id)}
-						onBlur={(e) => handleBlur(e.target.id, e.target.value)}
-						onChange={handleChange}
-					/>
+					<div className="relative">
+						<input
+							id="trip"
+							value={trip}
+							type="text"
+							placeholder="Return"
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+							onChange={handleChange}
+						/>
+						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+							<DownArrowIcon />
+						</button>
+					</div>
 				</div>
 
 				{/* Form  3 */}
 				<div className="relative w-full">
-					<label
-						htmlFor="depart-return"
-						className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-					>
-						Depart - Return
-					</label>
-					<input type="text" placeholder="Enter date" />
+					{(focusedInput === "departDate" ||
+						departDate ||
+						focusedInput === "returnDate" ||
+						returnDate) && (
+						<label
+							htmlFor="depart-return"
+							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+						>
+							Depart - Return
+						</label>
+					)}
+					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+						<input
+							id="departDate"
+							value={departDate}
+							placeholder="Depart date"
+							className="custom-input"
+							onChange={handleChange}
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+						/>
+						<p>-</p>
+						<input
+							id="returnDate"
+							value={returnDate}
+							placeholder="Return date"
+							className="custom-input"
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+							onChange={handleChange}
+						/>
+					</div>
 				</div>
 
 				{/* Form  4 */}
