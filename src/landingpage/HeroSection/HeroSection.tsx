@@ -141,6 +141,19 @@ function FlightSearchForm() {
 		}
 	};
 
+	const isFromToBlue =
+		(focusedInput === "from" || focusedInput === "to") && !from.trim() && !to.trim();
+
+	const isDepartReturnBlue =
+		(focusedInput === "departDate" || focusedInput === "returnDate") &&
+		!departDate.trim() &&
+		!returnDate.trim();
+
+	const isPassengerClassBlue =
+		(focusedInput === "passenger" || focusedInput === "travelClass") &&
+		!passenger.trim() &&
+		!travelClass.trim();
+
 	let stays = false;
 	return (
 		<aside
@@ -169,7 +182,7 @@ function FlightSearchForm() {
 
 			<form
 				action=""
-				className="flex md:flex-col items-start w-full mt-8 gap-6"
+				className="flex md:flex-col items-start w-full mt-10 gap-6"
 				aria-label="Flight Search"
 			>
 				{/* Form 1 */}
@@ -183,7 +196,11 @@ function FlightSearchForm() {
 							From - To
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[16px] leading-[1em]">
+					<div
+						className={`flex items-center border-[1px] ${
+							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+					>
 						<input
 							id="from"
 							value={from}
@@ -250,7 +267,11 @@ function FlightSearchForm() {
 							Depart - Return
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+					<div
+						className={`flex items-center border-[1px] ${
+							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+					>
 						<input
 							id="departDate"
 							value={departDate}
@@ -286,7 +307,11 @@ function FlightSearchForm() {
 							Passenger - Class
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+					<div
+						className={`flex items-center border-[1px] ${
+							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+					>
 						<input
 							id="passenger"
 							value={passenger}

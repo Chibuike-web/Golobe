@@ -1,13 +1,6 @@
 import { useState } from "react";
-import styles from "./hero.module.css";
-import {
-	AirplaneIcon,
-	BedIcon,
-	AddIcon,
-	PaperPlaneIcon,
-	SwapIcon,
-	DownArrowIcon,
-} from "../../assets/icons";
+import styles from "./Hero.module.css";
+import { AirplaneIcon, BedIcon, SwapIcon, DownArrowIcon } from "../../assets/icons";
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
 import { Link } from "react-router-dom";
 import { useFlightSearchFormState } from "../../Hooks";
@@ -111,8 +104,25 @@ function FlightSearchForm() {
 				break;
 			case "travelClass":
 				setTravelClass(value);
+				break;
+			default:
+				break;
 		}
 	};
+
+	const isFromToBlue =
+		(focusedInput === "from" || focusedInput === "to") && !from.trim() && !to.trim();
+
+	const isDepartReturnBlue =
+		(focusedInput === "departDate" || focusedInput === "returnDate") &&
+		!departDate.trim() &&
+		!returnDate.trim();
+
+	const isPassengerClassBlue =
+		(focusedInput === "passenger" || focusedInput === "travelClass") &&
+		!passenger.trim() &&
+		!travelClass.trim();
+
 	return (
 		<aside
 			className="w-full text-blackishGreen max-w-[77rem] mt-12 z-50 bg-white px-8 py-8 rounded-2xl md:px-4"
@@ -135,7 +145,11 @@ function FlightSearchForm() {
 							From - To
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[16px] leading-[1em]">
+					<div
+						className={`flex items-center border-[1px] ${
+							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+					>
 						<input
 							id="from"
 							value={from}
@@ -202,7 +216,11 @@ function FlightSearchForm() {
 							Depart - Return
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+					<div
+						className={`flex items-center border-[1px] ${
+							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+					>
 						<input
 							id="departDate"
 							value={departDate}
@@ -238,7 +256,11 @@ function FlightSearchForm() {
 							Passenger - Class
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+					<div
+						className={`flex items-center border-[1px] ${
+							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+					>
 						<input
 							id="passenger"
 							value={passenger}
