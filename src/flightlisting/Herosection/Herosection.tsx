@@ -29,15 +29,15 @@ function Navbar() {
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">
-					<li className="flex space-x-1 items-center">
+					<li className={`${styles.flights} relative flex items-center gap-2`} role="tab">
 						<AirplaneIcon color="#112211" />
 						<span className="text-sm font-semibold text-blackishGreen">Find Flight</span>
 					</li>
 					<li>
-						<a href="#stays" className="flex space-x-1 items-center">
+						<Link to="/findstays" className="flex space-x-1 items-center">
 							<BedIcon color="#112211" />
 							<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
-						</a>
+						</Link>
 					</li>
 				</ul>
 				<figure>
@@ -71,8 +71,8 @@ function FlightSearchForm() {
 		setDepartDate,
 		returnDate,
 		setReturnDate,
-		passengers,
-		setPassengers,
+		passenger,
+		setPassenger,
 		travelClass,
 		setTravelClass,
 	} = useFlightSearchFormState();
@@ -106,6 +106,11 @@ function FlightSearchForm() {
 			case "returnDate":
 				setReturnDate(value);
 				break;
+			case "passenger":
+				setPassenger(value);
+				break;
+			case "travelClass":
+				setTravelClass(value);
 		}
 	};
 	return (
@@ -116,7 +121,7 @@ function FlightSearchForm() {
 		>
 			<form
 				action=""
-				className="flex md:flex-col items-start w-full gap-6"
+				className="flex md:flex-col items-center w-full gap-6"
 				aria-label="Flight Search"
 			>
 				{/* Form 1 */}
@@ -130,7 +135,7 @@ function FlightSearchForm() {
 							From - To
 						</label>
 					)}
-					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[16px] leading-[1em]">
 						<input
 							id="from"
 							value={from}
@@ -152,7 +157,9 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<SwapIcon style={"flex-shrink-0"} />
+						<button type="button">
+							<SwapIcon style={"flex-shrink-0"} />
+						</button>
 					</div>
 				</div>
 
@@ -161,7 +168,7 @@ function FlightSearchForm() {
 					{(focusedInput === "trip" || trip) && (
 						<label
 							htmlFor="trip"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Trip
 						</label>
@@ -220,13 +227,38 @@ function FlightSearchForm() {
 
 				{/* Form  4 */}
 				<div className="relative w-full">
-					<label
-						htmlFor="passenger-class"
-						className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-					>
-						Passenger - Class
-					</label>
-					<input type="text" placeholder="Enter details" />
+					{(focusedInput === "passenger" ||
+						passenger ||
+						focusedInput === "travelClass" ||
+						travelClass) && (
+						<label
+							htmlFor="Passenger - Class"
+							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+						>
+							Passenger - Class
+						</label>
+					)}
+					<div className="flex items-center border-[1px] border-[#79747e] rounded-[4px] gap-2 p-[18px] leading-[1em]">
+						<input
+							id="passenger"
+							value={passenger}
+							placeholder="Passenger"
+							className="custom-input"
+							onChange={handleChange}
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+						/>
+						<p>-</p>
+						<input
+							id="travelClass"
+							value={travelClass}
+							placeholder="Travel Class"
+							className="custom-input"
+							onFocus={(e) => handleFocus(e.target.id)}
+							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+							onChange={handleChange}
+						/>
+					</div>
 				</div>
 			</form>
 		</aside>

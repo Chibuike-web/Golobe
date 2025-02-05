@@ -64,8 +64,8 @@ export const useFlightSearchFormState = () => {
 	const [returnDate, setReturnDate] = useState<string>("");
 
 	// Passenger count and travel class
-	const [passengers, setPassengers] = useState<number>(1);
-	const [travelClass, setTravelClass] = useState<string>("Economy");
+	const [passenger, setPassenger] = useState<string>("");
+	const [travelClass, setTravelClass] = useState<string>("");
 
 	return {
 		from,
@@ -78,8 +78,8 @@ export const useFlightSearchFormState = () => {
 		setDepartDate,
 		returnDate,
 		setReturnDate,
-		passengers,
-		setPassengers,
+		passenger,
+		setPassenger,
 		travelClass,
 		setTravelClass,
 	};
