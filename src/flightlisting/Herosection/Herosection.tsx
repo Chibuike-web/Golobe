@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styles from "./Hero.module.css";
-import { AirplaneIcon, BedIcon, SwapIcon, DownArrowIcon } from "../../assets/icons";
+import { AirplaneIcon, BedIcon, SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/icons";
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
 import { Link } from "react-router-dom";
 import { useFlightSearchFormState } from "../../Hooks";
 
 export default function Herosection() {
 	return (
-		<section className="flex flex-col items-center w-full min-h-[48.875rem]">
+		<section className="flex flex-col items-center w-full ">
 			<Navbar />
 			<FlightSearchForm />
 		</section>
@@ -125,13 +125,13 @@ function FlightSearchForm() {
 
 	return (
 		<aside
-			className="w-full text-blackishGreen max-w-[77rem] mt-12 z-50 bg-white px-8 py-8 rounded-2xl md:px-4"
+			className="w-full flex lg:flex-col items-center gap-6 text-blackishGreen max-w-[77rem] mt-12 z-50 bg-white px-8 py-8 rounded-2xl lg:px-4"
 			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
 			aria-labelledby="flight-search-form"
 		>
 			<form
 				action=""
-				className="flex md:flex-col items-center w-full gap-6"
+				className="flex lg:flex-col items-center w-full gap-6"
 				aria-label="Flight Search"
 			>
 				{/* Form 1 */}
@@ -146,7 +146,7 @@ function FlightSearchForm() {
 						</label>
 					)}
 					<div
-						className={`flex items-center border-[1px] ${
+						className={`flex items-center border-[1px] max-h-[56px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
 						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
 					>
@@ -178,7 +178,7 @@ function FlightSearchForm() {
 				</div>
 
 				{/* Form  2 */}
-				<div className="relative w-full max-w-[8.75rem] md:max-w-full">
+				<div className="relative w-full max-w-[8.75rem] lg:max-w-full ">
 					{(focusedInput === "trip" || trip) && (
 						<label
 							htmlFor="trip"
@@ -196,6 +196,7 @@ function FlightSearchForm() {
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
+							className="max-h-[56px]"
 						/>
 						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
 							<DownArrowIcon />
@@ -217,7 +218,7 @@ function FlightSearchForm() {
 						</label>
 					)}
 					<div
-						className={`flex items-center border-[1px] ${
+						className={`flex items-center border-[1px] max-h-[56px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
 						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
 					>
@@ -257,7 +258,7 @@ function FlightSearchForm() {
 						</label>
 					)}
 					<div
-						className={`flex items-center border-[1px] ${
+						className={`flex items-center border-[1px] max-h-[56px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
 						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
 					>
@@ -283,6 +284,12 @@ function FlightSearchForm() {
 					</div>
 				</div>
 			</form>
+			<button
+				type="button"
+				className="px-[16px] py-[16px] lg:w-full bg-mintGreen rounded-[4px] max-h-[56px]"
+			>
+				<SearchIcon />
+			</button>
 		</aside>
 	);
 }
