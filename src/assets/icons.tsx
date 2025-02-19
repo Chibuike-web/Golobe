@@ -209,9 +209,16 @@ export function DownArrowIcon() {
 	);
 }
 
-export function UpArrowIcon() {
+export function UpArrowIcon({ rotate }: { rotate: string }) {
 	return (
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			className={`${rotate}`}
+		>
 			<path
 				d="M5.25 15L12 8.25L18.75 15"
 				stroke="black"
@@ -259,6 +266,20 @@ export function SearchIcon() {
 				fill="#112211"
 				stroke="#112211"
 				strokeWidth="0.046875"
+			/>
+		</svg>
+	);
+}
+
+export function HarmburgerIcon() {
+	return (
+		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M3.75 7.5H20.25M3.75 12H20.25M3.75 16.5H20.25"
+				stroke="black"
+				strokeWidth="1.5"
+				strokeMiterlimit="10"
+				strokeLinecap="round"
 			/>
 		</svg>
 	);

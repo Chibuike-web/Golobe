@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
 
 export default function Filters() {
 	return (
-		<div className="w-full max-w-[367.5px] flex justify-between">
+		<div className="w-full h-screen max-w-[367.5px] flex justify-between">
 			<div className="w-full max-w-[343px] flex flex-col gap-8">
 				<h1 className="font-semibold text-[20px]">Filters</h1>
 				<Slider name={"Price"} />
@@ -12,28 +13,39 @@ export default function Filters() {
 	);
 }
 
-interface SliderProps {
+type SliderProps = {
 	name: string;
-}
+};
 
 const Slider = ({ name }: SliderProps) => {
+	const [isRotate, setIsRotate] = useState<boolean>(true);
+
+	const arrowButton = () => {
+		setIsRotate(!isRotate);
+	};
+
 	return (
-		<div className="w-full">
+		<div className="w-full h-full">
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
-				<UpArrowIcon />
+				<button type="button" onClick={arrowButton}>
+					<UpArrowIcon rotate={isRotate ? "" : "rotate-180"} />
+				</button>
 			</div>
-			<div className="relative w-full">
-				<div className="flex justify-between">
-					<span className="block bg-mintGreen w-[24px] h-[24px] rounded-full"></span>
-					<span className="block bg-mintGreen w-[24px] h-[24px] rounded-full"></span>
+			{isRotate && (
+				<div className=" w-full mt-8">
+					<div className="flex items-center justify-between relative w-full">
+						<span className="block bg-mintGreen w-[24px] h-[24px] rounded-full "></span>
+						<span className="absolute bg-blackishGreen w-[300px] z-[-1000] h-[2px] left-[50%] -translate-x-1/2 "></span>
+						<span className="block bg-mintGreen w-[24px] h-[24px] rounded-full"></span>
+					</div>
+					<div className="flex justify-between items-center mt-2">
+						<span className="block text-[12px]">$50</span>
+						<span className="block text-[12px]">$1200</span>
+					</div>
+					<input type="range" />
 				</div>
-				<span className=" absolute z-[-1000] top-[50%] -translate-y-1/2 block bg-blackishGreen w-full h-[2px] "></span>
-			</div>
-			<div className="flex justify-between mt-2">
-				<span className="block text-[12px]">$50</span>
-				<span className="block text-[12px]">$1200</span>
-			</div>
+			)}
 		</div>
 	);
 };
