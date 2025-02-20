@@ -58,7 +58,9 @@ input::placeholder {
 	font-size: 400;
 }
 
-input:focus {
+input[type="text"],
+input[type="email"],
+input[type="tel"]:focus {
 	border-color: #6200ea;
 	background-color: none;
 }

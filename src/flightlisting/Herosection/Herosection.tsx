@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Hero.module.css";
+import styles from "./hero.module.css";
 import { AirplaneIcon, BedIcon, SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/icons";
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
 import { Link } from "react-router-dom";
