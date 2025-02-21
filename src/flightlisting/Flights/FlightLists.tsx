@@ -113,7 +113,6 @@ const Tabs = ({
 };
 
 const FlightListCard = ({ image }: { image: string }) => {
-	console.log(styles);
 	return (
 		<div
 			className="flex justify-between w-full bg-white py-6 px-4 text-blackishGreen rounded-[12px]"
