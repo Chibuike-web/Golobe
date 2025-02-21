@@ -48,7 +48,7 @@ const CTA = () => {
 					<input
 						type="submit"
 						value="Subscribe"
-						className="px-4 py-[18px] rounded-[4px] bg-black text-white"
+						className="px-4 py-[18px] rounded-[4px] bg-blackishGreen text-white"
 					/>
 				</form>
 			</div>

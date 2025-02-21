@@ -76,6 +76,9 @@ export default function FlightLists() {
 				<FlightListCard image={FlyDubai} />
 				<FlightListCard image={Qatar} />
 				<FlightListCard image={Etihad} />
+				<button className="flex bg-blackishGreen justify-center items-center w-full font-semibold text-[14px] text-white rounded-[4px] py-4">
+					Show more results
+				</button>
 			</div>
 		</div>
 	);
