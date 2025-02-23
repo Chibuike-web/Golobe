@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
 
+import styles from "./filters.module.css";
+
 export default function Filters() {
 	const [activeSlider, setActiveSlider] = useState<{ [key: number]: boolean }>({});
 
@@ -131,7 +133,7 @@ const tripsData: CheckboxProps[] = [
 
 	{
 		id: 3,
-		title: "Mulit-City",
+		title: "Multi-City",
 	},
 
 	{
@@ -182,11 +184,9 @@ const Trips = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
 
 const Checkbox = ({ id, title }: CheckboxProps) => {
 	return (
-		<div>
-			<label htmlFor={title}>
-				<input type="checkbox" name="title" id={`checkbox-${id}`} />
-				{title}
-			</label>
-		</div>
+		<label htmlFor={title} className="flex gap-3 items-start ">
+			<input type="checkbox" name={title} id={`checkbox-${id}`} className={`${styles.checkbox}`} />
+			{title}
+		</label>
 	);
 };

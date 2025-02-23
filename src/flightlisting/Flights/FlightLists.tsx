@@ -145,7 +145,9 @@ const FlightListCard = ({ image }: { image: string }) => {
 					{/* First content */}
 					<div className="flex gap-10">
 						<label htmlFor="time" className="flex gap-3 items-start">
-							<input type="checkbox" name="time" className={`${styles.checkbox}`} />
+							<div className="relative cursor-pointer">
+								<input type="checkbox" name="time" className={`${styles.checkbox}`} />
+							</div>
 							<div className="flex flex-col gap-1">
 								<p className="leading-[20px] font-semibold">12:00pm - 01:28pm</p>
 								<p className="text-[14px] leading-[17px] opacity-40">Emirates</p>
