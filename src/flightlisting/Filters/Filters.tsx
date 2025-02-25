@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
+import * as RadixSlider from "@radix-ui/react-slider";
 
 import styles from "./filters.module.css";
 
@@ -40,7 +41,10 @@ type ComponentProps = {
 	id: number;
 	activeSlider: { [key: number]: boolean };
 };
+
 const Slider = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
+	const [values, setValues] = useState([50, 1200]);
+
 	return (
 		<div className="w-full">
 			<div className="flex justify-between w-full">
@@ -50,11 +54,24 @@ const Slider = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
 				</button>
 			</div>
 			{activeSlider[id] && (
-				<div className="w-full">
-					<input type="range" />
+				<div className="w-full mt-4">
+					<RadixSlider.Root
+						value={values}
+						onValueChange={setValues}
+						min={0}
+						max={1500}
+						step={10}
+						className="relative flex items-center w-full h-5"
+					>
+						<RadixSlider.Track className="relative flex-grow h-1 bg-gray-300 rounded">
+							<RadixSlider.Range className="absolute h-full bg-blackishGreen rounded" />
+						</RadixSlider.Track>
+						<RadixSlider.Thumb className="block w-6 h-6 bg-mintGreen rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300" />
+						<RadixSlider.Thumb className="block w-6 h-6 bg-mintGreen rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300" />
+					</RadixSlider.Root>
 					<div className="flex justify-between items-center mt-2">
-						<span className="block text-[12px]">$50</span>
-						<span className="block text-[12px]">$1200</span>
+						<span className="block text-[12px]">${values[0]}</span>
+						<span className="block text-[12px]">${values[1]}</span>
 					</div>
 				</div>
 			)}

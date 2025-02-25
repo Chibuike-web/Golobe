@@ -84,7 +84,7 @@ input.error {
 	box-shadow: none;
 }
 
-input[type="range"] {
+/* input[type="range"] {
 	-webkit-appearance: none;
 	appearance: none;
 	width: 100%;
@@ -111,4 +111,4 @@ input[type="range"]::-moz-range-thumb {
 	background: #8dd3bb;
 	cursor: pointer;
 	border-radius: 50%;
-}
+} */
