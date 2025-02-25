@@ -1,9 +1,10 @@
 import CTAImage from "../../assets/LandingPage/emojione-v1_open-mailbox-with-lowered-flag.svg";
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../../assets/icons";
 import FooterLogo from "../../assets/LandingPage/Logo.svg";
+
 export default function FooterSection() {
 	return (
-		<section className="bg-mintGreen mt-[241px] px-4">
+		<section className="pb-[64px] flex flex-col bg-mintGreen mt-[241px] px-4">
 			<CTA />
 			<Footer />
 		</section>
@@ -48,7 +49,7 @@ const CTA = () => {
 					<input
 						type="submit"
 						value="Subscribe"
-						className="px-4 py-[18px] rounded-[4px] bg-black text-white"
+						className="px-4 py-[18px] rounded-[4px] bg-blackishGreen text-white"
 					/>
 				</form>
 			</div>
@@ -61,7 +62,7 @@ const CTA = () => {
 
 const Footer = () => {
 	return (
-		<footer className="max-w-[77rem] my-[4rem] mx-auto flex gap-[140px] md:gap-[70px] md:flex-col">
+		<footer className="max-w-[77rem] w-full mt-[4rem] mx-auto flex gap-[140px] md:gap-[70px] md:flex-col">
 			<div className="w-max">
 				<img src={FooterLogo} alt="Footer logo" />
 				<div className="flex justify-between mt-6">

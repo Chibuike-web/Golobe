@@ -14,7 +14,7 @@ export default function Herosection() {
 	);
 }
 
-function Navbar() {
+export function Navbar() {
 	return (
 		<header className="w-full bg-white" role="banner">
 			<nav
