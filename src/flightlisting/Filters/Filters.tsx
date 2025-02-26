@@ -110,9 +110,10 @@ const RatingButton = ({ text, id }: { text: number; id: string }) => {
 	);
 };
 
-type CheckboxProps = {
+export type CheckboxProps = {
 	id: number;
 	title: string;
+	checkedColor?: string;
 };
 
 const airlineData: CheckboxProps[] = [
@@ -199,11 +200,17 @@ const Trips = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
 	);
 };
 
-const Checkbox = ({ id, title }: CheckboxProps) => {
+export const Checkbox = ({ id, title, checkedColor = "#112211" }: CheckboxProps) => {
 	return (
-		<label htmlFor={title} className="flex gap-3 items-start ">
-			<input type="checkbox" name={title} id={`checkbox-${id}`} className={`${styles.checkbox}`} />
-			{title}
+		<label htmlFor={title} className="flex gap-3 items-center ">
+			<input
+				type="checkbox"
+				name={title}
+				id={`checkbox-${id}`}
+				className={`${styles.checkbox}`}
+				style={{ "--checked-bg-color": checkedColor } as React.CSSProperties}
+			/>
+			<p className="font-medium text-[14px] leading-[17px]">{title}</p>
 		</label>
 	);
 };

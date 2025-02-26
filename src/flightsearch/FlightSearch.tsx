@@ -14,7 +14,7 @@ import Forest from "../assets/FlightSearch/Forest.png";
 import Trees from "../assets/FlightSearch/Trees.png";
 import Ocean from "../assets/FlightSearch/Ocean.png";
 import Beach from "../assets/FlightSearch/Beach.png";
-import Footer from "./Footer/Footer";
+import Footer from "../Footer/Footer";
 import Bookings from "./Bookings/Bookings";
 
 export default function FlightSearch() {

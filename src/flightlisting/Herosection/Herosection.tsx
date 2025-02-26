@@ -1,6 +1,14 @@
 import { useState } from "react";
 import styles from "./hero.module.css";
-import { AirplaneIcon, BedIcon, SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/icons";
+import ProfileImage from "../../assets/FlightListing/ProfileImage.png";
+import {
+	AirplaneIcon,
+	BedIcon,
+	SwapIcon,
+	DownArrowIcon,
+	SearchIcon,
+	FavouritesIcon,
+} from "../../assets/icons";
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
 import { Link } from "react-router-dom";
 import { useFlightSearchFormState } from "../../Hooks";
@@ -36,16 +44,21 @@ export function Navbar() {
 				<figure>
 					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
 				</figure>
-				<div className="flex gap-[1.875rem] items-center md:hidden">
-					<Link to="/login" className="text-blackishGreen text-sm font-semibold">
-						Login
-					</Link>
-					<Link
-						to="/signup"
-						className="text-sm font-semibold bg-blackishGreen text-white px-[1.5rem] py-[0.75rem] rounded-[0.5rem]"
-					>
-						Sign up
-					</Link>
+				<div className="flex gap-[2rem] items-center md:hidden">
+					<div className="flex gap-1 items-center">
+						<FavouritesIcon />
+						<p className="text-[14px] font-semibold">Favourites</p>
+					</div>
+					<span className="font-semibold text-[14px]">I</span>
+					<div className="flex items-center gap-[4px]">
+						<figure className="relative w-[45px] h-[45px] flex-shrink-0">
+							<img src={ProfileImage} alt="Profile Image" />
+							<span className="bg-slamon block rounded-full absolute bottom-0 right-0">
+								<DownArrowIcon width={"12px"} />
+							</span>
+						</figure>
+						<p className="text-[14px] font-semibold">John D.</p>
+					</div>
 				</div>
 			</nav>
 		</header>

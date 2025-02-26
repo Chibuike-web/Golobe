@@ -1,7 +1,7 @@
 import Filters from "./Filters/Filters";
 import FlightLists from "./Flights/FlightLists";
 import HeroSection from "./Herosection/Herosection";
-import FooterSection from "./Footer/Footer";
+import FooterSection from "../Footer/Footer";
 
 export default function FlightListing() {
 	return (
