@@ -1,4 +1,3 @@
-import { Navbar } from "../Herosection/Herosection";
 import { Checkbox } from "../Filters/Filters";
 import HeroImage from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import First from "../../assets/FlightListing/FlightDetail/First.png";
@@ -14,7 +13,6 @@ import Nineth from "../../assets/FlightListing/FlightDetail/Nineth.png";
 import Emirates from "../../assets/FlightListing/Emirates.png";
 import FlyDubai from "../../assets/FlightListing/FlyDubai.png";
 import Qatar from "../../assets/FlightListing/Qatar.png";
-import Etihad from "../../assets/FlightListing/Etihad.png";
 
 const imageImports = [First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth, Nineth];
 
@@ -30,6 +28,7 @@ import {
 	TimeIcon,
 	WifiIcon,
 } from "../../assets/icons";
+import Navbar from "../Navbar/Navbar";
 
 export default function FlightDetail() {
 	return (
@@ -41,8 +40,8 @@ export default function FlightDetail() {
 	);
 }
 
-type Card = {
-	id: number;
+export type CardType = {
+	id?: number;
 	flightType: string;
 	flightDate: string;
 	duration: string;
@@ -53,9 +52,10 @@ type Card = {
 	flightStartTime: string;
 	flightEnd: string;
 	flightEndTime: string;
+	gap?: string;
 };
 
-const cardData: Card[] = [
+const cardData: CardType[] = [
 	{
 		id: 1,
 		flightType: "Return",
@@ -203,7 +203,7 @@ const HeroSection = () => {
 						flightStartTime,
 						flightEnd,
 						flightEndTime,
-					}: Card) => (
+					}: CardType) => (
 						<Card
 							key={id}
 							id={id}
@@ -225,7 +225,7 @@ const HeroSection = () => {
 	);
 };
 
-const Card = ({
+export const Card = ({
 	id,
 	flightType,
 	flightDate,
@@ -237,7 +237,8 @@ const Card = ({
 	flightStartTime,
 	flightEnd,
 	flightEndTime,
-}: Card) => {
+	gap = "80px",
+}: CardType) => {
 	return (
 		<div
 			id={`card-${id}`}
@@ -282,7 +283,7 @@ const Card = ({
 				</div>
 			</div>
 			{/* Last row */}
-			<div className="flex w-max gap-[80px]">
+			<div className="flex w-max" style={{ gap }}>
 				<div className="flex items-center gap-4">
 					<h4 className="font-semibold text-[24px] text-blackishGreen leading-[29px]">
 						{flightStartTime}
