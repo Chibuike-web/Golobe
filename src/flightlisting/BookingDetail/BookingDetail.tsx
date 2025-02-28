@@ -1,16 +1,48 @@
 import Navbar from "../Navbar/Navbar";
 import { Card } from "../FlightDetail/FlightDetail";
 import Emirates from "../../assets/FlightListing/Emirates.png";
-import { RightArrowIcon } from "../../assets/icons";
+import { AppleIcon, FacebookIcon, GoogleIcon, MailIcon, RightArrowIcon } from "../../assets/icons";
 import Image from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import styles from "./BookingDetail.module.css";
 import { useState } from "react";
 
+import { useFormState } from "../../Hooks";
+import FooterSection from "../../Footer/Footer";
+
 export default function BookingDetail() {
+	const { phoneNumber, setPhoneNumber, phoneNumberError, setPhoneNumberError } = useFormState();
+
 	const [activeRadio, setActiveRadio] = useState("");
 
 	const handleChange = (id: string) => {
 		setActiveRadio(id);
+	};
+
+	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
+
+	const handleFocus = (id: string) => {
+		setFocusedInput(id);
+	};
+
+	const handleBlur = (id: string, value: string) => {
+		if (!value.trim() && focusedInput === id) {
+			setFocusedInput(null);
+		}
+	};
+
+	const handlePhoneNumber = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+		const { id, value } = target;
+
+		switch (id) {
+			case "phoneNumber":
+				if (!Number.isNaN(Number(value)) && value.length <= 11) {
+					setPhoneNumber(value);
+					if (value.trim()) setPhoneNumberError("");
+				}
+				break;
+			default:
+				console.warn(`Unhandled field: ${id}`);
+		}
 	};
 
 	return (
@@ -44,7 +76,7 @@ export default function BookingDetail() {
 								style={{ backgroundColor: activeRadio === "full" ? "#8DD3BB" : "" }}
 							>
 								<div>
-									<h2 className="font-primary font-bold leading-[20px] mb-[8px] ">Pay in full</h2>
+									<h2 className="font-primary font-bold leading-[20px] mb-[12px] ">Pay in full</h2>
 									<p className="text-[14px] leading-[17px] text-blackishGreen">
 										Pay the total and you are all set
 									</p>
@@ -65,11 +97,14 @@ export default function BookingDetail() {
 								style={{ backgroundColor: activeRadio === "part" ? "#8DD3BB" : "" }}
 							>
 								<div className="w-full max-w-[577px]">
-									<h2 className="font-primary font-bold leading-[20px] mb-[8px] ">Pay in full</h2>
+									<h2 className="font-primary font-bold leading-[20px] mb-[12px] ">
+										Pay part now, part later
+									</h2>
 									<p className="text-[14px] leading-[17px] text-blackishGreen">
 										Pay $207.43 now, and the rest ($207.43) will be automatically charged to the
 										same payment method on Nov 14, 2022. No extra fees.
 									</p>
+									<p className="mt-[12px] font-medium text-[12px] text-blackishGreen">More info</p>
 								</div>
 
 								<input
@@ -82,9 +117,81 @@ export default function BookingDetail() {
 									}}
 								/>
 							</label>
-							<p className="mt-[12px] font-medium text-[12px] text-blackishGreen">More info</p>
 						</form>
+
+						<div className="p-6">
+							<form className=" bg-white">
+								<h3 className="font-primary font-bold text-[20px] mb-4">
+									Login or Sign up to book
+								</h3>
+								{/* Phone Number */}
+								<div className="relative w-full">
+									{(focusedInput === "phoneNumber" || phoneNumber) && (
+										<label
+											htmlFor="phoneNumber"
+											className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+										>
+											Phone Number
+										</label>
+									)}
+									<input
+										id="phoneNumber"
+										value={phoneNumber}
+										type="tel"
+										placeholder={`${
+											focusedInput === "phoneNumber" || phoneNumber ? "" : "Enter your phone number"
+										}`}
+										onFocus={(e) => handleFocus(e.target.id)}
+										onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+										onChange={handlePhoneNumber}
+									/>
+									<p className="text-[14px] text-blackishGreen mt-4">
+										We’ll call or text you to confirm your number. Standard message and data rates
+										apply. Privacy Policy
+									</p>
+									{phoneNumberError && (
+										<p className="text-red-600 text-[14px] mt-2">{phoneNumberError}</p>
+									)}
+								</div>
+								<button
+									type="submit"
+									className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
+								>
+									Continue
+								</button>
+							</form>
+							<div className="flex items-center gap-2 w-full mb-6 mt-6">
+								<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+								<p className="text-nowrap leading-[1] text-[0.875rem] text-blackishGreen opacity-50">
+									Or
+								</p>
+								<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+							</div>
+							<div className="flex gap-2 w-full">
+								<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
+									<FacebookIcon color="#1877F2" />
+								</button>
+								<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
+									<GoogleIcon />
+								</button>
+								<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
+									<AppleIcon />
+								</button>
+							</div>
+							<button
+								type="submit"
+								className="content-center justify-items-center border-[1px] border-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
+							>
+								<div className="flex items-center gap-4 ">
+									<MailIcon />
+									<p className="leading-[17px] text-blackishGreen font-medium">
+										Continue with email
+									</p>
+								</div>
+							</button>
+						</div>
 					</div>
+
 					<div className="w-full p-6 bg-white rounded-[12px]">
 						{/* Top */}
 						<div className="flex gap-6 w-full items-center">
@@ -148,6 +255,7 @@ export default function BookingDetail() {
 					</div>
 				</div>
 			</div>
+			<FooterSection />
 		</div>
 	);
 }
