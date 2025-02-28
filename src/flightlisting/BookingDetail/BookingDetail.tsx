@@ -54,7 +54,7 @@ export default function BookingDetail() {
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
 					<p className="text-[14px] font-medium opacity-75">CVK Park Bosphorus Hotel Istanbul</p>
 				</div>
-				<div className="flex gap-[40px]">
+				<div className="flex items-start gap-[40px]">
 					<div className="w-full max-w-[790px]">
 						<Card
 							flightType="Return"
