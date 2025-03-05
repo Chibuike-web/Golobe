@@ -84,3 +84,39 @@ export const useFlightSearchFormState = () => {
 		setTravelClass,
 	};
 };
+
+export const usePaymentDetails = () => {
+	// Card Information
+	const [cardNumber, setCardNumber] = useState<string>("");
+	const [expiryDate, setExpiryDate] = useState<string>("");
+	const [cvv, setCvv] = useState<string>("");
+
+	// Cardholder Details
+	const [nameOnCard, setNameOnCard] = useState<string>("");
+	const [country, setCountry] = useState<string>("");
+
+	const [focusedInput, setFocusedInput] = useState<string>("");
+
+	const handleFocus = (id: string) => setFocusedInput(id);
+	const handleBlur = (id: string, value: string) => {
+		if (!value.trim() && focusedInput === id) {
+			setFocusedInput("");
+		}
+	};
+
+	return {
+		cardNumber,
+		setCardNumber,
+		expiryDate,
+		setExpiryDate,
+		cvv,
+		setCvv,
+		nameOnCard,
+		setNameOnCard,
+		country,
+		setCountry,
+		focusedInput,
+		handleFocus,
+		handleBlur,
+	};
+};

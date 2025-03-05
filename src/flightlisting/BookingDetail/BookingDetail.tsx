@@ -15,13 +15,15 @@ import styles from "./BookingDetail.module.css";
 import { useState } from "react";
 
 import { useFormState } from "../../Hooks";
+import { usePaymentDetails } from "../../Hooks";
 import FooterSection from "../../Footer/Footer";
 
 export default function BookingDetail() {
 	const { phoneNumber, setPhoneNumber, phoneNumberError, setPhoneNumberError } = useFormState();
-	const [login, setLogin] = useState(true);
+	const [login, setLogin] = useState(false);
 	const [activeRadio, setActiveRadio] = useState("");
 	const [card, setCard] = useState(false);
+	const [addCard, setAddCard] = useState(false);
 
 	const handleChange = (id: string) => {
 		setActiveRadio(id);
@@ -29,6 +31,20 @@ export default function BookingDetail() {
 
 	const handleCardChange = () => {
 		setCard(true);
+	};
+
+	const handleLogin = () => {
+		setLogin((prev) => !prev);
+	};
+
+	const handleOpenAddCardModal = () => {
+		setAddCard(true); // Ensures the modal opens
+	};
+
+	const handleCloseAddCardModal = (e: React.MouseEvent<HTMLDivElement>) => {
+		if ((e.target as HTMLElement).classList.contains("fixed")) {
+			setAddCard(false);
+		}
 	};
 
 	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
@@ -157,6 +173,7 @@ export default function BookingDetail() {
 									</label>
 								</form>
 								<div
+									onClick={handleOpenAddCardModal}
 									style={{
 										width: "100%",
 										height: "188.83px",
@@ -237,6 +254,7 @@ export default function BookingDetail() {
 									<button
 										type="submit"
 										className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
+										onClick={handleLogin}
 									>
 										Continue
 									</button>
@@ -273,71 +291,236 @@ export default function BookingDetail() {
 							</div>
 						)}
 					</div>
-
-					<div className="w-full p-6 bg-white rounded-[12px]">
-						{/* Top */}
-						<div className="flex gap-6 w-full items-center">
-							<figure className="w-full max-w-[120px] h-[120px] flex-shrink-0 relative overflow-hidden rounded-[12px] ">
-								<img
-									src={Image}
-									alt="Image"
-									className="absolute w-full h-full object-cover object-[-50px]"
-								/>
-							</figure>
-							<div>
-								<p className="opacity-75 font-medium text-blackishGreen mb-[4px]">Economy </p>
-								<h3 className="mb-[10px] font-semibold text-[20px]">Emirates A380 Airbus</h3>
-								<div className="flex items-center gap-2">
-									<span className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium">
-										4.2
-									</span>
-									<p className="text-[12px] font-medium">
-										<strong>Very Good</strong> 54 reviews
-									</p>
-								</div>
-							</div>
-						</div>
-						<span className="block w-full h-[0.5px] opacity-25 bg-blackishGreen my-4"></span>
-						<p>
-							Your booking is protected by <strong>golobe</strong>
-						</p>
-						<span className="block w-full h-[0.5px] opacity-25 bg-blackishGreen my-4"></span>
-						<h3 className="font-primary font-bold mb-4">Price Details</h3>
-						<div className="w-full flex justify-between mb-4">
-							<p>Base Fare</p>
-							<p>
-								<strong>$400</strong>
-							</p>
-						</div>
-						<div className="w-full flex justify-between mb-4">
-							<p>Discount</p>
-							<p>
-								<strong>$400</strong>
-							</p>
-						</div>
-						<div className="w-full flex justify-between mb-4">
-							<p>Taxes</p>
-							<p>
-								<strong>$400</strong>
-							</p>
-						</div>
-						<div className="w-full flex justify-between mb-4">
-							<p>Service Fee</p>
-							<p>
-								<strong>$400</strong>
-							</p>
-						</div>
-						<span className="block w-full h-[0.5px] opacity-25 bg-blackishGreen my-4"></span>
-						<div className="w-full flex justify-between mb-4">
-							<p>Total</p>
-							<p>
-								<strong>$400</strong>
-							</p>
-						</div>
-					</div>
+					<SummaryCard />
 				</div>
 			</div>
 			<FooterSection />
+			{addCard ? <AddCardModal closeModal={handleCloseAddCardModal} /> : ""}
 		</div>
 	);
 }
+
+const SummaryCard = () => {
+	return (
+		<div className="w-full p-6 bg-white rounded-[12px]">
+			{/* Top */}
+			<div className="flex gap-6 w-full items-center">
+				<figure className="w-full max-w-[120px] h-[120px] flex-shrink-0 relative overflow-hidden rounded-[12px] ">
+					<img
+						src={Image}
+						alt="Image"
+						className="absolute w-full h-full object-cover object-[-50px]"
+					/>
+				</figure>
+				<div>
+					<p className="opacity-75 font-medium text-blackishGreen mb-[4px]">Economy </p>
+					<h3 className="mb-[10px] font-semibold text-[20px]">Emirates A380 Airbus</h3>
+					<div className="flex items-center gap-2">
+						<span className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium">
+							4.2
+						</span>
+						<p className="text-[12px] font-medium">
+							<strong>Very Good</strong> 54 reviews
+						</p>
+					</div>
+				</div>
+			</div>
+			<span className="block w-full h-[0.5px] opacity-25 bg-blackishGreen my-4"></span>
+			<p>
+				Your booking is protected by <strong>golobe</strong>
+			</p>
+			<span className="block w-full h-[0.5px] opacity-25 bg-blackishGreen my-4"></span>
+			<h3 className="font-primary font-bold mb-4">Price Details</h3>
+			<div className="w-full flex justify-between mb-4">
+				<p>Base Fare</p>
+				<p>
+					<strong>$400</strong>
+				</p>
+			</div>
+			<div className="w-full flex justify-between mb-4">
+				<p>Discount</p>
+				<p>
+					<strong>$400</strong>
+				</p>
+			</div>
+			<div className="w-full flex justify-between mb-4">
+				<p>Taxes</p>
+				<p>
+					<strong>$400</strong>
+				</p>
+			</div>
+			<div className="w-full flex justify-between mb-4">
+				<p>Service Fee</p>
+				<p>
+					<strong>$400</strong>
+				</p>
+			</div>
+			<span className="block w-full h-[0.5px] opacity-25 bg-blackishGreen my-4"></span>
+			<div className="w-full flex justify-between mb-4">
+				<p>Total</p>
+				<p>
+					<strong>$400</strong>
+				</p>
+			</div>
+		</div>
+	);
+};
+
+const AddCardModal = ({
+	closeModal,
+}: {
+	closeModal: (e: React.MouseEvent<HTMLDivElement>) => void;
+}) => {
+	const {
+		cardNumber,
+		setCardNumber,
+		expiryDate,
+		setExpiryDate,
+		cvv,
+		setCvv,
+		nameOnCard,
+		setNameOnCard,
+		country,
+		setCountry,
+		focusedInput,
+		handleFocus,
+		handleBlur,
+	} = usePaymentDetails();
+	return (
+		<div
+			className="fixed w-screen h-screen inset-0 flex justify-center items-center"
+			onClick={closeModal}
+			style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+		>
+			<div className="absolute z-[1000] bg-white w-full max-w-[640px]">
+				<div>
+					<h1>Add a new Card</h1>
+					<form className="bg-white p-4 rounded shadow-md">
+						<h3 className="font-primary font-bold text-[20px] mb-4">Enter Card Details</h3>
+
+						{/* Card Number */}
+						<div className="relative w-full mb-4">
+							{(focusedInput === "cardNumber" || cardNumber) && (
+								<label
+									htmlFor="cardNumber"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Card Number
+								</label>
+							)}
+							<input
+								id="cardNumber"
+								type="text"
+								value={cardNumber}
+								placeholder={
+									focusedInput === "cardNumber" || cardNumber ? "" : "Enter your card number"
+								}
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+								onChange={(e) => setCardNumber(e.target.value)}
+								className="w-full p-2 border rounded"
+							/>
+						</div>
+
+						{/* Expiry Date and CVV */}
+						<div className="flex gap-4 mb-4">
+							<div className="w-1/2">
+								{(focusedInput === "expiryDate" || expiryDate) && (
+									<label
+										htmlFor="expiryDate"
+										className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+									>
+										Expiry Date
+									</label>
+								)}
+								<input
+									id="expiryDate"
+									type="text"
+									value={expiryDate}
+									placeholder={focusedInput === "expiryDate" || expiryDate ? "" : "MM/YY"}
+									onFocus={(e) => handleFocus(e.target.id)}
+									onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+									onChange={(e) => setExpiryDate(e.target.value)}
+									className="w-full p-2 border rounded"
+								/>
+							</div>
+							<div className="w-1/2">
+								{(focusedInput === "cvv" || cvv) && (
+									<label
+										htmlFor="cvv"
+										className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+									>
+										CVV
+									</label>
+								)}
+								<input
+									id="cvv"
+									type="text"
+									value={cvv}
+									placeholder={focusedInput === "cvv" || cvv ? "" : "CVV"}
+									onFocus={(e) => handleFocus(e.target.id)}
+									onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+									onChange={(e) => setCvv(e.target.value)}
+									className="w-full p-2 border rounded"
+								/>
+							</div>
+						</div>
+
+						{/* Name on Card */}
+						<div className="relative w-full mb-4">
+							{(focusedInput === "nameOnCard" || nameOnCard) && (
+								<label
+									htmlFor="nameOnCard"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Name on Card
+								</label>
+							)}
+							<input
+								id="nameOnCard"
+								type="text"
+								value={nameOnCard}
+								placeholder={
+									focusedInput === "nameOnCard" || nameOnCard ? "" : "Enter name on card"
+								}
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+								onChange={(e) => setNameOnCard(e.target.value)}
+								className="w-full p-2 border rounded"
+							/>
+						</div>
+
+						{/* Country or Region */}
+						<div className="relative w-full mb-4">
+							{(focusedInput === "country" || country) && (
+								<label
+									htmlFor="country"
+									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+								>
+									Country or Region
+								</label>
+							)}
+							<input
+								id="country"
+								type="text"
+								value={country}
+								placeholder={focusedInput === "country" || country ? "" : "Enter country or region"}
+								onFocus={(e) => handleFocus(e.target.id)}
+								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+								onChange={(e) => setCountry(e.target.value)}
+								className="w-full p-2 border rounded"
+							/>
+						</div>
+
+						<button
+							type="submit"
+							className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
+						>
+							Submit Payment
+						</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	);
+};
