@@ -19,6 +19,33 @@ export const useFormState = () => {
 	const [phoneNumberError, setPhoneNumberError] = useState<string>("");
 	const [termsAcceptedError, setTermsAcceptedError] = useState<string>("");
 
+	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
+
+	const handleFocus = (id: string) => {
+		setFocusedInput(id);
+	};
+
+	const handleBlur = (id: string, value: string) => {
+		if (!value.trim() && focusedInput === id) {
+			setFocusedInput(null);
+		}
+	};
+
+	const handlePhoneNumber = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
+		const { id, value } = target;
+
+		switch (id) {
+			case "phoneNumber":
+				if (!Number.isNaN(Number(value)) && value.length <= 11) {
+					setPhoneNumber(value);
+					if (value.trim()) setPhoneNumberError("");
+				}
+				break;
+			default:
+				console.warn(`Unhandled field: ${id}`);
+		}
+	};
+
 	return {
 		firstName,
 		setFirstName,
@@ -48,6 +75,11 @@ export const useFormState = () => {
 		setPhoneNumberError,
 		termsAcceptedError,
 		setTermsAcceptedError,
+		handleBlur,
+		handleFocus,
+		focusedInput,
+		setFocusedInput,
+		handlePhoneNumber,
 	};
 };
 

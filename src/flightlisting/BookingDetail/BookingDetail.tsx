@@ -4,6 +4,7 @@ import Emirates from "../../assets/FlightListing/Emirates.png";
 import {
 	AddIconLg,
 	AppleIcon,
+	CancelIcon,
 	FacebookIcon,
 	GoogleIcon,
 	MailIcon,
@@ -19,7 +20,14 @@ import { usePaymentDetails } from "../../Hooks";
 import FooterSection from "../../Footer/Footer";
 
 export default function BookingDetail() {
-	const { phoneNumber, setPhoneNumber, phoneNumberError, setPhoneNumberError } = useFormState();
+	const {
+		phoneNumber,
+		phoneNumberError,
+		focusedInput,
+		handleBlur,
+		handleFocus,
+		handlePhoneNumber,
+	} = useFormState();
 	const [login, setLogin] = useState(false);
 	const [activeRadio, setActiveRadio] = useState("");
 	const [card, setCard] = useState(false);
@@ -41,36 +49,11 @@ export default function BookingDetail() {
 		setAddCard(true); // Ensures the modal opens
 	};
 
-	const handleCloseAddCardModal = (e: React.MouseEvent<HTMLDivElement>) => {
-		if ((e.target as HTMLElement).classList.contains("fixed")) {
+	const handleCloseAddCardModal = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
+		e.stopPropagation();
+		const current = e.currentTarget as HTMLElement;
+		if (current.classList.contains("fixed") || current.id === "cancelButton") {
 			setAddCard(false);
-		}
-	};
-
-	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
-
-	const handleFocus = (id: string) => {
-		setFocusedInput(id);
-	};
-
-	const handleBlur = (id: string, value: string) => {
-		if (!value.trim() && focusedInput === id) {
-			setFocusedInput(null);
-		}
-	};
-
-	const handlePhoneNumber = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-		const { id, value } = target;
-
-		switch (id) {
-			case "phoneNumber":
-				if (!Number.isNaN(Number(value)) && value.length <= 11) {
-					setPhoneNumber(value);
-					if (value.trim()) setPhoneNumberError("");
-				}
-				break;
-			default:
-				console.warn(`Unhandled field: ${id}`);
 		}
 	};
 
@@ -369,7 +352,7 @@ const SummaryCard = () => {
 const AddCardModal = ({
 	closeModal,
 }: {
-	closeModal: (e: React.MouseEvent<HTMLDivElement>) => void;
+	closeModal: (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => void;
 }) => {
 	const {
 		cardNumber,
@@ -392,12 +375,16 @@ const AddCardModal = ({
 			onClick={closeModal}
 			style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
 		>
-			<div className="absolute z-[1000] bg-white w-full max-w-[640px]">
-				<div>
-					<h1>Add a new Card</h1>
-					<form className="bg-white p-4 rounded shadow-md">
-						<h3 className="font-primary font-bold text-[20px] mb-4">Enter Card Details</h3>
-
+			<div
+				className="absolute z-[1000] bg-white w-full max-w-[640px] p-16 rounded-[12px]"
+				onClick={(e) => e.stopPropagation()}
+			>
+				<div className="flex flex-col items-end">
+					<button id="cancelButton" onClick={closeModal}>
+						<CancelIcon />
+					</button>
+					<form className="bg-white rounded shadow-md w-full">
+						<h1 className="text-[40px] font-primary font-bold mb-12">Add a new Card</h1>
 						{/* Card Number */}
 						<div className="relative w-full mb-4">
 							{(focusedInput === "cardNumber" || cardNumber) && (
