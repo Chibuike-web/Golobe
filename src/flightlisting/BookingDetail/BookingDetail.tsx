@@ -14,16 +14,21 @@ import {
 import Image from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import styles from "./BookingDetail.module.css";
 import { useState } from "react";
-
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
 import FooterSection from "../../Footer/Footer";
+import { Checkbox } from "../Filters/Filters";
+import { Link } from "react-router-dom";
 
 export default function BookingDetail() {
 	const {
 		phoneNumber,
 		phoneNumberError,
 		focusedInput,
+		termsAccepted,
+		setTermsAccepted,
+		termsAcceptedError,
+		setTermsAcceptedError,
 		handleBlur,
 		handleFocus,
 		handlePhoneNumber,
@@ -46,7 +51,7 @@ export default function BookingDetail() {
 	};
 
 	const handleOpenAddCardModal = () => {
-		setAddCard(true); // Ensures the modal opens
+		setAddCard(true);
 	};
 
 	const handleCloseAddCardModal = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
@@ -383,10 +388,10 @@ const AddCardModal = ({
 					<button id="cancelButton" onClick={closeModal}>
 						<CancelIcon />
 					</button>
-					<form className="bg-white rounded shadow-md w-full">
+					<form className="bg-white rounded w-full">
 						<h1 className="text-[40px] font-primary font-bold mb-12">Add a new Card</h1>
 						{/* Card Number */}
-						<div className="relative w-full mb-4">
+						<div className="relative w-full mb-6">
 							{(focusedInput === "cardNumber" || cardNumber) && (
 								<label
 									htmlFor="cardNumber"
@@ -410,8 +415,8 @@ const AddCardModal = ({
 						</div>
 
 						{/* Expiry Date and CVV */}
-						<div className="flex gap-4 mb-4">
-							<div className="w-1/2">
+						<div className="flex gap-4 mb-6">
+							<div className="w-1/2 relative">
 								{(focusedInput === "expiryDate" || expiryDate) && (
 									<label
 										htmlFor="expiryDate"
@@ -431,7 +436,7 @@ const AddCardModal = ({
 									className="w-full p-2 border rounded"
 								/>
 							</div>
-							<div className="w-1/2">
+							<div className="w-1/2 relative">
 								{(focusedInput === "cvv" || cvv) && (
 									<label
 										htmlFor="cvv"
@@ -454,7 +459,7 @@ const AddCardModal = ({
 						</div>
 
 						{/* Name on Card */}
-						<div className="relative w-full mb-4">
+						<div className="relative w-full mb-6">
 							{(focusedInput === "nameOnCard" || nameOnCard) && (
 								<label
 									htmlFor="nameOnCard"
@@ -498,13 +503,23 @@ const AddCardModal = ({
 								className="w-full p-2 border rounded"
 							/>
 						</div>
+						<figure className="mt-6 mb-10">
+							<Checkbox title="Securely save my information for 1-click checkout" />
+						</figure>
 
-						<button
-							type="submit"
-							className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
-						>
-							Submit Payment
-						</button>
+						<Link to="/bookingticket">
+							<button
+								type="submit"
+								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
+							>
+								Add Card
+							</button>
+						</Link>
+						<p className="text-blackishGreen opacity-75 text-[12px] mt-4">
+							By confirming your subscription, you allow The Outdoor Inn Crowd Limited to charge
+							your card for this payment and future payments in accordance with their terms. You can
+							always cancel your subscription.
+						</p>
 					</form>
 				</div>
 			</div>

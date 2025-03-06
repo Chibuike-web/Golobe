@@ -10,6 +10,7 @@ import ResetPassword from "./auth/resetpassword/ResetPassword";
 import FlightListing from "./flightlisting/FlightListing";
 import FlightDetail from "./flightlisting/FlightDetail/FlightDetail";
 import BookingDetail from "./flightlisting/BookingDetail/BookingDetail";
+import BookingTicket from "./flightlisting/BookingTicket/BookingTicket";
 
 function App() {
 	return (
@@ -25,6 +26,7 @@ function App() {
 				<Route path="/flightlisting" element={<FlightListing />} />
 				<Route path="/flightdetail" element={<FlightDetail />} />
 				<Route path="/bookingdetail" element={<BookingDetail />} />
+				<Route path="/bookingticket" element={<BookingTicket />} />
 			</Routes>
 		</Router>
 	);
