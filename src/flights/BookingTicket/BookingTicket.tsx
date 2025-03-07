@@ -11,13 +11,10 @@ import {
 
 import CvkImage from "../../assets/FlightListing/Cvk.png";
 import ProfileImage from "../../assets/FlightListing/ProfileImage.png";
-import Navbar from "../Navbar/Navbar";
-import FooterSection from "../../Footer/Footer";
 
 export default function BookingTicket() {
 	return (
 		<div className="bg-[#FAFAFA]">
-			<Navbar />
 			<div className="mx-auto w-full max-w-[1232px] py-6 flex flex-col h-max lg:px-4 md:py-4">
 				<div className="w-full flex flex-col gap-8">
 					<div className="flex items-center">
@@ -160,7 +157,6 @@ export default function BookingTicket() {
 					</div>
 				</div>
 			</div>
-			<FooterSection />
 		</div>
 	);
 }

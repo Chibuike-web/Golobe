@@ -1,5 +1,5 @@
 import Flights from "./Flights/Flights";
-import FooterSection from "../Footer/Footer";
+import Footer from "../Footer/Footer";
 import HeroSection from "./HeroSection/HeroSection";
 import Reviews from "./Reviews/Reviews";
 
@@ -9,7 +9,7 @@ export default function LandingPage() {
 			<HeroSection />
 			<Flights />
 			<Reviews />
-			<FooterSection />
+			<Footer />
 		</div>
 	);
 }

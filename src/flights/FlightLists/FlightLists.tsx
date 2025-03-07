@@ -4,7 +4,7 @@ import Emirates from "../../assets/FlightListing/Emirates.png";
 import FlyDubai from "../../assets/FlightListing/FlyDubai.png";
 import Qatar from "../../assets/FlightListing/Qatar.png";
 import Etihad from "../../assets/FlightListing/Etihad.png";
-import styles from "./flightlists.module.css";
+import styles from "./FlightLists.module.css";
 
 type TabsProps = {
 	id: number;

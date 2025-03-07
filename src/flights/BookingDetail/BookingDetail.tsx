@@ -1,4 +1,3 @@
-import Navbar from "../Navbar/Navbar";
 import { Card } from "../FlightDetail/FlightDetail";
 import Emirates from "../../assets/FlightListing/Emirates.png";
 import {
@@ -16,7 +15,6 @@ import styles from "./BookingDetail.module.css";
 import { useState } from "react";
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
-import FooterSection from "../../Footer/Footer";
 import { Checkbox } from "../Filters/Filters";
 import { Link } from "react-router-dom";
 
@@ -25,10 +23,6 @@ export default function BookingDetail() {
 		phoneNumber,
 		phoneNumberError,
 		focusedInput,
-		termsAccepted,
-		setTermsAccepted,
-		termsAcceptedError,
-		setTermsAcceptedError,
 		handleBlur,
 		handleFocus,
 		handlePhoneNumber,
@@ -64,7 +58,6 @@ export default function BookingDetail() {
 
 	return (
 		<div className="flex flex-col px-8 bg-[#FAFBFC]">
-			<Navbar />
 			<div className="mx-auto w-full max-w-[1280px] py-6 flex flex-col justify-between h-max lg:px-4 md:py-4">
 				<div className="flex items-center">
 					<p className="text-slamon text-[14px] font-medium">Turkey</p> <RightArrowIcon />
@@ -282,7 +275,6 @@ export default function BookingDetail() {
 					<SummaryCard />
 				</div>
 			</div>
-			<FooterSection />
 			{addCard ? <AddCardModal closeModal={handleCloseAddCardModal} /> : ""}
 		</div>
 	);
@@ -381,14 +373,14 @@ const AddCardModal = ({
 			style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
 		>
 			<div
-				className="absolute z-[1000] bg-white w-full max-w-[640px] p-16 rounded-[12px]"
+				className="bg-white w-full max-w-[640px] p-16 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-col items-end">
 					<button id="cancelButton" onClick={closeModal}>
 						<CancelIcon />
 					</button>
-					<form className="bg-white rounded w-full">
+					<form className="rounded w-full">
 						<h1 className="text-[40px] font-primary font-bold mb-12">Add a new Card</h1>
 						{/* Card Number */}
 						<div className="relative w-full mb-6">
