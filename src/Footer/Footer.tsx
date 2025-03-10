@@ -63,7 +63,6 @@ const CTA = () => {
 	);
 };
 
-// Define types for the footer column component
 type FooterColumnProps = {
 	title: string;
 	items: string[];

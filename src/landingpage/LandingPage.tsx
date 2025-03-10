@@ -1,7 +1,7 @@
 import Flights from "./Flights/Flights";
-import Footer from "../Footer/Footer";
 import HeroSection from "./HeroSection/HeroSection";
 import Reviews from "./Reviews/Reviews";
+import Footer from "../Footer/Footer";
 
 export default function LandingPage() {
 	return (

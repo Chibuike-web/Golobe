@@ -1,12 +1,10 @@
 import { useState } from "react";
 import { SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/icons";
 import { useFlightSearchFormState } from "../../Hooks";
-import Navbar from "../Navbar/Navbar";
 
 export default function Herosection() {
 	return (
 		<section className="flex flex-col items-center w-full ">
-			<Navbar />
 			<FlightSearchForm />
 		</section>
 	);

@@ -16,7 +16,6 @@ import Qatar from "../../assets/FlightListing/Qatar.png";
 
 const imageImports = [First, Second, Third, Fourth, Fifth, Sixth, Seventh, Eighth, Nineth];
 
-import FooterSection from "../../Footer/Footer";
 import {
 	AirlineSeatIcon,
 	AirplaneIcon,
@@ -28,14 +27,11 @@ import {
 	TimeIcon,
 	WifiIcon,
 } from "../../assets/icons";
-import Navbar from "../Navbar/Navbar";
 
 export default function FlightDetail() {
 	return (
 		<div className="flex flex-col px-8 bg-[#FAFBFC]">
-			<Navbar />
 			<HeroSection />
-			<FooterSection />
 		</div>
 	);
 }

@@ -1,7 +1,6 @@
 import Filters from "../Filters/Filters";
 import FlightLists from "../FlightLists/FlightLists";
 import HeroSection from "../Herosection/Herosection";
-import FooterSection from "../../Footer/Footer";
 
 export default function FlightListing() {
 	return (
@@ -11,7 +10,6 @@ export default function FlightListing() {
 				<Filters />
 				<FlightLists />
 			</div>
-			<FooterSection />
 		</div>
 	);
 }
