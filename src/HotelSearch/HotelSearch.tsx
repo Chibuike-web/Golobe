@@ -66,8 +66,8 @@ export default function HotelSearch() {
 					</button>
 				</header>
 
-				<div className="flex gap-6">
-					<article className="w-full flex flex-col max-w-[552px] p-6 bg-mintGreen rounded-[20px] ">
+				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 px-4">
+					<article className="w-full row-span-2 flex flex-col p-6 bg-mintGreen rounded-[20px]">
 						<header className="flex justify-between items-start mb-6">
 							<h2 className="font-primary font-bold text-[40px] leading-[51px] max-w-[363px] w-full">
 								Backpacking Sri Lanka
@@ -86,20 +86,18 @@ export default function HotelSearch() {
 						<button className="w-full bg-white py-[15px] rounded-[4px] mt-auto">Book Flight</button>
 					</article>
 
-					<aside className="grid grid-cols-2 w-full gap-6">
-						<figure>
-							<img src={Forest} alt="A serene forest view" />
-						</figure>
-						<figure>
-							<img src={Ocean} alt="The beautiful ocean waves" />
-						</figure>
-						<figure>
-							<img src={Trees} alt="Lush green trees" />
-						</figure>
-						<figure>
-							<img src={Beach} alt="Sunny beach" />
-						</figure>
-					</aside>
+					<figure className="w-full">
+						<img src={Forest} alt="A serene forest view" className="w-full" />
+					</figure>
+					<figure className="w-full">
+						<img src={Ocean} alt="The beautiful ocean waves" className="w-full" />
+					</figure>
+					<figure className="w-full">
+						<img src={Trees} alt="Lush green trees" className="w-full" />
+					</figure>
+					<figure className="w-full">
+						<img src={Beach} alt="Sunny beach" className="w-full" />
+					</figure>
 				</div>
 			</section>
 			<Footer />
