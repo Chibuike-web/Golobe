@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./hero.module.css";
+import styles from "./HeroSection.module.css";
 import { Link } from "react-router-dom";
 import {
 	AirplaneIcon,

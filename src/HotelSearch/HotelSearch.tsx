@@ -1,5 +1,5 @@
 import Herosection from "./HeroSection/HeroSection";
-import styles from "./FlightSearch.module.css";
+import styles from "./HotelSearch.module.css";
 import FirstImage from "../assets/FlightSearch/FirstImage.png";
 import FirstArrow from "../assets/FlightSearch/FirstArrow.svg";
 import SecondImage from "../assets/FlightSearch/SecondImage.png";
@@ -16,10 +16,12 @@ import Ocean from "../assets/FlightSearch/Ocean.png";
 import Beach from "../assets/FlightSearch/Beach.png";
 import Footer from "../Footer/Footer";
 import Bookings from "./Bookings/Bookings";
+import Navbar from "./Navbar/Navbar";
 
-export default function FlightSearch() {
+export default function HotelSearch() {
 	return (
 		<div className="flex flex-col">
+			<Navbar />
 			<Herosection />
 			<section>
 				<div className="mx-auto max-w-[90rem] px-[104px] w-full mt-20 mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">

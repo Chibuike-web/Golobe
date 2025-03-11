@@ -3,12 +3,10 @@ import styles from "./HeroSection.module.css";
 import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../assets/icons";
 
 import { useFlightSearchFormState } from "../../Hooks";
-import Navbar from "../Navbar/Navbar";
 
 export default function HeroSection() {
 	return (
 		<section className="flex flex-col items-center w-full min-h-[48.875rem]">
-			<Navbar />
 			<HeroContent />
 			<FlightSearchForm />
 		</section>
@@ -20,7 +18,7 @@ function HeroContent() {
 		<div className={`text-white w-full min-h-[537px] ${styles.heroimage}`}>
 			<div className="mx-auto max-w-[77rem] lg:px-4">
 				<h2 className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]">
-					Make your travel whishlist, we’ll do the rest
+					Make your travel wishlist, we’ll do the rest
 				</h2>
 				<p className="text-[20px]">Special offers to suit your plan</p>
 			</div>

@@ -2,7 +2,7 @@ import Olga from "../../assets/LandingPage/Olga.png";
 import Thomas from "../../assets/LandingPage/Thomas.png";
 import Eliot from "../../assets/LandingPage/Eliot.png";
 import { GoogleIcon, StarIcon } from "../../assets/icons";
-import styles from "./reviews.module.css";
+import styles from "./Reviews.module.css";
 import { useState } from "react";
 
 // Define a type for Reviews

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/icons";
 import { useFlightSearchFormState } from "../../Hooks";
 
-export default function Herosection() {
+export default function HeroSection() {
 	return (
 		<section className="flex flex-col items-center w-full ">
 			<FlightSearchForm />

@@ -8,7 +8,7 @@ import London from "../../assets/LandingPage/London.png";
 import Tokyo from "../../assets/LandingPage/Tokyo.png";
 import Dubai from "../../assets/LandingPage/Dubai.png";
 import { PaperPlaneIcon } from "../../assets/icons";
-import styles from "./flights.module.css";
+import styles from "./Flights.module.css";
 
 // Define a type for travel options
 type TravelOption = {

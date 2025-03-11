@@ -1,6 +1,6 @@
 import Filters from "../Filters/Filters";
 import FlightLists from "../FlightLists/FlightLists";
-import HeroSection from "../Herosection/Herosection";
+import HeroSection from "../HeroSection/HeroSection";
 
 export default function FlightListing() {
 	return (
