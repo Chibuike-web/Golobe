@@ -99,7 +99,7 @@ type FlightCardProps = {
 };
 
 // FlightCard component
-const FlightCard: React.FC<FlightCardProps> = ({ destination, services, image }) => {
+const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 	return (
 		<article
 			className="flight-card flex items-center gap-4 md:gap-2 p-4 rounded-2xl w-full bg-white"

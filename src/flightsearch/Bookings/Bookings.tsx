@@ -39,7 +39,7 @@ const details: detail[] = [
 
 export default function Bookings() {
 	return (
-		<section className="mx-auto max-w-[77rem] mt-20 flex flex-col">
+		<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
 			<div className="w-full mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
 				<div>
 					<h2 className="text-[32px] mb-4">Fall into travel</h2>
@@ -55,11 +55,13 @@ export default function Bookings() {
 					See all
 				</button>
 			</div>
-			<div className="grid grid-cols-4 gap-4">
-				{details.map(({ city, subCopy, price, image }, index) => (
-					<BookingCard key={index} city={city} subCopy={subCopy} price={price} image={image} />
-				))}
-			</div>
+			<section className=" mx-auto max-w-[77rem] w-full md:px-4">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(238px,1fr))] gap-4 w-full">
+					{details.map(({ city, subCopy, price, image }, index) => (
+						<BookingCard key={index} city={city} subCopy={subCopy} price={price} image={image} />
+					))}
+				</div>
+			</section>
 		</section>
 	);
 }
