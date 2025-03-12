@@ -1,14 +1,14 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../assets/icons";
+import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon, BuildingIcon } from "../../assets/icons";
 
-import { useFlightSearchFormState } from "../../Hooks";
+import { useHotelSearchFormState } from "../../Hooks";
 
 export default function HeroSection() {
 	return (
 		<section className="flex flex-col items-center w-full min-h-[48.875rem]">
 			<HeroContent />
-			<FlightSearchForm />
+			<HotelSearchForm />
 		</section>
 	);
 }
@@ -26,23 +26,19 @@ function HeroContent() {
 	);
 }
 
-function FlightSearchForm() {
+function HotelSearchForm() {
 	const {
-		from,
-		setFrom,
-		to,
-		setTo,
-		trip,
-		setTrip,
-		departDate,
-		setDepartDate,
-		returnDate,
-		setReturnDate,
-		passenger,
-		setPassenger,
-		travelClass,
-		setTravelClass,
-	} = useFlightSearchFormState();
+		destination,
+		setDestination,
+		checkIn,
+		setCheckIn,
+		checkOut,
+		setCheckOut,
+		room,
+		setRoom,
+		guest,
+		setGuest,
+	} = useHotelSearchFormState();
 
 	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
 	const handleFocus = (id: string) => {
@@ -58,41 +54,20 @@ function FlightSearchForm() {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value } = e.target;
 		switch (id) {
-			case "from":
-				setFrom(value);
+			case "destination":
+				setDestination(value);
 				break;
-			case "to":
-				setTo(value);
+			case "checkIn":
+				setCheckIn(value);
 				break;
-			case "trip":
-				setTrip(value);
+			case "checkOut":
+				setCheckOut(value);
 				break;
-			case "departDate":
-				setDepartDate(value);
+			case "room":
+				setRoom(value);
 				break;
-			case "returnDate":
-				setReturnDate(value);
-				break;
-			case "passenger":
-				setPassenger(value);
-				break;
-			case "travelClass":
-				setTravelClass(value);
 		}
 	};
-
-	const isFromToBlue =
-		(focusedInput === "from" || focusedInput === "to") && !from.trim() && !to.trim();
-
-	const isDepartReturnBlue =
-		(focusedInput === "departDate" || focusedInput === "returnDate") &&
-		!departDate.trim() &&
-		!returnDate.trim();
-
-	const isPassengerClassBlue =
-		(focusedInput === "passenger" || focusedInput === "travelClass") &&
-		!passenger.trim() &&
-		!travelClass.trim();
 
 	return (
 		<aside
@@ -107,65 +82,50 @@ function FlightSearchForm() {
 				aria-label="Flight Search"
 			>
 				{/* Form 1 */}
-				<div className="relative w-full">
-					{(focusedInput === "from" || from || focusedInput === "to" || to) && (
+
+				<div className="relative w-full md:max-w-full">
+					{(focusedInput === "destination" || destination) && (
 						<label
-							id="fromTo"
-							htmlFor="from-to"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							htmlFor="destination"
+							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
-							From - To
+							Enter Destination
 						</label>
 					)}
-					<div
-						className={`flex items-center border-[1px] ${
-							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
-					>
+					<div className="relative">
 						<input
-							id="from"
-							value={from}
+							id="destination"
+							value={destination}
 							type="text"
-							placeholder="From"
-							className="custom-input"
-							onChange={handleChange}
-							onFocus={(e) => handleFocus(e.target.id)}
-							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
-						/>
-						<p>-</p>
-						<input
-							id="to"
-							value={to}
-							type="text"
-							placeholder="To"
-							className="custom-input"
+							className="h-16"
+							placeholder="Enter Destination"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button">
-							<SwapIcon style={"flex-shrink-0"} />
+						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+							<DownArrowIcon />
 						</button>
 					</div>
 				</div>
 
 				{/* Form  2 */}
-				<div className="relative w-full max-w-[8.75rem] md:max-w-full">
-					{(focusedInput === "trip" || trip) && (
+				<div className="relative w-full md:max-w-full">
+					{(focusedInput === "checkIn" || checkIn) && (
 						<label
-							htmlFor="trip"
+							htmlFor="checkIn"
 							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
-							Trip
+							Check-In
 						</label>
 					)}
 					<div className="relative">
 						<input
-							id="trip"
-							value={trip}
+							id="checkIn"
+							value={checkIn}
 							type="text"
 							className="h-16"
-							placeholder="Return"
+							placeholder="Check-In"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
@@ -177,82 +137,56 @@ function FlightSearchForm() {
 				</div>
 
 				{/* Form  3 */}
-				<div className="relative w-full">
-					{(focusedInput === "departDate" ||
-						departDate ||
-						focusedInput === "returnDate" ||
-						returnDate) && (
+				<div className="relative w-full md:max-w-full">
+					{(focusedInput === "checkOut" || checkOut) && (
 						<label
-							htmlFor="depart-return"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							htmlFor="checkOut"
+							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
-							Depart - Return
+							Check-Out
 						</label>
 					)}
-					<div
-						className={`flex items-center border-[1px] ${
-							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
-					>
+					<div className="relative">
 						<input
-							id="departDate"
-							value={departDate}
-							placeholder="Depart date"
-							className="custom-input"
-							onChange={handleChange}
-							onFocus={(e) => handleFocus(e.target.id)}
-							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
-						/>
-						<p>-</p>
-						<input
-							id="returnDate"
-							value={returnDate}
-							placeholder="Return date"
-							className="custom-input"
+							id="checkOut"
+							value={checkIn}
+							type="text"
+							className="h-16"
+							placeholder="Check-Out"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
+						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+							<DownArrowIcon />
+						</button>
 					</div>
 				</div>
 
 				{/* Form  4 */}
-				<div className="relative w-full">
-					{(focusedInput === "passenger" ||
-						passenger ||
-						focusedInput === "travelClass" ||
-						travelClass) && (
+				<div className="relative w-full md:max-w-full">
+					{(focusedInput === "room" || room) && (
 						<label
-							htmlFor="Passenger - Class"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							htmlFor="room"
+							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
-							Passenger - Class
+							Rooms & Guests
 						</label>
 					)}
-					<div
-						className={`flex items-center border-[1px] ${
-							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
-					>
+					<div className="relative">
 						<input
-							id="passenger"
-							value={passenger}
-							placeholder="Passenger"
-							className="custom-input"
-							onChange={handleChange}
-							onFocus={(e) => handleFocus(e.target.id)}
-							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
-						/>
-						<p>-</p>
-						<input
-							id="travelClass"
-							value={travelClass}
-							placeholder="Travel Class"
-							className="custom-input"
+							id="room"
+							value={room}
+							type="text"
+							className="h-16"
+							placeholder="Rooms & Guests"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
+						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+							<DownArrowIcon />
+						</button>
 					</div>
 				</div>
 			</form>
@@ -265,9 +199,9 @@ function FlightSearchForm() {
 				</button>
 				<button className="flex gap-1 items-center justify-center text-[0.875rem] font-medium bg-mintGreen p-4 rounded-md md:w-full">
 					<span>
-						<PaperPlaneIcon />
+						<BuildingIcon className="opacity-100" />
 					</span>
-					Show Flights
+					Show Places
 				</button>
 			</div>
 		</aside>

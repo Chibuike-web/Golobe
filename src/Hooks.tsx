@@ -152,3 +152,31 @@ export const usePaymentDetails = () => {
 		handleBlur,
 	};
 };
+
+export const useHotelSearchFormState = () => {
+	// Destination
+	const [destination, setDestination] = useState<string>("");
+
+	// Check-In
+	const [checkIn, setCheckIn] = useState<string>("");
+
+	// Check-Out
+	const [checkOut, setCheckOut] = useState<string>("");
+
+	// Rooms and Guests
+	const [room, setRoom] = useState<string>("");
+	const [guest, setGuest] = useState<string>("");
+
+	return {
+		destination,
+		setDestination,
+		checkIn,
+		setCheckIn,
+		checkOut,
+		setCheckOut,
+		room,
+		setRoom,
+		guest,
+		setGuest,
+	};
+};
