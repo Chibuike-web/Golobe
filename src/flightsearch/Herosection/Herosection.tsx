@@ -20,7 +20,7 @@ function HeroContent() {
 		<div className={`text-white w-full min-h-[537px] ${styles.heroimage}`}>
 			<div className="mx-auto max-w-[77rem] lg:px-4">
 				<h2 className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]">
-					Make your travel whishlist, we’ll do the rest
+					Make your travel wishlist, we’ll do the rest
 				</h2>
 				<p className="text-[20px]">Special offers to suit your plan</p>
 			</div>
@@ -122,7 +122,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="from"
@@ -166,6 +166,7 @@ function FlightSearchForm() {
 							id="trip"
 							value={trip}
 							type="text"
+							className="h-16"
 							placeholder="Return"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -193,7 +194,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="departDate"
@@ -233,7 +234,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="passenger"

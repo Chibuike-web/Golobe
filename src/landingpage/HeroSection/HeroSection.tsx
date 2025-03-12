@@ -42,10 +42,10 @@ function Navbar() {
 						</Link>
 					</li>
 					<li>
-						<a href="#stays" className="flex space-x-1 items-center">
+						<Link to="/hotelsearch" className="flex space-x-1 items-center">
 							<BedIcon color="white" />
 							<span className="text-sm font-semibold text-white">Find Stays</span>
-						</a>
+						</Link>
 					</li>
 				</ul>
 				<figure>
@@ -199,7 +199,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="from"
@@ -238,12 +238,13 @@ function FlightSearchForm() {
 							Trip
 						</label>
 					)}
-					<div className="relative">
+					<div className="relative ">
 						<input
 							id="trip"
 							value={trip}
 							type="text"
 							placeholder="Return"
+							className="h-16"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
@@ -270,7 +271,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="departDate"
@@ -310,7 +311,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em]  h-16`}
 					>
 						<input
 							id="passenger"

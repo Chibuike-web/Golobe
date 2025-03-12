@@ -9,7 +9,7 @@ import { useState } from "react";
 type Reviews = {
 	tagline: string;
 	message: string;
-	extra: string;
+	extra: string[];
 	rating: JSX.Element;
 	sender: string;
 	business: string;
@@ -23,7 +23,7 @@ const reviews: Reviews[] = [
 		tagline: '"A real sense of community, nurtured"',
 		message:
 			'"Really appreciate the help and support from the staff during these tough times. Shoutout to Katie for helping me always, even when I was out of the country. And always available when needed."',
-		extra: "View more",
+		extra: ["View more", "View less"],
 		rating: <StarIcon />,
 		sender: "Olga",
 		business: "Weave Studios - Kai Tak",
@@ -35,7 +35,7 @@ const reviews: Reviews[] = [
 		tagline: '"The facilities are superb. Clean, slick, bright."',
 		message:
 			'"A real sense of community, nurtured”Really appreciate the help and support from the staff during these tough times. Shoutout to Katie for helping me always, even when I was out of the country. And always available when needed.View moreOlgaWeave Studios – Kai TakGoogle"',
-		extra: "View more",
+		extra: ["View more", "View less"],
 		rating: <StarIcon />,
 		sender: "Thomas",
 		business: "Weave Studios - Olympic",
@@ -47,7 +47,7 @@ const reviews: Reviews[] = [
 		tagline: `"A real sense of community, nurtured"`,
 		message:
 			"Really appreciate the help and support from the staff during these tough times. Shoutout to Katie for helping me always, even when I was out of the country. And always available when needed.",
-		extra: "View more",
+		extra: ["View more", "View less"],
 		rating: <StarIcon />,
 		sender: "Eliot",
 		business: "Weave Studios - Kai Tak",
@@ -70,7 +70,7 @@ export default function Reviews() {
 				</button>
 			</header>
 			<div
-				className={`flex items-start gap-[74px] mt-[2.5rem] overflow-x-scroll overflow-y-hidden h-[650px] ${styles["scroll-container"]}`}
+				className={`flex items-start gap-[74px] mt-[2.5rem] overflow-x-scroll overflow-y-hidden min-h-[750px] ${styles["scroll-container"]}`}
 			>
 				{reviews.map((review, index) => (
 					<ReviewCard
@@ -91,18 +91,6 @@ export default function Reviews() {
 	);
 }
 
-type ReviewCardProps = {
-	tagline: string;
-	message: string;
-	extra: string;
-	rating: JSX.Element;
-	sender: string;
-	business: string;
-	reviewSourceIcon: JSX.Element;
-	reviewSources: string;
-	image: string;
-};
-
 const ReviewCard = ({
 	tagline,
 	message,
@@ -113,7 +101,7 @@ const ReviewCard = ({
 	reviewSourceIcon,
 	reviewSources,
 	image,
-}: ReviewCardProps) => {
+}: Reviews) => {
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<aside className={styles["review-card"]}>
@@ -129,7 +117,7 @@ const ReviewCard = ({
 					setIsExpanded(!isExpanded);
 				}}
 			>
-				{extra}
+				{!isExpanded ? extra[0] : extra[1]}
 			</button>
 			<div className="mt-4">
 				<figure className="flex gap-3">

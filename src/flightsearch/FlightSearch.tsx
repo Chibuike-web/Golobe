@@ -155,7 +155,7 @@ export default function FlightSearch() {
 					</button>
 				</header>
 
-				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 px-4">
+				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 lg:px-4">
 					<article className="w-full row-span-2 flex flex-col p-6 bg-mintGreen rounded-[20px]">
 						<header className="flex justify-between items-start mb-6">
 							<h2 className="font-primary font-bold text-[40px] leading-[51px] max-w-[363px] w-full">
@@ -172,7 +172,9 @@ export default function FlightSearch() {
 							at home. During our journey, we experience life in different ways. We explore new
 							places, cultures, cuisines, traditions, and ways of living.
 						</p>
-						<button className="w-full bg-white py-[15px] rounded-[4px] mt-auto">Book Flight</button>
+						<button className="w-full bg-white py-[15px] rounded-[4px] mt-auto lg:mt-[120px]">
+							Book Flight
+						</button>
 					</article>
 
 					<figure className="w-full">

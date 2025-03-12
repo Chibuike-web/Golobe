@@ -120,7 +120,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="from"
@@ -164,6 +164,7 @@ function FlightSearchForm() {
 							id="trip"
 							value={trip}
 							type="text"
+							className="h-16"
 							placeholder="Return"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -191,7 +192,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="departDate"
@@ -231,7 +232,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
 					>
 						<input
 							id="passenger"
