@@ -1,33 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
 import * as RadixSlider from "@radix-ui/react-slider";
 
 import styles from "./filters.module.css";
 
 export default function Filters() {
-	const [activeSlider, setActiveSlider] = useState<{ [key: number]: boolean }>({});
-
-	const arrowButton = (itemId: number) => {
-		setActiveSlider({
-			...activeSlider,
-			[itemId]: activeSlider[itemId] ? false : true,
-		});
-	};
-
 	return (
 		<div className="w-full max-w-[367.5px] flex justify-between">
 			<div className="w-full max-w-[343px] flex flex-col gap-8">
 				<h1 className="font-semibold text-[20px]">Filters</h1>
 				<div className="flex flex-col gap-8">
-					<Slider name="Price" arrowButton={arrowButton} activeSlider={activeSlider} id={1} />
+					<Slider name="Price" id={1} />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Slider name="Department" arrowButton={arrowButton} activeSlider={activeSlider} id={2} />
+					<Slider name="Department" id={2} />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Rating name="Rating" arrowButton={arrowButton} activeSlider={activeSlider} id={3} />
+					<Rating name="Rating" id={3} />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Airlines name="Airline" arrowButton={arrowButton} activeSlider={activeSlider} id={4} />
+					<Airlines name="Airline" id={4} />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Trips name="Trips" arrowButton={arrowButton} activeSlider={activeSlider} id={5} />
+					<Trips name="Trips" id={5} />
 				</div>
 			</div>
 			<span className="h-[1600px] block bg-blackishGreen opacity-25 w-[0.5px]"></span>
@@ -37,23 +28,22 @@ export default function Filters() {
 
 type ComponentProps = {
 	name: string;
-	arrowButton: (id: number) => void;
 	id: number;
-	activeSlider: { [key: number]: boolean };
 };
 
-const Slider = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
+const Slider = ({ name }: ComponentProps) => {
 	const [values, setValues] = useState([50, 1200]);
+	const [activeSlider, setActiveSlider] = useState(false);
 
 	return (
 		<div className="w-full">
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
-				<button type="button" onClick={() => arrowButton(id)}>
-					<UpArrowIcon rotate={activeSlider[id] ? "" : "rotate-180"} />
+				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
+					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
 				</button>
 			</div>
-			{activeSlider[id] && (
+			{activeSlider && (
 				<div className="w-full mt-4">
 					<RadixSlider.Root
 						value={values}
@@ -79,16 +69,17 @@ const Slider = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
 	);
 };
 
-const Rating = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
+const Rating = ({ name }: ComponentProps) => {
+	const [activeSlider, setActiveSlider] = useState(false);
 	return (
 		<div>
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
-				<button type="button" onClick={() => arrowButton(id)}>
-					<UpArrowIcon rotate={activeSlider[id] ? "" : "rotate-180"} />
+				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
+					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
 				</button>
 			</div>
-			{activeSlider[id] && (
+			{activeSlider && (
 				<div className="w-full flex gap-4 items-center mt-2">
 					{Array.from({ length: 5 }).map((_, index) => (
 						<RatingButton key={`rating-${index}`} text={index} id={`rating-${index}`} />
@@ -160,16 +151,17 @@ const tripsData: CheckboxProps[] = [
 	},
 ];
 
-const Airlines = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
+const Airlines = ({ name }: ComponentProps) => {
+	const [activeSlider, setActiveSlider] = useState(false);
 	return (
 		<div>
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
-				<button type="button" onClick={() => arrowButton(id)}>
-					<UpArrowIcon rotate={activeSlider[id] ? "" : "rotate-180"} />
+				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
+					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
 				</button>
 			</div>
-			{activeSlider[id] && (
+			{activeSlider && (
 				<div className="w-full flex flex-col gap-4 mt-2">
 					{airlineData.map(({ id, title }: CheckboxProps) => (
 						<Checkbox key={id} id={id} title={title} />
@@ -180,16 +172,17 @@ const Airlines = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
 	);
 };
 
-const Trips = ({ name, arrowButton, id, activeSlider }: ComponentProps) => {
+const Trips = ({ name }: ComponentProps) => {
+	const [activeSlider, setActiveSlider] = useState(false);
 	return (
 		<div>
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
-				<button type="button" onClick={() => arrowButton(id)}>
-					<UpArrowIcon rotate={activeSlider[id] ? "" : "rotate-180"} />
+				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
+					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
 				</button>
 			</div>
-			{activeSlider[id] && (
+			{activeSlider && (
 				<div className="w-full flex flex-col gap-4 mt-2">
 					{tripsData.map(({ id, title }: CheckboxProps) => (
 						<Checkbox key={id} id={id} title={title} />
