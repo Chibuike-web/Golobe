@@ -1,6 +1,13 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import { AddIcon, DownArrowIcon, BuildingIcon, BedIcon, Calender } from "../../assets/icons";
+import {
+	AddIcon,
+	DownArrowIcon,
+	BuildingIcon,
+	BedIcon,
+	Calender,
+	Profile,
+} from "../../assets/icons";
 
 import { useHotelSearchFormState } from "../../Hooks";
 
@@ -92,7 +99,13 @@ function HotelSearchForm() {
 							Enter Destination
 						</label>
 					)}
-					<div className="w-full border-[1px] flex items-center h-16 px-[12px] gap-[12px]">
+					<div
+						className={`w-full border-[1px] ${
+							focusedInput === "destination" && !destination.trim()
+								? "border-[#6200ea]"
+								: "border-[#79747e]"
+						}  flex items-center h-16 px-[12px] gap-[12px]`}
+					>
 						<button type="button">
 							<BedIcon />
 						</button>
@@ -162,7 +175,8 @@ function HotelSearchForm() {
 				</div>
 
 				{/* Form  4 */}
-				<div className="relative w-full md:max-w-full">
+
+				<div className="relative w-full  md:max-w-full">
 					{(focusedInput === "room" || room) && (
 						<label
 							htmlFor="room"
@@ -171,22 +185,24 @@ function HotelSearchForm() {
 							Rooms & Guests
 						</label>
 					)}
-					<div className="relative">
-						<button type="button" className="absolute left-[16px] top-[50%] -translate-y-1/2">
-							<DownArrowIcon />
+					<div
+						className={`w-full border-[1px] ${
+							focusedInput === "room" && !room.trim() ? "border-[#6200ea]" : "border-[#79747e]"
+						}  flex items-center h-16 px-[12px] gap-[12px]`}
+					>
+						<button type="button">
+							<Profile />
 						</button>
 						<input
 							id="room"
 							value={room}
 							type="text"
+							className="custom-input"
 							placeholder="Rooms & Guests"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
-							<DownArrowIcon />
-						</button>
 					</div>
 				</div>
 			</form>
