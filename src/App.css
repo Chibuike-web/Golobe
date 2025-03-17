@@ -51,6 +51,7 @@ input[type="password"] {
 	line-height: 1;
 	color: #1c1b1f;
 	background-color: none;
+	min-height: 64px;
 }
 
 input::placeholder {
@@ -77,6 +78,7 @@ input.error {
 	line-height: 1 !important;
 	background: transparent !important;
 	width: 100%;
+	min-height: 64px;
 }
 
 .custom-input:focus {

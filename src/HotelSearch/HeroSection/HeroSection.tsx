@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon, BuildingIcon } from "../../assets/icons";
+import { AddIcon, DownArrowIcon, BuildingIcon, BedIcon, Calender } from "../../assets/icons";
 
 import { useHotelSearchFormState } from "../../Hooks";
 
@@ -73,17 +73,17 @@ function HotelSearchForm() {
 		<aside
 			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[-4rem] bg-white px-8 pt-8 pb-12 rounded-2xl md:px-4"
 			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
-			aria-labelledby="flight-search-form"
+			aria-labelledby="hotel-search-form"
 		>
 			<h2 className="text-[20px] font-semibold">Where are you flying? </h2>
 			<form
 				action=""
-				className="flex md:flex-col items-start w-full mb-8 mt-8 gap-6"
-				aria-label="Flight Search"
+				className="flex md:flex-col items-center w-full mb-8 mt-8 gap-6"
+				aria-label="Hotel Search"
 			>
 				{/* Form 1 */}
 
-				<div className="relative w-full md:max-w-full">
+				<div className="relative w-full  md:max-w-full">
 					{(focusedInput === "destination" || destination) && (
 						<label
 							htmlFor="destination"
@@ -92,20 +92,20 @@ function HotelSearchForm() {
 							Enter Destination
 						</label>
 					)}
-					<div className="relative">
+					<div className="w-full border-[1px] flex items-center h-16 px-[12px] gap-[12px]">
+						<button type="button">
+							<BedIcon />
+						</button>
 						<input
 							id="destination"
 							value={destination}
 							type="text"
-							className="h-16"
+							className="custom-input"
 							placeholder="Enter Destination"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
-							<DownArrowIcon />
-						</button>
 					</div>
 				</div>
 
@@ -124,14 +124,13 @@ function HotelSearchForm() {
 							id="checkIn"
 							value={checkIn}
 							type="text"
-							className="h-16"
 							placeholder="Check-In"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
 						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
-							<DownArrowIcon />
+							<Calender />
 						</button>
 					</div>
 				</div>
@@ -149,16 +148,15 @@ function HotelSearchForm() {
 					<div className="relative">
 						<input
 							id="checkOut"
-							value={checkIn}
+							value={checkOut}
 							type="text"
-							className="h-16"
 							placeholder="Check-Out"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
 						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
-							<DownArrowIcon />
+							<Calender />
 						</button>
 					</div>
 				</div>
@@ -174,11 +172,13 @@ function HotelSearchForm() {
 						</label>
 					)}
 					<div className="relative">
+						<button type="button" className="absolute left-[16px] top-[50%] -translate-y-1/2">
+							<DownArrowIcon />
+						</button>
 						<input
 							id="room"
 							value={room}
 							type="text"
-							className="h-16"
 							placeholder="Rooms & Guests"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
