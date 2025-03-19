@@ -51,7 +51,7 @@ input[type="password"] {
 	line-height: 1;
 	color: #1c1b1f;
 	background-color: none;
-	min-height: 64px;
+	height: 56px;
 }
 
 input::placeholder {

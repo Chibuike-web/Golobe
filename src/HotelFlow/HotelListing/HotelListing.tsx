@@ -1,4 +1,3 @@
-import React from "react";
 import HeroSection from "../HeroSection/HeroSection";
 import Filters from "../Filters/Filters";
 
@@ -8,7 +7,6 @@ export default function HotelListing() {
 			<HeroSection />
 			<div className="w-full flex items-start gap-[44px] mx-auto max-w-[77rem]">
 				<Filters />
-				{/* <FlightLists /> */}
 			</div>
 		</div>
 	);

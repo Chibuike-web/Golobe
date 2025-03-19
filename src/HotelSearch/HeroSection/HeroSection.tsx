@@ -97,7 +97,7 @@ function HotelSearchForm() {
 							focusedInput === "destination" && !destination.trim()
 								? "border-[#6200ea]"
 								: "border-[#79747e]"
-						}  flex items-center h-16 px-[12px] gap-[12px]`}
+						}  flex items-center h-[56px] px-[12px] gap-[12px]`}
 					>
 						<button type="button">
 							<BedIcon />
@@ -181,7 +181,7 @@ function HotelSearchForm() {
 					<div
 						className={`w-full border-[1px] ${
 							focusedInput === "room" && !room.trim() ? "border-[#6200ea]" : "border-[#79747e]"
-						}  flex items-center h-16 px-[12px] gap-[12px] rounded-[4px]`}
+						}  flex items-center h-[56px] px-[12px] gap-[12px] rounded-[4px]`}
 					>
 						<button type="button">
 							<Profile />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../assets/icons";
+import { AddIcon, BuildingIcon, BedIcon, Calender, Profile, SearchIcon } from "../../assets/icons";
 
 import { useHotelSearchFormState } from "../../Hooks";
 
@@ -56,14 +56,13 @@ function HotelSearchForm() {
 
 	return (
 		<aside
-			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[-4rem] bg-white px-8 pt-8 pb-12 rounded-2xl md:px-4"
+			className="w-full flex items-center gap-4 text-blackishGreen max-w-[77rem]  mt-[3rem] bg-white px-8 pt-8 pb-12 rounded-2xl md:px-4"
 			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
 			aria-labelledby="hotel-search-form"
 		>
-			<h2 className="text-[20px] font-semibold">Where are you flying? </h2>
 			<form
 				action=""
-				className="flex md:flex-col items-center w-full mb-8 mt-8 gap-6"
+				className="flex md:flex-col items-center w-full gap-4"
 				aria-label="Hotel Search"
 			>
 				{/* Form 1 */}
@@ -82,7 +81,7 @@ function HotelSearchForm() {
 							focusedInput === "destination" && !destination.trim()
 								? "border-[#6200ea]"
 								: "border-[#79747e]"
-						}  flex items-center h-16 px-[12px] gap-[12px]`}
+						}  flex items-center h-[56px] px-[12px] gap-[12px]`}
 					>
 						<button type="button">
 							<BedIcon />
@@ -166,7 +165,7 @@ function HotelSearchForm() {
 					<div
 						className={`w-full border-[1px] ${
 							focusedInput === "room" && !room.trim() ? "border-[#6200ea]" : "border-[#79747e]"
-						}  flex items-center h-16 px-[12px] gap-[12px] rounded-[4px]`}
+						}  flex items-center h-[56px] px-[12px] gap-[12px] rounded-[4px]`}
 					>
 						<button type="button">
 							<Profile />
@@ -184,20 +183,12 @@ function HotelSearchForm() {
 					</div>
 				</div>
 			</form>
-			<div className="flex justify-end items-center gap-6 md:flex-col">
-				<button className="flex items-center gap-1 ">
-					<span>
-						<AddIcon />
-					</span>
-					Add Promo Code
-				</button>
-				<button className="flex gap-1 items-center justify-center text-[0.875rem] font-medium bg-mintGreen p-4 rounded-md md:w-full">
-					<span>
-						<BuildingIcon className="opacity-100" />
-					</span>
-					Show Places
-				</button>
-			</div>
+			<button
+				type="button"
+				className="px-[16px] py-[16px] lg:w-full bg-mintGreen rounded-[4px] h-[56px]"
+			>
+				<SearchIcon />
+			</button>
 		</aside>
 	);
 }

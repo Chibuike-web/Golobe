@@ -241,7 +241,6 @@ const amenitiesData: CheckboxProps[] = [
 const Amenities = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
 	const [showAllAmenities, setShowAllAmenities] = useState(false);
-
 	const remaining = amenitiesData.length - 5;
 	return (
 		<div>

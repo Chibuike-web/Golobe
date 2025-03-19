@@ -199,7 +199,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-[56px]`}
 					>
 						<input
 							id="from"
@@ -271,7 +271,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-16`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-[56px]`}
 					>
 						<input
 							id="departDate"
@@ -311,7 +311,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]  h-16`}
+						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-[56px]`}
 					>
 						<input
 							id="passenger"
