@@ -14,6 +14,7 @@ import BookingTicket from "./FlightFlow/BookingTicket/BookingTicket";
 import FlightLayout from "./FlightLayout";
 import Favorites from "./Favorites/Favorites";
 import HotelSearch from "./HotelSearch/HotelSearch";
+import HotelListing from "./HotelFlow/HotelListing/HotelListing";
 
 function App() {
 	return (
@@ -34,6 +35,7 @@ function App() {
 					<Route path="flightlisting/flightdetail" element={<FlightDetail />} />
 					<Route path="flightlisting/bookingdetail" element={<BookingDetail />} />
 					<Route path="flightlisting/bookingticket" element={<BookingTicket />} />
+					<Route path="hotellisting" element={<HotelListing />} />
 					<Route path="favorites" element={<Favorites />} />
 				</Route>
 			</Routes>

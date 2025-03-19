@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
 import * as RadixSlider from "@radix-ui/react-slider";
-
-import styles from "./filters.module.css";
+import { Checkbox, RatingButton } from "../../UIComponents";
+import styles from "./Filters.module.css";
 
 export default function Filters() {
 	return (
@@ -90,21 +90,9 @@ const Rating = ({ name }: ComponentProps) => {
 	);
 };
 
-const RatingButton = ({ text, id }: { text: number; id: string }) => {
-	return (
-		<span
-			id={id}
-			className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium"
-		>
-			{text}+
-		</span>
-	);
-};
-
 export type CheckboxProps = {
 	id?: number;
 	title: string;
-	checkedColor?: string;
 };
 
 const airlineData: CheckboxProps[] = [
@@ -164,7 +152,7 @@ const Airlines = ({ name }: ComponentProps) => {
 			{activeSlider && (
 				<div className="w-full flex flex-col gap-4 mt-2">
 					{airlineData.map(({ id, title }: CheckboxProps) => (
-						<Checkbox key={id} id={id} title={title} />
+						<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
 					))}
 				</div>
 			)}
@@ -185,25 +173,10 @@ const Trips = ({ name }: ComponentProps) => {
 			{activeSlider && (
 				<div className="w-full flex flex-col gap-4 mt-2">
 					{tripsData.map(({ id, title }: CheckboxProps) => (
-						<Checkbox key={id} id={id} title={title} />
+						<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
 					))}
 				</div>
 			)}
 		</div>
-	);
-};
-
-export const Checkbox = ({ id, title, checkedColor = "#112211" }: CheckboxProps) => {
-	return (
-		<label htmlFor={`checkbox-${id}`} className="flex gap-3 items-center ">
-			<input
-				type="checkbox"
-				name={`checkbox-${id}`}
-				id={`checkbox-${id}`}
-				className={`${styles.checkbox}`}
-				style={{ "--checked-bg-color": checkedColor } as React.CSSProperties}
-			/>
-			<p className="font-medium text-[14px] leading-[17px]">{title}</p>
-		</label>
 	);
 };

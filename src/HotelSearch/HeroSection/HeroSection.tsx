@@ -1,13 +1,6 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import {
-	AddIcon,
-	DownArrowIcon,
-	BuildingIcon,
-	BedIcon,
-	Calender,
-	Profile,
-} from "../../assets/icons";
+import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../assets/icons";
 
 import { useHotelSearchFormState } from "../../Hooks";
 
@@ -188,7 +181,7 @@ function HotelSearchForm() {
 					<div
 						className={`w-full border-[1px] ${
 							focusedInput === "room" && !room.trim() ? "border-[#6200ea]" : "border-[#79747e]"
-						}  flex items-center h-16 px-[12px] gap-[12px]`}
+						}  flex items-center h-16 px-[12px] gap-[12px] rounded-[4px]`}
 					>
 						<button type="button">
 							<Profile />

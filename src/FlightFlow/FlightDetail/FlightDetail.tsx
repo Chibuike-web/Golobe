@@ -1,4 +1,4 @@
-import { Checkbox } from "../Filters/Filters";
+import { Checkbox } from "../../UIComponents";
 import HeroImage from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import First from "../../assets/FlightListing/FlightDetail/First.png";
 import Second from "../../assets/FlightListing/FlightDetail/Second.png";
@@ -9,7 +9,7 @@ import Sixth from "../../assets/FlightListing/FlightDetail/Sixth.png";
 import Seventh from "../../assets/FlightListing/FlightDetail/Seventh.png";
 import Eighth from "../../assets/FlightListing/FlightDetail/Eighth.png";
 import Nineth from "../../assets/FlightListing/FlightDetail/Nineth.png";
-
+import styles from "./FlightDetail.module.css";
 import Emirates from "../../assets/FlightListing/Emirates.png";
 import FlyDubai from "../../assets/FlightListing/FlyDubai.png";
 import Qatar from "../../assets/FlightListing/Qatar.png";
@@ -156,9 +156,24 @@ const HeroSection = () => {
 				<div className="flex justify-between items-center">
 					<h2 className="font-primary font-bold text-[24px]">Basic Economy Features</h2>
 					<div className="flex gap-6 items-center">
-						<Checkbox id={1} title={"Economy"} checkedColor="#8DD3BB" />
-						<Checkbox id={2} title={"First Class"} checkedColor="#8DD3BB" />
-						<Checkbox id={3} title={"Business Class"} checkedColor="#8DD3BB" />
+						<Checkbox
+							id={1}
+							title={"Economy"}
+							checkedColor="#8DD3BB"
+							className={`${styles.checkbox}`}
+						/>
+						<Checkbox
+							id={2}
+							title={"First Class"}
+							checkedColor="#8DD3BB"
+							className={`${styles.checkbox}`}
+						/>
+						<Checkbox
+							id={3}
+							title={"Business Class"}
+							checkedColor="#8DD3BB"
+							className={`${styles.checkbox}`}
+						/>
 					</div>
 				</div>
 				<figure className="flex gap-[19px] mt-[20px]">

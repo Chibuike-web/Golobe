@@ -15,7 +15,7 @@ import styles from "./BookingDetail.module.css";
 import { useState } from "react";
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
-import { Checkbox } from "../Filters/Filters";
+import { Checkbox } from "../../UIComponents";
 import { Link } from "react-router-dom";
 
 export default function BookingDetail() {
@@ -499,7 +499,7 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to="/bookingticket">
+						<Link to="/flightlisting/bookingticket">
 							<button
 								type="submit"
 								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
