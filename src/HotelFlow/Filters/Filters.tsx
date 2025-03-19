@@ -2,7 +2,6 @@ import { useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
 import * as RadixSlider from "@radix-ui/react-slider";
 import { Checkbox, RatingButton } from "../../UIComponents";
-
 import styles from "./Filters.module.css";
 
 export default function Filters() {
@@ -13,13 +12,11 @@ export default function Filters() {
 				<div className="flex flex-col gap-8">
 					<Slider name="Price" />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Slider name="Department" />
-					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
 					<Rating name="Rating" />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Airlines name="Airline" />
+					<Freebies name="Freebies" />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-					<Trips name="Trips" />
+					<Amenities name="Amenities" />
 				</div>
 			</div>
 			<span className="h-[1600px] block bg-blackishGreen opacity-25 w-[0.5px]"></span>
@@ -95,29 +92,33 @@ export type CheckboxProps = {
 	title: string;
 };
 
-const airlineData: CheckboxProps[] = [
+const freebiesData: CheckboxProps[] = [
 	{
 		id: 1,
-		title: "Emirates",
+		title: "Free breakfast",
 	},
 
 	{
 		id: 2,
-		title: "Fly Dubai",
+		title: "Free parking",
 	},
 
 	{
 		id: 3,
-		title: "Qatar",
+		title: "Free internet",
 	},
 
 	{
 		id: 4,
-		title: "Etihad",
+		title: "Free airport shuttle",
+	},
+	{
+		id: 5,
+		title: "Free cancellation",
 	},
 ];
 
-const Airlines = ({ name }: ComponentProps) => {
+const Freebies = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
 	return (
 		<div>
@@ -129,7 +130,7 @@ const Airlines = ({ name }: ComponentProps) => {
 			</div>
 			{activeSlider && (
 				<div className="w-full flex flex-col gap-4 mt-2">
-					{airlineData.map(({ id, title }: CheckboxProps) => (
+					{freebiesData.map(({ id, title }: CheckboxProps) => (
 						<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
 					))}
 				</div>
@@ -138,30 +139,110 @@ const Airlines = ({ name }: ComponentProps) => {
 	);
 };
 
-const tripsData: CheckboxProps[] = [
+const amenitiesData: CheckboxProps[] = [
 	{
 		id: 1,
-		title: "Round trip",
+		title: "24hr front desk",
 	},
-
 	{
 		id: 2,
-		title: "On Way",
+		title: "Air-conditioned",
 	},
-
 	{
 		id: 3,
-		title: "Multi-City",
+		title: "Fitness",
 	},
-
 	{
 		id: 4,
-		title: "My Dates are Flexible",
+		title: "Pool",
+	},
+	{
+		id: 5,
+		title: "Restaurant",
+	},
+	{
+		id: 6,
+		title: "Bar/Lounge",
+	},
+	{
+		id: 7,
+		title: "Spa",
+	},
+	{
+		id: 8,
+		title: "Business Center",
+	},
+	{
+		id: 9,
+		title: "WiFi",
+	},
+	{
+		id: 10,
+		title: "Room Service",
+	},
+	{
+		id: 11,
+		title: "Parking",
+	},
+	{
+		id: 12,
+		title: "Conference Room",
+	},
+	{
+		id: 13,
+		title: "Pet Friendly",
+	},
+	{
+		id: 14,
+		title: "Laundry Service",
+	},
+	{
+		id: 15,
+		title: "Concierge",
+	},
+	{
+		id: 16,
+		title: "Airport Shuttle",
+	},
+	{
+		id: 17,
+		title: "Garden",
+	},
+	{
+		id: 18,
+		title: "Tennis Court",
+	},
+	{
+		id: 19,
+		title: "Kids Club",
+	},
+	{
+		id: 20,
+		title: "Beach Access",
+	},
+	{
+		id: 21,
+		title: "Golf Course",
+	},
+	{
+		id: 22,
+		title: "Mini Bar",
+	},
+	{
+		id: 23,
+		title: "Sauna",
+	},
+	{
+		id: 24,
+		title: "Casino",
 	},
 ];
 
-const Trips = ({ name }: ComponentProps) => {
+const Amenities = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
+	const [showAllAmenities, setShowAllAmenities] = useState(false);
+
+	const remaining = amenitiesData.length - 5;
 	return (
 		<div>
 			<div className="flex justify-between w-full">
@@ -171,10 +252,21 @@ const Trips = ({ name }: ComponentProps) => {
 				</button>
 			</div>
 			{activeSlider && (
-				<div className="w-full flex flex-col gap-4 mt-2">
-					{tripsData.map(({ id, title }: CheckboxProps) => (
-						<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
-					))}
+				<div className="w-full flex flex-col items-start gap-4 mt-2">
+					{(showAllAmenities ? amenitiesData : amenitiesData.slice(0, 5)).map(
+						({ id, title }: CheckboxProps) => (
+							<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
+						)
+					)}
+					{remaining > 0 && (
+						<button
+							type="button"
+							className="text-slamon font-bold text-[14px]"
+							onClick={() => setShowAllAmenities(!showAllAmenities)}
+						>
+							{showAllAmenities ? "Show less" : `+${remaining} more`}
+						</button>
+					)}
 				</div>
 			)}
 		</div>
