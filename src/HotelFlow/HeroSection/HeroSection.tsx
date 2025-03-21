@@ -56,7 +56,7 @@ function HotelSearchForm() {
 
 	return (
 		<aside
-			className="w-full flex items-center gap-4 text-blackishGreen max-w-[77rem]  mt-[3rem] bg-white px-8 pt-8 pb-12 rounded-2xl md:px-4"
+			className="w-full flex items-center md:flex-col gap-4 text-blackishGreen max-w-[77rem] mt-[3rem] bg-white px-8 pt-8 pb-12 rounded-2xl md:px-4"
 			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
 			aria-labelledby="hotel-search-form"
 		>
