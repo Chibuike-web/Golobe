@@ -119,7 +119,7 @@ const FlightListCard = ({ image }: { image: string }) => {
 			style={{ boxShadow: "0px 4px 16px rgba(17, 34, 17, 0.05)" }}
 		>
 			<figure>
-				<img src={image} alt="" />
+				<img src={image} alt="Flight image" />
 			</figure>
 			<div className="flex flex-col w-full px-6 gap-4">
 				{/* Top Row */}

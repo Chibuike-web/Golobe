@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../assets/icons";
+import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.png";
 
 type TabsProps = {
 	id: number;
@@ -47,6 +49,18 @@ export default function HotelLists() {
 					</div>
 				))}
 			</div>
+			<div className="flex justify-between">
+				<p className="text-[14px] font-semibold text-blackishGreen">
+					Showing 4 of <span className="text-slamon">257 places</span>
+				</p>
+				<p className="flex items-center gap-[4px] text-[14px]">
+					Sort by
+					<span className="flex text-[14px] gap-[4px] items-center font-semibold">
+						Recommended <DownArrowIcon />
+					</span>
+				</p>
+			</div>
+			<HotelListCard />
 		</div>
 	);
 }
@@ -76,5 +90,72 @@ const Tabs = ({
 				<div className="h-[4px] w-full bg-mintGreen absolute bottom-[-1rem]"></div>
 			)}
 		</button>
+	);
+};
+
+const HotelListCard = () => {
+	return (
+		<div className="flex rounded-[12px] overflow-hidden bg-white">
+			<figure className="max-w-[300px]">
+				<img src={HotelIstanbul} alt="Hotel Istanbul" className="w-full" />
+			</figure>
+
+			<div className="p-6 flex flex-col justify-between">
+				{/* Top */}
+				<div className="flex">
+					{/* Left */}
+					<div>
+						<h1>CVK Park Bosphorus Hotel Istanbul</h1>
+						<div>
+							<LocationIcon />
+							<span>Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437</span>
+						</div>
+						<div className="flex">
+							<div className="flex gap-4">
+								<span className="flex">
+									{Array.from({ length: 5 }).map((_, index) => (
+										<StarIcon key={index} />
+									))}
+								</span>
+								<span>5 Star Hotel</span>
+							</div>
+							<div className="flex items-center">
+								<CafeIcon />{" "}
+								<span>
+									<strong>20+</strong> Amenities
+								</span>
+							</div>
+						</div>
+						<div className="flex items-center gap-2 py-[6px]">
+							<span className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium">
+								4.2
+							</span>
+							<p className="text-[12px] font-medium">
+								<strong>Very Good</strong> 54 reviews
+							</p>
+						</div>
+					</div>
+					{/* Right */}
+					<div>
+						<p>starting from</p>
+						<h1>$240/night</h1>
+						<p>excl. tax</p>
+					</div>
+				</div>
+				<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+				{/* Bottom */}
+				<div className="flex gap-4">
+					<button type="button" className="p-[14px] border-mintGreen border-[1px] rounded-[4px]">
+						<HeartIcon />
+					</button>
+					<button
+						type="button"
+						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
+					>
+						View Deals
+					</button>
+				</div>
+			</div>
+		</div>
 	);
 };
