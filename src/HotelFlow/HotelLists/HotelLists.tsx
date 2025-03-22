@@ -105,23 +105,27 @@ const HotelListCard = () => {
 				<div className="flex">
 					{/* Left */}
 					<div>
-						<h1>CVK Park Bosphorus Hotel Istanbul</h1>
-						<div>
+						<h1 className="font-bold font-primary text-[20px] leading-[20px] mb-4">
+							CVK Park Bosphorus Hotel Istanbul
+						</h1>
+						<div className="flex items-center">
 							<LocationIcon />
-							<span>Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437</span>
+							<span className="text-[12px] text-blackishGreen/75 font-medium">
+								Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437
+							</span>
 						</div>
-						<div className="flex">
-							<div className="flex gap-4">
+						<div className="flex gap-8 my-3">
+							<div className="flex gap-4 items-center">
 								<span className="flex">
 									{Array.from({ length: 5 }).map((_, index) => (
-										<StarIcon key={index} />
+										<StarIcon key={index} className="w-4 h-4" fill="#FF8682" />
 									))}
 								</span>
-								<span>5 Star Hotel</span>
+								<span className="font-medium text-[12px]">5 Star Hotel</span>
 							</div>
-							<div className="flex items-center">
+							<div className="flex items-center gap-1">
 								<CafeIcon />{" "}
-								<span>
+								<span className="text-blackishGreen text-[12px]">
 									<strong>20+</strong> Amenities
 								</span>
 							</div>
@@ -131,15 +135,17 @@ const HotelListCard = () => {
 								4.2
 							</span>
 							<p className="text-[12px] font-medium">
-								<strong>Very Good</strong> 54 reviews
+								<strong>Very Good</strong> 371 reviews
 							</p>
 						</div>
 					</div>
 					{/* Right */}
 					<div>
-						<p>starting from</p>
-						<h1>$240/night</h1>
-						<p>excl. tax</p>
+						<p className="font-medium text-[12px] text-blackishGreen/75">starting from</p>
+						<h1 className="flex items-center text-slamon font-bold text-[24px]">
+							$240 <span className="text-[14px]">/night</span>
+						</h1>
+						<p className="text-[12px] font-medium text-blackishGreen/75 text-right">excl. tax</p>
 					</div>
 				</div>
 				<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
@@ -152,7 +158,7 @@ const HotelListCard = () => {
 						type="button"
 						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
 					>
-						View Deals
+						View Place
 					</button>
 				</div>
 			</div>
