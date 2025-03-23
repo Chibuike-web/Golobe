@@ -4,6 +4,7 @@ import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.png";
 import EresinHotel1 from "../../assets/HotelListing/EresinHotel-1.png";
 import EresinHotel2 from "../../assets/HotelListing/EresinHotel-2.png";
 import EresinHotel3 from "../../assets/HotelListing/EresinHotel-3.png";
+import styles from "./HotelLists.module.css";
 
 export default function HotelLists() {
 	const [selectedTab, setSelectedTab] = useState<number>(1);
@@ -40,8 +41,8 @@ export default function HotelLists() {
 					</span>
 				</p>
 			</div>
-			{HotelListCardInfo.map(({ name, image, price }: HotelListCardProps) => (
-				<HotelListCard name={name} image={image} price={price} />
+			{HotelListCardInfo.map(({ name, image, price, favorite }: HotelListCardProps, index) => (
+				<HotelListCard key={index} name={name} image={image} price={price} favorite={favorite} />
 			))}
 		</div>
 	);
@@ -88,7 +89,7 @@ const Tabs = ({
 			<div className="px-[12px] flex flex-col items-start gap-[8px] w-full">
 				<h3 className="font-semibold text-blackishGreen">{type}</h3>
 				<div className="text-blackishGreen opacity-40 text-[14px]">
-					<span>${place}</span>
+					<span>{place}</span>
 				</div>
 			</div>
 			{selectedTab === id && (
@@ -102,6 +103,7 @@ type HotelListCardProps = {
 	name: string;
 	price: number;
 	image: string;
+	favorite?: boolean;
 };
 
 const HotelListCardInfo: HotelListCardProps[] = [
@@ -109,29 +111,33 @@ const HotelListCardInfo: HotelListCardProps[] = [
 		name: "CVK Park Bosphorus Hotel Istanbul",
 		price: 240,
 		image: HotelIstanbul,
+		favorite: true,
 	},
 	{
 		name: "Eresin Hotels Sultanahmet - Boutique Class",
 		price: 104,
 		image: EresinHotel1,
+		favorite: false,
 	},
 	{
 		name: "Eresin Hotels Sultanahmet - Boutique Class",
 		price: 104,
 		image: EresinHotel2,
+		favorite: false,
 	},
 	{
 		name: "Eresin Hotels Sultanahmet - Boutique Class",
 		price: 104,
 		image: EresinHotel3,
+		favorite: false,
 	},
 ];
 
-const HotelListCard = ({ name, price, image }: HotelListCardProps) => {
+const HotelListCard = ({ name, price, image, favorite }: HotelListCardProps) => {
 	return (
-		<div className="flex rounded-[12px] overflow-hidden bg-white">
+		<div className={`flex rounded-[12px] overflow-hidden bg-white ${styles.card}`}>
 			<figure className="max-w-[300px]">
-				<img src={image} alt={image} className="w-full" />
+				<img src={image} alt={name} className="w-full" />
 			</figure>
 
 			<div className="p-6 flex flex-col justify-between">
@@ -183,9 +189,7 @@ const HotelListCard = ({ name, price, image }: HotelListCardProps) => {
 				<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
 				{/* Bottom */}
 				<div className="flex gap-4">
-					<button type="button" className="p-[14px] border-mintGreen border-[1px] rounded-[4px]">
-						<HeartIcon />
-					</button>
+					<FavoriteButton favorite={favorite} />
 					<button
 						type="button"
 						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
@@ -195,5 +199,18 @@ const HotelListCard = ({ name, price, image }: HotelListCardProps) => {
 				</div>
 			</div>
 		</div>
+	);
+};
+
+const FavoriteButton = ({ favorite = false }: { favorite?: boolean }) => {
+	const [isFavorite, setIsFavorite] = useState(favorite);
+	return (
+		<button
+			type="button"
+			className="p-[14px] border-mintGreen border-[1px] rounded-[4px]"
+			onClick={() => setIsFavorite(!isFavorite)}
+		>
+			<HeartIcon fill={isFavorite ? "black" : "none"} stroke={isFavorite ? "" : "#4C4850"} />
+		</button>
 	);
 };

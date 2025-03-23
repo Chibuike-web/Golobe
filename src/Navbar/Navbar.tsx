@@ -37,7 +37,7 @@ export default function Navbar() {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/findstays" className="flex space-x-1 items-center">
+						<NavLink to="/hotellisting" className="flex space-x-1 items-center">
 							<BedIcon color="#112211" />
 							<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
 						</NavLink>
