@@ -15,7 +15,7 @@ import styles from "./BookingDetail.module.css";
 import { useState } from "react";
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
-import { Checkbox } from "../../UIComponents";
+import { Checkbox } from "../../UiComponents";
 import { Link } from "react-router-dom";
 
 export default function BookingDetail() {

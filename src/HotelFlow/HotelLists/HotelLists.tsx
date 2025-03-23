@@ -1,29 +1,9 @@
 import { useState } from "react";
 import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../assets/icons";
 import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.png";
-
-type TabsProps = {
-	id: number;
-	type: string;
-	place: string;
-};
-const TabData: TabsProps[] = [
-	{
-		id: 1,
-		type: "Hotel",
-		place: "257 places",
-	},
-	{
-		id: 2,
-		type: "Motels",
-		place: "51 places",
-	},
-	{
-		id: 3,
-		type: "Resorts",
-		place: "72 places",
-	},
-];
+import EresinHotel1 from "../../assets/HotelListing/EresinHotel-1.png";
+import EresinHotel2 from "../../assets/HotelListing/EresinHotel-2.png";
+import EresinHotel3 from "../../assets/HotelListing/EresinHotel-3.png";
 
 export default function HotelLists() {
 	const [selectedTab, setSelectedTab] = useState<number>(1);
@@ -60,10 +40,35 @@ export default function HotelLists() {
 					</span>
 				</p>
 			</div>
-			<HotelListCard />
+			{HotelListCardInfo.map(({ name, image, price }: HotelListCardProps) => (
+				<HotelListCard name={name} image={image} price={price} />
+			))}
 		</div>
 	);
 }
+
+type TabsProps = {
+	id: number;
+	type: string;
+	place: string;
+};
+const TabData: TabsProps[] = [
+	{
+		id: 1,
+		type: "Hotel",
+		place: "257 places",
+	},
+	{
+		id: 2,
+		type: "Motels",
+		place: "51 places",
+	},
+	{
+		id: 3,
+		type: "Resorts",
+		place: "72 places",
+	},
+];
 
 const Tabs = ({
 	id,
@@ -93,11 +98,40 @@ const Tabs = ({
 	);
 };
 
-const HotelListCard = () => {
+type HotelListCardProps = {
+	name: string;
+	price: number;
+	image: string;
+};
+
+const HotelListCardInfo: HotelListCardProps[] = [
+	{
+		name: "CVK Park Bosphorus Hotel Istanbul",
+		price: 240,
+		image: HotelIstanbul,
+	},
+	{
+		name: "Eresin Hotels Sultanahmet - Boutique Class",
+		price: 104,
+		image: EresinHotel1,
+	},
+	{
+		name: "Eresin Hotels Sultanahmet - Boutique Class",
+		price: 104,
+		image: EresinHotel2,
+	},
+	{
+		name: "Eresin Hotels Sultanahmet - Boutique Class",
+		price: 104,
+		image: EresinHotel3,
+	},
+];
+
+const HotelListCard = ({ name, price, image }: HotelListCardProps) => {
 	return (
 		<div className="flex rounded-[12px] overflow-hidden bg-white">
 			<figure className="max-w-[300px]">
-				<img src={HotelIstanbul} alt="Hotel Istanbul" className="w-full" />
+				<img src={image} alt={image} className="w-full" />
 			</figure>
 
 			<div className="p-6 flex flex-col justify-between">
@@ -105,9 +139,7 @@ const HotelListCard = () => {
 				<div className="flex">
 					{/* Left */}
 					<div>
-						<h1 className="font-bold font-primary text-[20px] leading-[20px] mb-4">
-							CVK Park Bosphorus Hotel Istanbul
-						</h1>
+						<h1 className="font-bold font-primary text-[20px] leading-[25px] mb-4">{name}</h1>
 						<div className="flex items-center">
 							<LocationIcon />
 							<span className="text-[12px] text-blackishGreen/75 font-medium">
@@ -115,7 +147,7 @@ const HotelListCard = () => {
 							</span>
 						</div>
 						<div className="flex gap-8 my-3">
-							<div className="flex gap-4 items-center">
+							<div className="flex gap-2 items-center">
 								<span className="flex">
 									{Array.from({ length: 5 }).map((_, index) => (
 										<StarIcon key={index} className="w-4 h-4" fill="#FF8682" />
@@ -130,7 +162,7 @@ const HotelListCard = () => {
 								</span>
 							</div>
 						</div>
-						<div className="flex items-center gap-2 py-[6px]">
+						<div className="flex items-center gap-2">
 							<span className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium">
 								4.2
 							</span>
@@ -143,7 +175,7 @@ const HotelListCard = () => {
 					<div>
 						<p className="font-medium text-[12px] text-blackishGreen/75">starting from</p>
 						<h1 className="flex items-center text-slamon font-bold text-[24px]">
-							$240 <span className="text-[14px]">/night</span>
+							{price} <span className="text-[14px]">/night</span>
 						</h1>
 						<p className="text-[12px] font-medium text-blackishGreen/75 text-right">excl. tax</p>
 					</div>

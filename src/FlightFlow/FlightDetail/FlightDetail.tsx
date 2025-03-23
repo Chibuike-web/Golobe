@@ -1,4 +1,4 @@
-import { Checkbox } from "../../UIComponents";
+import { Checkbox } from "../../UiComponents";
 import HeroImage from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import First from "../../assets/FlightListing/FlightDetail/First.png";
 import Second from "../../assets/FlightListing/FlightDetail/Second.png";

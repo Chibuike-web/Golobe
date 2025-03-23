@@ -11,7 +11,7 @@ import FlightListing from "./FlightFlow/FlightListing/FlightListing";
 import FlightDetail from "./FlightFlow/FlightDetail/FlightDetail";
 import BookingDetail from "./FlightFlow/BookingDetail/BookingDetail";
 import BookingTicket from "./FlightFlow/BookingTicket/BookingTicket";
-import FlightLayout from "./FlightLayout";
+import Layout from "./Layout";
 import Favorites from "./Favorites/Favorites";
 import HotelSearch from "./HotelSearch/HotelSearch";
 import HotelListing from "./HotelFlow/HotelListing/HotelListing";
@@ -29,8 +29,8 @@ function App() {
 				<Route path="flightsearch" element={<FlightSearch />} />
 				<Route path="hotelsearch" element={<HotelSearch />} />
 
-				{/* Flight-related routes under FlightLayout */}
-				<Route path="/" element={<FlightLayout />}>
+				{/* routes under Layout */}
+				<Route path="/" element={<Layout />}>
 					<Route path="flightlisting" element={<FlightListing />} />
 					<Route path="flightlisting/flightdetail" element={<FlightDetail />} />
 					<Route path="flightlisting/bookingdetail" element={<BookingDetail />} />

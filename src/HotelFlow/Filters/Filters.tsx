@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { UpArrowIcon } from "../../assets/icons";
 import * as RadixSlider from "@radix-ui/react-slider";
-import { Checkbox, RatingButton } from "../../UIComponents";
+import { Checkbox, RatingButton } from "../../UiComponents";
 import styles from "./Filters.module.css";
 
 export default function Filters() {
