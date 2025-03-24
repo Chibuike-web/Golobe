@@ -19,7 +19,7 @@ export default function Filters() {
 					<Amenities name="Amenities" />
 				</div>
 			</div>
-			<span className="h-[1600px] block bg-blackishGreen opacity-25 w-[0.5px]"></span>
+			<span className="h-[1420px] block bg-blackishGreen opacity-25 w-[0.5px]"></span>
 		</div>
 	);
 }

@@ -1,9 +1,9 @@
 .flights::after {
 	content: "";
 	position: absolute;
-	bottom: -38px;
+	bottom: -30px;
 	left: 0;
 	background-color: #8dd3bb;
-	height: 0.25rem;
+	height: 0.3rem;
 	width: 100%;
 }

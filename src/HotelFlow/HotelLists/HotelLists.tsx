@@ -44,6 +44,9 @@ export default function HotelLists() {
 			{HotelListCardInfo.map(({ name, image, price, favorite }: HotelListCardProps, index) => (
 				<HotelListCard key={index} name={name} image={image} price={price} favorite={favorite} />
 			))}
+			<button className="flex bg-blackishGreen justify-center items-center w-full font-semibold text-[14px] text-white rounded-[4px] py-4">
+				Show more results
+			</button>
 		</div>
 	);
 }
@@ -136,7 +139,10 @@ const HotelListCardInfo: HotelListCardProps[] = [
 const HotelListCard = ({ name, price, image, favorite }: HotelListCardProps) => {
 	return (
 		<div className={`flex rounded-[12px] overflow-hidden bg-white ${styles.card}`}>
-			<figure className="max-w-[300px]">
+			<figure className="max-w-[300px] relative">
+				<p className="text-blackishGreen/75 font-medium text-[12px] absolute p-[8px] bg-white/50 backdrop-blur-sm rounded-[8px] leading-[15px] top-[8px] right-[8px]">
+					9 images
+				</p>
 				<img src={image} alt={name} className="w-full" />
 			</figure>
 

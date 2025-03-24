@@ -21,7 +21,7 @@ export default function Navbar() {
 	return (
 		<nav className="w-full relative z-[1000] bg-white" role="banner">
 			<header
-				className="mx-auto max-w-[77rem] relative py-6 flex items-center justify-between h-max lg:px-4 md:py-4"
+				className="mx-auto max-w-[77rem] relative py-5 flex items-center justify-between h-max lg:px-4 md:py-4"
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">
@@ -37,7 +37,12 @@ export default function Navbar() {
 						</NavLink>
 					</li>
 					<li>
-						<NavLink to="/hotellisting" className="flex space-x-1 items-center">
+						<NavLink
+							to="/hotellisting"
+							className={({ isActive }) =>
+								`${isActive ? styles.flights : ""} relative flex items-center gap-2`
+							}
+						>
 							<BedIcon color="#112211" />
 							<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
 						</NavLink>

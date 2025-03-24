@@ -115,7 +115,7 @@ export function StarIcon({
 	fill = "#FFC107",
 }: {
 	className?: string;
-	fill: string;
+	fill?: string;
 }) {
 	return (
 		<svg
