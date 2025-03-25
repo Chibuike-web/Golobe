@@ -102,6 +102,24 @@ export default function HotelDetail() {
 						<Card key={index} item={item} />
 					))}
 				</div>
+			</div>
+			<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
+			<div>
+				<h3 className="font-bold text-[20px] font-primary">Available Rooms</h3>
+				<div className=" flex flex-col gap-4 mt-8">
+					{availableRoomData.map(({ id, image, description, price }: RoomData) => (
+						<>
+							<AvailableRoom
+								key={id}
+								id={id}
+								image={image}
+								description={description}
+								price={price}
+							/>
+							{id !== 4 && <span className="block h-[0.5px] w-full bg-blackishGreen/25 "></span>}
+						</>
+					))}
+				</div>
 				<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
 			</div>
 		</div>
@@ -113,6 +131,62 @@ const Card = ({ item }: { item: string }) => {
 		<div className="bg-white border-[1px] border-mintGreen rounded-[12px] pl-4 py-4 pr-16">
 			<AiIcon className="mb-[61px]" />
 			<p className="font-medium">{item}</p>
+		</div>
+	);
+};
+
+type RoomData = {
+	id: number;
+	image: string;
+	description: string;
+	price: number;
+};
+
+const availableRoomData: RoomData[] = [
+	{
+		id: 1,
+		image: HeroImage2,
+		description: "Superior room - 1 double bed or 2 twin beds",
+		price: 240,
+	},
+	{
+		id: 2,
+		image: HeroImage3,
+		description: "Superior room - City view - 1 double bed or 2 twin beds",
+		price: 280,
+	},
+	{
+		id: 3,
+		image: HeroImage4,
+		description: "Superior room - City view - 1 double bed or 2 twin beds",
+		price: 320,
+	},
+	{
+		id: 4,
+		image: HeroImage5,
+		description: "Superior room - City view - 1 double bed or 2 twin beds",
+		price: 350,
+	},
+];
+const AvailableRoom = ({ image, description, price }: RoomData) => {
+	return (
+		<div className="flex justify-between">
+			<div className="flex items-center gap-4">
+				<img src={image} className="w-12 h-12 rounded-[4px]" />
+				<h5>{description}</h5>
+			</div>
+			<div className="flex items-center gap-16">
+				<h2 className="font-semibold text-[24px]">
+					${price}
+					<span className="text-[14px]">/night</span>
+				</h2>
+				<button
+					type="button"
+					className="bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] w-max"
+				>
+					Book now
+				</button>
+			</div>
 		</div>
 	);
 };
