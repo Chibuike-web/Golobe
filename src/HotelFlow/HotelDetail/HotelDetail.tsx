@@ -1,4 +1,4 @@
-import { HeartIcon, LocationIcon, RightArrowIcon, ShareIcon } from "../../assets/icons";
+import { AiIcon, HeartIcon, LocationIcon, RightArrowIcon, ShareIcon } from "../../assets/icons";
 import HeroImage1 from "../../assets/HotelListing/HeroImage1.png";
 import HeroImage2 from "../../assets/HotelListing/HeroImage2.png";
 import HeroImage3 from "../../assets/HotelListing/HeroImage3.png";
@@ -92,7 +92,27 @@ export default function HotelDetail() {
 					categories at various sizes with city and Bosphorus view, as well as 68 separate luxury
 					suites, are offered to its special guests as a wide variety of selection.
 				</p>
+				<div className="flex gap-4 mt-8">
+					<div className="bg-mintGreen rounded-[12px] pl-4 py-4 pr-16">
+						<h2 className="font-bold font-primary text-[32px] mb-[28px] text-blackishGreen">4.2</h2>
+						<p className="font-bold text-blackishGreen mb-[4px]">Very good</p>
+						<p className="text-[14px] text-blackishGreen">371 reviews</p>
+					</div>
+					{["Near park", "Near nightlife", "Near theater", "Clean Hotel"].map((item, index) => (
+						<Card key={index} item={item} />
+					))}
+				</div>
+				<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
 			</div>
 		</div>
 	);
 }
+
+const Card = ({ item }: { item: string }) => {
+	return (
+		<div className="bg-white border-[1px] border-mintGreen rounded-[12px] pl-4 py-4 pr-16">
+			<AiIcon className="mb-[61px]" />
+			<p className="font-medium">{item}</p>
+		</div>
+	);
+};
