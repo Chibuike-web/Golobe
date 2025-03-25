@@ -1,4 +1,9 @@
 import { HeartIcon, LocationIcon, RightArrowIcon, ShareIcon } from "../../assets/icons";
+import HeroImage1 from "../../assets/HotelListing/HeroImage1.png";
+import HeroImage2 from "../../assets/HotelListing/HeroImage2.png";
+import HeroImage3 from "../../assets/HotelListing/HeroImage3.png";
+import HeroImage4 from "../../assets/HotelListing/HeroImage4.png";
+import HeroImage5 from "../../assets/HotelListing/HeroImage5.png";
 
 export default function HotelDetail() {
 	return (
@@ -59,6 +64,34 @@ export default function HotelDetail() {
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="relative grid grid-cols-4 grid-rows-2 gap-[8px] rounded-[12px] overflow-hidden mt-10">
+				<img src={HeroImage1} className="max-w-[612px] w-full row-span-2 col-span-2" />
+				<img src={HeroImage2} className="max-w-[302px] w-full" />
+				<img src={HeroImage3} className="max-w-[302px] w-full" />
+				<img src={HeroImage4} className="max-w-[302px] w-full" />
+				<img src={HeroImage5} className="max-w-[302px] w-full" />
+				<button
+					type="button"
+					className="absolute bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] w-max"
+				>
+					View all photos
+				</button>
+			</div>
+			<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
+			<div>
+				<h3>Overview</h3>
+				<p>
+					Located in Taksim Gmsuyu, the heart of Istanbul, the CVK Park Bosphorus Hotel Istanbul has
+					risen from the ashes of the historic Park Hotel, which also served as Foreign Affairs
+					Palace 120 years ago and is hosting its guests by assuming this hospitality mission. With
+					its 452 luxurious rooms and suites, 8500 m2 SPA and fitness area, 18 meeting rooms
+					including 4 dividable ones and 3 terraces with Bosphorus view, Istanbuls largest terrace
+					with Bosphorus view (4500 m2) and latest technology infrastructure, CVK Park Bosphorus
+					Hotel Istanbul is destined to be the popular attraction point of the city. Room and suite
+					categories at various sizes with city and Bosphorus view, as well as 68 separate luxury
+					suites, are offered to its special guests as a wide variety of selection.
+				</p>
 			</div>
 		</div>
 	);
