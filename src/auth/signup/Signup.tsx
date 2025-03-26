@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import styles from "./Signup.module.css";
-import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../assets/icons";
+import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../assets/Icons";
 import { useFormState } from "../../Hooks";
 import { useEffect, useState } from "react";
 

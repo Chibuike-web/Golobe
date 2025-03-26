@@ -26,7 +26,7 @@ import {
 	ShareIcon,
 	TimeIcon,
 	WifiIcon,
-} from "../../assets/icons";
+} from "../../assets/Icons";
 
 export default function FlightDetail() {
 	return (

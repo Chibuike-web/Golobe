@@ -1,6 +1,6 @@
 import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
 import { Link } from "react-router-dom";
-import { AirplaneIcon, BedIcon } from "../../assets/icons";
+import { AirplaneIcon, BedIcon } from "../../assets/Icons";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {

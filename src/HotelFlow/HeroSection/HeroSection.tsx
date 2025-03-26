@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AddIcon, BuildingIcon, BedIcon, Calender, Profile, SearchIcon } from "../../assets/icons";
+import { AddIcon, BuildingIcon, BedIcon, Calender, Profile, SearchIcon } from "../../assets/Icons";
 
 import { useHotelSearchFormState } from "../../Hooks";
 

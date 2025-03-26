@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UpArrowIcon } from "../../assets/icons";
+import { UpArrowIcon } from "../../assets/Icons";
 import * as RadixSlider from "@radix-ui/react-slider";
 import { Checkbox, RatingButton } from "../../UiComponents";
 

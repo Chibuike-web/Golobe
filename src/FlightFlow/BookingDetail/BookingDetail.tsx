@@ -9,7 +9,7 @@ import {
 	MailIcon,
 	RightArrowIcon,
 	VisaLogo,
-} from "../../assets/icons";
+} from "../../assets/Icons";
 import Image from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import styles from "./BookingDetail.module.css";
 import { useState } from "react";

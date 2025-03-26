@@ -8,7 +8,7 @@ import {
 	PaperPlaneIcon,
 	DownArrowIcon,
 	SwapIcon,
-} from "../../assets/icons";
+} from "../../assets/Icons";
 import GolobeLogo from "../../assets/LandingPage/golobelogo.svg";
 import { useFlightSearchFormState } from "../../Hooks";
 

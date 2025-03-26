@@ -1,9 +1,26 @@
-import { AiIcon, HeartIcon, LocationIcon, RightArrowIcon, ShareIcon } from "../../assets/icons";
+import React from "react";
+import {
+	AiIcon,
+	BarIcon,
+	FitnessIcon,
+	HeartIcon,
+	LocationIcon,
+	PoolIcon,
+	RestaurantIcon,
+	RightArrowIcon,
+	RoomIcon,
+	ShareIcon,
+	SpaIcon,
+	TeaIcon,
+	WifiIcon,
+} from "../../assets/Icons";
 import HeroImage1 from "../../assets/HotelListing/HeroImage1.png";
 import HeroImage2 from "../../assets/HotelListing/HeroImage2.png";
 import HeroImage3 from "../../assets/HotelListing/HeroImage3.png";
 import HeroImage4 from "../../assets/HotelListing/HeroImage4.png";
 import HeroImage5 from "../../assets/HotelListing/HeroImage5.png";
+import Map from "../../assets/HotelListing/Map.png";
+import { ReactNode, useState } from "react";
 
 export default function HotelDetail() {
 	return (
@@ -122,6 +139,29 @@ export default function HotelDetail() {
 				</div>
 				<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
 			</div>
+			<div>
+				<div className="flex justify-between items-center">
+					<h3 className="font-bold text-[20px] font-primary">Location/Map</h3>
+					<button
+						type="button"
+						className="bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] w-max"
+					>
+						View on google maps
+					</button>
+				</div>
+				<img src={Map} className="mt-8 rounded-[1rem]" />
+				<div className="flex items-center mb-[8px]">
+					<LocationIcon />{" "}
+					<p className="font-medium text-[14px] opacity-75 mt-[8px]">
+						Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437
+					</p>
+				</div>
+			</div>
+			<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
+			<div>
+				<h3 className="font-bold text-[20px] font-primary">Amenities</h3>
+				<Amenities />
+			</div>
 		</div>
 	);
 }
@@ -187,6 +227,77 @@ const AvailableRoom = ({ image, description, price }: RoomData) => {
 					Book now
 				</button>
 			</div>
+		</div>
+	);
+};
+
+interface AmenityProps {
+	id: number;
+	title: string;
+	icon: ReactNode;
+}
+
+const amenitiesData: AmenityProps[] = [
+	{ id: 1, title: "Outdoor Pool", icon: <PoolIcon /> },
+	{ id: 2, title: "Indoor Pool", icon: <PoolIcon /> },
+	{ id: 3, title: "Fitness Center", icon: <FitnessIcon /> },
+	{ id: 4, title: "Air-conditioned", icon: <PoolIcon /> },
+	{ id: 5, title: "Restaurant", icon: <RestaurantIcon /> },
+	{ id: 6, title: "Bar/Lounge", icon: <BarIcon /> },
+	{ id: 7, title: "Spa and Wellness Center", icon: <SpaIcon /> },
+	{ id: 8, title: "Business Center", icon: <SpaIcon /> },
+	{ id: 9, title: "Free Wi-Fi", icon: <WifiIcon /> },
+	{ id: 10, title: "Room Service", icon: <RoomIcon /> },
+	{ id: 11, title: "Parking", icon: <RoomIcon /> },
+	{ id: 12, title: "Conference Room", icon: <SpaIcon /> },
+	{ id: 13, title: "Pet Friendly", icon: <RoomIcon /> },
+	{ id: 14, title: "Laundry Service", icon: <RoomIcon /> },
+	{ id: 15, title: "Concierge", icon: <BarIcon /> },
+	{ id: 16, title: "Airport Shuttle", icon: <WifiIcon /> },
+	{ id: 17, title: "Garden", icon: <PoolIcon /> },
+	{ id: 18, title: "Tennis Court", icon: <PoolIcon /> },
+	{ id: 19, title: "Kids Club", icon: <RestaurantIcon /> },
+	{ id: 20, title: "Beach Access", icon: <SpaIcon /> },
+	{ id: 21, title: "Golf Course", icon: <FitnessIcon /> },
+	{ id: 22, title: "Mini Bar", icon: <TeaIcon /> },
+	{ id: 23, title: "Sauna", icon: <FitnessIcon /> },
+	{ id: 24, title: "Casino", icon: <TeaIcon /> },
+];
+
+const Amenity = ({ id, icon, title }: AmenityProps) => {
+	return (
+		<div className="flex gap-4">
+			{icon}
+			<p>{title}</p>
+		</div>
+	);
+};
+
+const Amenities = () => {
+	const [showAllAmenities, setShowAllAmenities] = useState(false);
+	const remaining = amenitiesData.length - 9;
+	return (
+		<div className="grid grid-cols-2 gap-6 mt-8">
+			{(showAllAmenities ? amenitiesData : amenitiesData.slice(0, 9)).map(
+				({ id, icon, title }, index) => (
+					<React.Fragment key={id}>
+						<Amenity id={id} icon={icon} title={title} />
+						{index === amenitiesData.length - 1 ||
+						(!showAllAmenities && index === 8) ||
+						(showAllAmenities && index === amenitiesData.length - 1) ? (
+							<button
+								type="button"
+								className="text-slamon font-bold text-[14px] flex"
+								onClick={() => setShowAllAmenities(!showAllAmenities)}
+							>
+								{showAllAmenities ? "Show less" : `+${remaining} more`}
+							</button>
+						) : (
+							""
+						)}
+					</React.Fragment>
+				)
+			)}
 		</div>
 	);
 };

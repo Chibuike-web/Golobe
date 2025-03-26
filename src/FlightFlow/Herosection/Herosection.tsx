@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/icons";
+import { SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/Icons";
 import { useFlightSearchFormState } from "../../Hooks";
 
 export default function HeroSection() {

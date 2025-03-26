@@ -1,7 +1,7 @@
 import Olga from "../../assets/LandingPage/Olga.png";
 import Thomas from "../../assets/LandingPage/Thomas.png";
 import Eliot from "../../assets/LandingPage/Eliot.png";
-import { GoogleIcon, StarIcon } from "../../assets/icons";
+import { GoogleIcon, StarIcon } from "../../assets/Icons";
 import styles from "./Reviews.module.css";
 import { useState } from "react";
 
