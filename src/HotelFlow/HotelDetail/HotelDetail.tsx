@@ -162,6 +162,23 @@ export default function HotelDetail() {
 				<h3 className="font-bold text-[20px] font-primary">Amenities</h3>
 				<Amenities />
 			</div>
+			<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
+			<div className="flex justify-between items-center">
+				<h3 className="font-bold text-[20px] font-primary">Reviews</h3>
+				<button
+					type="button"
+					className="bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] w-max"
+				>
+					Give your review
+				</button>
+			</div>
+			<div>
+				<h1>4.2</h1>
+				<p>
+					<span>Very good</span>
+					<span>371 verified reviews</span>
+				</p>
+			</div>
 		</div>
 	);
 }
@@ -264,7 +281,7 @@ const amenitiesData: AmenityProps[] = [
 	{ id: 24, title: "Casino", icon: <TeaIcon /> },
 ];
 
-const Amenity = ({ id, icon, title }: AmenityProps) => {
+const Amenity = ({ icon, title }: AmenityProps) => {
 	return (
 		<div className="flex gap-4">
 			{icon}
@@ -282,8 +299,7 @@ const Amenities = () => {
 				({ id, icon, title }, index) => (
 					<React.Fragment key={id}>
 						<Amenity id={id} icon={icon} title={title} />
-						{index === amenitiesData.length - 1 ||
-						(!showAllAmenities && index === 8) ||
+						{(!showAllAmenities && index === 8) ||
 						(showAllAmenities && index === amenitiesData.length - 1) ? (
 							<button
 								type="button"
