@@ -3,6 +3,7 @@ import {
 	AiIcon,
 	BarIcon,
 	FitnessIcon,
+	FlagIcon,
 	HeartIcon,
 	LocationIcon,
 	PoolIcon,
@@ -20,6 +21,11 @@ import HeroImage3 from "../../assets/HotelListing/HeroImage3.png";
 import HeroImage4 from "../../assets/HotelListing/HeroImage4.png";
 import HeroImage5 from "../../assets/HotelListing/HeroImage5.png";
 import Map from "../../assets/HotelListing/Map.png";
+import ReviewImage1 from "../../assets/HotelListing/OmarSiphron.png";
+import ReviewImage2 from "../../assets/HotelListing/CristoferEkstromBothman.png";
+import ReviewImage3 from "../../assets/HotelListing/KaiyaLubin.png";
+import ReviewImage4 from "../../assets/HotelListing/ErinSeptimus.png";
+import ReviewImage5 from "../../assets/HotelListing/TerryGeorge.png";
 import { ReactNode, useState } from "react";
 
 export default function HotelDetail() {
@@ -172,13 +178,29 @@ export default function HotelDetail() {
 					Give your review
 				</button>
 			</div>
-			<div>
-				<h1>4.2</h1>
-				<p>
-					<span>Very good</span>
-					<span>371 verified reviews</span>
+			<div className="flex items-center gap-6">
+				<h1 className="text-[50px] font-bold font-primary text-blackishGreen">4.2</h1>
+				<p className="flex flex-col text-blackishGreen gap-[8px] ">
+					<span className="font-semibold text-[20px]">Very good</span>
+					<span className="text-[14px]">371 verified reviews</span>
 				</p>
 			</div>
+			{reviews.map(({ id, rating, title, name, reviewText, image }: Review, index) => (
+				<React.Fragment key={id}>
+					<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-8"></span>
+					<ReviewList
+						id={id}
+						rating={rating}
+						title={title}
+						name={name}
+						reviewText={reviewText}
+						image={image}
+					/>
+					{index === reviews.length - 1 && (
+						<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-8"></span>
+					)}
+				</React.Fragment>
+			))}
 		</div>
 	);
 }
@@ -314,6 +336,83 @@ const Amenities = () => {
 					</React.Fragment>
 				)
 			)}
+		</div>
+	);
+};
+
+interface Review {
+	id: number;
+	rating: string;
+	title: string;
+	name: string;
+	image: string;
+	reviewText: string;
+}
+
+const reviews: Review[] = [
+	{
+		id: 1,
+		rating: "5.0",
+		title: "Amazing",
+		name: "Omar Siphron",
+		image: ReviewImage1,
+		reviewText:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+	},
+	{
+		id: 2,
+		rating: "5.0",
+		title: "Amazing",
+		name: "Cristofer Ekstrom Bothman",
+		image: ReviewImage2,
+		reviewText:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+	},
+	{
+		id: 3,
+		rating: "5.0",
+		title: "Amazing",
+		name: "Kaiya Lubin",
+		image: ReviewImage3,
+		reviewText:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+	},
+	{
+		id: 4,
+		rating: "5.0",
+		title: "Amazing",
+		name: "Erin Septimus",
+		image: ReviewImage4,
+		reviewText:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+	},
+	{
+		id: 5,
+		rating: "5.0",
+		title: "Amazing",
+		name: "Terry George",
+		image: ReviewImage5,
+		reviewText:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+	},
+];
+
+const ReviewList = ({ rating, title, name, reviewText, image }: Review) => {
+	return (
+		<div className="flex gap-6 items-start text-blackishGreen">
+			<img src={image} className="w-full max-w-[45px]" />
+			<div className="flex items-center gap-4">
+				<div className="flex flex-col gap-[6px]">
+					<div className="flex gap-4 text-[14px]">
+						<p className="font-semibold">
+							{rating} {title}
+						</p>{" "}
+						|<p>{name}</p>
+					</div>
+					<p className="text-[14px]">{reviewText}</p>
+				</div>
+				<FlagIcon className="flex-shrink-0" />
+			</div>
 		</div>
 	);
 };
