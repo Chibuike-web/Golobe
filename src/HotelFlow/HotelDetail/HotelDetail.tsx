@@ -5,6 +5,7 @@ import {
 	FitnessIcon,
 	FlagIcon,
 	HeartIcon,
+	LeftArrowIcon,
 	LocationIcon,
 	PoolIcon,
 	RestaurantIcon,
@@ -201,6 +202,18 @@ export default function HotelDetail() {
 					)}
 				</React.Fragment>
 			))}
+
+			<div className="justify-items-center w-full">
+				<div className="flex gap-6">
+					<button type="button">
+						<LeftArrowIcon />
+					</button>
+					<p>1 of 40</p>
+					<button type="button">
+						<RightArrowIcon />
+					</button>
+				</div>
+			</div>
 		</div>
 	);
 }
