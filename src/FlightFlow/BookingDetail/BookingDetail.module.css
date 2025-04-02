@@ -28,3 +28,7 @@
 .radio:checked::after {
 	border: 2px solid white;
 }
+
+.background {
+	background-color: #8dd3bb;
+}

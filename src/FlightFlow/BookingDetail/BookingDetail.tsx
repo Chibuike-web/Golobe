@@ -82,8 +82,9 @@ export default function BookingDetail() {
 						<form className="flex flex-col p-4 bg-white rounded-[12px]">
 							<label
 								htmlFor="full"
-								className="flex w-full justify-between items-center pl-4 pr-8 py-6 rounded-[12px] gap-[46px] cursor-pointer"
-								style={{ backgroundColor: activeRadio === "full" ? "#8DD3BB" : "" }}
+								className={`flex w-full justify-between items-center pl-4 pr-8 py-6 rounded-[12px] gap-[46px] cursor-pointer ${
+									activeRadio === "full" && styles.background
+								}`}
 							>
 								<div>
 									<h2 className="font-primary font-bold leading-[20px] mb-[12px] ">Pay in full</h2>
@@ -103,8 +104,9 @@ export default function BookingDetail() {
 							</label>
 							<label
 								htmlFor="part"
-								className="flex w-full justify-between items-center mt-4 rounded-[12px] pl-4 pr-8 py-6 gap-[46px] cursor-pointer"
-								style={{ backgroundColor: activeRadio === "part" ? "#8DD3BB" : "" }}
+								className={`flex w-full justify-between items-center mt-4 rounded-[12px] pl-4 pr-8 py-6 gap-[46px] cursor-pointer ${
+									activeRadio === "part" && styles.background
+								}`}
 							>
 								<div className="w-full max-w-[577px]">
 									<h2 className="font-primary font-bold leading-[20px] mb-[12px] ">
@@ -114,7 +116,7 @@ export default function BookingDetail() {
 										Pay $207.43 now, and the rest ($207.43) will be automatically charged to the
 										same payment method on Nov 14, 2022. No extra fees.
 									</p>
-									<p className="mt-[12px] font-medium text-[12px] text-blackishGreen">More info</p>
+									<p className="mt-[16px] font-medium text-[12px] text-blackishGreen">More info</p>
 								</div>
 
 								<input
