@@ -19,36 +19,20 @@ import { Checkbox } from "../../UiComponents";
 import { Link } from "react-router-dom";
 
 export default function BookingDetail() {
-	const {
-		phoneNumber,
-		phoneNumberError,
-		focusedInput,
-		handleBlur,
-		handleFocus,
-		handlePhoneNumber,
-	} = useFormState();
-	const [login, setLogin] = useState(false);
+	const [login, setLogin] = useState<boolean>(false);
 	const [activeRadio, setActiveRadio] = useState("");
-	const [card, setCard] = useState(false);
+
 	const [addCard, setAddCard] = useState(false);
 
 	const handleChange = (id: string) => {
 		setActiveRadio(id);
 	};
 
-	const handleCardChange = () => {
-		setCard(true);
-	};
-
-	const handleLogin = () => {
-		setLogin((prev) => !prev);
-	};
-
-	const handleOpenAddCardModal = () => {
+	const handleOpenCardModal = () => {
 		setAddCard(true);
 	};
 
-	const handleCloseAddCardModal = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
+	const handleCloseCardModal = (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
 		e.stopPropagation();
 		const current = e.currentTarget as HTMLElement;
 		if (current.classList.contains("fixed") || current.id === "cancelButton") {
@@ -132,152 +116,15 @@ export default function BookingDetail() {
 						</form>
 
 						{login ? (
-							<div className=" p-4">
-								<form className="flex flex-col mb-4 bg-white rounded-[12px]">
-									<label
-										htmlFor="card"
-										className="flex w-full justify-between items-center pl-4 pr-8 py-6 rounded-[12px] gap-[46px] cursor-pointer"
-										style={{ backgroundColor: card ? "#8DD3BB" : "" }}
-									>
-										<div className="flex items-center gap-8">
-											<VisaLogo />
-											<p className="text-blackishGreen">
-												<span className="font-primary font-bold mr-2">**** 4321</span>
-												<span className="text-[14px]">02/27</span>
-											</p>
-										</div>
-										<input
-											type="radio"
-											name="cardDetails"
-											id="card"
-											className={`${styles.radio}`}
-											onChange={handleCardChange}
-										/>
-									</label>
-								</form>
-								<div
-									onClick={handleOpenAddCardModal}
-									style={{
-										width: "100%",
-										height: "188.83px",
-										position: "relative",
-										borderRadius: "15px",
-										cursor: "pointer",
-									}}
-								>
-									<svg
-										style={{
-											position: "absolute",
-											top: 0,
-											left: 0,
-										}}
-										width="100%"
-										height="188.83px"
-									>
-										<rect
-											x="5"
-											y="5"
-											width="calc(100% - 10px)"
-											height="calc(188.83px - 10px)"
-											rx="15"
-											ry="15"
-											fill="none"
-											stroke="#8DD3BB"
-											strokeWidth="2"
-											strokeDasharray="10 8"
-										/>
-									</svg>
-									<div className=" absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
-										<div className="flex flex-col items-center gap-[10px]">
-											<AddIconLg />
-											<p className="text-[12px] font-medium text-blackishGreen opacity-75">
-												Add a new card
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
+							<SelectCard openModal={handleOpenCardModal} />
 						) : (
-							<div className="p-6">
-								<form className=" bg-white">
-									<h3 className="font-primary font-bold text-[20px] mb-4">
-										Login or Sign up to book
-									</h3>
-									{/* Phone Number */}
-									<div className="relative w-full">
-										{(focusedInput === "phoneNumber" || phoneNumber) && (
-											<label
-												htmlFor="phoneNumber"
-												className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
-											>
-												Phone Number
-											</label>
-										)}
-										<input
-											id="phoneNumber"
-											value={phoneNumber}
-											type="tel"
-											placeholder={`${
-												focusedInput === "phoneNumber" || phoneNumber
-													? ""
-													: "Enter your phone number"
-											}`}
-											onFocus={(e) => handleFocus(e.target.id)}
-											onBlur={(e) => handleBlur(e.target.id, e.target.value)}
-											onChange={handlePhoneNumber}
-										/>
-										<p className="text-[14px] text-blackishGreen mt-4">
-											We’ll call or text you to confirm your number. Standard message and data rates
-											apply. Privacy Policy
-										</p>
-										{phoneNumberError && (
-											<p className="text-red-600 text-[14px] mt-2">{phoneNumberError}</p>
-										)}
-									</div>
-									<button
-										type="submit"
-										className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
-										onClick={handleLogin}
-									>
-										Continue
-									</button>
-								</form>
-								<div className="flex items-center gap-2 w-full mb-6 mt-6">
-									<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-									<p className="text-nowrap leading-[1] text-[0.875rem] text-blackishGreen opacity-50">
-										Or
-									</p>
-									<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
-								</div>
-								<div className="flex gap-2 w-full">
-									<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
-										<FacebookIcon color="#1877F2" />
-									</button>
-									<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
-										<GoogleIcon />
-									</button>
-									<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
-										<AppleIcon />
-									</button>
-								</div>
-								<button
-									type="submit"
-									className="content-center justify-items-center border-[1px] border-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
-								>
-									<div className="flex items-center gap-4 ">
-										<MailIcon />
-										<p className="leading-[17px] text-blackishGreen font-medium">
-											Continue with email
-										</p>
-									</div>
-								</button>
-							</div>
+							<LoginForm setLogin={setLogin} />
 						)}
 					</div>
 					<SummaryCard />
 				</div>
 			</div>
-			{addCard ? <AddCardModal closeModal={handleCloseAddCardModal} /> : ""}
+			{addCard && <AddCardModal closeModal={handleCloseCardModal} />}
 		</div>
 	);
 }
@@ -370,9 +217,8 @@ const AddCardModal = ({
 	} = usePaymentDetails();
 	return (
 		<div
-			className="fixed w-screen h-screen inset-0 flex justify-center items-center"
+			className="fixed w-screen h-screen inset-0 flex justify-center items-center bg-black/50 z-[100]"
 			onClick={closeModal}
-			style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
 		>
 			<div
 				className="bg-white w-full max-w-[640px] p-16 rounded-[12px]"
@@ -515,6 +361,161 @@ const AddCardModal = ({
 							always cancel your subscription.
 						</p>
 					</form>
+				</div>
+			</div>
+		</div>
+	);
+};
+
+const LoginForm = ({ setLogin }: { setLogin: (prev: boolean) => void }) => {
+	const {
+		phoneNumber,
+		phoneNumberError,
+		focusedInput,
+		handleBlur,
+		handleFocus,
+		handlePhoneNumber,
+	} = useFormState();
+
+	const handleLogin = () => {
+		setLogin(true);
+	};
+
+	return (
+		<div className="p-6">
+			<form className=" bg-white">
+				<h3 className="font-primary font-bold text-[20px] mb-4">Login or Sign up to book</h3>
+				{/* Phone Number */}
+				<div className="relative w-full">
+					{(focusedInput === "phoneNumber" || phoneNumber) && (
+						<label
+							htmlFor="phoneNumber"
+							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+						>
+							Phone Number
+						</label>
+					)}
+					<input
+						id="phoneNumber"
+						value={phoneNumber}
+						type="tel"
+						placeholder={`${
+							focusedInput === "phoneNumber" || phoneNumber ? "" : "Enter your phone number"
+						}`}
+						onFocus={(e) => handleFocus(e.target.id)}
+						onBlur={(e) => handleBlur(e.target.id, e.target.value)}
+						onChange={handlePhoneNumber}
+					/>
+					<p className="text-[14px] text-blackishGreen mt-4">
+						We’ll call or text you to confirm your number. Standard message and data rates apply.
+						Privacy Policy
+					</p>
+					{phoneNumberError && <p className="text-red-600 text-[14px] mt-2">{phoneNumberError}</p>}
+				</div>
+				<button
+					type="submit"
+					className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
+					onClick={handleLogin}
+				>
+					Continue
+				</button>
+			</form>
+			<div className="flex items-center gap-2 w-full mb-6 mt-6">
+				<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+				<p className="text-nowrap leading-[1] text-[0.875rem] text-blackishGreen opacity-50">Or</p>
+				<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+			</div>
+			<div className="flex gap-2 w-full">
+				<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
+					<FacebookIcon color="#1877F2" />
+				</button>
+				<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
+					<GoogleIcon />
+				</button>
+				<button className="flex items-center justify-center border border-mintGreen w-full p-2 rounded py-4">
+					<AppleIcon />
+				</button>
+			</div>
+			<button
+				type="submit"
+				className="content-center justify-items-center border-[1px] border-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4 mt-4"
+			>
+				<div className="flex items-center gap-4 ">
+					<MailIcon />
+					<p className="leading-[17px] text-blackishGreen font-medium">Continue with email</p>
+				</div>
+			</button>
+		</div>
+	);
+};
+
+const SelectCard = ({ openModal }: { openModal: () => void }) => {
+	const [card, setCard] = useState(false);
+	const handleCardChange = () => {
+		setCard(true);
+	};
+	return (
+		<div className=" p-4">
+			<form className="flex flex-col mb-4 bg-white rounded-[12px]">
+				<label
+					htmlFor="card"
+					className={`flex w-full justify-between items-center pl-4 pr-8 py-6 rounded-[12px] gap-[46px] cursor-pointer ${
+						card ? "bg-[#8DD3BB]" : ""
+					}`}
+				>
+					<div className="flex items-center gap-8">
+						<VisaLogo />
+						<p className="text-blackishGreen">
+							<span className="font-primary font-bold mr-2">**** 4321</span>
+							<span className="text-[14px]">02/27</span>
+						</p>
+					</div>
+					<input
+						type="radio"
+						name="cardDetails"
+						id="card"
+						className={`${styles.radio}`}
+						onChange={handleCardChange}
+					/>
+				</label>
+			</form>
+			<div
+				onClick={openModal}
+				style={{
+					width: "100%",
+					height: "188.83px",
+					position: "relative",
+					borderRadius: "15px",
+					cursor: "pointer",
+				}}
+			>
+				<svg
+					style={{
+						position: "absolute",
+						top: 0,
+						left: 0,
+					}}
+					width="100%"
+					height="188.83px"
+				>
+					<rect
+						x="5"
+						y="5"
+						width="calc(100% - 10px)"
+						height="calc(188.83px - 10px)"
+						rx="15"
+						ry="15"
+						fill="none"
+						stroke="#8DD3BB"
+						strokeWidth="2"
+						strokeDasharray="10 8"
+					/>
+				</svg>
+				<div className=" absolute left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2">
+					<div className="flex flex-col items-center gap-[10px]">
+						<AddIconLg />
+						<p className="text-[12px] font-medium text-blackishGreen opacity-75">Add a new card</p>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -19,7 +19,7 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
 	const [menuBox, setMenuBox] = useState(false);
 	return (
-		<nav className="w-full relative z-[1000] bg-white" role="banner">
+		<nav className="w-full relative z-[1] bg-white" role="banner">
 			<header
 				className="mx-auto max-w-[77rem] relative py-5 flex items-center justify-between h-max lg:px-4 md:py-4"
 				aria-label="Main Navigation"

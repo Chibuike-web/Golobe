@@ -4,8 +4,8 @@ import CVK from "../../assets/HotelListing/Cvk.png";
 
 export default function BookingDetail() {
 	return (
-		<div className="w-full mx-auto max-w-[77rem] mt-12">
-			<div className="w-full flex flex-col gap-8">
+		<div className="w-full  mt-12">
+			<div className="w-full flex flex-col gap-8 mx-auto max-w-[77rem]">
 				<div className="flex items-center">
 					<p className="text-slamon text-[14px] font-medium">Turkey</p> <RightArrowIcon />
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
@@ -14,9 +14,9 @@ export default function BookingDetail() {
 				<div className="flex justify-between w-full items-end"></div>
 			</div>
 
-			<div className="flex w-full gap-[40px]">
+			<div className="flex w-full gap-[40px] mx-auto max-w-[80rem]">
 				{/* Left */}
-				<div className="w-full">
+				<div className="w-full p-6 bg-white">
 					{/* Top */}
 					<div className="flex justify-between">
 						<h1 className="text-[24px] font-bold font-primary w-full max-w-[490px]">
@@ -30,7 +30,7 @@ export default function BookingDetail() {
 					<div className="flex items-center px-8 py-4 border-[0.5px] gap-6 rounded-[8px] mt-[24px]">
 						<img src={CVK} className="w-full max-w-[63px]" />
 						<div>
-							<h2 className="font-primary font-semibold text-[24px] leading-[em]">
+							<h2 className="-font-semibold text-[24px] leading-[em]">
 								CVK Park Bosphorus Hotel Istanbul
 							</h2>
 							<div>
@@ -43,6 +43,8 @@ export default function BookingDetail() {
 							</div>
 						</div>
 					</div>
+					{/* Bottom */}
+					<div></div>
 				</div>
 				{/* Right */}
 				<SummaryCard />
