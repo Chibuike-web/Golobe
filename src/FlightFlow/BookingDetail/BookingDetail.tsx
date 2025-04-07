@@ -20,12 +20,12 @@ import { Link } from "react-router-dom";
 
 export default function BookingDetail() {
 	const [login, setLogin] = useState<boolean>(false);
-	const [activeRadio, setActiveRadio] = useState("");
+	const [activeRadio, setActiveRadio] = useState<string | null>("full");
 
 	const [addCard, setAddCard] = useState(false);
 
 	const handleChange = (id: string) => {
-		setActiveRadio(id);
+		setActiveRadio((prev) => (prev === id ? null : id));
 	};
 
 	const handleOpenCardModal = () => {
@@ -77,8 +77,8 @@ export default function BookingDetail() {
 									</p>
 								</div>
 								<input
-									type="radio"
-									name="payment"
+									type="checkbox"
+									checked={activeRadio === "full"}
 									id="full"
 									className={`${styles.radio}`}
 									onChange={() => {
@@ -104,10 +104,10 @@ export default function BookingDetail() {
 								</div>
 
 								<input
-									type="radio"
-									name="payment"
-									id="part"
+									type="checkbox"
+									checked={activeRadio === "part"}
 									className={`${styles.radio}`}
+									id="part"
 									onChange={() => {
 										handleChange("part");
 									}}

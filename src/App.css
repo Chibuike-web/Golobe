@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 @font-face {
 	font-family: "TradeGothic LT Extended";
 	src: url("./fonts/primary/TradeGothicLT-Extended.woff") format("woff2"),
@@ -33,6 +27,7 @@
 body {
 	font-family: "Montserrat";
 	background-color: #fafbfc;
+	color: #112211;
 
 	@media (max-width: 560px) {
 		font-size: 14px;
