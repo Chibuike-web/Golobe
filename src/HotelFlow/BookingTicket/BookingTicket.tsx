@@ -1,14 +1,12 @@
 import {
 	BarCode,
 	BuildingIcon,
-	Calender,
 	ClockIcon,
 	DoorIcon,
 	FunnyArrowIcon,
 	LocationIcon,
 	RightArrowIcon,
 	ShareIcon,
-	AirlineSeatIcon,
 } from "../../assets/Icons";
 
 import CvkImage from "../../assets/FlightListing/Cvk.png";
@@ -27,7 +25,9 @@ export default function BookingTicket() {
 					<div className="flex justify-between w-full items-end">
 						{/* Left */}
 						<div>
-							<h2 className="font-primary font-bold text-2xl mb-4">Emirates A380 Airbus</h2>
+							<h2 className="font-primary font-bold text-2xl mb-4">
+								CVK Park Bosphorus Hotel Istanbul
+							</h2>
 							<div>
 								<div className="flex items-center mb-[8px]">
 									<LocationIcon />{" "}
@@ -61,8 +61,8 @@ export default function BookingTicket() {
 					<div className="border-[#EAEAEA] border-[1px] bg-white w-full flex rounded-[1rem] overflow-hidden">
 						<div className="bg-[#EBF6F2] flex flex-col gap-4 w-full max-w-[246px] pl-[24px] pt-[34.5px] pb-[34.5px] pr-[34px]">
 							<div>
-								<h1 className="font-semibold text-[32px]">12:00 pm</h1>
-								<p className="text-[12px] opacity-60">Newark(EWR)</p>
+								<h1 className="font-semibold text-[32px]">Thur, Dec 8</h1>
+								<p className="text-[12px] opacity-60">Check-In</p>
 							</div>
 							<figure className="flex flex-col items-center gap-[8px] w-max">
 								<FunnyArrowIcon />
@@ -70,8 +70,8 @@ export default function BookingTicket() {
 								<FunnyArrowIcon className="rotate-180" />
 							</figure>
 							<div>
-								<h1 className="font-semibold text-[32px]">12:00 pm</h1>
-								<p className="text-[12px] opacity-60">Newark(EWR)</p>
+								<h1 className="font-semibold text-[32px]">Fri, Dec 9</h1>
+								<p className="text-[12px] opacity-60">Check-Out</p>
 							</div>
 						</div>
 						<div className="bg-white w-full max-w-[610px] relative">
@@ -89,10 +89,9 @@ export default function BookingTicket() {
 								</h4>
 							</div>
 							<div className="flex gap-8 mt-6 ml-6">
-								<InfoItem icon={Calender} label="Date" value="Newark(EWR)" />
-								<InfoItem icon={ClockIcon} label="Fight time" value="12:00" />
-								<InfoItem icon={DoorIcon} label="Gate" value="A12" />
-								<InfoItem icon={AirlineSeatIcon} label="Seat" value="128" />
+								<InfoItem icon={ClockIcon} label="Check-In time" value="12:00pm" />
+								<InfoItem icon={ClockIcon} label="Check-Out time" value="12:00pm" />
+								<InfoItem icon={DoorIcon} label="Room no." value="On arrival" />
 							</div>
 							<div className="pl-[30px] pt-[35px]">
 								<h1 className="text-blackishGreen text-[32px] font-bold font-primary">EK</h1>
@@ -173,7 +172,7 @@ const InfoItem = ({ icon: Icon, label, value }: InfoItemProps) => {
 	return (
 		<div className="flex gap-2 items-center">
 			<figure className="w-8 h-8 bg-[#EBF6F2] flex justify-center items-center rounded-[4px]">
-				<Icon fill="#8DD3BB" />
+				<Icon />
 			</figure>
 			<div>
 				<p className="font-semibold text-[12px] opacity-60">{label}</p>

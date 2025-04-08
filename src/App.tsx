@@ -10,13 +10,14 @@ import ResetPassword from "./auth/resetpassword/ResetPassword";
 import FlightListing from "./FlightFlow/FlightListing/FlightListing";
 import FlightDetail from "./FlightFlow/FlightDetail/FlightDetail";
 import FlightBookingDetail from "./FlightFlow/BookingDetail/BookingDetail";
-import BookingTicket from "./FlightFlow/BookingTicket/BookingTicket";
+import FlightBookingTicket from "./FlightFlow/BookingTicket/BookingTicket";
 import Layout from "./Layout";
 import Favorites from "./Favorites/Favorites";
 import HotelSearch from "./HotelSearch/HotelSearch";
 import HotelListing from "./HotelFlow/HotelListing/HotelListing";
 import HotelDetail from "./HotelFlow/HotelDetail/HotelDetail";
 import HotelBookingDetail from "./HotelFlow/BookingDetail/BookingDetail";
+import HotelBookingTicket from "./HotelFlow/BookingTicket/BookingTicket";
 
 function App() {
 	return (
@@ -36,10 +37,11 @@ function App() {
 					<Route path="flightlisting" element={<FlightListing />} />
 					<Route path="flightlisting/flightdetail" element={<FlightDetail />} />
 					<Route path="flightlisting/bookingdetail" element={<FlightBookingDetail />} />
-					<Route path="flightlisting/bookingticket" element={<BookingTicket />} />
+					<Route path="flightlisting/bookingticket" element={<FlightBookingTicket />} />
 					<Route path="hotellisting" element={<HotelListing />} />
 					<Route path="hotellisting/hoteldetail" element={<HotelDetail />} />
 					<Route path="hotellisting/bookingdetail" element={<HotelBookingDetail />} />
+					<Route path="hotellisting/bookingticket" element={<HotelBookingTicket />} />
 					<Route path="favorites" element={<Favorites />} />
 				</Route>
 			</Routes>
