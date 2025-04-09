@@ -18,6 +18,7 @@ import HotelListing from "./HotelFlow/HotelListing/HotelListing";
 import HotelDetail from "./HotelFlow/HotelDetail/HotelDetail";
 import HotelBookingDetail from "./HotelFlow/BookingDetail/BookingDetail";
 import HotelBookingTicket from "./HotelFlow/BookingTicket/BookingTicket";
+import Account from "./AccountFlow/Account";
 
 function App() {
 	return (
@@ -43,6 +44,7 @@ function App() {
 					<Route path="hotellisting/bookingdetail" element={<HotelBookingDetail />} />
 					<Route path="hotellisting/bookingticket" element={<HotelBookingTicket />} />
 					<Route path="favorites" element={<Favorites />} />
+					<Route path="account" element={<Account />} />
 				</Route>
 			</Routes>
 		</Router>

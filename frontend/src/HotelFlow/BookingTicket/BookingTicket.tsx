@@ -9,7 +9,7 @@ import {
 	ShareIcon,
 } from "../../assets/Icons";
 
-import CvkImage from "../../assets/FlightListing/Cvk.png";
+import CvkImage from "../../assets/HotelListing/Cvk.png";
 import ProfileImage from "../../assets/FlightListing/ProfileImage.png";
 
 export default function BookingTicket() {
@@ -39,7 +39,7 @@ export default function BookingTicket() {
 						</div>
 						{/* Right */}
 						<div className="flex flex-col items-end gap-4">
-							<h2 className="text-[32px] font-bold text-slamon leading-[39px]">$240</h2>
+							<h2 className="text-[32px] font-bold text-slamon leading-[39px]">$265</h2>
 							<div className="flex gap-4">
 								<button
 									type="button"

@@ -1,6 +1,6 @@
 import {
 	BarCode,
-	BuildingIcon,
+	AirplaneIcon,
 	Calender,
 	ClockIcon,
 	DoorIcon,
@@ -11,12 +11,12 @@ import {
 	AirlineSeatIcon,
 } from "../../assets/Icons";
 
-import CvkImage from "../../assets/FlightListing/Cvk.png";
+import TicketImage from "../../assets/FlightListing/Ticket Image.png";
 import ProfileImage from "../../assets/FlightListing/ProfileImage.png";
 
 export default function BookingTicket() {
 	return (
-		<div className="bg-[#FAFAFA]">
+		<div>
 			<div className="mx-auto w-full max-w-[1232px] py-6 flex flex-col h-max lg:px-4 md:py-4">
 				<div className="w-full flex flex-col gap-8">
 					<div className="flex items-center">
@@ -39,7 +39,7 @@ export default function BookingTicket() {
 						</div>
 						{/* Right */}
 						<div className="flex flex-col items-end gap-4">
-							<h2 className="text-[32px] font-bold text-slamon leading-[39px]">$240</h2>
+							<h2 className="text-[32px] font-bold leading-[39px]">$240</h2>
 							<div className="flex gap-4">
 								<button
 									type="button"
@@ -66,7 +66,7 @@ export default function BookingTicket() {
 							</div>
 							<figure className="flex flex-col items-center gap-[8px] w-max">
 								<FunnyArrowIcon />
-								<BuildingIcon />
+								<AirplaneIcon />
 								<FunnyArrowIcon className="rotate-180" />
 							</figure>
 							<div>
@@ -104,7 +104,7 @@ export default function BookingTicket() {
 						</div>
 					</div>
 					<div className="bg-white w-full justify-items-center content-center max-w-[375px] rounded-[1rem] border-[#EAEAEA] border-[1px]">
-						<img src={CvkImage} alt="Logo for CVK" />
+						<img src={TicketImage} alt="Logo for CVK" />
 					</div>
 				</div>
 			</div>
