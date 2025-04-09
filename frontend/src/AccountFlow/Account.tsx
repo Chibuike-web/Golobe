@@ -2,6 +2,8 @@ import HeroImage from "../assets/Account/HeroImage.png";
 import { EditIcon, UploadIcon } from "../assets/Icons";
 import ProfileImage from "../assets/FlightListing/ProfileImage.png";
 import { useState } from "react";
+import AccountTab from "./AccountTab";
+import HistoryTab from "./HistoryTab";
 
 export default function Account() {
 	const [selectedTab, setSelectedTab] = useState<number>(1);
@@ -43,7 +45,7 @@ export default function Account() {
 					</div>
 				))}
 			</div>
-			Account
+			{selectedTab === 1 ? <AccountTab /> : <HistoryTab />}
 		</div>
 	);
 }
@@ -88,8 +90,4 @@ const Tabs = ({
 			)}
 		</button>
 	);
-};
-
-const AccountTab = () => {
-	return <div></div>;
 };
