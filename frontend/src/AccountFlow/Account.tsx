@@ -45,7 +45,13 @@ export default function Account() {
 					</div>
 				))}
 			</div>
-			{selectedTab === 1 ? <AccountTab /> : <HistoryTab />}
+			{selectedTab === 1 ? (
+				<AccountTab />
+			) : selectedTab === 2 ? (
+				<HistoryTab />
+			) : (
+				<div>Chibuike</div>
+			)}
 		</div>
 	);
 }
