@@ -144,12 +144,12 @@ const FlightMenu = ({ departure, arrival, departureTime, arrivalTime, image }: F
 				<div className="flex gap-6">
 					<div className="flex items-center gap-4">
 						<div>
-							<p className="w-max">{departure}</p>
+							<p className="w-max text-blackishGreen/75">{departure}</p>
 							<p>{departureTime}</p>
 						</div>
 						<span>—</span>
 						<div>
-							<p className="w-max">{arrival}</p>
+							<p className="w-max text-blackishGreen/75">{arrival}</p>
 							<p>{arrivalTime}</p>
 						</div>
 					</div>
@@ -209,9 +209,6 @@ type StayInfo = {
 	id: number;
 	checkInDate: string;
 	checkOutDate: string;
-	checkInTime: string;
-	roomNumber: string;
-	checkOutTime: string;
 	image: string;
 };
 
@@ -220,27 +217,18 @@ const stays: StayInfo[] = [
 		id: 1,
 		checkInDate: "Thur, Dec 8",
 		checkOutDate: "Fri, Dec 9",
-		checkInTime: "12:00pm",
-		roomNumber: "On arrival",
-		checkOutTime: "11:30am",
 		image: CVK,
 	},
 	{
 		id: 2,
 		checkInDate: "Thur, Dec 8",
 		checkOutDate: "Fri, Dec 9",
-		checkInTime: "12:00pm",
-		roomNumber: "On arrival",
-		checkOutTime: "11:30am",
 		image: CVK,
 	},
 	{
 		id: 3,
 		checkInDate: "Thur, Dec 8",
 		checkOutDate: "Fri, Dec 9",
-		checkInTime: "12:00pm",
-		roomNumber: "On arrival",
-		checkOutTime: "11:30am",
 		image: CVK,
 	},
 ];
@@ -253,9 +241,7 @@ const StaysTab = () => {
 					id,
 					checkInDate,
 					checkOutDate,
-					checkInTime,
-					roomNumber,
-					checkOutTime,
+
 					image,
 				}: StayInfo) => (
 					<StayMenu
@@ -263,9 +249,6 @@ const StaysTab = () => {
 						id={id}
 						checkInDate={checkInDate}
 						checkOutDate={checkOutDate}
-						checkInTime={checkInTime}
-						roomNumber={roomNumber}
-						checkOutTime={checkOutTime}
 						image={image}
 					/>
 				)
@@ -274,14 +257,7 @@ const StaysTab = () => {
 	);
 };
 
-const StayMenu = ({
-	checkInDate,
-	checkOutDate,
-	checkInTime,
-	roomNumber,
-	checkOutTime,
-	image,
-}: StayInfo) => {
+const StayMenu = ({ checkInDate, checkOutDate, image }: StayInfo) => {
 	return (
 		<div className="flex items-center justify-between bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] px-6 py-8">
 			<div className="flex items-center gap-8">
@@ -303,7 +279,7 @@ const StayMenu = ({
 					<span></span>
 					<div className="grid grid-cols-2 gap-x-6 gap-y-[8px]">
 						<InfoItem icon={Calender} label="Check-In time" value="12:00pm" />
-						<InfoItem icon={DoorIcon} label="Room no." value="On arrival" />
+						<InfoItem icon={ClockIcon} label="Room no." value="On arrival" />
 						<InfoItem icon={ClockIcon} label="Check-Out time" value="11:30am" />
 					</div>
 				</div>

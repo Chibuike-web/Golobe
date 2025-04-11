@@ -4,6 +4,7 @@ import ProfileImage from "../assets/FlightListing/ProfileImage.png";
 import { useState } from "react";
 import AccountTab from "./AccountTab";
 import HistoryTab from "./HistoryTab";
+import PaymentMethods from "./PaymentMethods";
 
 export default function Account() {
 	const [selectedTab, setSelectedTab] = useState<number>(1);
@@ -45,13 +46,7 @@ export default function Account() {
 					</div>
 				))}
 			</div>
-			{selectedTab === 1 ? (
-				<AccountTab />
-			) : selectedTab === 2 ? (
-				<HistoryTab />
-			) : (
-				<div>Chibuike</div>
-			)}
+			{selectedTab === 1 ? <AccountTab /> : selectedTab === 2 ? <HistoryTab /> : <PaymentMethods />}
 		</div>
 	);
 }
