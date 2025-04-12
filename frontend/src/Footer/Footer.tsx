@@ -4,7 +4,7 @@ import FooterLogo from "../assets/LandingPage/Logo.svg";
 
 export default function FooterSection() {
 	return (
-		<section className="pb-[64px] flex flex-col bg-mintGreen mt-[241px] px-4">
+		<section className="pb-[4rem] flex flex-col bg-mintGreen mt-[15.0625rem] px-4">
 			<CTA />
 			<Footer />
 		</section>
@@ -15,24 +15,21 @@ const CTA = () => {
 	return (
 		<section
 			aria-labelledby="cta-heading"
-			className="w-full mt-[-151px] max-w-[77rem] mx-auto flex items-end justify-between bg-[#CDEAE1] px-6 rounded-[20px] lg:flex-col lg:items-start"
+			className="w-full mt-[-9.4375rem] max-w-[77rem] mx-auto flex items-end justify-between bg-[#CDEAE1] px-6 rounded-[1.25rem] lg:flex-col lg:items-start"
 		>
-			<div className="py-6 w-full max-w-[600px]">
+			<div className="py-6 w-full max-w-[37.5rem]">
 				<header>
 					<h2
 						id="cta-heading"
-						className="font-primary text-blackishGreen font-bold text-[44px] md:text-[2rem] md:leading-[40px] w-full max-w-[364px] leading-[54px] mb-[24px]"
+						className="font-primary text-blackishGreen font-bold text-[2.75rem] md:text-[2rem] md:leading-[2.5rem] w-full max-w-[22.75rem] leading-[3.375rem] mb-[1.5rem]"
 					>
 						Subscribe Newsletter
 					</h2>
-					<p
-						className="font-primary text-xl font-bold mb-[8px]"
-						style={{ color: "rgb(17, 34, 17, 0.8)" }}
-					>
+					<p className="font-primary text-xl font-bold mb-[0.5rem] text-[rgba(17,34,17,0.8)]">
 						The Travel
 					</p>
 				</header>
-				<p className=" font-medium mb-4 w-full" style={{ color: "rgb(17, 34, 17, 0.7)" }}>
+				<p className=" font-medium mb-4 w-full text-[rgba(17,34,17,0.7)]">
 					Get inspired! Receive travel discounts, tips, and behind-the-scenes stories.
 				</p>
 				<form
@@ -47,12 +44,12 @@ const CTA = () => {
 						id="email-address"
 						placeholder="Your email address"
 						required
-						className="px-4 py-[18px] w-full rounded-[4px]"
+						className="px-4 py-[1.125rem] w-full rounded-[0.25rem]"
 					/>
 					<input
 						type="submit"
 						value="Subscribe"
-						className="px-4 py-[18px] rounded-[4px] bg-blackishGreen text-white"
+						className="px-4 h-[3.5rem] rounded-[0.25rem] bg-blackishGreen text-white"
 					/>
 				</form>
 			</div>
@@ -72,7 +69,7 @@ const FooterSectionColumn = ({ title, items }: FooterColumnProps) => (
 	<section className="flex flex-col gap-4">
 		<h2 className="text-blackishGreen font-bold font-primary">{title}</h2>
 		<ul
-			className="flex flex-col gap-3 text-[14px] font-medium"
+			className="flex flex-col gap-3 text-[0.875rem] font-medium"
 			style={{ color: "rgb(17, 34, 17, 0.7)" }}
 		>
 			{items.map((item, index) => (
@@ -84,7 +81,7 @@ const FooterSectionColumn = ({ title, items }: FooterColumnProps) => (
 
 const Footer = () => {
 	return (
-		<footer className="max-w-[77rem] w-full mt-[4rem] mx-auto flex gap-[140px] md:gap-[70px] md:flex-col">
+		<footer className="max-w-[77rem] w-full mt-[4rem] mx-auto flex gap-[8.75rem] md:gap-[4.375rem] md:flex-col">
 			<div className="w-max">
 				<img src={FooterLogo} alt="Footer logo" />
 				<div className="flex justify-between mt-6" aria-label="Social media links">

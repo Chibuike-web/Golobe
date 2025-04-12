@@ -10,7 +10,7 @@ type Reviews = {
 	tagline: string;
 	message: string;
 	extra: string[];
-	rating: JSX.Element;
+	rating: number;
 	sender: string;
 	business: string;
 	reviewSourceIcon: JSX.Element;
@@ -24,7 +24,7 @@ const reviews: Reviews[] = [
 		message:
 			'"Really appreciate the help and support from the staff during these tough times. Shoutout to Katie for helping me always, even when I was out of the country. And always available when needed."',
 		extra: ["View more", "View less"],
-		rating: <StarIcon />,
+		rating: 5,
 		sender: "Olga",
 		business: "Weave Studios - Kai Tak",
 		reviewSourceIcon: <GoogleIcon />,
@@ -36,7 +36,7 @@ const reviews: Reviews[] = [
 		message:
 			'"A real sense of community, nurtured”Really appreciate the help and support from the staff during these tough times. Shoutout to Katie for helping me always, even when I was out of the country. And always available when needed.View moreOlgaWeave Studios – Kai TakGoogle"',
 		extra: ["View more", "View less"],
-		rating: <StarIcon />,
+		rating: 5,
 		sender: "Thomas",
 		business: "Weave Studios - Olympic",
 		reviewSourceIcon: <GoogleIcon />,
@@ -48,7 +48,7 @@ const reviews: Reviews[] = [
 		message:
 			"Really appreciate the help and support from the staff during these tough times. Shoutout to Katie for helping me always, even when I was out of the country. And always available when needed.",
 		extra: ["View more", "View less"],
-		rating: <StarIcon />,
+		rating: 5,
 		sender: "Eliot",
 		business: "Weave Studios - Kai Tak",
 		reviewSourceIcon: <GoogleIcon />,
@@ -59,18 +59,18 @@ const reviews: Reviews[] = [
 
 export default function Reviews() {
 	return (
-		<section className="flex flex-col mt-20 w-full max-w-[1232px] mx-auto px-4">
+		<section className="flex flex-col mt-20 w-full max-w-[77rem] mx-auto px-4">
 			<header className="w-full flex items-center justify-between md:flex-col md:items-start md:gap-4">
 				<aside>
 					<h2 className="text-[2rem] font-bold">Reviews</h2>
 					<p className="text-black">What people says about Golobe facilities</p>
 				</aside>
-				<button className="text-[14px] px-4 py-3 rounded-[4px] text-blackishGreen border-mintGreen border-[1px]">
+				<button className="text-[0.875rem] px-4 py-3 rounded-[0.25rem] text-blackishGreen border-mintGreen border-[0.0625rem]">
 					See All
 				</button>
 			</header>
 			<div
-				className={`flex items-start gap-[74px] mt-[2.5rem] overflow-x-scroll overflow-y-hidden min-h-[750px] ${styles["scroll-container"]}`}
+				className={`flex items-start gap-[4.625rem] mt-[2.5rem] overflow-x-scroll overflow-y-hidden min-h-[46.875rem] ${styles["scroll-container"]}`}
 			>
 				{reviews.map((review, index) => (
 					<ReviewCard
@@ -105,12 +105,10 @@ const ReviewCard = ({
 	const [isExpanded, setIsExpanded] = useState(false);
 	return (
 		<aside className={styles["review-card"]}>
-			<h2 className="font-primary text-blackishGreen text-2xl font-bold mb-4">{tagline}</h2>
-			<p
-				className={`text-blackishGreen opacity-50 mb-3 ${!isExpanded ? styles["clamp-text"] : ""}`}
-			>
-				{message}
-			</p>
+			<h2 className="font-primary text-blackishGreen text-2xl font-bold mb-4 md:text-xl">
+				{tagline}
+			</h2>
+			<p className={`opacity-50 mb-3 ${!isExpanded ? styles["clamp-text"] : ""}`}>{message}</p>
 			<button
 				className="self-end cursor-pointer"
 				onClick={() => {
@@ -121,13 +119,15 @@ const ReviewCard = ({
 			</button>
 			<div className="mt-4">
 				<figure className="flex gap-3">
-					{[...Array(5)].map((index) => (
-						<span key={index}>{rating}</span>
+					{[...Array(rating)].map((index) => (
+						<span key={index}>
+							<StarIcon />
+						</span>
 					))}
 				</figure>
-				<p className="font-primary text-[14px] font-bold mt-5 text-blackishGreen">{sender}</p>
-				<span className="text-[12px] text-blackishGreen opacity-50">{business}</span>
-				<figure className="flex mt-[12px] mb-10 items-center text-[12px] font-primary text-blackishGreen ">
+				<p className="font-primary text-[0.875rem] font-bold mt-5 text-blackishGreen">{sender}</p>
+				<span className="text-[0.75rem] text-blackishGreen opacity-50">{business}</span>
+				<figure className="flex mt-[0.75rem] mb-10 items-center text-[0.75rem] font-primary font-bold text-blackishGreen ">
 					{reviewSourceIcon}
 					<p className="opacity-50">{reviewSources}</p>
 				</figure>

@@ -52,7 +52,7 @@ function Navbar() {
 					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
 				</figure>
 				<div className="flex gap-[1.875rem] items-center md:hidden">
-					<Link to="./login" className="text-white text-sm font-semibold">
+					<Link to="/login" className="text-white text-sm font-semibold">
 						Login
 					</Link>
 					<Link
@@ -244,7 +244,7 @@ function FlightSearchForm() {
 							value={trip}
 							type="text"
 							placeholder="Return"
-							className="h-16"
+							className="border-[0.0625rem] border-[#79747e]"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
