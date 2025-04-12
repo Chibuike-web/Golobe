@@ -11,6 +11,7 @@ import {
 } from "../../assets/Icons";
 import GolobeLogo from "../../assets/LandingPage/golobelogo.svg";
 import { useFlightSearchFormState } from "../../Hooks";
+import { motion } from "motion/react";
 
 export default function HeroSection() {
 	return (
@@ -31,7 +32,7 @@ function Navbar() {
 	return (
 		<header className="w-full" role="banner">
 			<nav
-				className="px-8 py-6 flex items-center justify-between h-max md:px-4 md:py-4"
+				className="sticky top-0 z-50 px-8 py-6 flex items-center justify-between h-max md:px-4 md:py-4"
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">
@@ -73,15 +74,30 @@ function HeroContent() {
 			className="flex flex-col items-center mt-[3.375rem] md:mt-[1rem] justify-center md:gap-3"
 			role="main"
 		>
-			<h2 className="font-primary text-white text-[2.8125rem] md:text-[1.2rem] font-bold text-center">
+			<motion.p
+				className="font-primary text-white text-[2.8125rem] md:text-[1.2rem] font-bold text-center"
+				initial={{ opacity: 0, y: 50 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8 }}
+			>
 				Helping Others
-			</h2>
-			<h1 className="font-primary text-white text-[5rem] md:text-[3rem] md:leading-[3rem] lg:leading-[5rem] font-bold text-center">
+			</motion.p>
+			<motion.h1
+				className="font-primary text-white text-[5rem] md:text-[3rem] md:leading-[3rem] lg:leading-[5rem] font-bold text-center"
+				initial={{ opacity: 0, y: 50 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.8, delay: 0.2 }}
+			>
 				LIVE & TRAVEL
-			</h1>
-			<p className="text-white font-semibold text-[1.25rem] md:text-[0.8rem]">
+			</motion.h1>
+			<motion.p
+				className="text-white font-semibold text-[1.25rem] md:text-[0.8rem]"
+				initial={{ opacity: 0, y: 50 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 1, delay: 0.4 }}
+			>
 				Special offers to suit your plan
-			</p>
+			</motion.p>
 		</div>
 	);
 }
