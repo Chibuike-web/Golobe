@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import { Link } from "react-router-dom";
+
 import {
 	AirplaneIcon,
 	BedIcon,
@@ -9,69 +9,24 @@ import {
 	DownArrowIcon,
 	SwapIcon,
 } from "../../assets/Icons";
-import GolobeLogo from "../../assets/LandingPage/golobelogo.svg";
 import { useFlightSearchFormState } from "../../Hooks";
 import { motion } from "motion/react";
 
 export default function HeroSection() {
 	return (
-		<section className="mx-auto max-w-[90rem] flex flex-col items-center w-full relative h-[48.875rem] px-4 pt-4">
+		<section className="mx-auto max-w-[90rem] flex flex-col items-center w-full px-4 pt-4">
 			<div className={styles.herosection}>
-				<div className={styles.content}>
-					<Navbar />
-					<HeroContent />
-				</div>
-				<div className={styles.backdrop} aria-hidden="true"></div>
+				<HeroContent />
 			</div>
 			<FlightSearchForm />
 		</section>
 	);
 }
 
-function Navbar() {
-	return (
-		<header className="w-full" role="banner">
-			<nav
-				className="sticky top-0 z-50 px-8 py-6 flex items-center justify-between h-max md:px-4 md:py-4"
-				aria-label="Main Navigation"
-			>
-				<ul className="flex gap-8 md:hidden">
-					<li>
-						<Link to="/flightsearch" className="flex space-x-1 items-center">
-							<AirplaneIcon color="white" />
-							<span className="text-sm font-semibold text-white">Find Flight</span>
-						</Link>
-					</li>
-					<li>
-						<Link to="/hotelsearch" className="flex space-x-1 items-center">
-							<BedIcon color="white" />
-							<span className="text-sm font-semibold text-white">Find Stays</span>
-						</Link>
-					</li>
-				</ul>
-				<figure>
-					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
-				</figure>
-				<div className="flex gap-[1.875rem] items-center md:hidden">
-					<Link to="/login" className="text-white text-sm font-semibold">
-						Login
-					</Link>
-					<Link
-						to="/signup"
-						className="text-sm font-semibold bg-white text-blackishGreen px-[1.5rem] py-[0.75rem] rounded-[0.5rem]"
-					>
-						Sign up
-					</Link>
-				</div>
-			</nav>
-		</header>
-	);
-}
-
 function HeroContent() {
 	return (
 		<div
-			className="flex flex-col items-center mt-[3.375rem] md:mt-[1rem] justify-center md:gap-3"
+			className="flex z-10 flex-col items-center mt-[10rem] md:mt-[5rem] justify-center md:gap-3"
 			role="main"
 		>
 			<motion.p

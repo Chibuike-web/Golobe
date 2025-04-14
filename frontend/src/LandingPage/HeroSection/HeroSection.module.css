@@ -1,52 +1,46 @@
 .herosection {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	min-height: 40.875rem;
 	width: 100%;
 	border-radius: 1.5rem;
-	position: relative; /* Allows backdrop to align with content */
+	position: relative;
 	background-image: url("../../assets/landingpage/HeroImage.png");
 	background-size: cover;
 	background-position: center;
-	overflow: hidden;
 
-	@media (max-width: 760px) {
-		min-height: 24rem;
+	&::after {
+		content: "";
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+		border-radius: inherit;
 	}
-}
 
-.backdrop {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: 1;
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-	border-radius: inherit;
-}
-
-.content {
-	position: relative;
-	z-index: 2;
+	@media (max-width: 47.5rem) {
+		min-height: 26rem;
+	}
 }
 
 .flights::after {
 	content: "";
 	position: absolute;
-	bottom: -0.9375rem; /* 15px converted to rem */
+	bottom: -0.9375rem;
 	left: 0;
 	background-color: #8dd3bb;
-	height: 0.25rem; /* 4px converted to rem */
+	height: 0.25rem;
 	width: 100%;
 }
 
 .stays::after {
 	content: "";
 	position: absolute;
-	bottom: -0.9375rem; /* 15px converted to rem */
+	bottom: -0.9375rem;
 	left: 0;
 	background-color: #8dd3bb;
-	height: 0.25rem; /* 4px converted to rem */
+	height: 0.25rem;
 	width: 100%;
 }

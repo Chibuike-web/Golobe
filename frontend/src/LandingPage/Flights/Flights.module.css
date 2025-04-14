@@ -2,36 +2,36 @@
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)),
 		url("../../assets/LandingPage/Flights.png");
 	background-repeat: no-repeat, no-repeat;
-	background-size: 100% 280px, auto;
-	background-position: bottom; /* Position gradient on the left and image as needed */
-	flex: 1 0 300px;
-	height: 559px;
-	max-width: 604px;
+	background-size: 100% 17.5rem, auto;
+	background-position: bottom;
+	flex: 1 0 18.75rem;
+	height: 34.9375rem;
+	max-width: 37.75rem;
 	overflow: hidden;
-	border-radius: 20px;
+	border-radius: 1.25rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: end;
 	align-items: center;
 	color: white;
-	padding: 24px 50px;
+	padding: 1.5rem 3.125rem;
 }
 
 .hotels {
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)),
 		url("../../assets/LandingPage/Hotels.png");
 	background-repeat: no-repeat, no-repeat;
-	background-size: 100% 280px, auto;
-	background-position: bottom; /* Position gradient on the left and image as needed */
-	flex: 1 0 300px;
-	height: 559px;
-	max-width: 604px;
+	background-size: 100% 17.5rem, auto;
+	background-position: bottom;
+	flex: 1 0 18.75rem;
+	height: 34.9375rem;
+	max-width: 37.75rem;
 	overflow: hidden;
-	border-radius: 20px;
+	border-radius: 1.25rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: center;
 	color: white;
-	padding: 24px 50px;
+	padding: 1.5rem 3.125rem;
 }
