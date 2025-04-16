@@ -116,7 +116,7 @@ function HotelSearchForm() {
 				</div>
 
 				{/* Form  2 */}
-				<div className="relative w-full md:max-w-full">
+				<div className="relative w-full md:max-w-full border border-[#79747E]">
 					{(focusedInput === "checkIn" || checkIn) && (
 						<label
 							htmlFor="checkIn"
@@ -125,7 +125,7 @@ function HotelSearchForm() {
 							Check-In
 						</label>
 					)}
-					<div className="relative">
+					<div className="relative ">
 						<input
 							id="checkIn"
 							value={checkIn}

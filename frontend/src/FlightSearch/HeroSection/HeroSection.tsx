@@ -1,14 +1,11 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
 import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../assets/Icons";
-
 import { useFlightSearchFormState } from "../../Hooks";
-import Navbar from "../Navbar/Navbar";
 
 export default function HeroSection() {
 	return (
 		<section className="flex flex-col items-center w-full min-h-[48.875rem]">
-			<Navbar />
 			<HeroContent />
 			<FlightSearchForm />
 		</section>
@@ -166,7 +163,7 @@ function FlightSearchForm() {
 							id="trip"
 							value={trip}
 							type="text"
-							className="h-16"
+							className="h-[56px] border border-[#79747e]"
 							placeholder="Return"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}

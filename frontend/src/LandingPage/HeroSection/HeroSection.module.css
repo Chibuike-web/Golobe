@@ -3,11 +3,16 @@
 	flex-direction: column;
 	min-height: 40.875rem;
 	width: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 2rem;
+	max-width: 86.25rem;
 	border-radius: 1.5rem;
-	position: relative;
+	position: absolute;
 	background-image: url("../../assets/landingpage/HeroImage.png");
 	background-size: cover;
 	background-position: center;
+	z-index: -100;
 
 	&::after {
 		content: "";

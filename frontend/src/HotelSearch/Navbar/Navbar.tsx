@@ -5,7 +5,7 @@ import styles from "./Navbar.module.css";
 
 export default function Navbar() {
 	return (
-		<header className="w-full bg-white" role="banner">
+		<header className="w-full bg-white sticky top-0" role="banner">
 			<nav
 				className="mx-auto max-w-[77rem] py-6 flex items-center justify-between h-max lg:px-4 md:py-4"
 				aria-label="Main Navigation"

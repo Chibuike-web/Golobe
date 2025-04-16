@@ -23,9 +23,8 @@ export default function Navbar() {
 
 	return (
 		<nav
-			className={` flex items-center justify-between px-[6rem] py-[2rem] w-full z-[100] mx-auto max-w-[96rem] md:px-4 md:py-4 ${
-				scrollHeight ? styles.sticky : styles.normal
-			}`}
+			className={` flex items-center justify-between px-[2rem] py-[2rem] mt-[2rem] w-full z-[100] mx-auto max-w-[86.25rem] md:px-4 md:py-4 
+				${scrollHeight && styles.sticky}`}
 			aria-label="Main Navigation"
 		>
 			<ul className="flex gap-8 md:hidden">

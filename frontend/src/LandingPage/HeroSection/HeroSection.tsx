@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-
 import {
 	AirplaneIcon,
 	BedIcon,
@@ -14,10 +13,8 @@ import { motion } from "motion/react";
 
 export default function HeroSection() {
 	return (
-		<section className="mx-auto max-w-[90rem] flex flex-col items-center w-full px-4 pt-4">
-			<div className={styles.herosection}>
-				<HeroContent />
-			</div>
+		<section className="mx-auto max-w-[86.25rem] flex flex-col items-center w-full px-4 pt-4">
+			<HeroContent />
 			<FlightSearchForm />
 		</section>
 	);
@@ -26,7 +23,7 @@ export default function HeroSection() {
 function HeroContent() {
 	return (
 		<div
-			className="flex z-10 flex-col items-center mt-[10rem] md:mt-[5rem] justify-center md:gap-3"
+			className="flex z-10 flex-col items-center mt-[54px] md:mt-[5rem] justify-center md:gap-3"
 			role="main"
 		>
 			<motion.p
@@ -128,7 +125,7 @@ function FlightSearchForm() {
 	let stays = false;
 	return (
 		<aside
-			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[-6.25rem] bg-white px-8 pt-4 pb-8 rounded-2xl md:px-4"
+			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[150px]  bg-white px-8 pt-4 pb-8 rounded-2xl md:px-4"
 			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
 			aria-labelledby="flight-search-form"
 		>
