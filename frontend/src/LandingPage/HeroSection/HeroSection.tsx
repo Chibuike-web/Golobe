@@ -156,13 +156,17 @@ function FlightSearchForm() {
 				{/* Form 1 */}
 				<div className="relative w-full">
 					{(focusedInput === "from" || from || focusedInput === "to" || to) && (
-						<label
+						<motion.label
+							key="fromToLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							id="fromTo"
 							htmlFor="from-to"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							From - To
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] ${
@@ -199,12 +203,17 @@ function FlightSearchForm() {
 				{/* Form  2 */}
 				<div className="relative w-full max-w-[8.75rem] md:max-w-full">
 					{(focusedInput === "trip" || trip) && (
-						<label
+						<motion.label
+							key="tripLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
+							id="trip"
 							htmlFor="trip"
 							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Trip
-						</label>
+						</motion.label>
 					)}
 					<div className="relative ">
 						<input
@@ -229,12 +238,17 @@ function FlightSearchForm() {
 						departDate ||
 						focusedInput === "returnDate" ||
 						returnDate) && (
-						<label
+						<motion.label
+							key="departReturnLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
+							id="departReturn"
 							htmlFor="depart-return"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Depart - Return
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] ${
@@ -269,12 +283,17 @@ function FlightSearchForm() {
 						passenger ||
 						focusedInput === "travelClass" ||
 						travelClass) && (
-						<label
+						<motion.label
+							key="passengerClassLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
+							id="passengerClassLabel"
 							htmlFor="Passenger - Class"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Passenger - Class
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] ${

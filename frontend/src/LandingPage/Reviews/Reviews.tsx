@@ -4,6 +4,7 @@ import Eliot from "../../assets/LandingPage/Eliot.png";
 import { GoogleIcon, StarIcon } from "../../assets/Icons";
 import styles from "./Reviews.module.css";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 // Define a type for Reviews
 type Reviews = {
@@ -108,7 +109,17 @@ const ReviewCard = ({
 			<h2 className="font-primary text-blackishGreen text-2xl font-bold mb-4 md:text-xl">
 				{tagline}
 			</h2>
-			<p className={`opacity-50 mb-3 ${!isExpanded ? styles["clamp-text"] : ""}`}>{message}</p>
+			<motion.div
+				initial={{ opacity: 0, y: 10 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.3, ease: "easeOut" }}
+				className="opacity-50 mb-3"
+			>
+				{/* 2) p tag simply clamps or not */}
+				<motion.p layout className={!isExpanded ? styles["clamp-text"] : ""}>
+					{message}
+				</motion.p>
+			</motion.div>
 			<button
 				className="self-end cursor-pointer"
 				onClick={() => {

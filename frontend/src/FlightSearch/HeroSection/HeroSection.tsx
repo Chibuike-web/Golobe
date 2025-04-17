@@ -173,6 +173,7 @@ function FlightSearchForm() {
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
+							id="trip"
 							htmlFor="trip"
 							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
@@ -203,6 +204,11 @@ function FlightSearchForm() {
 						focusedInput === "returnDate" ||
 						returnDate) && (
 						<motion.label
+							key="departReturnLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
+							id="departReturn"
 							htmlFor="depart-return"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
@@ -242,12 +248,17 @@ function FlightSearchForm() {
 						passenger ||
 						focusedInput === "travelClass" ||
 						travelClass) && (
-						<label
+						<motion.label
+							key="departReturnLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
+							id="departReturn"
 							htmlFor="Passenger - Class"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Passenger - Class
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] ${
