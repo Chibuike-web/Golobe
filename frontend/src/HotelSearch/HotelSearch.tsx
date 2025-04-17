@@ -42,7 +42,7 @@ export default function HotelSearch() {
 			<Navbar />
 			<Herosection />
 			<section className=" mx-auto max-w-[77rem] mt-20 w-full md:justify-items-center">
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(238px,max-content))] gap-[90px]">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(14.875rem,max-content))] gap-[5.625rem]">
 					{hotelOptions.map(({ destination, image }: HotelOption) => (
 						<HotelCard destination={destination} image={image} />
 					))}
@@ -50,16 +50,16 @@ export default function HotelSearch() {
 			</section>
 			<Bookings />
 			<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
-				<header className="w-full mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+				<header className="w-full mb-[1.5rem] flex justify-between items-center lg:px-4 md:flex-col md:items-start">
 					<div>
-						<h2 className="text-[32px] mb-4">Fall into travel</h2>
-						<p className="w-full max-w-[851px]">
+						<h2 className="text-[2rem] mb-[1rem]">Fall into travel</h2>
+						<p className="w-full max-w-[53.188rem]">
 							Going somewhere to celebrate this season? Whether you’re going home or somewhere to
 							roam, we’ve got the travel tools to get you to your destination.
 						</p>
 					</div>
 					<button
-						className="text-[14px] px-4 py-3 rounded-[4px] text-blackishGreen border-mintGreen border-[1px]"
+						className="text-[0.875rem] px-[1rem] py-[0.75rem] rounded-[0.25rem] text-blackishGreen border-mintGreen border-[1px]"
 						aria-label="See all offers"
 					>
 						See all
@@ -67,23 +67,23 @@ export default function HotelSearch() {
 				</header>
 
 				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 lg:px-4">
-					<article className="w-full row-span-2 flex flex-col p-6 bg-mintGreen rounded-[20px]">
-						<header className="flex justify-between items-start mb-6">
-							<h2 className="font-primary font-bold text-[40px] leading-[51px] max-w-[363px] w-full">
+					<article className="w-full row-span-2 flex flex-col p-[1.5rem] bg-mintGreen rounded-[1.25rem]">
+						<header className="flex justify-between items-start mb-[1.5rem]">
+							<h2 className="font-primary font-bold text-[2.5rem] leading-[3.188rem] max-w-[22.688rem] w-full">
 								Backpacking Sri Lanka
 							</h2>
-							<div className="bg-white flex flex-col p-2 items-center rounded-[8px]">
-								<span className="text-[14px] text-blackishGreen">From</span>
-								<span className="text-[20px] font-semibold text-blackishGreen">$700</span>
+							<div className="bg-white flex flex-col p-[0.5rem] items-center rounded-[0.5rem]">
+								<span className="text-[0.875rem] text-blackishGreen">From</span>
+								<span className="text-[1.25rem] font-semibold text-blackishGreen">$700</span>
 							</div>
 						</header>
-						<p className="text-[14px] text-blackishGreen ">
+						<p className="text-[0.875rem] text-blackishGreen ">
 							Traveling is a unique experience as it's the best way to unplug from the pushes and
 							pulls of daily life. It helps us to forget about our problems, frustrations, and fears
 							at home. During our journey, we experience life in different ways. We explore new
 							places, cultures, cuisines, traditions, and ways of living.
 						</p>
-						<button className="w-full bg-white py-[15px] rounded-[4px] mt-auto lg:mt-[120px]">
+						<button className="w-full bg-white py-[0.938rem] rounded-[0.25rem] mt-auto lg:mt-[7.5rem]">
 							Book Flight
 						</button>
 					</article>
@@ -113,7 +113,7 @@ const HotelCard = ({ destination, image }: HotelOption) => {
 			<img
 				src={image}
 				alt={`View of ${destination}`}
-				className="destination-image w-full max-w-[90px]"
+				className="destination-image w-full max-w-[5.625rem]"
 			/>
 			<div className="flex flex-col w-full gap-2">
 				<h3 className="text-blackishGreen font-semibold opacity-70 text-[1rem]">{destination}</h3>

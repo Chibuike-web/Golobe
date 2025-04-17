@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./HeroSection.module.css";
 import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../assets/Icons";
 import { useFlightSearchFormState } from "../../Hooks";
+import { motion } from "motion/react";
 
 export default function HeroSection() {
 	return (
@@ -16,10 +17,22 @@ function HeroContent() {
 	return (
 		<div className={`text-white w-full min-h-[537px] ${styles.heroimage}`}>
 			<div className="mx-auto max-w-[77rem] lg:px-4">
-				<h2 className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]">
+				<motion.h2
+					className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]"
+					initial={{ opacity: 0, x: -90 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 1 }}
+				>
 					Make your travel wishlist, we’ll do the rest
-				</h2>
-				<p className="text-[20px]">Special offers to suit your plan</p>
+				</motion.h2>
+				<motion.p
+					className="text-[20px]"
+					initial={{ opacity: 0, x: -100 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 1, delay: 0.1 }}
+				>
+					Special offers to suit your plan
+				</motion.p>
 			</div>
 		</div>
 	);
@@ -108,13 +121,17 @@ function FlightSearchForm() {
 				{/* Form 1 */}
 				<div className="relative w-full">
 					{(focusedInput === "from" || from || focusedInput === "to" || to) && (
-						<label
+						<motion.label
+							key="fromToLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							id="fromTo"
 							htmlFor="from-to"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							From - To
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] ${
@@ -151,12 +168,16 @@ function FlightSearchForm() {
 				{/* Form  2 */}
 				<div className="relative w-full max-w-[8.75rem] md:max-w-full">
 					{(focusedInput === "trip" || trip) && (
-						<label
+						<motion.label
+							key="tripLabel"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="trip"
 							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Trip
-						</label>
+						</motion.label>
 					)}
 					<div className="relative">
 						<input
@@ -181,12 +202,12 @@ function FlightSearchForm() {
 						departDate ||
 						focusedInput === "returnDate" ||
 						returnDate) && (
-						<label
+						<motion.label
 							htmlFor="depart-return"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Depart - Return
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] ${

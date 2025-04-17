@@ -17,123 +17,123 @@ import Beach from "../assets/FlightSearch/Beach.png";
 import Footer from "../Footer/Footer";
 import Bookings from "./Bookings/Bookings";
 import Navbar from "./Navbar/Navbar";
+
 export default function FlightSearch() {
 	return (
 		<div className="flex flex-col">
 			<Navbar />
-
 			<Herosection />
 			<section>
-				<div className="mx-auto max-w-[90rem] px-[104px] w-full mt-20 mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+				<div className="mx-auto max-w-[77rem] w-full mt-[1.25rem] mb-[1.5rem] flex justify-between items-center lg:px-4 md:flex-col md:items-start">
 					<div>
-						<h2 className="text-[32px] mb-4">Let's go places together</h2>
+						<h2 className="text-[2rem] mb-[1rem]">Let's go places together</h2>
 						<p>Discover the latest offers and news and start planning your next trip with us.</p>
 					</div>
 					<button
-						className="text-[14px] px-4 py-3 rounded-[4px] text-blackishGreen border-mintGreen border-[1px]"
+						className="text-[0.875rem] px-[1rem] py-[0.75rem] rounded-[0.25rem] text-blackishGreen border-mintGreen border-[1px]"
 						aria-label="See all offers"
 					>
 						See all
 					</button>
 				</div>
 				<figure
-					className={`bg-mintGreen block w-full min-h-[486px] ${styles.background}`}
+					className={`bg-mintGreen block w-full min-h-[30.375rem] ${styles.background}`}
 					aria-labelledby="hero-section"
 				>
-					<div className="mx-auto max-w-[90rem] px-[104px] w-full relative">
+					<div className="mx-auto max-w-[90rem] px-[6.5rem] w-full relative">
 						{/* First */}
-						<div className="absolute left-[200px] top-[72px]">
-							<div className="flex items-center gap-2 bg-white w-fit py-[4px] pr-[8px] pl-[4px] rounded-[4px]">
+						<div className="absolute left-[12.5rem] top-[4.5rem]">
+							<div className="flex items-center gap-2 bg-white w-fit py-[0.25rem] pr-[0.5rem] pl-[0.25rem] rounded-[0.25rem]">
 								<figure>
 									<img src={FirstImage} alt="an image of a building" />
 								</figure>
 								<div>
-									<h4 className="font-primary text-[10px] font-bold text-blackishGreen">
+									<h4 className="font-primary text-[0.625rem] font-bold text-blackishGreen">
 										James Doe
 									</h4>
-									<p className="text-[8px]">Boarding Pass N’123</p>
+									<p className="text-[0.5rem]">Boarding Pass N’123</p>
 								</div>
 							</div>
 							<img
 								src={FirstArrow}
 								alt="a black curved arrow pointing upwar"
-								className="ml-[46px] mt-[6px]"
+								className="ml-[2.875rem] mt-[0.375rem]"
 							/>
 						</div>
 						{/* Second */}
-						<div className="absolute left-[990px] top-[89px]">
-							<div className="flex items-center gap-2 bg-white w-fit py-[4px] pr-[8px] pl-[4px] rounded-[4px]">
+						<div className="absolute left-[61.875rem] top-[5.5625rem]">
+							<div className="flex items-center gap-2 bg-white w-fit py-[0.25rem] pr-[0.5rem] pl-[0.25rem] rounded-[0.25rem]">
 								<figure>
 									<img src={SecondImage} alt="an image of a building" />
 								</figure>
 								<div>
-									<h4 className="font-primary text-[10px] font-bold text-blackishGreen">
+									<h4 className="font-primary text-[0.625rem] font-bold text-blackishGreen">
 										James Doe
 									</h4>
-									<p className="text-[8px]">Boarding Pass N’123</p>
+									<p className="text-[0.5rem]">Boarding Pass N’123</p>
 								</div>
 							</div>
 							<img
 								src={SecondArrow}
 								alt="a black curved arrow pointing upwar"
-								className="ml-[-36px] mt-[6px]"
+								className="ml-[-2.25rem] mt-[0.375rem]"
 							/>
 						</div>
 						{/* Third */}
-						<div className="absolute left-[774px] top-[248px]">
+						<div className="absolute left-[48.375rem] top-[15.5rem]">
 							<img
 								src={ThirdArrow}
 								alt="a black curved arrow pointing upwar"
-								className="ml-[-10px] mt-[6px]"
+								className="ml-[-0.625rem] mt-[0.375rem]"
 							/>
-							<div className="flex items-center gap-2 bg-white w-fit py-[4px] pr-[8px] pl-[4px] rounded-[4px]">
+							<div className="flex items-center gap-2 bg-white w-fit py-[0.25rem] pr-[0.5rem] pl-[0.25rem] rounded-[0.25rem]">
 								<figure>
 									<img src={ThirdImage} alt="an image of a building" />
 								</figure>
 								<div>
-									<h4 className="font-primary text-[10px] font-bold text-blackishGreen">
+									<h4 className="font-primary text-[0.625rem] font-bold text-blackishGreen">
 										James Doe
 									</h4>
-									<p className="text-[8px]">Boarding Pass N’123</p>
+									<p className="text-[0.5rem]">Boarding Pass N’123</p>
 								</div>
 							</div>
 						</div>
 						{/* Fourth */}
-						<div className="absolute left-[467px] top-[294px]">
-							<div className="flex items-center gap-2 bg-white w-fit py-[4px] pr-[8px] pl-[4px] rounded-[4px]">
+						<div className="absolute left-[29.1875rem] top-[18.375rem]">
+							<div className="flex items-center gap-2 bg-white w-fit py-[0.25rem] pr-[0.5rem] pl-[0.25rem] rounded-[0.25rem]">
 								<figure>
 									<img src={FourthImage} alt="an image of a building" />
 								</figure>
 								<div>
-									<h4 className="font-primary text-[10px] font-bold text-blackishGreen">
+									<h4 className="font-primary text-[0.625rem] font-bold text-blackishGreen">
 										James Doe
 									</h4>
-									<p className="text-[8px]">Boarding Pass N’123</p>
+									<p className="text-[0.5rem]">Boarding Pass N’123</p>
 								</div>
 							</div>
 							<img
 								src={FourthArrow}
 								alt="a black curved arrow pointing upwar"
-								className="ml-[-10px] mt-[6px]"
+								className="ml-[-0.625rem] mt-[0.375rem]"
 							/>
 						</div>
 						{/* Fifth */}
-						<div className="absolute left-[1137px] top-[260px]">
-							<div className="flex items-center gap-2 bg-white w-fit py-[4px] pr-[8px] pl-[4px] rounded-[4px]">
+						<div className="absolute left-[71.0625rem] top-[16.25rem]">
+							<div className="flex items-center gap-2 bg-white w-fit py-[0.25rem] pr-[0.5rem] pl-[0.25rem] rounded-[0.25rem]">
 								<figure>
 									<img src={FifthImage} alt="an image of a building" />
 								</figure>
 								<div>
-									<h4 className="font-primary text-[10px] font-bold text-blackishGreen">
+									<h4 className="font-primary text-[0.625rem] font-bold text-blackishGreen">
 										James Doe
 									</h4>
-									<p className="text-[8px]">Boarding Pass N’123</p>
+									<p className="text-[0.5rem]">Boarding Pass N’123</p>
 								</div>
 							</div>
 							<img
 								src={FifthArrow}
 								alt="a black curved arrow pointing upwar"
-								className="mt-[6px]"
+								className="mt-[0.375rem]"
 							/>
 						</div>
 					</div>
@@ -143,38 +143,38 @@ export default function FlightSearch() {
 			<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
 				<header className="w-full mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
 					<div>
-						<h2 className="text-[32px] mb-4">Fall into travel</h2>
-						<p className="w-full max-w-[851px]">
+						<h2 className="text-[2rem] mb-4">Fall into travel</h2>
+						<p className="w-full max-w-[53.1875rem]">
 							Going somewhere to celebrate this season? Whether you’re going home or somewhere to
 							roam, we’ve got the travel tools to get you to your destination.
 						</p>
 					</div>
 					<button
-						className="text-[14px] px-4 py-3 rounded-[4px] text-blackishGreen border-mintGreen border-[1px]"
+						className="text-[0.875rem] px-4 py-3 rounded-[0.25rem] text-blackishGreen border-mintGreen border-[1px]"
 						aria-label="See all offers"
 					>
 						See all
 					</button>
 				</header>
 
-				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 lg:px-4">
-					<article className="w-full row-span-2 flex flex-col p-6 bg-mintGreen rounded-[20px]">
+				<div className="grid grid-cols-[1fr_19.875rem_19.875rem] grid-rows-2 gap-6 lg:grid-cols-1 lg:px-4">
+					<article className="w-full row-span-2 flex flex-col p-6 bg-mintGreen rounded-[1.25rem]">
 						<header className="flex justify-between items-start mb-6">
-							<h2 className="font-primary font-bold text-[40px] leading-[51px] max-w-[363px] w-full">
+							<h2 className="font-primary font-bold text-[2.5rem] leading-[3.1875rem] max-w-[22.6875rem] w-full">
 								Backpacking Sri Lanka
 							</h2>
-							<div className="bg-white flex flex-col p-2 items-center rounded-[8px]">
-								<span className="text-[14px] text-blackishGreen">From</span>
-								<span className="text-[20px] font-semibold text-blackishGreen">$700</span>
+							<div className="bg-white flex flex-col p-2 items-center rounded-[0.5rem]">
+								<span className="text-[0.875rem] text-blackishGreen">From</span>
+								<span className="text-[1.25rem] font-semibold text-blackishGreen">$700</span>
 							</div>
 						</header>
-						<p className="text-[14px] text-blackishGreen ">
+						<p className="text-[0.875rem] text-blackishGreen ">
 							Traveling is a unique experience as it's the best way to unplug from the pushes and
 							pulls of daily life. It helps us to forget about our problems, frustrations, and fears
 							at home. During our journey, we experience life in different ways. We explore new
 							places, cultures, cuisines, traditions, and ways of living.
 						</p>
-						<button className="w-full bg-white py-[15px] rounded-[4px] mt-auto lg:mt-[120px]">
+						<button className="w-full bg-white py-[0.9375rem] rounded-[0.25rem] mt-auto lg:mt-[7.5rem]">
 							Book Flight
 						</button>
 					</article>

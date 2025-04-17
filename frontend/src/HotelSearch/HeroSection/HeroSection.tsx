@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
 import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../assets/Icons";
+import { motion } from "motion/react";
 
 import { useHotelSearchFormState } from "../../Hooks";
 
@@ -12,15 +13,26 @@ export default function HeroSection() {
 		</section>
 	);
 }
-
 function HeroContent() {
 	return (
 		<div className={`text-white w-full min-h-[537px] ${styles.heroimage}`}>
 			<div className="mx-auto max-w-[77rem] lg:px-4">
-				<h2 className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]">
+				<motion.h2
+					className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]"
+					initial={{ opacity: 0, x: -90 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 1 }}
+				>
 					Make your travel wishlist, we’ll do the rest
-				</h2>
-				<p className="text-[20px]">Special offers to suit your plan</p>
+				</motion.h2>
+				<motion.p
+					className="text-[20px]"
+					initial={{ opacity: 0, x: -100 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 1, delay: 0.1 }}
+				>
+					Special offers to suit your plan
+				</motion.p>
 			</div>
 		</div>
 	);
@@ -71,11 +83,10 @@ function HotelSearchForm() {
 
 	return (
 		<aside
-			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[-4rem] bg-white px-8 pt-8 pb-12 rounded-2xl md:px-4"
-			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
+			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[-4rem] bg-white px-8 pt-8 pb-12 rounded-2xl  shadow-[0_0.25rem_1rem_rgba(141,211,187,0.15)] md:px-4"
 			aria-labelledby="hotel-search-form"
 		>
-			<h2 className="text-[20px] font-semibold">Where are you flying? </h2>
+			<h2 className="text-[1.25rem] font-semibold">Where are you flying? </h2>
 			<form
 				action=""
 				className="flex md:flex-col items-center w-full mb-8 mt-8 gap-6"
@@ -87,7 +98,7 @@ function HotelSearchForm() {
 					{(focusedInput === "destination" || destination) && (
 						<label
 							htmlFor="destination"
-							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Enter Destination
 						</label>
@@ -97,7 +108,7 @@ function HotelSearchForm() {
 							focusedInput === "destination" && !destination.trim()
 								? "border-[#6200ea]"
 								: "border-[#79747e]"
-						}  flex items-center h-[56px] px-[12px] gap-[12px]`}
+						}  flex items-center h-[3.5rem] rounded px-[0.75rem] gap-[0.75rem]`}
 					>
 						<button type="button">
 							<BedIcon />
@@ -116,11 +127,11 @@ function HotelSearchForm() {
 				</div>
 
 				{/* Form  2 */}
-				<div className="relative w-full md:max-w-full border border-[#79747E]">
+				<div className="relative w-full md:max-w-full ">
 					{(focusedInput === "checkIn" || checkIn) && (
 						<label
 							htmlFor="checkIn"
-							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Check-In
 						</label>
@@ -131,11 +142,12 @@ function HotelSearchForm() {
 							value={checkIn}
 							type="text"
 							placeholder="Check-In"
+							className="border border-[#79747E]"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+						<button type="button" className="absolute right-[1rem] top-[50%] -translate-y-1/2">
 							<Calender />
 						</button>
 					</div>
@@ -146,7 +158,7 @@ function HotelSearchForm() {
 					{(focusedInput === "checkOut" || checkOut) && (
 						<label
 							htmlFor="checkOut"
-							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Check-Out
 						</label>
@@ -157,11 +169,12 @@ function HotelSearchForm() {
 							value={checkOut}
 							type="text"
 							placeholder="Check-Out"
+							className="border border-[#79747E]"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+						<button type="button" className="absolute right-[1rem] top-[50%] -translate-y-1/2">
 							<Calender />
 						</button>
 					</div>
@@ -173,7 +186,7 @@ function HotelSearchForm() {
 					{(focusedInput === "room" || room) && (
 						<label
 							htmlFor="room"
-							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Rooms & Guests
 						</label>
@@ -181,7 +194,7 @@ function HotelSearchForm() {
 					<div
 						className={`w-full border-[1px] ${
 							focusedInput === "room" && !room.trim() ? "border-[#6200ea]" : "border-[#79747e]"
-						}  flex items-center h-[56px] px-[12px] gap-[12px] rounded-[4px]`}
+						}  flex items-center h-[3.5rem] px-[0.75rem] gap-[0.75rem] rounded-[0.25rem]`}
 					>
 						<button type="button">
 							<Profile />

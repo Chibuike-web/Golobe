@@ -25,7 +25,7 @@ export default function Navbar() {
 					</Link>
 				</ul>
 				<figure>
-					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
+					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-[6rem]" />
 				</figure>
 				<div className="flex gap-[1.875rem] items-center md:hidden">
 					<Link to="/login" className="text-blackishGreen text-sm font-semibold">
