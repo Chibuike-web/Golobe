@@ -177,7 +177,7 @@ function FlightSearchForm() {
 							id="from"
 							value={from}
 							type="text"
-							placeholder="From"
+							placeholder={`${focusedInput === "from" ? "" : "From"}`}
 							className="custom-input"
 							onChange={handleChange}
 							onFocus={(e) => handleFocus(e.target.id)}
@@ -188,7 +188,7 @@ function FlightSearchForm() {
 							id="to"
 							value={to}
 							type="text"
-							placeholder="To"
+							placeholder={`${focusedInput === "to" ? "" : "To"}`}
 							className="custom-input"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -220,7 +220,7 @@ function FlightSearchForm() {
 							id="trip"
 							value={trip}
 							type="text"
-							placeholder="Return"
+							placeholder={`${focusedInput === "trip" ? "" : "Return"}`}
 							className="border-[0.0625rem] border-[#79747e]"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -258,7 +258,7 @@ function FlightSearchForm() {
 						<input
 							id="departDate"
 							value={departDate}
-							placeholder="Depart date"
+							placeholder={`${focusedInput === "departDate" ? "" : "Depart date"}`}
 							className="custom-input"
 							onChange={handleChange}
 							onFocus={(e) => handleFocus(e.target.id)}
@@ -268,7 +268,7 @@ function FlightSearchForm() {
 						<input
 							id="returnDate"
 							value={returnDate}
-							placeholder="Return date"
+							placeholder={`${focusedInput === "returnDate" ? "" : "Return date"}`}
 							className="custom-input"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}

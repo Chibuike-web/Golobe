@@ -2,7 +2,6 @@ import { useState } from "react";
 import styles from "./HeroSection.module.css";
 import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../assets/Icons";
 import { motion } from "motion/react";
-
 import { useHotelSearchFormState } from "../../Hooks";
 
 export default function HeroSection() {
@@ -75,7 +74,7 @@ function HotelSearchForm() {
 			case "checkOut":
 				setCheckOut(value);
 				break;
-			case "room":
+			case "rooms&guests":
 				setRoom(value);
 				break;
 		}
@@ -96,12 +95,16 @@ function HotelSearchForm() {
 
 				<div className="relative w-full  md:max-w-full">
 					{(focusedInput === "destination" || destination) && (
-						<label
+						<motion.label
+							key="destination"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="destination"
 							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Enter Destination
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`w-full border-[1px] ${
@@ -118,7 +121,7 @@ function HotelSearchForm() {
 							value={destination}
 							type="text"
 							className="custom-input"
-							placeholder="Enter Destination"
+							placeholder={`${focusedInput === "destination" ? "" : "Enter Destination"}`}
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
@@ -129,19 +132,23 @@ function HotelSearchForm() {
 				{/* Form  2 */}
 				<div className="relative w-full md:max-w-full ">
 					{(focusedInput === "checkIn" || checkIn) && (
-						<label
+						<motion.label
+							key="checkIn"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="checkIn"
 							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Check-In
-						</label>
+						</motion.label>
 					)}
 					<div className="relative ">
 						<input
 							id="checkIn"
 							value={checkIn}
 							type="text"
-							placeholder="Check-In"
+							placeholder={`${focusedInput === "checkIn" ? "" : "Check-In"}`}
 							className="border border-[#79747E]"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -156,19 +163,23 @@ function HotelSearchForm() {
 				{/* Form  3 */}
 				<div className="relative w-full md:max-w-full">
 					{(focusedInput === "checkOut" || checkOut) && (
-						<label
+						<motion.label
+							key="checkOut"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="checkOut"
 							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Check-Out
-						</label>
+						</motion.label>
 					)}
 					<div className="relative">
 						<input
 							id="checkOut"
 							value={checkOut}
 							type="text"
-							placeholder="Check-Out"
+							placeholder={`${focusedInput === "checkOut" ? "" : "Check-Out"}`}
 							className="border border-[#79747E]"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -183,28 +194,34 @@ function HotelSearchForm() {
 				{/* Form  4 */}
 
 				<div className="relative w-full  md:max-w-full">
-					{(focusedInput === "room" || room) && (
-						<label
-							htmlFor="room"
+					{(focusedInput === "rooms&guests" || room) && (
+						<motion.label
+							key="rooms&guests"
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
+							htmlFor="rooms&guests"
 							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Rooms & Guests
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`w-full border-[1px] ${
-							focusedInput === "room" && !room.trim() ? "border-[#6200ea]" : "border-[#79747e]"
+							focusedInput === "rooms&guests" && !room.trim()
+								? "border-[#6200ea]"
+								: "border-[#79747e]"
 						}  flex items-center h-[3.5rem] px-[0.75rem] gap-[0.75rem] rounded-[0.25rem]`}
 					>
 						<button type="button">
 							<Profile />
 						</button>
 						<input
-							id="room"
+							id="rooms&guests"
 							value={room}
 							type="text"
 							className="custom-input"
-							placeholder="Rooms & Guests"
+							placeholder={`${focusedInput === "rooms&guests" ? "" : "Rooms & Guests"}`}
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}

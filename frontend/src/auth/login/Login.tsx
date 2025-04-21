@@ -4,6 +4,7 @@ import styles from "./Login.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../assets/Icons";
 import { useFormState } from "../../Hooks";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 export default function Login() {
 	const {
@@ -96,21 +97,26 @@ export default function Login() {
 					<div className="flex flex-col gap-6">
 						<div className="relative w-full">
 							{(focusedInput === "email" || email) && (
-								<label
+								<motion.label
+									key="email"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="email"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Email
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="email"
 								value={email}
 								type="email"
-								placeholder={`${focusedInput === "email" || email ? "" : "Enter your email"}`}
+								placeholder={`${focusedInput === "email" ? "" : "Enter your email"}`}
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
+								className="border border-[#79747e]"
 							/>
 							{emailError && <p className="text-red-600 text-[14px] mt-2">{emailError}</p>}
 						</div>
@@ -118,24 +124,27 @@ export default function Login() {
 						{/* Password */}
 						<div className="relative w-full">
 							{(focusedInput === "password" || password) && (
-								<label
+								<motion.label
+									key="password"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="password"
 									className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Password
-								</label>
+								</motion.label>
 							)}
 							<div className="relative">
 								<input
 									id="password"
 									value={password}
 									type={showPassword ? "text" : "password"}
-									placeholder={`${
-										focusedInput === "password" || password ? "" : "Enter your password"
-									}`}
+									placeholder={`${focusedInput === "password" ? "" : "Enter your password"}`}
 									onFocus={(e) => handleFocus(e.target.id)}
 									onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 									onChange={handleChange}
+									className="border border-[#79747e]"
 								/>
 								<button
 									type="button"
