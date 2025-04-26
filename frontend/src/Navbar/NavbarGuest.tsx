@@ -9,6 +9,9 @@ export default function NavbarGuest() {
 	const isFlightActive =
 		location.pathname.startsWith("/flightsearch") || location.pathname.startsWith("/flightlisting");
 
+	const isHotelActive =
+		location.pathname.startsWith("/hotelsearch") || location.pathname.startsWith("/hotellisting");
+
 	return (
 		<header className="w-full bg-white sticky z-[100] top-0" role="banner">
 			<nav
@@ -29,9 +32,9 @@ export default function NavbarGuest() {
 					</li>
 					<li>
 						<NavLink
-							to="/hotelsearch"
-							className={({ isActive }) =>
-								`${isActive ? styles.flights : ""} relative flex items-center gap-2`
+							to={"hotelsearch"}
+							className={() =>
+								`${isHotelActive ? styles.flights : ""} relative flex items-center gap-2`
 							}
 						>
 							<BedIcon color="#112211" />

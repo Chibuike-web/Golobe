@@ -3,7 +3,6 @@ import Forest from "../assets/FlightSearch/Forest.png";
 import Trees from "../assets/FlightSearch/Trees.png";
 import Ocean from "../assets/FlightSearch/Ocean.png";
 import Beach from "../assets/FlightSearch/Beach.png";
-import Footer from "../Footer/Footer";
 import Bookings from "./Bookings/Bookings";
 import Istanbul from "../assets/HotelSearch/Istanbul.png";
 import Sydney from "../assets/HotelSearch/Sydney.png";
@@ -99,7 +98,6 @@ export default function HotelSearch() {
 					</figure>
 				</div>
 			</section>
-			<Footer />
 		</div>
 	);
 }
