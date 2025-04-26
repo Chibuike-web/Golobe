@@ -4,6 +4,7 @@ import styles from "./Signup.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../assets/Icons";
 import { useFormState } from "../../Hooks";
 import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 
 export default function Signup() {
 	const navigate = useNavigate();
@@ -58,7 +59,8 @@ export default function Signup() {
 	const togglePasswordVisibility = (id: string) => {
 		if (id === "password") {
 			setShowPassword(!showPassword);
-		} else if (id === "confirmPassword") {
+		}
+		if (id === "confirmPassword") {
 			setShowConfirmPassword(!showConfirmPassword);
 		}
 	};
@@ -153,7 +155,6 @@ export default function Signup() {
 			return;
 		}
 
-		// Prepare the data to send to the backend
 		const userData = {
 			firstName,
 			lastName,
@@ -163,7 +164,6 @@ export default function Signup() {
 		};
 
 		try {
-			// Send the data to the backend using fetch
 			const res = await fetch("http://127.0.0.1:5000/api/auth/register", {
 				method: "POST",
 				headers: {
@@ -213,12 +213,16 @@ export default function Signup() {
 						{/* First Name */}
 						<div className="relative w-full">
 							{(focusedInput === "firstName" || firstName) && (
-								<label
+								<motion.label
+									key="firstName"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="firstName"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									First Name
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="firstName"
@@ -227,6 +231,7 @@ export default function Signup() {
 								placeholder={`${
 									focusedInput === "firstName" || firstName ? "" : "Enter your first name"
 								}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -237,12 +242,16 @@ export default function Signup() {
 						{/* Last Name */}
 						<div className="relative w-full">
 							{(focusedInput === "lastName" || lastName) && (
-								<label
+								<motion.label
+									key="lastName"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="lastName"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Last Name
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="lastName"
@@ -251,6 +260,7 @@ export default function Signup() {
 								placeholder={`${
 									focusedInput === "lastName" || lastName ? "" : "Enter your last name"
 								}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -261,18 +271,23 @@ export default function Signup() {
 						{/* Email */}
 						<div className="relative w-full">
 							{(focusedInput === "email" || email) && (
-								<label
+								<motion.label
+									key="email"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="email"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Email
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="email"
 								value={email}
 								type="email"
 								placeholder={`${focusedInput === "email" || email ? "" : "Enter your email"}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -283,12 +298,16 @@ export default function Signup() {
 						{/* Phone Number */}
 						<div className="relative w-full">
 							{(focusedInput === "phoneNumber" || phoneNumber) && (
-								<label
+								<motion.label
+									key="phoneNumber"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="phoneNumber"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Phone Number
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="phoneNumber"
@@ -297,6 +316,7 @@ export default function Signup() {
 								placeholder={`${
 									focusedInput === "phoneNumber" || phoneNumber ? "" : "Enter your phone number"
 								}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -310,12 +330,16 @@ export default function Signup() {
 					{/* Password */}
 					<div className="relative w-full mb-6">
 						{(focusedInput === "password" || password) && (
-							<label
+							<motion.label
+								key="password"
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: "-50%" }}
+								transition={{ duration: 0.2, ease: "easeOut" }}
 								htmlFor="password"
 								className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 							>
 								Password
-							</label>
+							</motion.label>
 						)}
 						<div className="relative">
 							<input
@@ -325,6 +349,7 @@ export default function Signup() {
 								placeholder={`${
 									focusedInput === "password" || password ? "" : "Enter your password"
 								}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}
@@ -342,24 +367,25 @@ export default function Signup() {
 
 					{/* Confirm Password */}
 					<div className="relative w-full mb-6">
-						{(focusedInput === "confirmPassword" || confirmPassword) && (
-							<label
+						{focusedInput === "confirmPassword" && (
+							<motion.label
+								key="confirmPassword"
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: "-50%" }}
+								transition={{ duration: 0.2, ease: "easeOut" }}
 								htmlFor="confirmPassword"
 								className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 							>
 								Confirm Password
-							</label>
+							</motion.label>
 						)}
 						<div className="relative">
 							<input
 								id="confirmPassword"
 								value={confirmPassword}
 								type={showConfirmPassword ? "text" : "password"}
-								placeholder={`${
-									focusedInput === "confirmPassword" || confirmPassword
-										? ""
-										: "Confirm your password"
-								}`}
+								placeholder={`${focusedInput === "confirmPassword" ? "" : "Confirm your password"}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}

@@ -53,6 +53,9 @@ export default function Navbar() {
 					</Link>
 				</li>
 			</ul>
+
+			{/* <div className="fixed top-[2rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full z-[100]"></div> */}
+
 			<figure>
 				<img
 					src={scrollHeight ? ColourLogo : GolobeLogo}

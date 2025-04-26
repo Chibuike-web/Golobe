@@ -1,9 +1,14 @@
-import GolobeLogo from "../../assets/FlightSearch/LogoWhiteBackground.svg";
-import { Link } from "react-router-dom";
-import { AirplaneIcon, BedIcon } from "../../assets/Icons";
+import GolobeLogo from "../assets/FlightSearch/LogoWhiteBackground.svg";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import { AirplaneIcon, BedIcon } from "../assets/Icons";
 import styles from "./Navbar.module.css";
 
-export default function Navbar() {
+export default function NavbarGuest() {
+	const location = useLocation();
+
+	const isFlightActive =
+		location.pathname.startsWith("/flightsearch") || location.pathname.startsWith("/flightlisting");
+
 	return (
 		<header className="w-full bg-white sticky z-[100] top-0" role="banner">
 			<nav
@@ -11,18 +16,28 @@ export default function Navbar() {
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">
-					<li className="flex space-x-1 items-center relative">
-						<AirplaneIcon color="#112211" />
-						<span className={`text-sm font-semibold text-blackishGreen ${styles.flights}`}>
-							Find Flight
-						</span>
+					<li role="tab">
+						<NavLink
+							to={"flightsearch"}
+							className={() =>
+								`${isFlightActive ? styles.flights : ""} relative flex items-center gap-2`
+							}
+						>
+							<AirplaneIcon color="#112211" />
+							<span className="text-sm font-semibold text-blackishGreen">Find Flight</span>
+						</NavLink>
 					</li>
-					<Link to="/hotelsearch">
-						<li className="flex space-x-1 items-center">
+					<li>
+						<NavLink
+							to="/hotelsearch"
+							className={({ isActive }) =>
+								`${isActive ? styles.flights : ""} relative flex items-center gap-2`
+							}
+						>
 							<BedIcon color="#112211" />
 							<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
-						</li>
-					</Link>
+						</NavLink>
+					</li>
 				</ul>
 				<figure>
 					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-[6rem]" />

@@ -4,6 +4,7 @@ import { useFormState } from "../../Hooks";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
 import { FacebookIcon, GoogleIcon, AppleIcon, LeftArrowIcon } from "../../assets/Icons";
 import styles from "./ForgetPassword.module.css";
+import { motion } from "motion/react";
 
 export default function ForgetPassword() {
 	const { email, setEmail, emailError, setEmailError } = useFormState();
@@ -75,18 +76,23 @@ export default function ForgetPassword() {
 					<div className="flex flex-col gap-6">
 						<div className="relative w-full">
 							{(focusedInput === "email" || email) && (
-								<label
+								<motion.label
+									key="email"
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="email"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Email
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="email"
 								value={email}
 								type="email"
 								placeholder={`${focusedInput === "email" || email ? "" : "Enter your email"}`}
+								className="border border-[#79747e]"
 								onFocus={(e) => handleFocus(e.target.id)}
 								onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 								onChange={handleChange}

@@ -30,11 +30,11 @@ function App() {
 				<Route path="forgetpassword" element={<ForgetPassword />} />
 				<Route path="verifycode" element={<VerifyCode />} />
 				<Route path="resetpassword" element={<ResetPassword />} />
-				<Route path="flightsearch" element={<FlightSearch />} />
-				<Route path="hotelsearch" element={<HotelSearch />} />
 
 				{/* routes under Layout */}
 				<Route path="/" element={<Layout />}>
+					<Route path="flightsearch" element={<FlightSearch />} />
+					<Route path="hotelsearch" element={<HotelSearch />} />
 					<Route path="flightlisting" element={<FlightListing />} />
 					<Route path="flightlisting/flightdetail" element={<FlightDetail />} />
 					<Route path="flightlisting/bookingdetail" element={<FlightBookingDetail />} />

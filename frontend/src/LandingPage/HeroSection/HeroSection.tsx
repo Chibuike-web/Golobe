@@ -23,7 +23,7 @@ export default function HeroSection() {
 function HeroContent() {
 	return (
 		<div
-			className="flex z-10 flex-col items-center mt-[54px] md:mt-[5rem] justify-center md:gap-3"
+			className="flex z-10 flex-col items-center mt-[54px] mb-[150px] md:mt-[2rem] md:mb-[75px] justify-center md:gap-3"
 			role="main"
 		>
 			<motion.p
@@ -125,7 +125,7 @@ function FlightSearchForm() {
 	let stays = false;
 	return (
 		<aside
-			className="w-full text-blackishGreen max-w-[77rem] z-50 mt-[150px]  bg-white px-8 pt-4 pb-8 rounded-2xl md:px-4"
+			className="w-full text-blackishGreen max-w-[77rem] z-50 bg-white px-8 pt-4 pb-8 rounded-2xl md:px-4"
 			style={{ boxShadow: "0 0.25rem 1rem rgba(141, 211, 187, 0.15)" }}
 			aria-labelledby="flight-search-form"
 		>
@@ -303,7 +303,7 @@ function FlightSearchForm() {
 						<input
 							id="passenger"
 							value={passenger}
-							placeholder="Passenger"
+							placeholder={`${focusedInput === "passenger" ? "" : "Passenger"}`}
 							className="custom-input"
 							onChange={handleChange}
 							onFocus={(e) => handleFocus(e.target.id)}
@@ -313,7 +313,7 @@ function FlightSearchForm() {
 						<input
 							id="travelClass"
 							value={travelClass}
-							placeholder="Travel Class"
+							placeholder={`${focusedInput === "travelClass" ? "" : "Travel Class"}`}
 							className="custom-input"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}

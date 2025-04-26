@@ -1,12 +1,10 @@
 import Herosection from "./HeroSection/HeroSection";
-import styles from "./HotelSearch.module.css";
 import Forest from "../assets/FlightSearch/Forest.png";
 import Trees from "../assets/FlightSearch/Trees.png";
 import Ocean from "../assets/FlightSearch/Ocean.png";
 import Beach from "../assets/FlightSearch/Beach.png";
 import Footer from "../Footer/Footer";
 import Bookings from "./Bookings/Bookings";
-import Navbar from "./Navbar/Navbar";
 import Istanbul from "../assets/HotelSearch/Istanbul.png";
 import Sydney from "../assets/HotelSearch/Sydney.png";
 import Baku from "../assets/HotelSearch/Baku.png";
@@ -39,7 +37,6 @@ const hotelOptions: HotelOption[] = [
 export default function HotelSearch() {
 	return (
 		<div className="flex flex-col">
-			<Navbar />
 			<Herosection />
 			<section className=" mx-auto max-w-[77rem] mt-20 w-full md:justify-items-center">
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(14.875rem,max-content))] gap-[5.625rem]">
