@@ -4,7 +4,7 @@ import Eliot from "../../assets/LandingPage/Eliot.png";
 import { GoogleIcon, StarIcon } from "../../assets/Icons";
 import styles from "./Reviews.module.css";
 import { useState } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 // Define a type for Reviews
 type Reviews = {
@@ -92,6 +92,13 @@ export default function Reviews() {
 	);
 }
 
+const anim = {
+	initial: { opacity: 0, height: 20 },
+	open: { opacity: 1, height: "auto", transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } },
+
+	closed: { height: 20, transition: { duration: 0.6, ease: [0.23, 1, 0.32, 1] } },
+};
+
 const ReviewCard = ({
 	tagline,
 	message,
@@ -109,19 +116,17 @@ const ReviewCard = ({
 			<h2 className="font-primary text-blackishGreen text-2xl font-bold mb-4 md:text-xl">
 				{tagline}
 			</h2>
-			<motion.div
-				initial={{ opacity: 0, y: 10 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.3, ease: "easeOut" }}
-				className="opacity-50 mb-3"
-			>
-				{/* 2) p tag simply clamps or not */}
-				<motion.p layout className={!isExpanded ? styles["clamp-text"] : ""}>
+			<AnimatePresence>
+				<motion.div
+					variants={anim}
+					animate={isExpanded ? "open" : "closed"}
+					className={`text-blackishGreen/50 mb-4 ${isExpanded ? "" : "h-[20px] overflow-hidden"}`}
+				>
 					{message}
-				</motion.p>
-			</motion.div>
+				</motion.div>
+			</AnimatePresence>
 			<button
-				className="self-end cursor-pointer"
+				className="self-end cursor-pointer text-mintGreen"
 				onClick={() => {
 					setIsExpanded(!isExpanded);
 				}}

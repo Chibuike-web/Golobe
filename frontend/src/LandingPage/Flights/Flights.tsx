@@ -9,6 +9,8 @@ import Tokyo from "../../assets/LandingPage/Tokyo.png";
 import Dubai from "../../assets/LandingPage/Dubai.png";
 import { PaperPlaneIcon } from "../../assets/Icons";
 import styles from "./Flights.module.css";
+import { motion } from "motion/react";
+import { animate, delay } from "motion";
 
 type TravelOption = {
 	destination: string;
@@ -64,6 +66,19 @@ const travelOptions: TravelOption[] = [
 	},
 ];
 
+const fadeUp = {
+	initial: { opacity: 0, y: 50 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.4,
+			duration: 0.6,
+			ease: "easeOut",
+		},
+	}),
+};
+
 // Main component
 export default function Flights() {
 	return (
@@ -81,7 +96,17 @@ export default function Flights() {
 			</header>
 			<div className="grid grid-cols-[repeat(auto-fill,minmax(24.33rem,1fr))] md:grid-cols-1 place-items-center gap-4 w-full">
 				{travelOptions.map(({ destination, services, image }, index) => (
-					<FlightCard key={index} destination={destination} services={services} image={image} />
+					<motion.div
+						key={index}
+						custom={index}
+						variants={fadeUp}
+						initial="initial"
+						whileInView="animate"
+						viewport={{ once: true, amount: 0.3 }}
+						className="w-full flex"
+					>
+						<FlightCard key={index} destination={destination} services={services} image={image} />
+					</motion.div>
 				))}
 			</div>
 			<FlightBox />
@@ -96,6 +121,19 @@ type FlightCardProps = {
 	image: string;
 };
 
+const itemFadeUp = {
+	initial: { opacity: 0, y: 20 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.4,
+			duration: 0.5,
+			ease: "easeOut",
+		},
+	}),
+};
+
 // FlightCard component
 const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 	return (
@@ -106,14 +144,23 @@ const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 			<img src={image} alt={`View of ${destination}`} className="destination-image" />
 			<div className="flex flex-col w-full gap-2">
 				<h3 className="font-semibold opacity-70 text-lg md:text-[1rem]">{destination}</h3>
-				<ul className="flex items-center text-[0.875rem] md:text-[0.75rem] font-medium gap-[0.5rem] w-full">
+				<motion.ul className="flex items-center text-[0.875rem] md:text-[0.75rem] font-medium gap-[0.5rem] w-full">
 					{services.map((service, index) => (
-						<li key={index} className="flex gap-[0.5rem] items-center">
+						<motion.li
+							key={index}
+							id={`item-${index}`}
+							variants={itemFadeUp}
+							custom={index}
+							initial="initial"
+							whileInView="animate"
+							viewport={{ once: true, amount: 0.3 }}
+							className="flex gap-[0.5rem] items-center"
+						>
 							<span>{service}</span>
 							{index < services.length - 1 && <span aria-hidden="true">•</span>}
-						</li>
+						</motion.li>
 					))}
-				</ul>
+				</motion.ul>
 			</div>
 		</article>
 	);
@@ -124,24 +171,68 @@ const FlightBox = () => {
 	return (
 		<aside className="flex flex-wrap gap-6 my-20">
 			<div className={styles.flights}>
-				<h2 className="font-primary font-bold text-[2.5rem] mb-2">Flights</h2>
-				<p className="w-full max-w-[24.3125rem] text-center">
+				<motion.h2
+					variants={fadeUp}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true, amount: 0.3 }}
+					className="font-primary font-bold text-[2.5rem] mb-2"
+				>
+					Flights
+				</motion.h2>
+				<motion.p
+					variants={fadeUp}
+					initial="initial"
+					whileInView="animate"
+					custom={1}
+					viewport={{ once: true, amount: 0.3 }}
+					className="w-full max-w-[24.3125rem] text-center"
+				>
 					Search Flights & Places Hire to our most popular destinations
-				</p>
-				<button className="text-blackishGreen bg-mintGreen flex items-center gap-1 p-4 mt-4 rounded-[0.25rem] ">
+				</motion.p>
+				<motion.button
+					variants={fadeUp}
+					initial="initial"
+					whileInView="animate"
+					custom={2}
+					viewport={{ once: true, amount: 0.3 }}
+					className="text-blackishGreen bg-mintGreen flex items-center gap-1 p-4 mt-4 rounded-[0.25rem] "
+				>
 					<PaperPlaneIcon />
 					<span>Show Flights</span>
-				</button>
+				</motion.button>
 			</div>
 			<div className={styles.hotels}>
-				<h2 className="font-primary font-bold text-[2.5rem] mb-2">Hotels</h2>
-				<p className="w-full max-w-[24.3125rem] text-center">
+				<motion.h2
+					variants={fadeUp}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true, amount: 0.3 }}
+					className="font-primary font-bold text-[2.5rem] mb-2"
+				>
+					Hotels
+				</motion.h2>
+				<motion.p
+					variants={fadeUp}
+					initial="initial"
+					whileInView="animate"
+					custom={1}
+					viewport={{ once: true, amount: 0.3 }}
+					className="w-full max-w-[24.3125rem] text-center"
+				>
 					Search hotels & Places Hire to our most popular destinations
-				</p>
-				<button className="text-blackishGreen bg-mintGreen flex items-center gap-1 p-4 mt-4 rounded-[0.25rem] ">
+				</motion.p>
+				<motion.button
+					variants={fadeUp}
+					initial="initial"
+					whileInView="animate"
+					custom={2}
+					viewport={{ once: true, amount: 0.3 }}
+					className="text-blackishGreen bg-mintGreen flex items-center gap-1 p-4 mt-4 rounded-[0.25rem] "
+				>
 					<PaperPlaneIcon />
 					<span>Show Hotels</span>
-				</button>
+				</motion.button>
 			</div>
 		</aside>
 	);

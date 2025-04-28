@@ -1,7 +1,6 @@
 .sticky {
 	position: sticky;
 	top: 0;
-	background-color: rgba(255, 255, 255, 0.75);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
+	background-color: rgba(255, 255, 255);
+	padding-block: 1.5rem;
 }

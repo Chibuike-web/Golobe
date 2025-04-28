@@ -3,6 +3,7 @@ import styles from "./HeroSection.module.css";
 import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../assets/Icons";
 import { useFlightSearchFormState } from "../../Hooks";
 import { motion } from "motion/react";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
 	return (
@@ -294,12 +295,14 @@ function FlightSearchForm() {
 					</span>
 					Add Promo Code
 				</button>
-				<button className="flex gap-1 items-center justify-center text-[0.875rem] font-medium bg-mintGreen p-4 rounded-md md:w-full">
-					<span>
-						<PaperPlaneIcon />
-					</span>
-					Show Flights
-				</button>
+				<Link to="flightlisting">
+					<button className="flex gap-1 items-center justify-center text-[0.875rem] font-medium bg-mintGreen p-4 rounded-md md:w-full">
+						<span>
+							<PaperPlaneIcon />
+						</span>
+						Show Flights
+					</button>
+				</Link>
 			</div>
 		</aside>
 	);
