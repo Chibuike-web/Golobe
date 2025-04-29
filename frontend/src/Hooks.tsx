@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useFormState = () => {
 	// Form state
@@ -179,4 +179,38 @@ export const useHotelSearchFormState = () => {
 		guest,
 		setGuest,
 	};
+};
+
+export const useWindowWidth = () => {
+	const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+	useEffect(() => {
+		const handleResize = () => {
+			setWindowSize(window.innerWidth);
+		};
+
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
+	return windowSize;
+};
+
+export const useScroll = () => {
+	const [scrollHeight, setScrollHeight] = useState(false);
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.scrollY > 20) {
+				setScrollHeight(true);
+			} else {
+				setScrollHeight(false);
+			}
+		};
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	}, []);
+
+	return scrollHeight;
 };

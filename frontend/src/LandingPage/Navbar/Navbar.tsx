@@ -1,30 +1,22 @@
 import GolobeLogo from "../../assets/LandingPage/golobelogo.svg";
 import { Link } from "react-router-dom";
-import { AirplaneIcon, BedIcon } from "../../assets/Icons";
-import { useEffect, useState } from "react";
+import { AirplaneIcon, BedIcon, MenuIcon } from "../../assets/Icons";
 import styles from "./Navbar.module.css";
 import ColourLogo from "../../assets/LandingPage/ColourLogo.svg";
+import { useScroll, useWindowWidth } from "../../Hooks";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-	const [scrollHeight, setScrollHeight] = useState(false);
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > 20) {
-				setScrollHeight(true);
-			} else {
-				setScrollHeight(false);
-			}
-		};
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+	const windowSize = useWindowWidth();
+	return windowSize > 900 ? <DesktopNav /> : <MobileNav />;
+}
 
+const DesktopNav = () => {
+	const scrollHeight = useScroll();
 	return (
 		<nav
-			className={` flex items-center justify-between px-[2rem] py-[2rem] mt-[2rem] w-full z-[100] mx-auto max-w-[86.25rem] md:px-4 md:py-4 
-				${scrollHeight && styles.sticky}`}
+			className={` flex items-center justify-between px-[2rem] py-[2rem] mt-[2rem] w-full z-[100] mx-auto max-w-[86.25rem] 
+			${scrollHeight && styles.sticky}`}
 			aria-label="Main Navigation"
 		>
 			<ul className="flex gap-8 md:hidden">
@@ -54,8 +46,6 @@ export default function Navbar() {
 				</li>
 			</ul>
 
-			{/* <div className="fixed top-[2rem] justify-items-center bg-black/40 inset-0 backdrop-blur-[0.5rem] w-full z-[100]"></div> */}
-
 			<figure>
 				<img
 					src={scrollHeight ? ColourLogo : GolobeLogo}
@@ -63,7 +53,7 @@ export default function Navbar() {
 					className="w-full max-w-24"
 				/>
 			</figure>
-			<div className="flex gap-[1.875rem] items-center md:hidden">
+			<div className="flex gap-[1.875rem] items-center">
 				<Link
 					to="/login"
 					className={`${scrollHeight ? "text-blackishGreen" : "text-white"} text-sm font-semibold`}
@@ -81,4 +71,93 @@ export default function Navbar() {
 			</div>
 		</nav>
 	);
-}
+};
+
+const MobileNav = () => {
+	const [isShow, setIsShow] = useState(false);
+
+	useEffect(() => {
+		if (isShow) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+
+		return () => {
+			document.body.style.overflow = "auto";
+		};
+	}, [isShow]);
+	return (
+		<nav
+			className="flex items-center justify-between mt-[2rem] w-full z-[100] px-4 py-4"
+			aria-label="Main Navigation"
+		>
+			<figure>
+				<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
+			</figure>
+			<button
+				type="button"
+				onClick={() => {
+					setIsShow(!isShow);
+				}}
+			>
+				{" "}
+				<MenuIcon fill={"white"} />
+			</button>
+
+			{isShow && <MobileNavDropdown isShow={isShow} setIsShow={setIsShow} />}
+		</nav>
+	);
+};
+
+const MobileNavDropdown = ({ isShow, setIsShow }) => {
+	return (
+		<div className="fixed flex flex-col h-[100%] w-full left-1/2 -translate-x-1/2 bottom-0 top-0 bg-white z-[100] p-6 rounded-lg shadow-lg">
+			<nav
+				className="flex items-center justify-between w-full z-[100] py-4"
+				aria-label="Main Navigation"
+			>
+				<figure>
+					<img src={ColourLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
+				</figure>
+				<button
+					type="button"
+					onClick={() => {
+						setIsShow(!isShow);
+					}}
+				>
+					{" "}
+					<MenuIcon />
+				</button>
+			</nav>
+			<ul className="flex flex-col w-full mt-8">
+				<li>
+					<Link to="/flightsearch" className="flex space-x-1 items-center py-8 border-b">
+						<AirplaneIcon color={"#112211"} />
+						<span className="text-sm font-semibold text-blackishGreen">Find Flight</span>
+					</Link>
+				</li>
+				<li>
+					<Link to="/hotelsearch" className="flex space-x-1 items-center py-8 border-b">
+						<BedIcon color={"#112211"} />
+						<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
+					</Link>
+				</li>
+			</ul>
+			<div className="flex flex-col items-center w-full mt-auto">
+				<Link
+					to="/login"
+					className="text-blackishGreen text-sm font-semibold text-center py-8 w-full"
+				>
+					Login
+				</Link>
+				<Link
+					to="/signup"
+					className="text-sm font-semibold text-white text-center py-[0.75rem] bg-blackishGreen w-full"
+				>
+					Sign up
+				</Link>
+			</div>
+		</div>
+	);
+};
