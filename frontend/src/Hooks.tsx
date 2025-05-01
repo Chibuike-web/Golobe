@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+import { useLocation } from "react-router-dom";
 export const useFormState = () => {
 	// Form state
 	const [firstName, setFirstName] = useState<string>("");
@@ -213,4 +213,37 @@ export const useScroll = () => {
 	}, []);
 
 	return scrollHeight;
+};
+
+export const useIsShow = () => {
+	const [isShow, setIsShow] = useState(false);
+
+	useEffect(() => {
+		if (isShow) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+
+		return () => {
+			document.body.style.overflow = "auto";
+		};
+	}, [isShow]);
+
+	return { isShow, setIsShow };
+};
+
+export const useActive = () => {
+	const location = useLocation();
+
+	const isFlightActive =
+		location.pathname.startsWith("/flightsearch") || location.pathname.startsWith("/flightlisting");
+
+	const isHotelActive =
+		location.pathname.startsWith("/hotelsearch") || location.pathname.startsWith("/hotellisting");
+
+	return {
+		isFlightActive,
+		isHotelActive,
+	};
 };

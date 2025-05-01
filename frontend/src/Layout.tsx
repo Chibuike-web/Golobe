@@ -4,11 +4,11 @@ import Footer from "./Footer/Footer";
 
 const FlightLayout = () => {
 	return (
-		<div>
+		<>
 			<Navbar />
 			<Outlet />
 			<Footer />
-		</div>
+		</>
 	);
 };
 

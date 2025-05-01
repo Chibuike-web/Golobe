@@ -171,7 +171,7 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-[56px]`}
+						} rounded-[4px] gap-2 pr-[16px] leading-[1em] h-[56px]`}
 					>
 						<input
 							id="from"
@@ -253,10 +253,11 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-[56px]`}
+						} rounded-[4px] gap-2 pr-[16px] leading-[1em] h-[56px]`}
 					>
 						<input
 							id="departDate"
+							type="text"
 							value={departDate}
 							placeholder={`${focusedInput === "departDate" ? "" : "Depart date"}`}
 							className="custom-input"
@@ -267,6 +268,7 @@ function FlightSearchForm() {
 						<p>-</p>
 						<input
 							id="returnDate"
+							type="text"
 							value={returnDate}
 							placeholder={`${focusedInput === "returnDate" ? "" : "Return date"}`}
 							className="custom-input"
@@ -298,10 +300,11 @@ function FlightSearchForm() {
 					<div
 						className={`flex items-center border-[1px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em] h-[56px]`}
+						} rounded-[4px] gap-2 pr-[16px] leading-[1em] h-[56px]`}
 					>
 						<input
 							id="passenger"
+							type="text"
 							value={passenger}
 							placeholder={`${focusedInput === "passenger" ? "" : "Passenger"}`}
 							className="custom-input"
@@ -312,6 +315,7 @@ function FlightSearchForm() {
 						<p>-</p>
 						<input
 							id="travelClass"
+							type="text"
 							value={travelClass}
 							placeholder={`${focusedInput === "travelClass" ? "" : "Travel Class"}`}
 							className="custom-input"
@@ -330,7 +334,7 @@ function FlightSearchForm() {
 					</span>
 					Add Promo Code
 				</button>
-				<button className="flex gap-1 items-center justify-center text-[0.875rem] font-medium bg-mintGreen p-4 rounded-md md:w-full">
+				<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
 					<span>
 						<PaperPlaneIcon />
 					</span>

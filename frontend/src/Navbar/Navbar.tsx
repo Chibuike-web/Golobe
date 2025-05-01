@@ -4,5 +4,5 @@ import NavbarGuest from "./NavbarGuest";
 
 export default function Navbar() {
 	const [isSignedIn, setIsSignedIn] = useState(false);
-	return <div>{isSignedIn ? <NavbarSignedIn /> : <NavbarGuest />}</div>;
+	return <>{isSignedIn ? <NavbarSignedIn /> : <NavbarGuest />}</>;
 }

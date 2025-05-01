@@ -38,7 +38,7 @@ export default function HotelSearch() {
 		<div className="flex flex-col">
 			<Herosection />
 			<section className=" mx-auto max-w-[77rem] mt-20 w-full md:justify-items-center">
-				<div className="grid grid-cols-[repeat(auto-fill,minmax(14.875rem,max-content))] gap-[5.625rem]">
+				<div className="grid grid-cols-[repeat(auto-fill,minmax(14.875rem,max-content))] gap-x-[5rem] justify-between gap-y-[4rem] xl:px-6">
 					{hotelOptions.map(({ destination, image }: HotelOption) => (
 						<HotelCard destination={destination} image={image} />
 					))}
@@ -104,7 +104,10 @@ export default function HotelSearch() {
 
 const HotelCard = ({ destination, image }: HotelOption) => {
 	return (
-		<article className="flex items-center gap-4" aria-label={`Hotel details for ${destination}`}>
+		<article
+			className="flex items-center gap-4 w-full"
+			aria-label={`Hotel details for ${destination}`}
+		>
 			<img
 				src={image}
 				alt={`View of ${destination}`}

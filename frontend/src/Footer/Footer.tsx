@@ -1,6 +1,7 @@
 import CTAImage from "../assets/LandingPage/emojione-v1_open-mailbox-with-lowered-flag.svg";
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../assets/Icons";
 import FooterLogo from "../assets/LandingPage/Logo.svg";
+import { motion } from "motion/react";
 
 export default function FooterSection() {
 	return (
@@ -11,6 +12,19 @@ export default function FooterSection() {
 	);
 }
 
+const fadeIn = {
+	initial: { opacity: 0, x: 100 },
+	animate: (i: number) => ({
+		opacity: 1,
+		x: 0,
+		transition: {
+			delay: i * 0.2,
+			duration: 0.8,
+			ease: "easeOut",
+		},
+	}),
+};
+
 const CTA = () => {
 	return (
 		<section
@@ -19,26 +33,50 @@ const CTA = () => {
 		>
 			<div className="py-6 w-full max-w-[37.5rem]">
 				<header>
-					<h2
+					<motion.h2
 						id="cta-heading"
 						className="font-primary text-blackishGreen font-bold text-[2.75rem] md:text-[2rem] md:leading-[2.5rem] w-full max-w-[22.75rem] leading-[3.375rem] mb-[1.5rem]"
+						variants={fadeIn}
+						initial="initial"
+						whileInView="animate"
+						viewport={{ once: true, amount: 0.3 }}
+						custom={0}
 					>
 						Subscribe Newsletter
-					</h2>
-					<p className="font-primary text-xl font-bold mb-[0.5rem] text-[rgba(17,34,17,0.8)]">
+					</motion.h2>
+					<motion.p
+						className="font-primary text-xl font-bold mb-[0.5rem] text-[rgba(17,34,17,0.8)]"
+						variants={fadeIn}
+						initial="initial"
+						whileInView="animate"
+						viewport={{ once: true, amount: 0.3 }}
+						custom={1}
+					>
 						The Travel
-					</p>
+					</motion.p>
 				</header>
-				<p className=" font-medium mb-4 w-full text-[rgba(17,34,17,0.7)]">
+				<motion.p
+					className=" font-medium mb-4 w-full text-[rgba(17,34,17,0.7)]"
+					variants={fadeIn}
+					initial="initial"
+					whileInView="animate"
+					viewport={{ once: true, amount: 0.3 }}
+					custom={2}
+				>
 					Get inspired! Receive travel discounts, tips, and behind-the-scenes stories.
-				</p>
+				</motion.p>
 				<form
 					action="/submit-email"
 					method="post"
 					aria-label="Subscribe to newsletter"
 					className="w-full flex gap-4 md:flex-col"
 				>
-					<input
+					<motion.input
+						variants={fadeIn}
+						initial="initial"
+						whileInView="animate"
+						viewport={{ once: true, amount: 0.3 }}
+						custom={2}
 						type="email"
 						name="email"
 						id="email-address"
@@ -46,16 +84,27 @@ const CTA = () => {
 						required
 						className="px-4 py-[1.125rem] w-full rounded-[0.25rem]"
 					/>
-					<input
+					<motion.input
+						variants={fadeIn}
+						initial="initial"
+						whileInView="animate"
+						viewport={{ once: true, amount: 0.3 }}
+						custom={3}
 						type="submit"
 						value="Subscribe"
 						className="px-4 h-[3.5rem] rounded-[0.25rem] bg-blackishGreen text-white"
 					/>
 				</form>
 			</div>
-			<figure>
-				<img src={CTAImage} alt="Travel inspiration" />
-			</figure>
+
+			<motion.img
+				initial={{ opacity: 0, y: 50 }}
+				whileInView={{ opacity: 1, y: 0 }}
+				transition={{ duration: 0.6, delay: 0.6 }}
+				viewport={{ once: true, amount: 0.3 }}
+				src={CTAImage}
+				alt="Travel inspiration"
+			/>
 		</section>
 	);
 };

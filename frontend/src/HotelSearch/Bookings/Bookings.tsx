@@ -2,6 +2,7 @@ import Melbourne from "../../assets/FlightSearch/Melbourne.png";
 import London from "../../assets/FlightSearch/London.png";
 import Paris from "../../assets/FlightSearch/Paris.png";
 import Columbia from "../../assets/FlightSearch/Columbia.png";
+import { motion } from "motion/react";
 
 type detail = {
 	city: string;
@@ -58,7 +59,14 @@ export default function Bookings() {
 			<section className=" mx-auto max-w-[77rem] w-full md:px-4">
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(238px,1fr))] gap-4 w-full">
 					{details.map(({ city, subCopy, price, image }, index) => (
-						<BookingCard key={index} city={city} subCopy={subCopy} price={price} image={image} />
+						<BookingCard
+							key={index}
+							city={city}
+							subCopy={subCopy}
+							price={price}
+							image={image}
+							index={index}
+						/>
 					))}
 				</div>
 			</section>
@@ -71,16 +79,37 @@ type BookingCardProps = {
 	subCopy: string;
 	price: number;
 	image: string;
+	index: number;
 };
-function BookingCard({ city, subCopy, price, image }: BookingCardProps) {
+
+const fadeUp = {
+	initial: { opacity: 0, y: 100 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.2,
+			duration: 0.6,
+			ease: "easeOut",
+		},
+	}),
+};
+
+function BookingCard({ city, subCopy, price, image, index }: BookingCardProps) {
 	return (
-		<article>
-			{/* Background Image */}
+		<motion.article
+			key={index}
+			custom={index}
+			variants={fadeUp}
+			initial="initial"
+			whileInView="animate"
+			viewport={{ once: true, amount: 0.3 }}
+		>
 			<div className="grid grid-rows-1 grid-cols-1">
 				<figure className="row-start-1 col-start-1">
 					<img src={image} alt={`Image of ${image} `} className="rounded-[12px] w-full" />
 				</figure>
-				{/* Upper Content */}
+
 				<div className="row-start-1 col-start-1 flex flex-col justify-end p-6">
 					<div className="flex items-center justify-between">
 						<header className="text-white">
@@ -92,6 +121,6 @@ function BookingCard({ city, subCopy, price, image }: BookingCardProps) {
 					<button className="w-full bg-mintGreen py-[15px] mt-4 rounded-[4px]">Book Flight</button>
 				</div>
 			</div>
-		</article>
+		</motion.article>
 	);
 }

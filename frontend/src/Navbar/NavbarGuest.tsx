@@ -1,21 +1,17 @@
 import GolobeLogo from "../assets/FlightSearch/LogoWhiteBackground.svg";
-import { NavLink, Link, useLocation } from "react-router-dom";
-import { AirplaneIcon, BedIcon } from "../assets/Icons";
+import { NavLink, Link } from "react-router-dom";
+import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../assets/Icons";
 import styles from "./Navbar.module.css";
+import { useActive, useIsShow } from "../Hooks";
 
 export default function NavbarGuest() {
-	const location = useLocation();
-
-	const isFlightActive =
-		location.pathname.startsWith("/flightsearch") || location.pathname.startsWith("/flightlisting");
-
-	const isHotelActive =
-		location.pathname.startsWith("/hotelsearch") || location.pathname.startsWith("/hotellisting");
+	const { isShow, setIsShow } = useIsShow();
+	const { isFlightActive, isHotelActive } = useActive();
 
 	return (
 		<header className="w-full bg-white sticky z-[100] top-0" role="banner">
 			<nav
-				className="mx-auto max-w-[77rem] py-6 flex items-center justify-between h-max lg:px-4 md:py-4"
+				className="mx-auto max-w-[77rem] md:h16 py-6 flex items-center justify-between lg:px-4"
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">
@@ -56,7 +52,64 @@ export default function NavbarGuest() {
 						Sign up
 					</Link>
 				</div>
+				<button
+					type="button"
+					onClick={() => {
+						setIsShow(!isShow);
+					}}
+					className="hidden md:block"
+				>
+					{isShow ? <CancelIcon /> : <MenuIcon />}
+				</button>
+
+				{isShow && <MobileNavDropdown />}
 			</nav>
 		</header>
 	);
 }
+
+const MobileNavDropdown = () => {
+	const { isFlightActive, isHotelActive } = useActive();
+	return (
+		<div className="fixed flex flex-col h-[calc(100% - 4rem)] w-full left-1/2 -translate-x-1/2 bottom-0 top-[4rem] bg-white z-[100] p-6 shadow-lg">
+			<ul className="flex flex-col w-full">
+				<li>
+					<Link
+						to="/flightsearch"
+						className={`flex space-x-1 items-center py-8 border-b ${
+							isFlightActive ? "border-mintGreen border-b-[4px]" : ""
+						} `}
+					>
+						<AirplaneIcon color={"#112211"} />
+						<span className="text-sm font-semibold text-blackishGreen">Find Flight</span>
+					</Link>
+				</li>
+				<li>
+					<Link
+						to="/hotelsearch"
+						className={`flex space-x-1 items-center py-8 border-b ${
+							isHotelActive ? "border-mintGreen border-b-[4px]" : ""
+						} `}
+					>
+						<BedIcon color={"#112211"} />
+						<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
+					</Link>
+				</li>
+			</ul>
+			<div className="flex flex-col items-center w-full mt-auto">
+				<Link
+					to="/login"
+					className="text-blackishGreen text-sm font-semibold text-center py-8 w-full"
+				>
+					Login
+				</Link>
+				<Link
+					to="/signup"
+					className="text-sm font-semibold text-white text-center py-[0.75rem] bg-blackishGreen w-full"
+				>
+					Sign up
+				</Link>
+			</div>
+		</div>
+	);
+};

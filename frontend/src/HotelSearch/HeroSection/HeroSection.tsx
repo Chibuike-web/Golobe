@@ -111,7 +111,7 @@ function HotelSearchForm() {
 							focusedInput === "destination" && !destination.trim()
 								? "border-[#6200ea]"
 								: "border-[#79747e]"
-						}  flex items-center h-[3.5rem] rounded px-[0.75rem] gap-[0.75rem]`}
+						}  flex items-center h-[3.5rem] rounded px-[0.75rem]`}
 					>
 						<button type="button">
 							<BedIcon />
@@ -211,7 +211,7 @@ function HotelSearchForm() {
 							focusedInput === "rooms&guests" && !room.trim()
 								? "border-[#6200ea]"
 								: "border-[#79747e]"
-						}  flex items-center h-[3.5rem] px-[0.75rem] gap-[0.75rem] rounded-[0.25rem]`}
+						}  flex items-center h-[3.5rem] px-[0.75rem] rounded-[0.25rem]`}
 					>
 						<button type="button">
 							<Profile />
@@ -236,7 +236,7 @@ function HotelSearchForm() {
 					</span>
 					Add Promo Code
 				</button>
-				<button className="flex gap-1 items-center justify-center text-[0.875rem] font-medium bg-mintGreen p-4 rounded-md md:w-full">
+				<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
 					<span>
 						<BuildingIcon className="opacity-100" />
 					</span>

@@ -72,7 +72,7 @@ const fadeUp = {
 		opacity: 1,
 		y: 0,
 		transition: {
-			delay: i * 0.4,
+			delay: i * 0.2,
 			duration: 0.6,
 			ease: "easeOut",
 		},
@@ -170,7 +170,13 @@ const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 const FlightBox = () => {
 	return (
 		<aside className="flex flex-wrap gap-6 my-20">
-			<div className={styles.flights}>
+			<motion.div
+				className={styles.flights}
+				variants={fadeUp}
+				initial="initial"
+				whileInView="animate"
+				viewport={{ once: true, amount: 0.3 }}
+			>
 				<motion.h2
 					variants={fadeUp}
 					initial="initial"
@@ -201,8 +207,14 @@ const FlightBox = () => {
 					<PaperPlaneIcon />
 					<span>Show Flights</span>
 				</motion.button>
-			</div>
-			<div className={styles.hotels}>
+			</motion.div>
+			<motion.div
+				className={styles.hotels}
+				variants={fadeUp}
+				initial="initial"
+				whileInView="animate"
+				viewport={{ once: true, amount: 0.3 }}
+			>
 				<motion.h2
 					variants={fadeUp}
 					initial="initial"
@@ -233,7 +245,7 @@ const FlightBox = () => {
 					<PaperPlaneIcon />
 					<span>Show Hotels</span>
 				</motion.button>
-			</div>
+			</motion.div>
 		</aside>
 	);
 };
