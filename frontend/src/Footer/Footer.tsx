@@ -29,7 +29,7 @@ const CTA = () => {
 	return (
 		<section
 			aria-labelledby="cta-heading"
-			className="w-full mt-[-9.4375rem] max-w-[77rem] mx-auto flex items-end justify-between bg-[#CDEAE1] px-6 rounded-[1.25rem] lg:flex-col lg:items-start"
+			className="w-full mt-[-9.4375rem] max-w-[77rem] mx-auto flex items-end justify-between bg-[#CDEAE1] px-6 rounded-[1.25rem] lg:flex-col lg:items-start overflow-hidden"
 		>
 			<div className="py-6 w-full max-w-[37.5rem]">
 				<header>

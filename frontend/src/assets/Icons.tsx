@@ -1,6 +1,7 @@
 interface IconProps {
 	color?: string;
 	width?: string | number;
+	className?: string;
 }
 
 export function AirplaneIcon({ color = "currentColor", width = "24px" }: IconProps) {
@@ -219,9 +220,10 @@ export function SwapIcon({ style }: { style: string }) {
 	);
 }
 
-export function DownArrowIcon({ width = "24px" }: IconProps) {
+export function DownArrowIcon({ width = "24px", className = "" }: IconProps) {
 	return (
 		<svg
+			className={className}
 			width={width}
 			height={width}
 			viewBox="0 0 24 24"
@@ -239,7 +241,7 @@ export function DownArrowIcon({ width = "24px" }: IconProps) {
 	);
 }
 
-export function UpArrowIcon({ rotate }: { rotate: string }) {
+export function UpArrowIcon({ className = "" }: { className: string }) {
 	return (
 		<svg
 			width="24"
@@ -247,7 +249,7 @@ export function UpArrowIcon({ rotate }: { rotate: string }) {
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			className={`${rotate}`}
+			className={className}
 		>
 			<path
 				d="M5.25 15L12 8.25L18.75 15"

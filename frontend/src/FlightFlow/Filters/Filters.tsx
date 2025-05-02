@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { UpArrowIcon } from "../../assets/Icons";
+import { DownArrowIcon } from "../../assets/Icons";
 import * as RadixSlider from "@radix-ui/react-slider";
 import { Checkbox, RatingButton } from "../../UiComponents";
+import { motion, AnimatePresence } from "motion/react";
 
 import styles from "./Filters.module.css";
 
@@ -40,7 +41,11 @@ const Slider = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (
@@ -76,15 +81,19 @@ const Rating = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (
-				<div className="w-full flex gap-4 items-center mt-2">
+				<motion.div className="w-full flex gap-4 items-center mt-2">
 					{Array.from({ length: 5 }).map((_, index) => (
 						<RatingButton key={`rating-${index}`} text={index} id={`rating-${index}`} />
 					))}
-				</div>
+				</motion.div>
 			)}
 		</div>
 	);
@@ -124,7 +133,11 @@ const Airlines = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (
@@ -160,6 +173,21 @@ const tripsData: CheckboxProps[] = [
 	},
 ];
 
+const fadeDown = {
+	initial: { opacity: 0, height: 0 },
+	animate: {
+		opacity: 1,
+		height: "auto",
+		transition: { duration: 0.4 },
+	},
+	exit: {
+		opacity: 0,
+		height: 0,
+
+		transition: { duration: 0.4 },
+	},
+};
+
 const Trips = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
 	return (
@@ -167,16 +195,29 @@ const Trips = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
-			{activeSlider && (
-				<div className="w-full flex flex-col gap-4 mt-2">
-					{tripsData.map(({ id, title }: CheckboxProps) => (
-						<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
-					))}
-				</div>
-			)}
+			<AnimatePresence mode="wait">
+				{activeSlider && (
+					<motion.div
+						key="content"
+						variants={fadeDown}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="w-full flex flex-col gap-4 mt-2 overflow-hidden"
+					>
+						{tripsData.map(({ id, title }: CheckboxProps) => (
+							<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
+						))}
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
