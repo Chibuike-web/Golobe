@@ -41,7 +41,7 @@ export default function FlightLists() {
 	return (
 		<div className="flex flex-col gap-6 w-full">
 			<div
-				className="flex items-center gap-4 mt-[65px] px-3 bg-white rounded-[12px] w-full"
+				className="flex items-center gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full"
 				style={{ boxShadow: "0px 4px 16px rgba(17, 34, 17, 0.05)" }}
 			>
 				{TabData.map(({ id, type, price, time }: TabsProps) => (
@@ -55,9 +55,9 @@ export default function FlightLists() {
 						handleClick={handleClick}
 					/>
 				))}
-				<div className="flex items-center gap-2">
+				<div className="flex items-center lg:ml-auto gap-2 w-max">
 					<HarmburgerIcon />
-					<p className="text-[14px] text-blackishGreen ">Other sort</p>
+					<p className="text-[14px] text-blackishGreen lg:hidden text-nowrap">Other sort</p>
 				</div>
 			</div>
 			<div className="flex justify-between">
@@ -100,8 +100,8 @@ const Tabs = ({
 	handleClick: (id: number) => void;
 }) => {
 	return (
-		<button className="relative py-4" onClick={() => handleClick(id)}>
-			<div className="px-[12px] flex flex-col items-start gap-[8px] w-[160px]">
+		<button className="relative py-4 w-full" onClick={() => handleClick(id)}>
+			<div className="px-[12px] flex flex-col items-start gap-[8px] w-full max-w-[160px]">
 				<h3 className="font-semibold text-blackishGreen">{type}</h3>
 				<div className="text-blackishGreen opacity-40 text-[14px]">
 					<span>${price}</span> . <span>{time}</span>
@@ -115,7 +115,7 @@ const Tabs = ({
 const FlightListCard = ({ image }: { image: string }) => {
 	return (
 		<div
-			className="flex justify-between w-full bg-white py-6 px-4 text-blackishGreen rounded-[12px]"
+			className="flex lg:flex-col justify-between w-full bg-white py-6 px-4 text-blackishGreen rounded-[12px]"
 			style={{ boxShadow: "0px 4px 16px rgba(17, 34, 17, 0.05)" }}
 		>
 			<figure>
@@ -143,7 +143,7 @@ const FlightListCard = ({ image }: { image: string }) => {
 				{/* Middle Row */}
 				<div>
 					{/* First content */}
-					<div className="flex gap-10">
+					<div className="flex gap-10 md:gap-6">
 						<label htmlFor="time" className="flex gap-3 items-start">
 							<div className="relative cursor-pointer">
 								<input type="checkbox" name="time" className={`${styles.checkbox}`} />

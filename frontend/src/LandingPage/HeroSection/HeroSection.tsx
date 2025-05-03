@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./HeroSection.module.css";
 import {
 	AirplaneIcon,
@@ -334,12 +335,14 @@ function FlightSearchForm() {
 					</span>
 					Add Promo Code
 				</button>
-				<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
-					<span>
-						<PaperPlaneIcon />
-					</span>
-					Show Flights
-				</button>
+				<Link to="/flightlisting" className="md:w-full">
+					<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
+						<span>
+							<PaperPlaneIcon />
+						</span>
+						Show Flights
+					</button>
+				</Link>
 			</div>
 		</aside>
 	);

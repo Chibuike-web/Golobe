@@ -4,7 +4,6 @@ import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../../assets/Icons"
 import styles from "./Navbar.module.css";
 import ColourLogo from "../../assets/LandingPage/ColourLogo.svg";
 import { useIsShow, useScroll, useWindowWidth } from "../../Hooks";
-import { useState, useEffect } from "react";
 
 export default function Navbar() {
 	const windowSize = useWindowWidth();

@@ -154,7 +154,7 @@ function FlightSearchForm() {
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
-							className="max-h-[56px]"
+							className="max-h-[56px] border border-[#79747e]"
 						/>
 						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
 							<DownArrowIcon />
