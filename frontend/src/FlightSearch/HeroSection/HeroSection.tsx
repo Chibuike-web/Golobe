@@ -129,15 +129,15 @@ function FlightSearchForm() {
 							transition={{ duration: 0.2, ease: "easeOut" }}
 							id="fromTo"
 							htmlFor="from-to"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute bg-white z-[100] left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							From - To
 						</motion.label>
 					)}
 					<div
-						className={`flex items-center border-[1px] ${
+						className={`flex items-center relative border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 pr-[16px] leading-[1em] h-[56px]`}
+						} rounded-[4px] gap-2 leading-[1em] h-[56px]`}
 					>
 						<input
 							id="from"
@@ -160,7 +160,7 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button">
+						<button type="button" className="bg-white absolute right-[16px] px-[4px]">
 							<SwapIcon style={"flex-shrink-0"} />
 						</button>
 					</div>
@@ -192,7 +192,10 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+						<button
+							type="button"
+							className="absolute right-[16px] top-[50%] -translate-y-1/2 bg-white px-[4px]"
+						>
 							<DownArrowIcon />
 						</button>
 					</div>

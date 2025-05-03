@@ -214,7 +214,6 @@ export default function Signup() {
 						<div className="relative w-full">
 							{(focusedInput === "firstName" || firstName) && (
 								<motion.label
-									key="firstName"
 									initial={{ opacity: 0, y: 10 }}
 									animate={{ opacity: 1, y: "-50%" }}
 									transition={{ duration: 0.2, ease: "easeOut" }}
@@ -243,7 +242,6 @@ export default function Signup() {
 						<div className="relative w-full">
 							{(focusedInput === "lastName" || lastName) && (
 								<motion.label
-									key="lastName"
 									initial={{ opacity: 0, y: 10 }}
 									animate={{ opacity: 1, y: "-50%" }}
 									transition={{ duration: 0.2, ease: "easeOut" }}
@@ -272,7 +270,6 @@ export default function Signup() {
 						<div className="relative w-full">
 							{(focusedInput === "email" || email) && (
 								<motion.label
-									key="email"
 									initial={{ opacity: 0, y: 10 }}
 									animate={{ opacity: 1, y: "-50%" }}
 									transition={{ duration: 0.2, ease: "easeOut" }}
@@ -299,7 +296,6 @@ export default function Signup() {
 						<div className="relative w-full">
 							{(focusedInput === "phoneNumber" || phoneNumber) && (
 								<motion.label
-									key="phoneNumber"
 									initial={{ opacity: 0, y: 10 }}
 									animate={{ opacity: 1, y: "-50%" }}
 									transition={{ duration: 0.2, ease: "easeOut" }}
@@ -331,7 +327,6 @@ export default function Signup() {
 					<div className="relative w-full mb-6">
 						{(focusedInput === "password" || password) && (
 							<motion.label
-								key="password"
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: "-50%" }}
 								transition={{ duration: 0.2, ease: "easeOut" }}
@@ -369,7 +364,6 @@ export default function Signup() {
 					<div className="relative w-full mb-6">
 						{focusedInput === "confirmPassword" && (
 							<motion.label
-								key="confirmPassword"
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: "-50%" }}
 								transition={{ duration: 0.2, ease: "easeOut" }}

@@ -60,13 +60,13 @@ export default function FlightLists() {
 					<p className="text-[14px] text-blackishGreen lg:hidden text-nowrap">Other sort</p>
 				</div>
 			</div>
-			<div className="flex justify-between">
+			<div className="flex justify-betwee md:flex-col md:gap-6">
 				<p className="text-[14px] font-semibold text-blackishGreen">
 					Showing 4 of <span className="text-slamon">257 places</span>
 				</p>
-				<p className="flex items-center gap-[4px] text-[14px]">
+				<p className="flex items-center gap-[4px] text-[14px] md:justify-between md:w-full">
 					Sort by
-					<span className="flex text-[14px] gap-[4px] items-center font-semibold">
+					<span className="flex  text-[14px] gap-[4px] items-center font-semibold">
 						Recommended <DownArrowIcon />
 					</span>
 				</p>
@@ -121,7 +121,7 @@ const FlightListCard = ({ image }: { image: string }) => {
 			<figure>
 				<img src={image} alt="Flight image" />
 			</figure>
-			<div className="flex flex-col w-full px-6 gap-4">
+			<div className="flex flex-col w-full px-6 md:px-0 gap-4">
 				{/* Top Row */}
 				<div className="flex justify-between">
 					{/* Left content */}

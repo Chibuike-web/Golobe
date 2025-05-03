@@ -155,24 +155,24 @@ function FlightSearchForm() {
 				aria-label="Flight Search"
 			>
 				{/* Form 1 */}
+
 				<div className="relative w-full">
 					{(focusedInput === "from" || from || focusedInput === "to" || to) && (
 						<motion.label
-							key="fromToLabel"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
 							id="fromTo"
 							htmlFor="from-to"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute bg-white left-[1rem] z-[100] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							From - To
 						</motion.label>
 					)}
 					<div
-						className={`flex items-center border-[1px] ${
+						className={`flex items-center relative border-[1px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 pr-[16px] leading-[1em] h-[56px]`}
+						} rounded-[4px] gap-2 leading-[1em] h-[56px]`}
 					>
 						<input
 							id="from"
@@ -195,23 +195,21 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button">
+						<button type="button" className="bg-white absolute right-[16px] px-[4px]">
 							<SwapIcon style={"flex-shrink-0"} />
 						</button>
 					</div>
 				</div>
-
 				{/* Form  2 */}
 				<div className="relative w-full max-w-[8.75rem] md:max-w-full">
 					{(focusedInput === "trip" || trip) && (
 						<motion.label
-							key="tripLabel"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
 							id="trip"
 							htmlFor="trip"
-							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem] "
 						>
 							Trip
 						</motion.label>
@@ -227,12 +225,14 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+						<button
+							type="button"
+							className="absolute right-[16px] top-[50%] -translate-y-1/2 px-[4px] bg-white"
+						>
 							<DownArrowIcon />
 						</button>
 					</div>
 				</div>
-
 				{/* Form  3 */}
 				<div className="relative w-full">
 					{(focusedInput === "departDate" ||
@@ -240,7 +240,6 @@ function FlightSearchForm() {
 						focusedInput === "returnDate" ||
 						returnDate) && (
 						<motion.label
-							key="departReturnLabel"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
@@ -279,7 +278,6 @@ function FlightSearchForm() {
 						/>
 					</div>
 				</div>
-
 				{/* Form  4 */}
 				<div className="relative w-full">
 					{(focusedInput === "passenger" ||
@@ -287,7 +285,6 @@ function FlightSearchForm() {
 						focusedInput === "travelClass" ||
 						travelClass) && (
 						<motion.label
-							key="passengerClassLabel"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}

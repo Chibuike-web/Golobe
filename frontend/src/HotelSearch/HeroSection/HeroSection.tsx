@@ -96,12 +96,11 @@ function HotelSearchForm() {
 				<div className="relative w-full  md:max-w-full">
 					{(focusedInput === "destination" || destination) && (
 						<motion.label
-							key="destination"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="destination"
-							className="absolute z-[1000] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute z-[100] bg-white left-[1rem] px-[0.0625rem] top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Enter Destination
 						</motion.label>
@@ -113,9 +112,8 @@ function HotelSearchForm() {
 								: "border-[#79747e]"
 						}  flex items-center h-[3.5rem] rounded px-[0.75rem]`}
 					>
-						<button type="button">
-							<BedIcon />
-						</button>
+						<BedIcon />
+
 						<input
 							id="destination"
 							value={destination}
@@ -133,7 +131,6 @@ function HotelSearchForm() {
 				<div className="relative w-full md:max-w-full ">
 					{(focusedInput === "checkIn" || checkIn) && (
 						<motion.label
-							key="checkIn"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
@@ -164,7 +161,6 @@ function HotelSearchForm() {
 				<div className="relative w-full md:max-w-full">
 					{(focusedInput === "checkOut" || checkOut) && (
 						<motion.label
-							key="checkOut"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
@@ -185,9 +181,9 @@ function HotelSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button" className="absolute right-[1rem] top-[50%] -translate-y-1/2">
+						<div className="absolute right-[1rem] top-[50%] -translate-y-1/2">
 							<Calender />
-						</button>
+						</div>
 					</div>
 				</div>
 
@@ -196,7 +192,6 @@ function HotelSearchForm() {
 				<div className="relative w-full  md:max-w-full">
 					{(focusedInput === "rooms&guests" || room) && (
 						<motion.label
-							key="rooms&guests"
 							initial={{ opacity: 0, y: 10 }}
 							animate={{ opacity: 1, y: "-50%" }}
 							transition={{ duration: 0.2, ease: "easeOut" }}
@@ -213,9 +208,8 @@ function HotelSearchForm() {
 								: "border-[#79747e]"
 						}  flex items-center h-[3.5rem] px-[0.75rem] rounded-[0.25rem]`}
 					>
-						<button type="button">
-							<Profile />
-						</button>
+						<Profile />
+
 						<input
 							id="rooms&guests"
 							value={room}

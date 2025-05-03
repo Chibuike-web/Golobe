@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/Icons";
 import { useFlightSearchFormState } from "../../Hooks";
+import { motion } from "motion/react";
 
 export default function HeroSection() {
 	return (
@@ -80,7 +81,6 @@ function FlightSearchForm() {
 		(focusedInput === "passenger" || focusedInput === "travelClass") &&
 		!passenger.trim() &&
 		!travelClass.trim();
-
 	return (
 		<aside
 			className="w-full flex lg:flex-col items-center gap-6 text-blackishGreen max-w-[77rem] mt-12 z-50 bg-white px-8 py-8 rounded-2xl lg:px-4"
@@ -95,18 +95,21 @@ function FlightSearchForm() {
 				{/* Form 1 */}
 				<div className="relative w-full">
 					{(focusedInput === "from" || from || focusedInput === "to" || to) && (
-						<label
+						<motion.label
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							id="fromTo"
 							htmlFor="from-to"
-							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
+							className="absolute bg-white left-[1rem] z-[100] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							From - To
-						</label>
+						</motion.label>
 					)}
 					<div
-						className={`flex items-center border-[1px] max-h-[56px] ${
+						className={`flex items-center relative border-[1px] max-h-[56px] ${
 							isFromToBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 leading-[1em]`}
 					>
 						<input
 							id="from"
@@ -129,7 +132,7 @@ function FlightSearchForm() {
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
 						/>
-						<button type="button">
+						<button type="button" className="bg-white absolute right-[16px] px-[4px]">
 							<SwapIcon style={"flex-shrink-0"} />
 						</button>
 					</div>
@@ -138,12 +141,15 @@ function FlightSearchForm() {
 				{/* Form  2 */}
 				<div className="relative w-full max-w-[8.75rem] lg:max-w-full ">
 					{(focusedInput === "trip" || trip) && (
-						<label
+						<motion.label
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="trip"
 							className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Trip
-						</label>
+						</motion.label>
 					)}
 					<div className="relative">
 						<input
@@ -156,7 +162,10 @@ function FlightSearchForm() {
 							onChange={handleChange}
 							className="max-h-[56px] border border-[#79747e]"
 						/>
-						<button type="button" className="absolute right-[16px] top-[50%] -translate-y-1/2">
+						<button
+							type="button"
+							className="absolute right-[16px] top-[50%] -translate-y-1/2 bg-white px-[4px]"
+						>
 							<DownArrowIcon />
 						</button>
 					</div>
@@ -168,22 +177,26 @@ function FlightSearchForm() {
 						departDate ||
 						focusedInput === "returnDate" ||
 						returnDate) && (
-						<label
+						<motion.label
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="depart-return"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Depart - Return
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] max-h-[56px] ${
 							isDepartReturnBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 leading-[1em]`}
 					>
 						<input
 							id="departDate"
 							value={departDate}
 							placeholder="Depart date"
+							type="text"
 							className="custom-input"
 							onChange={handleChange}
 							onFocus={(e) => handleFocus(e.target.id)}
@@ -194,6 +207,7 @@ function FlightSearchForm() {
 							id="returnDate"
 							value={returnDate}
 							placeholder="Return date"
+							type="text"
 							className="custom-input"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -208,23 +222,27 @@ function FlightSearchForm() {
 						passenger ||
 						focusedInput === "travelClass" ||
 						travelClass) && (
-						<label
+						<motion.label
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="Passenger - Class"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Passenger - Class
-						</label>
+						</motion.label>
 					)}
 					<div
 						className={`flex items-center border-[1px] max-h-[56px] ${
 							isPassengerClassBlue ? "border-[#6200ea]" : "border-[#79747e]"
-						} rounded-[4px] gap-2 p-[16px] leading-[1em]`}
+						} rounded-[4px] gap-2 leading-[1em]`}
 					>
 						<input
 							id="passenger"
 							value={passenger}
 							placeholder="Passenger"
 							className="custom-input"
+							type="text"
 							onChange={handleChange}
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
@@ -235,6 +253,7 @@ function FlightSearchForm() {
 							value={travelClass}
 							placeholder="Travel Class"
 							className="custom-input"
+							type="text"
 							onFocus={(e) => handleFocus(e.target.id)}
 							onBlur={(e) => handleBlur(e.target.id, e.target.value)}
 							onChange={handleChange}
