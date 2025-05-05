@@ -2,14 +2,15 @@ import { useState } from "react";
 import { CancelIcon, DownArrowIcon, FilterIcon } from "../../assets/Icons";
 import * as RadixSlider from "@radix-ui/react-slider";
 import { Checkbox, RatingButton } from "../../UiComponents";
+import { AnimatePresence, motion } from "motion/react";
 import styles from "./Filters.module.css";
 
 export function DesktopFilters() {
 	return (
-		<div className="w-full max-w-[367.5px] flex justify-between">
+		<div className="w-full max-w-[367.5px] flex gap-6">
 			<div className="w-full max-w-[343px] flex flex-col gap-8">
 				<h1 className="font-semibold text-[20px]">Filters</h1>
-				<div className="flex flex-col gap-8">
+				<div className="flex flex-col">
 					<Slider name="Price" />
 					<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
 					<Rating name="Rating" />
@@ -46,7 +47,7 @@ export function MobileFilters() {
 							</button>
 						</div>
 
-						<div className="flex flex-col gap-8">
+						<div className="flex flex-col">
 							<Slider name="Price" />
 							<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
 							<Rating name="Rating" />
@@ -62,6 +63,20 @@ export function MobileFilters() {
 	);
 }
 
+const fadeDown = {
+	initial: { opacity: 0, height: 0 },
+	animate: {
+		opacity: 1,
+		height: "auto",
+		transition: { duration: 0.4 },
+	},
+	exit: {
+		opacity: 0,
+		height: 0,
+		transition: { duration: 0.4 },
+	},
+};
+
 type ComponentProps = {
 	name: string;
 };
@@ -71,7 +86,7 @@ const Slider = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
 
 	return (
-		<div className="w-full">
+		<div className={`w-full overflow-clip ${name === "Department" ? "py-8" : "pb-8"}`}>
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
@@ -82,28 +97,36 @@ const Slider = ({ name }: ComponentProps) => {
 					/>
 				</button>
 			</div>
-			{activeSlider && (
-				<div className="w-full mt-4">
-					<RadixSlider.Root
-						value={values}
-						onValueChange={setValues}
-						min={0}
-						max={1500}
-						step={10}
-						className="relative flex items-center w-full h-5"
+			<AnimatePresence mode="wait">
+				{activeSlider && (
+					<motion.div
+						variants={fadeDown}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="w-full mt-4"
 					>
-						<RadixSlider.Track className="relative flex-grow h-1 bg-gray-300 rounded">
-							<RadixSlider.Range className="absolute h-full bg-blackishGreen rounded" />
-						</RadixSlider.Track>
-						<RadixSlider.Thumb className="block w-6 h-6 bg-mintGreen rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300" />
-						<RadixSlider.Thumb className="block w-6 h-6 bg-mintGreen rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300" />
-					</RadixSlider.Root>
-					<div className="flex justify-between items-center mt-2">
-						<span className="block text-[12px]">${values[0]}</span>
-						<span className="block text-[12px]">${values[1]}</span>
-					</div>
-				</div>
-			)}
+						<RadixSlider.Root
+							value={values}
+							onValueChange={setValues}
+							min={0}
+							max={1500}
+							step={10}
+							className="relative flex items-center w-full h-5"
+						>
+							<RadixSlider.Track className="relative flex-grow h-1 bg-gray-300 rounded">
+								<RadixSlider.Range className="absolute h-full bg-blackishGreen rounded" />
+							</RadixSlider.Track>
+							<RadixSlider.Thumb className="block w-6 h-6 bg-mintGreen rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300" />
+							<RadixSlider.Thumb className="block w-6 h-6 bg-mintGreen rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-300" />
+						</RadixSlider.Root>
+						<div className="flex justify-between items-center mt-2">
+							<span className="block text-[12px]">${values[0]}</span>
+							<span className="block text-[12px]">${values[1]}</span>
+						</div>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
@@ -111,7 +134,7 @@ const Slider = ({ name }: ComponentProps) => {
 const Rating = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
 	return (
-		<div>
+		<div className="overflow-clip py-8">
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
@@ -122,13 +145,21 @@ const Rating = ({ name }: ComponentProps) => {
 					/>
 				</button>
 			</div>
-			{activeSlider && (
-				<div className="w-full flex gap-4 items-center mt-2">
-					{Array.from({ length: 5 }).map((_, index) => (
-						<RatingButton key={`rating-${index}`} text={index} id={`rating-${index}`} />
-					))}
-				</div>
-			)}
+			<AnimatePresence>
+				{activeSlider && (
+					<motion.div
+						variants={fadeDown}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="w-full flex gap-4 items-center mt-2"
+					>
+						{Array.from({ length: 5 }).map((_, index) => (
+							<RatingButton key={`rating-${index}`} text={index} id={`rating-${index}`} />
+						))}
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
@@ -167,7 +198,7 @@ const freebiesData: CheckboxProps[] = [
 const Freebies = ({ name }: ComponentProps) => {
 	const [activeSlider, setActiveSlider] = useState(false);
 	return (
-		<div>
+		<div className="overflow-clip py-8">
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
@@ -178,13 +209,21 @@ const Freebies = ({ name }: ComponentProps) => {
 					/>
 				</button>
 			</div>
-			{activeSlider && (
-				<div className="w-full flex flex-col gap-4 mt-2">
-					{freebiesData.map(({ id, title }: CheckboxProps) => (
-						<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
-					))}
-				</div>
-			)}
+			<AnimatePresence>
+				{activeSlider && (
+					<motion.div
+						variants={fadeDown}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="w-full flex flex-col gap-4 mt-2"
+					>
+						{freebiesData.map(({ id, title }: CheckboxProps) => (
+							<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
+						))}
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
@@ -293,7 +332,7 @@ const Amenities = ({ name }: ComponentProps) => {
 	const [showAllAmenities, setShowAllAmenities] = useState(false);
 	const remaining = amenitiesData.length - 5;
 	return (
-		<div>
+		<div className="overflow-clip pt-8">
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
@@ -304,24 +343,32 @@ const Amenities = ({ name }: ComponentProps) => {
 					/>
 				</button>
 			</div>
-			{activeSlider && (
-				<div className="w-full flex flex-col items-start gap-4 mt-2">
-					{(showAllAmenities ? amenitiesData : amenitiesData.slice(0, 5)).map(
-						({ id, title }: CheckboxProps) => (
-							<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
-						)
-					)}
-					{remaining > 0 && (
-						<button
-							type="button"
-							className="text-slamon font-bold text-[14px]"
-							onClick={() => setShowAllAmenities(!showAllAmenities)}
-						>
-							{showAllAmenities ? "Show less" : `+${remaining} more`}
-						</button>
-					)}
-				</div>
-			)}
+			<AnimatePresence>
+				{activeSlider && (
+					<motion.div
+						variants={fadeDown}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="w-full flex flex-col items-start gap-4 mt-2"
+					>
+						{(showAllAmenities ? amenitiesData : amenitiesData.slice(0, 5)).map(
+							({ id, title }: CheckboxProps) => (
+								<Checkbox key={id} id={id} title={title} className={`${styles.checkbox}`} />
+							)
+						)}
+						{remaining > 0 && (
+							<button
+								type="button"
+								className="text-slamon font-bold text-[14px]"
+								onClick={() => setShowAllAmenities(!showAllAmenities)}
+							>
+								{showAllAmenities ? "Show less" : `+${remaining} more`}
+							</button>
+						)}
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };
