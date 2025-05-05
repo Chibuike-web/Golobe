@@ -3,6 +3,7 @@ import styles from "./HeroSection.module.css";
 import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../assets/Icons";
 import { motion } from "motion/react";
 import { useHotelSearchFormState } from "../../Hooks";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
 	return (
@@ -230,12 +231,14 @@ function HotelSearchForm() {
 					</span>
 					Add Promo Code
 				</button>
-				<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
-					<span>
-						<BuildingIcon className="opacity-100" />
-					</span>
-					Show Places
-				</button>
+				<Link to="/hotellisting">
+					<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
+						<span>
+							<BuildingIcon className="opacity-100" />
+						</span>
+						Show Places
+					</button>
+				</Link>
 			</div>
 		</aside>
 	);

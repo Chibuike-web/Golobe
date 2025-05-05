@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { UpArrowIcon } from "../../assets/Icons";
+import { CancelIcon, DownArrowIcon, FilterIcon } from "../../assets/Icons";
 import * as RadixSlider from "@radix-ui/react-slider";
 import { Checkbox, RatingButton } from "../../UiComponents";
 import styles from "./Filters.module.css";
 
-export default function Filters() {
+export function DesktopFilters() {
 	return (
 		<div className="w-full max-w-[367.5px] flex justify-between">
 			<div className="w-full max-w-[343px] flex flex-col gap-8">
@@ -24,6 +24,44 @@ export default function Filters() {
 	);
 }
 
+export function MobileFilters() {
+	const [isshowFilter, setIsShowFilter] = useState(false);
+	return (
+		<>
+			<button
+				type="button"
+				onClick={() => setIsShowFilter((prev) => !prev)}
+				className="flex items-center"
+			>
+				<FilterIcon />
+				Filters
+			</button>
+			{isshowFilter && (
+				<div className="w-full fixed inset-0 z-[100] bg-white px-6 overflow-y-auto py-6">
+					<div className="w-full flex flex-col gap-8">
+						<div className="flex items-center justify-between">
+							<h1 className="font-semibold text-[20px]">Filters</h1>{" "}
+							<button type="button" onClick={() => setIsShowFilter((prev) => !prev)}>
+								<CancelIcon />
+							</button>
+						</div>
+
+						<div className="flex flex-col gap-8">
+							<Slider name="Price" />
+							<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+							<Rating name="Rating" />
+							<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+							<Freebies name="Freebies" />
+							<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
+							<Amenities name="Amenities" />
+						</div>
+					</div>
+				</div>
+			)}
+		</>
+	);
+}
+
 type ComponentProps = {
 	name: string;
 };
@@ -37,7 +75,11 @@ const Slider = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (
@@ -73,7 +115,11 @@ const Rating = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (
@@ -125,7 +171,11 @@ const Freebies = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (
@@ -247,7 +297,11 @@ const Amenities = ({ name }: ComponentProps) => {
 			<div className="flex justify-between w-full">
 				<h2 className="font-semibold">{name}</h2>
 				<button type="button" onClick={() => setActiveSlider(!activeSlider)}>
-					<UpArrowIcon rotate={activeSlider ? "" : "rotate-180"} />
+					<DownArrowIcon
+						className={`transform transition-transform duration-300 ease-out ${
+							activeSlider ? "rotate-180" : "rotate-0"
+						}`}
+					/>
 				</button>
 			</div>
 			{activeSlider && (

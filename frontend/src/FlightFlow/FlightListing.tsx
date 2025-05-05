@@ -1,8 +1,8 @@
-import { useWindowWidth } from "../../Hooks";
-import { DesktopFilters, MobileFilters } from "../Filters/Filters";
+import { useWindowWidth } from "../Hooks";
+import { DesktopFilters, MobileFilters } from "./Filters/Filters";
 
-import FlightLists from "../FlightLists/FlightLists";
-import HeroSection from "../HeroSection/HeroSection";
+import FlightLists from "./FlightLists/FlightLists";
+import HeroSection from "./HeroSection/HeroSection";
 
 export default function FlightListing() {
 	const windowSize = useWindowWidth();

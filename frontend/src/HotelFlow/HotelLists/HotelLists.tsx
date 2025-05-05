@@ -138,17 +138,17 @@ const HotelListCardInfo: HotelListCardProps[] = [
 
 const HotelListCard = ({ name, price, image, favorite }: HotelListCardProps) => {
 	return (
-		<div className={`flex rounded-[12px] overflow-hidden bg-white ${styles.card}`}>
-			<figure className="max-w-[300px] relative">
+		<div className={`flex rounded-[12px] overflow-hidden bg-white xl:flex-col ${styles.card}`}>
+			<figure className="max-w-[300px] xl:max-w-full xl:h-[300px] relative">
 				<p className="text-blackishGreen/75 font-medium text-[12px] absolute p-[8px] bg-white/50 backdrop-blur-sm rounded-[8px] leading-[15px] top-[8px] right-[8px]">
 					9 images
 				</p>
-				<img src={image} alt={name} className="w-full" />
+				<img src={image} alt={name} className="w-full h-full object-cover" />
 			</figure>
 
-			<div className="p-6 flex flex-col justify-between">
+			<div className="p-4 flex flex-col  justify-between xl:gap-6">
 				{/* Top */}
-				<div className="flex">
+				<div className="flex justify-between md:flex-col md:gap-6 w-full">
 					{/* Left */}
 					<div>
 						<h1 className="font-bold font-primary text-[20px] leading-[25px] mb-4">{name}</h1>
