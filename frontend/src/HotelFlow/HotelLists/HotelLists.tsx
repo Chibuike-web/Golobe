@@ -13,10 +13,7 @@ export default function HotelLists() {
 	};
 	return (
 		<div className="flex flex-col gap-6 w-full">
-			<div
-				className="flex items-center gap-4 py-4 px-3 bg-white rounded-[12px] w-full"
-				style={{ boxShadow: "0px 4px 16px rgba(17, 34, 17, 0.05)" }}
-			>
+			<div className="flex overflow-auto items-center py-4 gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
 				{TabData.map(({ id, type, place }: TabsProps, index) => (
 					<div key={id} className="flex w-full gap-4">
 						<Tabs
@@ -30,11 +27,11 @@ export default function HotelLists() {
 					</div>
 				))}
 			</div>
-			<div className="flex justify-between">
+			<div className="flex justify-between md:flex-col md:gap-4">
 				<p className="text-[14px] font-semibold text-blackishGreen">
 					Showing 4 of <span className="text-slamon">257 places</span>
 				</p>
-				<p className="flex items-center gap-[4px] text-[14px]">
+				<p className="flex items-center md:justify-between gap-[4px] text-[14px]">
 					Sort by
 					<span className="flex text-[14px] gap-[4px] items-center font-semibold">
 						Recommended <DownArrowIcon />
@@ -89,7 +86,7 @@ const Tabs = ({
 }) => {
 	return (
 		<button className="relative w-full" onClick={() => handleClick(id)}>
-			<div className="px-[12px] flex flex-col items-start gap-[8px] w-full">
+			<div className="px-[12px] flex flex-col items-start gap-[8px] w-full min-w-[160px] text-left">
 				<h3 className="font-semibold text-blackishGreen">{type}</h3>
 				<div className="text-blackishGreen opacity-40 text-[14px]">
 					<span>{place}</span>
