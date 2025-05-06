@@ -13,7 +13,7 @@ export default function HotelLists() {
 	};
 	return (
 		<div className="flex flex-col gap-6 w-full">
-			<div className="flex overflow-auto items-center py-4 gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
+			<div className=" hide-scrollbar  flex overflow-auto items-center py-4 gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
 				{TabData.map(({ id, type, place }: TabsProps, index) => (
 					<div key={id} className="flex w-full gap-4">
 						<Tabs

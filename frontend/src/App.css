@@ -61,10 +61,6 @@ input.error {
 }
 
 .custom-input {
-	/* border: none !important;
-	outline: none !important;
-	padding: 0 !important;
-	line-height: 1 !important; */
 	background: transparent !important;
 	width: 100%;
 }
@@ -72,4 +68,12 @@ input.error {
 .custom-input:focus {
 	outline: none;
 	box-shadow: none;
+}
+
+.hide-scrollbar {
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+	display: none; /* Chrome/Safari */
 }
