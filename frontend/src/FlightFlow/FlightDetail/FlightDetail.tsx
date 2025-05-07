@@ -102,7 +102,7 @@ const HeroSection = () => {
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
 					<p className="text-[14px] font-medium opacity-75">CVK Park Bosphorus Hotel Istanbul</p>
 				</div>
-				<div className="flex justify-between w-full items-end">
+				<div className="flex md:flex-col justify-between w-full items-end md:items-start">
 					{/* Left */}
 					<div>
 						<h2 className="font-primary font-bold text-2xl mb-4">Emirates A380 Airbus</h2>
@@ -124,7 +124,7 @@ const HeroSection = () => {
 						</div>
 					</div>
 					{/* Right */}
-					<div className="flex flex-col items-end gap-4">
+					<div className="flex flex-col md:flex-row md:justify-between md:w-full items-end gap-4">
 						<h2 className="text-[32px] font-bold text-slamon leading-[39px]">$240</h2>
 						<div className="flex gap-4">
 							<button
@@ -149,11 +149,11 @@ const HeroSection = () => {
 					</div>
 				</div>
 			</div>
-			<figure className="rounded-[12px] mt-8 relative overflow-hidden h-[395px]">
-				<img src={HeroImage} alt="Hero Image" className="absolute top-[-140px]" />
+			<figure className="rounded-[12px] mt-8 h-[395px] overflow-hidden ">
+				<img src={HeroImage} alt="Hero Image" className="h-full object-cover w-full" />
 			</figure>
 			<div className="mt-10">
-				<div className="flex justify-between items-center">
+				<div className="flex justify-between items-center lg:flex-col lg:items-start lg:gap-4">
 					<h2 className="font-primary font-bold text-[24px]">Basic Economy Features</h2>
 					<div className="flex gap-6 items-center">
 						<Checkbox
@@ -176,15 +176,15 @@ const HeroSection = () => {
 						/>
 					</div>
 				</div>
-				<figure className="flex gap-[19px] mt-[20px]">
+				<figure className="hide-scrollbar flex gap-[19px] mt-[20px] overflow-y-auto">
 					{imageImports.map((image) => (
-						<img src={image} alt={image} className="w-full max-w-[120px] rounded-[12px]" />
+						<img src={image} alt={image} className="w-full min-w-[120px] rounded-[12px]" />
 					))}
 				</figure>
 			</div>
 			<div className="flex flex-col justify-between bg-mintGreen p-6 rounded-[8px] w-full mt-10">
 				<h2 className="font-primary font-bold text-[24px] mb-4">Emirates Airlines Policies</h2>
-				<div className="flex gap-5 ">
+				<div className="flex gap-5 md:flex-col ">
 					<div className="flex items-center gap-4">
 						<TimeIcon />
 						<p className="font-semibold opacity-75">
