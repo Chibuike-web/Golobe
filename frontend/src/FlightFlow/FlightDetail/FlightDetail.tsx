@@ -30,7 +30,7 @@ import {
 
 export default function FlightDetail() {
 	return (
-		<div className="flex flex-col px-8 bg-[#FAFBFC]">
+		<div className="flex flex-col px-8 lg:px-4 bg-[#FAFBFC]">
 			<HeroSection />
 		</div>
 	);
@@ -102,7 +102,7 @@ const HeroSection = () => {
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
 					<p className="text-[14px] font-medium opacity-75">CVK Park Bosphorus Hotel Istanbul</p>
 				</div>
-				<div className="flex md:flex-col justify-between w-full items-end md:items-start">
+				<div className="flex md:flex-col justify-between w-full items-end md:items-start md:gap-6">
 					{/* Left */}
 					<div>
 						<h2 className="font-primary font-bold text-2xl mb-4">Emirates A380 Airbus</h2>
@@ -124,9 +124,9 @@ const HeroSection = () => {
 						</div>
 					</div>
 					{/* Right */}
-					<div className="flex flex-col md:flex-row md:justify-between md:w-full items-end gap-4">
+					<div className="flex flex-col md:justify-between md:w-full items-end md:items-start gap-4">
 						<h2 className="text-[32px] font-bold text-slamon leading-[39px]">$240</h2>
-						<div className="flex gap-4">
+						<div className="flex gap-4 md:w-full">
 							<button
 								type="button"
 								className="p-[14px] border-mintGreen border-[1px] rounded-[4px]"
@@ -155,7 +155,7 @@ const HeroSection = () => {
 			<div className="mt-10">
 				<div className="flex justify-between items-center lg:flex-col lg:items-start lg:gap-4">
 					<h2 className="font-primary font-bold text-[24px]">Basic Economy Features</h2>
-					<div className="flex gap-6 items-center">
+					<div className="flex gap-6 items-center sm:flex-col sm:w-full sm:items-start">
 						<Checkbox
 							id={1}
 							title={"Economy"}
@@ -248,30 +248,23 @@ export const Card = ({
 	flightStartTime,
 	flightEnd,
 	flightEndTime,
-	gap = "80px",
 }: CardType) => {
 	return (
 		<div
 			id={`card-${id}`}
-			className="flex flex-col items-center w-full py-8 px-6 rounded-[12px]"
+			className="flex flex-col items-center w-full py-8 px-6 md:px-4 md:py-6 rounded-[12px]"
 			style={{ boxShadow: "0px 4px 16px rgba(17, 34, 27, 0.05)" }}
 		>
-			{/* Top row */}
-			<div className="w-full flex justify-between">
-				{/* Left */}
-				<div className="flex items-center">
-					<p className="font-primary font-bold text-[20px] text-blackishGreen">
-						{flightType} {flightDate}
-					</p>
-				</div>
-				{/* Right */}
-				<p className="text-blackishGreen opacity-75 text-[20px] font-medium">{duration}</p>
+			<div className="w-full flex text-[20px] md:text-[16px] justify-between">
+				<p className="font-primary font-bold text-blackishGreen">
+					{flightType} {flightDate}
+				</p>
+
+				<p className="text-blackishGreen opacity-75  font-medium">{duration}</p>
 			</div>
 
-			{/* Middle row */}
-			<div className="w-full flex justify-between items-center mt-6 mb-10">
-				{/* Left */}
-				<div className="flex items-center gap-6 px-8 py-4 border-[0.5px] border-mintGreen rounded-[8px] ">
+			<div className="w-full flex justify-between items-center mt-6 mb-10 lg:flex-col lg:gap-[20px]">
+				<div className="flex items-center gap-6 px-8 py-4 border-[0.5px] border-mintGreen rounded-[8px] md:w-full">
 					<img src={airlineLogo} alt="Emirates Logo" className="w-full max-w-[64px]" />
 					<div>
 						<h2 className="font-semibold text-[24px] text-blackishGreen leading-[29px] mb-[8px]">
@@ -294,7 +287,7 @@ export const Card = ({
 				</div>
 			</div>
 			{/* Last row */}
-			<div className="flex w-max" style={{ gap }}>
+			<div className="flex w-max lg:flex-col gap-[50px]">
 				<div className="flex items-center gap-4">
 					<h4 className="font-semibold text-[24px] text-blackishGreen leading-[29px]">
 						{flightStartTime}

@@ -31,14 +31,14 @@ import { ReactNode, useState } from "react";
 
 export default function HotelDetail() {
 	return (
-		<div className="w-full mx-auto max-w-[77rem] mt-12">
+		<div className="w-full mx-auto max-w-[77rem] mt-12 lg:px-4">
 			<div className="w-full flex flex-col gap-8">
 				<div className="flex items-center">
 					<p className="text-slamon text-[14px] font-medium">Turkey</p> <RightArrowIcon />
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
 					<p className="text-[14px] font-medium opacity-75">CVK Park Bosphorus Hotel Istanbul</p>
 				</div>
-				<div className="flex justify-between w-full items-end">
+				<div className="flex justify-between w-full items-end md:flex-col md:items-start md:gap-6">
 					{/* Left */}
 					<div>
 						<h2 className="font-primary font-bold text-2xl mb-4">
@@ -62,11 +62,11 @@ export default function HotelDetail() {
 						</div>
 					</div>
 					{/* Right */}
-					<div className="flex flex-col items-end gap-4">
+					<div className="flex flex-col items-end gap-4 md:items-start md:w-full">
 						<h2 className="text-[32px] flex items-end font-bold text-slamon leading-[29px]">
 							$240 <span className="text-[14px] leading-[19px]">/night</span>
 						</h2>
-						<div className="flex gap-4">
+						<div className="flex gap-4 md:w-full">
 							<button
 								type="button"
 								className="p-[14px] border-mintGreen border-[1px] rounded-[4px]"
@@ -97,7 +97,7 @@ export default function HotelDetail() {
 				<img src={HeroImage5} className="max-w-[302px] w-full" />
 				<button
 					type="button"
-					className="absolute bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] w-max"
+					className="absolute bottom-4 md:bottom-2 right-4 md:right-2 bg-mintGreen font-semibold text-[14px] md:text-[12px] py-[16px] md:py-[8px] px-[16px] md:px-[8px] rounded-[4px] w-max"
 				>
 					View all photos
 				</button>
@@ -116,8 +116,8 @@ export default function HotelDetail() {
 					categories at various sizes with city and Bosphorus view, as well as 68 separate luxury
 					suites, are offered to its special guests as a wide variety of selection.
 				</p>
-				<div className="flex gap-4 mt-8">
-					<div className="bg-mintGreen rounded-[12px] pl-4 py-4 pr-16">
+				<div className="hide-scollbar flex gap-4 mt-8 overflow-x-auto">
+					<div className="bg-mintGreen rounded-[12px] min-w-[160px] pl-4 py-4 pr-16">
 						<h2 className="font-bold font-primary text-[32px] mb-[28px] text-blackishGreen">4.2</h2>
 						<p className="font-bold text-blackishGreen mb-[4px]">Very good</p>
 						<p className="text-[14px] text-blackishGreen">371 reviews</p>
@@ -147,7 +147,7 @@ export default function HotelDetail() {
 				<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
 			</div>
 			<div>
-				<div className="flex justify-between items-center">
+				<div className="flex justify-between items-center md:flex-col md:items-start md:gap-6">
 					<h3 className="font-bold text-[20px] font-primary">Location/Map</h3>
 					<button
 						type="button"
@@ -170,7 +170,7 @@ export default function HotelDetail() {
 				<Amenities />
 			</div>
 			<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
-			<div className="flex justify-between items-center">
+			<div className="flex justify-between items-center md:flex-col md:items-start md:gap-6">
 				<h3 className="font-bold text-[20px] font-primary">Reviews</h3>
 				<button
 					type="button"
@@ -179,7 +179,7 @@ export default function HotelDetail() {
 					Give your review
 				</button>
 			</div>
-			<div className="flex items-center gap-6">
+			<div className="flex items-center gap-6 md:mt-8">
 				<h1 className="text-[50px] font-bold font-primary text-blackishGreen">4.2</h1>
 				<p className="flex flex-col text-blackishGreen gap-[8px] ">
 					<span className="font-semibold text-[20px]">Very good</span>
@@ -220,7 +220,7 @@ export default function HotelDetail() {
 
 const Card = ({ item }: { item: string }) => {
 	return (
-		<div className="bg-white border-[1px] border-mintGreen rounded-[12px] pl-4 py-4 pr-16">
+		<div className="bg-white border-[1px] border-mintGreen rounded-[12px] min-w-[160px] pl-4 py-4 pr-16">
 			<AiIcon className="mb-[61px]" />
 			<p className="font-medium">{item}</p>
 		</div>
@@ -262,19 +262,19 @@ const availableRoomData: RoomData[] = [
 ];
 const AvailableRoom = ({ image, description, price }: RoomData) => {
 	return (
-		<div className="flex justify-between">
+		<div className="flex justify-between md:flex-col gap-6">
 			<div className="flex items-center gap-4">
 				<img src={image} className="w-12 h-12 rounded-[4px]" />
 				<h5>{description}</h5>
 			</div>
-			<div className="flex items-center gap-16">
+			<div className="flex items-center gap-16 md:flex-col md:items-start w-full md:gap-8">
 				<h2 className="font-semibold text-[24px]">
 					${price}
 					<span className="text-[14px]">/night</span>
 				</h2>
 				<button
 					type="button"
-					className="bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] w-max"
+					className="bottom-[16px] right-[16px] bg-mintGreen font-semibold text-[14px] py-[16px] px-[16px] rounded-[4px] md:w-full"
 				>
 					Book now
 				</button>
@@ -412,9 +412,9 @@ const reviews: Review[] = [
 
 const ReviewList = ({ rating, title, name, reviewText, image }: Review) => {
 	return (
-		<div className="flex gap-6 items-start text-blackishGreen">
+		<div className="flex md:flex-col gap-6 items-start text-blackishGreen">
 			<img src={image} className="w-full max-w-[45px]" />
-			<div className="flex items-center gap-4">
+			<div className="flex items-center gap-4 md:flex-col md:items-start">
 				<div className="flex flex-col gap-[6px]">
 					<div className="flex gap-4 text-[14px]">
 						<p className="font-semibold">
