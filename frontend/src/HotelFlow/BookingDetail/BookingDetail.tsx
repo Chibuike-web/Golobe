@@ -18,6 +18,7 @@ import { usePaymentDetails } from "../../Hooks";
 import { Checkbox } from "../../UiComponents";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 export default function BookingDetail() {
 	const [login, setLogin] = useState<boolean>(false);
@@ -41,8 +42,8 @@ export default function BookingDetail() {
 		}
 	};
 	return (
-		<div className="w-full  mt-12">
-			<div className="w-full flex flex-col gap-8 mx-auto max-w-[77rem]">
+		<div className="w-full mt-12">
+			<div className="w-full flex flex-col gap-8 mx-auto max-w-[77rem] lg:px-4">
 				<div className="flex items-center">
 					<p className="text-slamon text-[14px] font-medium">Turkey</p> <RightArrowIcon />
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
@@ -51,12 +52,12 @@ export default function BookingDetail() {
 				<div className="flex justify-between w-full items-end"></div>
 			</div>
 
-			<div className="flex w-full gap-[40px] mx-auto max-w-[80rem]">
+			<div className="flex w-full gap-[40px] mx-auto max-w-[80rem] lg:flex-col-reverse">
 				{/* Left */}
 				<div className="w-full">
-					{/* Top */}s
+					{/* Top */}
 					<div className="p-6 bg-white">
-						<div className="flex justify-between">
+						<div className="flex justify-between md:flex-col">
 							<h1 className="text-[24px] font-bold font-primary w-full max-w-[490px]">
 								Superior room - 1 double bed or 2 twin beds
 							</h1>
@@ -65,14 +66,14 @@ export default function BookingDetail() {
 							</h1>
 						</div>
 						{/* Middle */}
-						<div className="flex items-center px-8 py-4 border-[0.5px] gap-6 rounded-[8px] mt-[24px]">
-							<img src={CVK} className="w-full max-w-[63px]" />
+						<div className="flex items-center px-8 py-4 border-[0.5px] gap-6 rounded-[8px] mt-[24px] md:flex-col md:items-start">
+							<img src={CVK} className="w-full max-w-[63px] md:max-w-full" />
 							<div>
 								<h2 className="-font-semibold text-[24px] leading-[em]">
 									CVK Park Bosphorus Hotel Istanbul
 								</h2>
 								<div>
-									<div className="flex items-center gap-[8px] mt-[8px]">
+									<div className="flex items-center gap-[8px] mt-[8px] ">
 										<LocationIcon />{" "}
 										<p className="font-medium text-[14px] opacity-75">
 											Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437
@@ -83,7 +84,7 @@ export default function BookingDetail() {
 						</div>
 						{/* Bottom */}
 
-						<div className="flex justify-between mt-8">
+						<div className="flex justify-between mt-8 md:flex-col md:items-center md:gap-6 md:text-center md:w-full">
 							<div className=" flex flex-col gap-[4px]">
 								<h2 className="font-semibold text-[20px]">Thursday, Dec 8</h2>
 								<p className="text-blackishGreen/60 font-medium text-[14px]">Check-In</p>
@@ -172,7 +173,7 @@ export default function BookingDetail() {
 
 const SummaryCard = () => {
 	return (
-		<div className="w-full max-w-[450px] p-6 bg-white rounded-[12px]">
+		<div className="w-full max-w-[450px] p-6 md:p-4 bg-white rounded-[12px] lg:max-w-full">
 			{/* Top */}
 			<div className="flex gap-6 w-full items-center">
 				<figure className="w-full max-w-[120px] h-[120px] flex-shrink-0 relative overflow-hidden rounded-[12px] ">
@@ -258,11 +259,11 @@ const AddCardModal = ({
 	} = usePaymentDetails();
 	return (
 		<div
-			className="fixed w-screen h-screen inset-0 flex justify-center items-center bg-black/50 z-[100]"
+			className="fixed px-4 py-20 inset-0 justify-items-center content-center bg-black/50 z-[100] overflow-y-auto"
 			onClick={closeModal}
 		>
 			<div
-				className="bg-white w-full max-w-[640px] p-16 rounded-[12px]"
+				className="bg-white w-full max-w-[640px] p-16 md:p-4 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-col items-end">
@@ -429,16 +430,20 @@ const LoginForm = ({ setLogin }: { setLogin: (prev: boolean) => void }) => {
 				{/* Phone Number */}
 				<div className="relative w-full">
 					{(focusedInput === "phoneNumber" || phoneNumber) && (
-						<label
+						<motion.label
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="phoneNumber"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Phone Number
-						</label>
+						</motion.label>
 					)}
 					<input
 						id="phoneNumber"
 						value={phoneNumber}
+						className="border border-[#79747E]"
 						type="tel"
 						placeholder={`${
 							focusedInput === "phoneNumber" || phoneNumber ? "" : "Enter your phone number"

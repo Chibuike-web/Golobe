@@ -17,6 +17,7 @@ import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
 import { Checkbox } from "../../UiComponents";
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
 export default function BookingDetail() {
 	const [login, setLogin] = useState<boolean>(false);
@@ -41,14 +42,14 @@ export default function BookingDetail() {
 	};
 
 	return (
-		<div className="flex flex-col px-8 bg-[#FAFBFC]">
-			<div className="mx-auto w-full max-w-[1280px] py-6 flex flex-col justify-between h-max lg:px-4 md:py-4">
-				<div className="flex items-center">
+		<div className="flex flex-col px-8 md:px-0 bg-[#FAFBFC]">
+			<div className="mx-auto w-full max-w-[1280px] py-6 flex flex-col justify-between h-max md:py-4 ">
+				<div className="flex items-center md:px-4">
 					<p className="text-slamon text-[14px] font-medium">Turkey</p> <RightArrowIcon />
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
 					<p className="text-[14px] font-medium opacity-75">CVK Park Bosphorus Hotel Istanbul</p>
 				</div>
-				<div className="flex items-start gap-[40px]">
+				<div className="flex items-start gap-[40px] md:flex-col-reverse">
 					<div className="w-full max-w-[790px]">
 						<Card
 							flightType="Return"
@@ -131,7 +132,7 @@ export default function BookingDetail() {
 
 const SummaryCard = () => {
 	return (
-		<div className="w-full p-6 bg-white rounded-[12px]">
+		<div className="w-full p-6 md:px-4 bg-white rounded-[12px]">
 			{/* Top */}
 			<div className="flex gap-6 w-full items-center">
 				<figure className="w-full max-w-[120px] h-[120px] flex-shrink-0 relative overflow-hidden rounded-[12px] ">
@@ -217,11 +218,11 @@ const AddCardModal = ({
 	} = usePaymentDetails();
 	return (
 		<div
-			className="fixed w-screen h-screen inset-0 flex justify-center items-center bg-black/50 z-[100]"
+			className="fixed px-4 py-20 inset-0 justify-items-center content-center bg-black/50 z-[100] overflow-y-auto"
 			onClick={closeModal}
 		>
 			<div
-				className="bg-white w-full max-w-[640px] p-16 rounded-[12px]"
+				className="bg-white w-full max-w-[640px] p-16 md:p-4 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-col items-end">
@@ -347,7 +348,7 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to="/flightlisting/bookingticket">
+						<Link to="/Hotellisting/bookingticket">
 							<button
 								type="submit"
 								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
@@ -388,15 +389,19 @@ const LoginForm = ({ setLogin }: { setLogin: (prev: boolean) => void }) => {
 				{/* Phone Number */}
 				<div className="relative w-full">
 					{(focusedInput === "phoneNumber" || phoneNumber) && (
-						<label
+						<motion.label
+							initial={{ opacity: 0, y: 10 }}
+							animate={{ opacity: 1, y: "-50%" }}
+							transition={{ duration: 0.2, ease: "easeOut" }}
 							htmlFor="phoneNumber"
 							className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 						>
 							Phone Number
-						</label>
+						</motion.label>
 					)}
 					<input
 						id="phoneNumber"
+						className="border border-[#79747E]"
 						value={phoneNumber}
 						type="tel"
 						placeholder={`${

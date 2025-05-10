@@ -267,7 +267,7 @@ const AvailableRoom = ({ image, description, price }: RoomData) => {
 				<img src={image} className="w-12 h-12 rounded-[4px]" />
 				<h5>{description}</h5>
 			</div>
-			<div className="flex items-center gap-16 md:flex-col md:items-start w-full md:gap-8">
+			<div className="flex items-center gap-16 md:flex-col md:items-start md:w-full md:gap-8">
 				<h2 className="font-semibold text-[24px]">
 					${price}
 					<span className="text-[14px]">/night</span>

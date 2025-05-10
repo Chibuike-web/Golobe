@@ -8,7 +8,7 @@ import styles from "./Filters.module.css";
 
 export function DesktopFilters() {
 	return (
-		<div className="w-full max-w-[367.5px] flex gap-6">
+		<div className="w-full max-w-[367.5px] flex gap-6 h-[1360px] sticky top-[120px]">
 			<div className="w-full max-w-[343px] flex flex-col gap-8">
 				<h1 className="font-semibold text-[20px]">Filters</h1>
 				<div className="flex flex-col">
@@ -23,7 +23,7 @@ export function DesktopFilters() {
 					<Trips name="Trips" />
 				</div>
 			</div>
-			<span className="h-[1600px] block bg-blackishGreen opacity-25 w-[0.5px]"></span>
+			<span className="block bg-blackishGreen opacity-25 w-[0.5px]"></span>
 		</div>
 	);
 }
