@@ -222,7 +222,7 @@ const AddCardModal = ({
 			onClick={closeModal}
 		>
 			<div
-				className="bg-white w-full max-w-[640px] p-16 md:p-4 rounded-[12px]"
+				className="bg-white w-full max-w-[640px] p-16 md:p-8 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-col items-end">
