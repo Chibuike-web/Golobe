@@ -10,13 +10,7 @@ export default function FlightListing() {
 		<div className="flex flex-col gap-8 px-8 md:px-4 bg-[#FAFBFC]">
 			<HeroSection />
 			<div className="w-full flex items-start gap-[44px] mx-auto max-w-[77rem] lg:flex-col lg:gap-8 lg:items-center">
-				{windowSize < 976 ? (
-					<div>
-						<MobileFilters />
-					</div>
-				) : (
-					<DesktopFilters />
-				)}
+				{windowSize < 976 ? <MobileFilters /> : <DesktopFilters />}
 				<FlightLists />
 			</div>
 		</div>

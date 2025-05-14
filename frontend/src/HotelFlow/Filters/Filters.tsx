@@ -26,7 +26,7 @@ export function DesktopFilters() {
 }
 
 export function MobileFilters() {
-	const [isshowFilter, setIsShowFilter] = useState(false);
+	const [isShowFilter, setIsShowFilter] = useState(false);
 	return (
 		<>
 			<button
@@ -37,7 +37,7 @@ export function MobileFilters() {
 				<FilterIcon />
 				Filters
 			</button>
-			{isshowFilter && (
+			{isShowFilter && (
 				<div className="w-full fixed inset-0 z-[100] bg-white px-6 overflow-y-auto py-6">
 					<div className="w-full flex flex-col gap-8">
 						<div className="flex items-center justify-between">

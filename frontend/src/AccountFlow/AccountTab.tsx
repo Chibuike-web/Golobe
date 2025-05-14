@@ -17,9 +17,9 @@ const accountInformation: AccountInfo[] = [
 
 export default function AccountTab() {
 	return (
-		<div>
+		<div className="md:px-4">
 			<h1 className="font-bold font-primary text-[2rem] mt-10 mb-4">Account</h1>
-			<div className="flex flex-col gap-8 bg-white py-8 px-8 rounded-[1rem] shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
+			<div className="flex flex-col gap-8 bg-white py-8 px-8 md:px-6 md:py-6 rounded-[1rem] shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
 				{accountInformation.map(({ id, label, value }: AccountInfo) => (
 					<AccountMenu key={id} id={id} label={label} value={value} />
 				))}
@@ -30,13 +30,13 @@ export default function AccountTab() {
 
 const AccountMenu = ({ id, label, value }: AccountInfo) => {
 	return (
-		<div className="w-full flex justify-between">
+		<div className="w-full flex justify-between md:flex-col gap-[4px]">
 			<div className="flex flex-col gap-[8px]">
 				<p className="text-blackishGreen/75">{label}</p>
-				<h5 className="font-semibold text-[20px]">{value}</h5>
+				<h5 className="font-semibold text-[20px] md:text-[18px]">{value}</h5>
 			</div>
 
-			<div className="flex gap-[8px]">
+			<div className="flex gap-[8px] md:flex-col">
 				{id === 2 && (
 					<button
 						type="button"

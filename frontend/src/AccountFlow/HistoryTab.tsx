@@ -8,7 +8,7 @@ import {
 	Calender,
 	ClockIcon,
 	DoorIcon,
-	RightArrowIcon, // Ensure this icon is correctly imported from the Icons file
+	RightArrowIcon,
 } from "../assets/Icons";
 
 export default function HistoryTab() {
@@ -17,17 +17,17 @@ export default function HistoryTab() {
 		setSelectedTab(id);
 	};
 	return (
-		<div>
-			<div className="flex justify-between mt-10 mb-4">
+		<div className="md:px-4">
+			<div className="flex justify-between items-center mt-10 mb-4">
 				<h1 className="font-bold font-primary text-[2rem]">History</h1>
 				<p>Upcoming</p>
 			</div>
 			<div>
-				<div className="flex items-center gap-4 py-4 px-3 mt-8 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
+				<div className="flex items-center gap-4 py-4 px-3 mt-8 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] overflow-auto">
 					{TabData.map(({ id, text }: TabsProps, index) => (
 						<div key={id} className="flex w-full gap-4">
 							<Tabs id={id} text={text} selectedTab={selectedTab} handleClick={handleClick} />
-							{index <= 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"></span>}
+							{index < 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"></span>}
 						</div>
 					))}
 				</div>
@@ -68,9 +68,9 @@ const Tabs = ({
 }) => {
 	return (
 		<button className="relative w-full" onClick={() => handleClick(id)}>
-			<div className="px-[12px] py-2 flex flex-col items-start gap-[8px] w-full">
-				<h3 className="font-semibold">{text}</h3>
-			</div>
+			<h3 className="font-semibold px-[12px] py-2 flex flex-col items-start gap-[8px] w-full min-w-[160px]">
+				{text}
+			</h3>
 			{selectedTab === id && (
 				<div className="h-[4px] w-full bg-mintGreen absolute bottom-[-1rem]"></div>
 			)}
@@ -136,47 +136,46 @@ const FlightsTab = () => {
 
 const FlightMenu = ({ departure, arrival, departureTime, arrivalTime, image }: FlightInfo) => {
 	return (
-		<div className="flex items-center justify-between bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] px-6 py-8">
-			<div className="flex items-center gap-8">
+		<div className="flex items-center lg:flex-col lg:items-start xl:gap-8 justify-between bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] px-6 py-8">
+			<div className="flex items-center gap-8 md:flex-col md:items-start w-full">
 				<figure className="w-full max-w-[80px] aspect-square border-[0.5px] border-mintGreen rounded-[8px] justify-items-center content-center">
 					<img src={image} alt="Emirate Logo" className="w-full max-w-[4rem]" />
 				</figure>
-				<div className="flex gap-6">
-					<div className="flex items-center gap-4">
-						<div>
-							<p className="w-max text-blackishGreen/75">{departure}</p>
-							<p>{departureTime}</p>
-						</div>
-						<span>—</span>
-						<div>
-							<p className="w-max text-blackishGreen/75">{arrival}</p>
-							<p>{arrivalTime}</p>
-						</div>
+				<div className="flex items-center gap-4 md:justify-between md:w-full">
+					<div>
+						<p className="w-max text-blackishGreen/75">{departure}</p>
+						<p>{departureTime}</p>
 					</div>
-					<span></span>
-					<div className="grid grid-cols-2 gap-x-6 gap-y-[8px]">
-						<InfoItem icon={Calender} label="Date" value="12-11-22" />
-						<InfoItem icon={DoorIcon} label="Gate" value="A12" />
-						<InfoItem icon={ClockIcon} label="Fight time" value="Newark(EWR)" />
-
-						<InfoItem icon={AirlineSeatIcon} label="Seat no." value="128" />
+					<span>—</span>
+					<div>
+						<p className="w-max text-blackishGreen/75">{arrival}</p>
+						<p>{arrivalTime}</p>
 					</div>
 				</div>
 			</div>
-			<div className="flex gap-[8px] items-center">
-				<button
-					type="button"
-					className="flex bg-mintGreen justify-center items-center font-medium text-[14px] p-4 gap-2 rounded-[4px]"
-				>
-					Download Ticket
-				</button>
 
-				<button
-					type="button"
-					className="flex bg-white border-[1px] border-mintGreen justify-center items-center font-semibold text-[14px] p-4 gap-2 rounded-[4px]"
-				>
-					<RightArrowIcon className="w-[16px] h-[16px]" />
-				</button>
+			<div className="flex justify-between w-full md:flex-col md:gap-6">
+				<div className="grid grid-cols-2 gap-x-6 gap-y-6 md:w-full">
+					<InfoItem icon={Calender} label="Date" value="12-11-22" />
+					<InfoItem icon={DoorIcon} label="Gate" value="A12" />
+					<InfoItem icon={ClockIcon} label="Fight time" value="Newark(EWR)" />
+					<InfoItem icon={AirlineSeatIcon} label="Seat no." value="128" />
+				</div>
+				<div className="flex gap-[8px] items-center md:w-full">
+					<button
+						type="button"
+						className="flex bg-mintGreen justify-center items-center font-medium text-[14px] p-4 gap-2 rounded-[4px] md:w-full"
+					>
+						Download Ticket
+					</button>
+
+					<button
+						type="button"
+						className="flex bg-white border-[1px] border-mintGreen justify-center items-center font-semibold text-[14px] p-4 gap-2 rounded-[4px]"
+					>
+						<RightArrowIcon className="w-[16px] h-[16px]" />
+					</button>
+				</div>
 			</div>
 		</div>
 	);
@@ -259,45 +258,44 @@ const StaysTab = () => {
 
 const StayMenu = ({ checkInDate, checkOutDate, image }: StayInfo) => {
 	return (
-		<div className="flex items-center justify-between bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] px-6 py-8">
-			<div className="flex items-center gap-8">
+		<div className="flex items-center xl:flex-col xl:items-start justify-between md:gap-6 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] px-6 py-8">
+			<div className="flex items-center gap-8 md:flex-col md:items-start w-full">
 				<figure className="w-full max-w-[80px] aspect-square border-[0.5px] border-mintGreen rounded-[8px] justify-items-center content-center">
 					<img src={image} alt="Emirate Logo" className="w-full max-w-[4rem]" />
 				</figure>
-				<div className="flex gap-6">
-					<div className="flex items-center gap-4">
-						<div>
-							<p className="w-max">Check-In</p>
-							<p className="w-max font-semibold text-[20px]">{checkInDate}</p>
-						</div>
-						<span>—</span>
-						<div>
-							<p className="w-max">Check Out</p>
-							<p className="w-max font-semibold text-[20px]">{checkOutDate}</p>
-						</div>
+				<div className="flex items-center gap-4">
+					<div>
+						<p className="w-max">Check-In</p>
+						<p className="w-max font-semibold text-[20px]">{checkInDate}</p>
 					</div>
-					<span></span>
-					<div className="grid grid-cols-2 gap-x-6 gap-y-[8px]">
-						<InfoItem icon={Calender} label="Check-In time" value="12:00pm" />
-						<InfoItem icon={ClockIcon} label="Room no." value="On arrival" />
-						<InfoItem icon={ClockIcon} label="Check-Out time" value="11:30am" />
+					<span>—</span>
+					<div>
+						<p className="w-max">Check Out</p>
+						<p className="w-max font-semibold text-[20px]">{checkOutDate}</p>
 					</div>
 				</div>
 			</div>
-			<div className="flex gap-[8px] items-center">
-				<button
-					type="button"
-					className="flex bg-mintGreen justify-center items-center font-medium text-[14px] p-4 gap-2 rounded-[4px]"
-				>
-					Download Ticket
-				</button>
+			<div className="flex justify-between w-full md:flex-col md:gap-6">
+				<div className="grid grid-cols-2 gap-x-6 gap-y-6">
+					<InfoItem icon={Calender} label="Check-In time" value="12:00pm" />
+					<InfoItem icon={ClockIcon} label="Room no." value="On arrival" />
+					<InfoItem icon={ClockIcon} label="Check-Out time" value="11:30am" />
+				</div>
+				<div className="flex gap-[8px] items-center md:w-full">
+					<button
+						type="button"
+						className="flex bg-mintGreen justify-center items-center font-medium text-[14px] p-4 gap-2 rounded-[4px] w-full"
+					>
+						Download Ticket
+					</button>
 
-				<button
-					type="button"
-					className="flex bg-white border-[1px] border-mintGreen justify-center items-center font-semibold text-[14px] p-4 gap-2 rounded-[4px]"
-				>
-					<RightArrowIcon className="w-[16px] h-[16px]" />
-				</button>
+					<button
+						type="button"
+						className="flex bg-white border-[1px] border-mintGreen justify-center items-center font-semibold text-[14px] p-4 gap-2 rounded-[4px]"
+					>
+						<RightArrowIcon className="w-[16px] h-[16px]" />
+					</button>
+				</div>
 			</div>
 		</div>
 	);
