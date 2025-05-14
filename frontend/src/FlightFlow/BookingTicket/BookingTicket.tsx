@@ -59,7 +59,7 @@ export default function BookingTicket() {
 			<div className="flex mt-[40px] xl:flex-col">
 				<div className="border-[#EAEAEA] border-[1px] bg-white w-full flex rounded-[1rem] overflow-hidden xl:flex-col">
 					<div className="bg-[#EBF6F2] flex flex-col gap-4 w-full max-w-[246px] pl-[24px] pt-[34.5px] pb-[34.5px] pr-[34px] xl:max-w-full xl:flex-row xl:justify-between md:flex-col md:items-center">
-						<div>
+						<div className="md:text-center">
 							<h1 className="font-semibold text-[32px]">12:00 pm</h1>
 							<p className="text-[12px] opacity-60">Newark(EWR)</p>
 						</div>
@@ -68,7 +68,7 @@ export default function BookingTicket() {
 							<AirplaneIcon />
 							<FunnyArrowIcon className="rotate-180" />
 						</figure>
-						<div>
+						<div className="md:text-center">
 							<h1 className="font-semibold text-[32px]">12:00 pm</h1>
 							<p className="text-[12px] opacity-60">Newark(EWR)</p>
 						</div>
@@ -87,9 +87,9 @@ export default function BookingTicket() {
 								Superior room - 1 double bed or 2 twin beds
 							</h4>
 						</div>
-						<div className="flex gap-8 mt-6 ml-6 md:grid md:grid-cols-2">
+						<div className="flex gap-8 mt-6 mx-6 md:grid md:grid-cols-2">
 							<InfoItem icon={Calender} label="Date" value="Newark(EWR)" />
-							<InfoItem icon={ClockIcon} label="Fight time" value="12:00" />
+							<InfoItem icon={ClockIcon} label="Flight time" value="12:00" />
 							<InfoItem icon={DoorIcon} label="Gate" value="A12" />
 							<InfoItem icon={AirlineSeatIcon} label="Seat" value="128" />
 						</div>
