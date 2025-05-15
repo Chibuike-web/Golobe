@@ -1,6 +1,6 @@
 import GolobeLogo from "../assets/FlightSearch/LogoWhiteBackground.svg";
 import { NavLink, Link } from "react-router-dom";
-import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../assets/Icons";
+import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../Icons";
 import styles from "./Navbar.module.css";
 import { useActive, useIsShow } from "../Hooks";
 

@@ -12,7 +12,7 @@ import {
 	RightArrowIcon,
 	Settings,
 	Support,
-} from "../assets/Icons";
+} from "../Icons";
 import GolobeLogo from "../assets/FlightSearch/LogoWhiteBackground.svg";
 
 import { NavLink } from "react-router-dom";

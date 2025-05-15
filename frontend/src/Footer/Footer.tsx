@@ -1,5 +1,5 @@
 import CTAImage from "../assets/LandingPage/emojione-v1_open-mailbox-with-lowered-flag.svg";
-import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../assets/Icons";
+import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../Icons";
 import FooterLogo from "../assets/LandingPage/Logo.svg";
 import { motion } from "motion/react";
 

@@ -8,7 +8,7 @@ import {
 	PaperPlaneIcon,
 	DownArrowIcon,
 	SwapIcon,
-} from "../../assets/Icons";
+} from "../../Icons";
 import { useFlightSearchFormState } from "../../Hooks";
 import { motion } from "motion/react";
 

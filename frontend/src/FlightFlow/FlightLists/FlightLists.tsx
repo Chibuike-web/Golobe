@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DownArrowIcon, HarmburgerIcon, HeartIcon } from "../../assets/Icons";
+import { DownArrowIcon, HarmburgerIcon, HeartIcon } from "../../Icons";
 import Emirates from "../../assets/FlightListing/Emirates.png";
 import FlyDubai from "../../assets/FlightListing/FlyDubai.png";
 import Qatar from "../../assets/FlightListing/Qatar.png";

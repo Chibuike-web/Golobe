@@ -1,4 +1,4 @@
-import { AddEmailIcon, ChangeIcon } from "../assets/Icons";
+import { AddEmailIcon, ChangeIcon } from "../Icons";
 
 type AccountInfo = {
 	id: number;
@@ -18,7 +18,7 @@ const accountInformation: AccountInfo[] = [
 export default function AccountTab() {
 	return (
 		<div className="md:px-4">
-			<h1 className="font-bold font-primary text-[2rem] mt-10 mb-4">Account</h1>
+			<h1 className="font-bold font-primary text-[2rem] md:text-[24px] mt-10 mb-4">Account</h1>
 			<div className="flex flex-col gap-8 bg-white py-8 px-8 md:px-6 md:py-6 rounded-[1rem] shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
 				{accountInformation.map(({ id, label, value }: AccountInfo) => (
 					<AccountMenu key={id} id={id} label={label} value={value} />

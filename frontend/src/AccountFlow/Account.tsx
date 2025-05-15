@@ -1,5 +1,5 @@
 import HeroImage from "../assets/Account/HeroImage.png";
-import { EditIcon, UploadIcon } from "../assets/Icons";
+import { EditIcon, UploadIcon } from "../Icons";
 import ProfileImage from "../assets/FlightListing/ProfileImage.png";
 import { useState } from "react";
 import AccountTab from "./AccountTab";
@@ -12,7 +12,7 @@ export default function Account() {
 		setSelectedTab(id);
 	};
 	return (
-		<div className="mx-auto w-full max-w-[1232px] py-6">
+		<div className="mx-auto w-full max-w-[1232px] py-6 md:py-0">
 			<figure className="relative">
 				<img src={HeroImage} alt="Account Hero Image" />
 				<button

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../assets/Icons";
+import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../Icons";
 import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.png";
 import EresinHotel1 from "../../assets/HotelListing/EresinHotel-1.png";
 import EresinHotel2 from "../../assets/HotelListing/EresinHotel-2.png";

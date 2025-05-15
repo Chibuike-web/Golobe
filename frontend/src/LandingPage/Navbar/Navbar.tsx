@@ -1,6 +1,6 @@
 import GolobeLogo from "../../assets/LandingPage/golobelogo.svg";
 import { Link } from "react-router-dom";
-import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../../assets/Icons";
+import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../../Icons";
 import styles from "./Navbar.module.css";
 import ColourLogo from "../../assets/LandingPage/ColourLogo.svg";
 import { useIsShow, useScroll, useWindowWidth } from "../../Hooks";

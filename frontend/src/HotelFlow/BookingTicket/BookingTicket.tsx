@@ -7,7 +7,7 @@ import {
 	LocationIcon,
 	RightArrowIcon,
 	ShareIcon,
-} from "../../assets/Icons";
+} from "../../Icons";
 
 import CvkImage from "../../assets/HotelListing/Cvk.png";
 import ProfileImage from "../../assets/FlightListing/ProfileImage.png";

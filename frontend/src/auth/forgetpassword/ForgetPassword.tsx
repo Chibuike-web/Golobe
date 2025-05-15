@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useFormState } from "../../Hooks";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
-import { FacebookIcon, GoogleIcon, AppleIcon, LeftArrowIcon } from "../../assets/Icons";
+import { FacebookIcon, GoogleIcon, AppleIcon, LeftArrowIcon } from "../../Icons";
 import styles from "./ForgetPassword.module.css";
 import { motion } from "motion/react";
 

@@ -15,7 +15,7 @@ import {
 	SpaIcon,
 	TeaIcon,
 	WifiIcon,
-} from "../../assets/Icons";
+} from "../../Icons";
 import HeroImage1 from "../../assets/HotelListing/HeroImage1.png";
 import HeroImage2 from "../../assets/HotelListing/HeroImage2.png";
 import HeroImage3 from "../../assets/HotelListing/HeroImage3.png";

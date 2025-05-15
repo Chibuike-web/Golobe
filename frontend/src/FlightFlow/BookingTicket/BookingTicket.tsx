@@ -9,7 +9,7 @@ import {
 	RightArrowIcon,
 	ShareIcon,
 	AirlineSeatIcon,
-} from "../../assets/Icons";
+} from "../../Icons";
 
 import TicketImage from "../../assets/FlightListing/Ticket Image.png";
 import ProfileImage from "../../assets/FlightListing/ProfileImage.png";

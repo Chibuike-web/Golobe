@@ -9,13 +9,13 @@ import {
 	MailIcon,
 	RightArrowIcon,
 	VisaLogo,
-} from "../../assets/Icons";
+} from "../../Icons";
 import CardImage from "../../assets/HotelListing/HeroImage1.png";
 import CVK from "../../assets/HotelListing/Cvk.png";
 import styles from "./BookingDetail.module.css";
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
-import { Checkbox } from "../../UiComponents";
+import { Checkbox } from "../../Components";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -263,7 +263,7 @@ const AddCardModal = ({
 			onClick={closeModal}
 		>
 			<div
-				className="bg-white w-full max-w-[640px] p-16 md:p-4 rounded-[12px]"
+				className="bg-white w-full max-w-[640px] p-16 md:p-6 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-col items-end">
@@ -271,7 +271,9 @@ const AddCardModal = ({
 						<CancelIcon />
 					</button>
 					<form className="rounded w-full">
-						<h1 className="text-[40px] font-primary font-bold mb-12">Add a new Card</h1>
+						<h1 className="text-[40px] md:text-[28px] font-primary font-bold mb-12">
+							Add a new Card
+						</h1>
 						{/* Card Number */}
 						<div className="relative w-full mb-6">
 							{(focusedInput === "cardNumber" || cardNumber) && (

@@ -7,7 +7,7 @@ import NewYork from "../../assets/LandingPage/NewYork.png";
 import London from "../../assets/LandingPage/London.png";
 import Tokyo from "../../assets/LandingPage/Tokyo.png";
 import Dubai from "../../assets/LandingPage/Dubai.png";
-import { PaperPlaneIcon } from "../../assets/Icons";
+import { PaperPlaneIcon } from "../../Icons";
 import styles from "./Flights.module.css";
 import { motion } from "motion/react";
 import { animate, delay } from "motion";

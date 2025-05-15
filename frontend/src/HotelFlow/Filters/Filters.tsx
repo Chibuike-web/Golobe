@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { CancelIcon, DownArrowIcon, FilterIcon } from "../../assets/Icons";
+import { CancelIcon, DownArrowIcon, FilterIcon } from "../../Icons";
 import * as RadixSlider from "@radix-ui/react-slider";
-import { Checkbox, RatingButton } from "../../UiComponents";
+import { Checkbox, RatingButton } from "../../Components";
 import { AnimatePresence, motion } from "motion/react";
 import styles from "./Filters.module.css";
 

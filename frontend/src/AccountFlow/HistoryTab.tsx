@@ -9,7 +9,7 @@ import {
 	ClockIcon,
 	DoorIcon,
 	RightArrowIcon,
-} from "../assets/Icons";
+} from "../Icons";
 
 export default function HistoryTab() {
 	const [selectedTab, setSelectedTab] = useState<number>(1);
@@ -19,7 +19,7 @@ export default function HistoryTab() {
 	return (
 		<div className="md:px-4">
 			<div className="flex justify-between items-center mt-10 mb-4">
-				<h1 className="font-bold font-primary text-[2rem]">History</h1>
+				<h1 className="font-bold font-primary text-[2rem] md:text-[24px]">History</h1>
 				<p>Upcoming</p>
 			</div>
 			<div>

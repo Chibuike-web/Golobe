@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../assets/Icons";
+import { AddIcon, PaperPlaneIcon, DownArrowIcon, SwapIcon } from "../../Icons";
 import { useFlightSearchFormState } from "../../Hooks";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";

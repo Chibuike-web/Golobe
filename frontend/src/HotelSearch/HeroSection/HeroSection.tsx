@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./HeroSection.module.css";
-import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../assets/Icons";
+import { AddIcon, BuildingIcon, BedIcon, Calender, Profile } from "../../Icons";
 import { motion } from "motion/react";
 import { useHotelSearchFormState } from "../../Hooks";
 import { Link } from "react-router-dom";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
-import { LeftArrowIcon, Eye, EyeSlash } from "../../assets/Icons";
+import { LeftArrowIcon, Eye, EyeSlash } from "../../Icons";
 import styles from "./VerifyCode.module.css";
 
 export default function VerifyPassword() {

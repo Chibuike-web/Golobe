@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SwapIcon, DownArrowIcon, SearchIcon } from "../../assets/Icons";
+import { SwapIcon, DownArrowIcon, SearchIcon } from "../../Icons";
 import { useFlightSearchFormState } from "../../Hooks";
 import { motion } from "motion/react";
 

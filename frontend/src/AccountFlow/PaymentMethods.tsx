@@ -1,5 +1,5 @@
-import { AddIconLg, BinIcon, CancelIcon, VisaLogo } from "../assets/Icons";
-import { Checkbox } from "../UiComponents";
+import { AddIconLg, BinIcon, CancelIcon, VisaLogo } from "../Icons";
+import { Checkbox } from "../Components";
 import { usePaymentDetails } from "../Hooks";
 import { Link } from "react-router-dom";
 import { useState } from "react";
@@ -19,10 +19,12 @@ export default function PaymentMethods() {
 	};
 
 	return (
-		<div>
-			<h1 className="font-bold font-primary text-[2rem] mt-10 mb-4">Payment methods</h1>
-			<div className="flex flex-col gap-8 bg-white py-8 px-8 rounded-[1rem] shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
-				<div className="flex gap-4">
+		<div className="md:px-4">
+			<h1 className="font-bold font-primary text-[2rem] md:text-[24px] mt-10 mb-4">
+				Payment methods
+			</h1>
+			<div className="flex flex-col gap-8 bg-white p-8 md:p-6 rounded-[1rem] shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
+				<div className="flex gap-4 md:flex-col">
 					<div className="bg-mintGreen w-full flex flex-col max-w-[378px] h-[212px] rounded-[16px] p-4">
 						<div className="flex justify-between items-start">
 							<div>
@@ -110,11 +112,11 @@ const AddCardModal = ({
 	} = usePaymentDetails();
 	return (
 		<div
-			className="fixed w-screen h-screen inset-0 flex justify-center items-center bg-black/50 z-[100]"
+			className="fixed px-4 py-20 inset-0 justify-items-center content-center bg-black/50 z-[100] overflow-y-auto"
 			onClick={closeModal}
 		>
 			<div
-				className="bg-white w-full max-w-[640px] p-16 rounded-[12px]"
+				className="bg-white w-full max-w-[640px] p-16 md:p-6 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
 			>
 				<div className="flex flex-col items-end">
@@ -122,7 +124,9 @@ const AddCardModal = ({
 						<CancelIcon />
 					</button>
 					<form className="rounded w-full">
-						<h1 className="text-[40px] font-primary font-bold mb-12">Add a new Card</h1>
+						<h1 className="text-[40px] md:text-[28px] font-primary font-bold mb-12">
+							Add a new Card
+						</h1>
 						{/* Card Number */}
 						<div className="relative w-full mb-6">
 							{(focusedInput === "cardNumber" || cardNumber) && (
@@ -240,7 +244,7 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to="/flightlisting/bookingticket">
+						<Link to="/Hotellisting/bookingticket">
 							<button
 								type="submit"
 								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"

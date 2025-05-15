@@ -1,4 +1,4 @@
-import { Checkbox } from "../../UiComponents";
+import { Checkbox } from "../../Components";
 import HeroImage from "../../assets/FlightListing/FlightDetail/HeroImage.png";
 import First from "../../assets/FlightListing/FlightDetail/First.png";
 import Second from "../../assets/FlightListing/FlightDetail/Second.png";
@@ -26,7 +26,7 @@ import {
 	ShareIcon,
 	TimeIcon,
 	WifiIcon,
-} from "../../assets/Icons";
+} from "../../Icons";
 
 export default function FlightDetail() {
 	return (

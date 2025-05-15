@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BedIcon, Calender, Profile, SearchIcon } from "../../assets/Icons";
+import { BedIcon, Calender, Profile, SearchIcon } from "../../Icons";
 import { motion } from "motion/react";
 
 import { useHotelSearchFormState } from "../../Hooks";
