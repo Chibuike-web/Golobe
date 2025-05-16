@@ -17,7 +17,7 @@ export default function HeroSection() {
 function HeroContent() {
 	return (
 		<div className={`text-white w-full min-h-[537px] ${styles.heroimage}`}>
-			<div className="mx-auto max-w-[77rem] lg:px-4">
+			<div className="mx-auto max-w-[77rem] xl:px-4">
 				<motion.h2
 					className="font-primary font-bold text-[45px] w-full max-w-[440px] mt-20 leading-[57px]"
 					initial={{ opacity: 0, x: -90 }}

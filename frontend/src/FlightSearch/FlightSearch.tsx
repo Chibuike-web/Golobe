@@ -14,14 +14,14 @@ import Forest from "../assets/FlightSearch/Forest.png";
 import Trees from "../assets/FlightSearch/Trees.png";
 import Ocean from "../assets/FlightSearch/Ocean.png";
 import Beach from "../assets/FlightSearch/Beach.png";
-import Bookings from "./Bookings/Bookings";
+import Bookings from "./Bookings";
 
 export default function FlightSearch() {
 	return (
 		<div className="flex flex-col">
 			<Herosection />
 			<section>
-				<div className="mx-auto max-w-[77rem] w-full mt-[1.25rem] mb-[1.5rem] flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+				<div className="mx-auto max-w-[77rem] w-full mt-[1.25rem] mb-[1.5rem] flex justify-between items-center md:flex-col md:items-start xl:px-4">
 					<div>
 						<h2 className="text-[2rem] mb-[1rem]">Let's go places together</h2>
 						<p>Discover the latest offers and news and start planning your next trip with us.</p>
@@ -138,7 +138,7 @@ export default function FlightSearch() {
 			</section>
 			<Bookings />
 			<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
-				<header className="w-full mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+				<header className="w-full mb-6 flex justify-between items-center xl:px-4 md:flex-col md:items-start">
 					<div>
 						<h2 className="text-[2rem] mb-4">Fall into travel</h2>
 						<p className="w-full max-w-[53.1875rem]">
@@ -154,7 +154,7 @@ export default function FlightSearch() {
 					</button>
 				</header>
 
-				<div className="grid grid-cols-[1fr_19.875rem_19.875rem] grid-rows-2 gap-6 lg:grid-cols-1 lg:px-4">
+				<div className="grid grid-cols-[1fr_19.875rem_19.875rem] grid-rows-2 gap-6 lg:grid-cols-1 xl:px-4">
 					<article className="w-full row-span-2 flex flex-col p-6 bg-mintGreen rounded-[1.25rem]">
 						<header className="flex justify-between items-start mb-6">
 							<h2 className="font-primary font-bold text-[2.5rem] leading-[3.1875rem] max-w-[22.6875rem] w-full">

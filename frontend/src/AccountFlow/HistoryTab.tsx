@@ -23,7 +23,7 @@ export default function HistoryTab() {
 				<p>Upcoming</p>
 			</div>
 			<div>
-				<div className="flex items-center gap-4 py-4 px-3 mt-8 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] overflow-auto">
+				<div className="hide-scrollbar flex items-center gap-4 py-4 px-3 mt-8 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] overflow-auto">
 					{TabData.map(({ id, text }: TabsProps, index) => (
 						<div key={id} className="flex w-full gap-4">
 							<Tabs id={id} text={text} selectedTab={selectedTab} handleClick={handleClick} />

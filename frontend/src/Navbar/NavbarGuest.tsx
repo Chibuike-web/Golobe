@@ -11,7 +11,7 @@ export default function NavbarGuest() {
 	return (
 		<header className="w-full bg-white sticky z-[100] top-0" role="banner">
 			<nav
-				className="mx-auto max-w-[77rem] md:h16 py-6 flex items-center justify-between lg:px-4"
+				className="mx-auto max-w-[77rem] md:h16 py-6 flex items-center justify-between xl:px-4"
 				aria-label="Main Navigation"
 			>
 				<ul className="flex gap-8 md:hidden">

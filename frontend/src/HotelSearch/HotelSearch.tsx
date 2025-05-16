@@ -3,35 +3,9 @@ import Forest from "../assets/FlightSearch/Forest.png";
 import Trees from "../assets/FlightSearch/Trees.png";
 import Ocean from "../assets/FlightSearch/Ocean.png";
 import Beach from "../assets/FlightSearch/Beach.png";
-import Bookings from "./Bookings/Bookings";
-import Istanbul from "../assets/HotelSearch/Istanbul.png";
-import Sydney from "../assets/HotelSearch/Sydney.png";
-import Baku from "../assets/HotelSearch/Baku.png";
-import Maldives from "../assets/HotelSearch/Maldives.png";
-
-type HotelOption = {
-	destination: string;
-	image: string;
-};
-
-const hotelOptions: HotelOption[] = [
-	{
-		destination: "Istanbul, Turkey",
-		image: Istanbul,
-	},
-	{
-		destination: "Sydney, Australia",
-		image: Sydney,
-	},
-	{
-		destination: "Baku, Azerbaijan",
-		image: Baku,
-	},
-	{
-		destination: "Malé, Maldives",
-		image: Maldives,
-	},
-];
+import Bookings from "./Bookings";
+import { hotelOptions } from "./utils";
+import { HotelOption } from "./types";
 
 export default function HotelSearch() {
 	return (
@@ -39,14 +13,14 @@ export default function HotelSearch() {
 			<Herosection />
 			<section className=" mx-auto max-w-[77rem] mt-20 w-full md:justify-items-center">
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(14.875rem,max-content))] gap-x-[5rem] justify-between gap-y-[4rem] xl:px-6">
-					{hotelOptions.map(({ destination, image }: HotelOption) => (
-						<HotelCard destination={destination} image={image} />
+					{hotelOptions.map(({ id, destination, image }: HotelOption) => (
+						<HotelCard id={id} destination={destination} image={image} />
 					))}
 				</div>
 			</section>
 			<Bookings />
 			<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
-				<header className="w-full mb-[1.5rem] flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+				<header className="w-full mb-[1.5rem] flex justify-between items-center xl:px-4 md:flex-col md:items-start">
 					<div>
 						<h2 className="text-[2rem] mb-[1rem]">Fall into travel</h2>
 						<p className="w-full max-w-[53.188rem]">
@@ -62,7 +36,7 @@ export default function HotelSearch() {
 					</button>
 				</header>
 
-				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 lg:px-4">
+				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 xl:px-4">
 					<article className="w-full row-span-2 flex flex-col p-[1.5rem] bg-mintGreen rounded-[1.25rem]">
 						<header className="flex justify-between items-start mb-[1.5rem]">
 							<h2 className="font-primary font-bold text-[2.5rem] leading-[3.188rem] max-w-[22.688rem] w-full">

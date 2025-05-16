@@ -1,70 +1,8 @@
-import Istanbul from "../../assets/LandingPage/Istanbul.png";
-import Sydney from "../../assets/LandingPage/Sydney.png";
-import Baku from "../../assets/LandingPage/Baku.png";
-import Male from "../../assets/LandingPage/Male.png";
-import Paris from "../../assets/LandingPage/Paris.png";
-import NewYork from "../../assets/LandingPage/NewYork.png";
-import London from "../../assets/LandingPage/London.png";
-import Tokyo from "../../assets/LandingPage/Tokyo.png";
-import Dubai from "../../assets/LandingPage/Dubai.png";
 import { PaperPlaneIcon } from "../../Icons";
 import styles from "./Flights.module.css";
 import { motion } from "motion/react";
-import { animate, delay } from "motion";
-
-type TravelOption = {
-	destination: string;
-	services: string[];
-	image: string;
-};
-
-const travelOptions: TravelOption[] = [
-	{
-		destination: "Istanbul, Turkey",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Istanbul,
-	},
-	{
-		destination: "Sydney, Australia",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Sydney,
-	},
-	{
-		destination: "Baku, Azerbaijan",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Baku,
-	},
-	{
-		destination: "Malé, Maldives",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Male,
-	},
-	{
-		destination: "Paris, France",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Paris,
-	},
-	{
-		destination: "New York, US",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: NewYork,
-	},
-	{
-		destination: "London, UK",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: London,
-	},
-	{
-		destination: "Tokyo, Japan",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Tokyo,
-	},
-	{
-		destination: "Dubai, UAE",
-		services: ["Flights", "Hotels", "Resorts"],
-		image: Dubai,
-	},
-];
+import { travelOptions } from "../utils";
+import { FlightCardProps } from "../types";
 
 const fadeUp = {
 	initial: { opacity: 0, y: 50 },
@@ -79,10 +17,9 @@ const fadeUp = {
 	}),
 };
 
-// Main component
 export default function Flights() {
 	return (
-		<section className="mt-20 md:mt-40 w-full max-w-[77rem] mx-auto px-4">
+		<section className="mt-20 md:mt-40 w-full max-w-[77rem] mx-auto xl:px-4">
 			<header className="mb-10 flex justify-between items-center md:flex-col md:items-start md:gap-4">
 				<div>
 					<h2 className="font-semibold text-[2rem] md:text-[1.8rem]">Plan Your Perfect Trip</h2>
@@ -114,13 +51,6 @@ export default function Flights() {
 	);
 }
 
-// Props type for FlightCard component
-type FlightCardProps = {
-	destination: string;
-	services: string[];
-	image: string;
-};
-
 const itemFadeUp = {
 	initial: { opacity: 0, y: 20 },
 	animate: (i: number) => ({
@@ -134,7 +64,6 @@ const itemFadeUp = {
 	}),
 };
 
-// FlightCard component
 const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 	return (
 		<article
@@ -166,7 +95,6 @@ const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 	);
 };
 
-// FlightBox component
 const FlightBox = () => {
 	return (
 		<aside className="flex flex-wrap gap-6 my-20">

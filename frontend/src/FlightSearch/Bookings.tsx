@@ -1,50 +1,13 @@
-import Melbourne from "../../assets/FlightSearch/Melbourne.png";
-import London from "../../assets/FlightSearch/London.png";
-import Paris from "../../assets/FlightSearch/Paris.png";
-import Columbia from "../../assets/FlightSearch/Columbia.png";
 import { motion } from "motion/react";
-
-type detail = {
-	city: string;
-	subCopy: string;
-	price: number;
-	image: string;
-};
-
-const details: detail[] = [
-	{
-		city: "Melbourne",
-		subCopy: "An amazing journey",
-		price: 700,
-		image: Melbourne,
-	},
-	{
-		city: "Paris",
-		subCopy: "A Paris Adventure",
-		price: 600,
-		image: Paris,
-	},
-	{
-		city: "London",
-		subCopy: "London eye adventure",
-		price: 350,
-		image: London,
-	},
-	{
-		city: "Columbia",
-		subCopy: "Amazing streets",
-		price: 700,
-		image: Columbia,
-	},
-];
+import { details } from "./utils";
 
 export default function Bookings() {
 	return (
 		<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
-			<div className="w-full mb-6 flex justify-between items-center lg:px-4 md:flex-col md:items-start">
+			<div className="w-full mb-6 flex justify-between items-center xl:px-4 md:flex-col md:items-start">
 				<div>
 					<h2 className="text-[32px] mb-4">Fall into travel</h2>
-					<p className="w-full max-w-[851px]">
+					<p className="w-full max-w-[851px] md:pb-4">
 						Going somewhere to celebrate this season? Whether you’re going home or somewhere to
 						roam, we’ve got the travel tools to get you to your destination.
 					</p>
@@ -56,11 +19,12 @@ export default function Bookings() {
 					See all
 				</button>
 			</div>
-			<section className=" mx-auto max-w-[77rem] w-full md:px-4">
+			<section className=" mx-auto max-w-[77rem] w-full xl:px-4">
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(238px,1fr))] gap-4 w-full">
-					{details.map(({ city, subCopy, price, image }, index) => (
+					{details.map(({ id, city, subCopy, price, image }, index) => (
 						<BookingCard
-							key={index}
+							id={id}
+							key={id}
 							city={city}
 							subCopy={subCopy}
 							price={price}
@@ -75,6 +39,7 @@ export default function Bookings() {
 }
 
 type BookingCardProps = {
+	id: string;
 	city: string;
 	subCopy: string;
 	price: number;
@@ -109,7 +74,7 @@ function BookingCard({ city, subCopy, price, image, index }: BookingCardProps) {
 				<figure className="row-start-1 col-start-1">
 					<img src={image} alt={`Image of ${image} `} className="rounded-[12px] w-full" />
 				</figure>
-
+				{/* Upper Content */}
 				<div className="row-start-1 col-start-1 flex flex-col justify-end p-6">
 					<div className="flex items-center justify-between">
 						<header className="text-white">

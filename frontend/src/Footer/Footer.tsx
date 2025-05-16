@@ -2,6 +2,7 @@ import CTAImage from "../assets/LandingPage/emojione-v1_open-mailbox-with-lowere
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../Icons";
 import FooterLogo from "../assets/LandingPage/Logo.svg";
 import { motion } from "motion/react";
+import { FooterColumnProps } from "../LandingPage/types";
 
 export default function FooterSection() {
 	return (
@@ -109,11 +110,6 @@ const CTA = () => {
 	);
 };
 
-type FooterColumnProps = {
-	title: string;
-	items: string[];
-};
-
 const FooterSectionColumn = ({ title, items }: FooterColumnProps) => (
 	<section className="flex flex-col gap-4">
 		<h2 className="text-blackishGreen font-bold font-primary">{title}</h2>
@@ -121,8 +117,8 @@ const FooterSectionColumn = ({ title, items }: FooterColumnProps) => (
 			className="flex flex-col gap-3 text-[0.875rem] font-medium"
 			style={{ color: "rgb(17, 34, 17, 0.7)" }}
 		>
-			{items.map((item, index) => (
-				<li key={index}>{item}</li>
+			{items.map(({ id, label }) => (
+				<li key={id}>{label}</li>
 			))}
 		</ul>
 	</section>
@@ -151,23 +147,45 @@ const Footer = () => {
 			<div className="grid gap-6 w-full grid-cols-[repeat(auto-fit,_minmax(11rem,1fr))]">
 				<FooterSectionColumn
 					title="Our Destinations"
-					items={["Canada", "Alaska", "France", "Iceland"]}
+					items={[
+						{ id: "canada", label: "Canada" },
+						{ id: "alaska", label: "Alaska" },
+						{ id: "france", label: "France" },
+						{ id: "iceland", label: "Iceland" },
+					]}
 				/>
 				<FooterSectionColumn
 					title="Our Activities"
-					items={["Northern Lights", "Cruising & Sailing", "Multi-activities", "Kayaking"]}
+					items={[
+						{ id: "northern-lights", label: "Northern Lights" },
+						{ id: "cruising", label: "Cruising & Sailing" },
+						{ id: "multi-activities", label: "Multi-activities" },
+						{ id: "kayaking", label: "Kayaking" },
+					]}
 				/>
 				<FooterSectionColumn
 					title="Travel Blogs"
 					items={[
-						"Bali Travel Guide",
-						"Sri Lanka Travel Guide",
-						"Peru Travel Guide",
-						"Bali Travel Guide",
+						{ id: "bali-guide-1", label: "Bali Travel Guide" },
+						{ id: "sri-lanka-guide", label: "Sri Lanka Travel Guide" },
+						{ id: "peru-guide", label: "Peru Travel Guide" },
+						{ id: "bali-guide-2", label: "Bali Travel Guide" }, // duplicated label, but safe
 					]}
 				/>
-				<FooterSectionColumn title="About Us" items={["Our Story", "Work with Us"]} />
-				<FooterSectionColumn title="Contact Us" items={["Our Story", "Work with Us"]} />
+				<FooterSectionColumn
+					title="About Us"
+					items={[
+						{ id: "our-story", label: "Our Story" },
+						{ id: "work-with-us", label: "Work with Us" },
+					]}
+				/>
+				<FooterSectionColumn
+					title="Contact Us"
+					items={[
+						{ id: "contact-our-story", label: "Our Story" },
+						{ id: "contact-work", label: "Work with Us" },
+					]}
+				/>
 			</div>
 		</footer>
 	);
