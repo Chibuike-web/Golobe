@@ -1,0 +1,37 @@
+.checkbox {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 24px;
+	height: 24px;
+	border: 1px solid rgba(17, 34, 22, 0.3);
+	border-radius: 4px;
+	background: transparent;
+	cursor: pointer;
+	position: relative;
+	flex-shrink: 0;
+}
+
+.checkbox:checked {
+	background-color: #112211;
+	border: none;
+}
+
+.checkbox:checked::after {
+	display: block;
+}
+
+.checkbox::after {
+	content: "";
+	background-image: url("../../assets/FlightListing/Checkmark.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	display: none;
+	flex-shrink: 0;
+}
