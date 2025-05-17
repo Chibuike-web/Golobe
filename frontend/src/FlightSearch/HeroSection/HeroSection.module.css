@@ -1,6 +1,0 @@
-.heroimage {
-	background-image: linear-gradient(to right, rgba(0, 35, 77, 0.63) 0%, rgba(0, 35, 77, 0) 100%),
-		url("../../assets/FlightSearch/heroImage1.png");
-	background-repeat: no-repeat;
-	background-size: cover;
-}
