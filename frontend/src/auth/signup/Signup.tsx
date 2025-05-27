@@ -46,12 +46,10 @@ export default function Signup() {
 	const [registrationError, setRegistrationError] = useState("");
 
 	useEffect(() => {
-		const token = localStorage.getItem("token");
 		const userData = localStorage.getItem("user");
 
-		if (token && userData) {
+		if (userData) {
 			const parsedUser = JSON.parse(userData);
-			console.log("User already registered. Token:", token);
 			console.log("Registered user details:", parsedUser);
 		}
 	}, []);
@@ -117,43 +115,63 @@ export default function Signup() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
+		let hasError = false;
 		// Basic Validation
-		if (!firstName) setFirstNameError("First name is required");
-		if (!lastName) setLastNameError("Last name is required");
-		if (!email) setEmailError("Email is required");
-		if (!password) setPasswordError("Password is required");
-		if (password !== confirmPassword) setConfirmPasswordError("Passwords do not match");
-		if (!termsAccepted) setTermsAcceptedError("You must accept the terms and conditions");
+		if (!firstName) {
+			setFirstNameError("First name is required");
+			hasError = true;
+		}
+		if (!lastName) {
+			setLastNameError("Last name is required");
+			hasError = true;
+		}
+		if (phoneNumber && !/^\d{10,11}$/.test(phoneNumber)) {
+			setPhoneNumberError("Enter a valid 10 or 11 digit phone number");
+			hasError = true;
+		}
+		if (!termsAccepted) {
+			setTermsAcceptedError("You must accept the terms and conditions");
+			hasError = true;
+		}
 
 		// Email validation
-		if (email.length === 0) {
+		if (!email) {
 			setEmailError("Email is required");
+			hasError = true;
 		} else if (email.length < 6) {
 			setEmailError("Email should be minimum 6 characters");
-		} else if (email.indexOf(" ") >= 0) {
+			hasError = true;
+		} else if (email.includes(" ")) {
 			setEmailError("Email cannot contain spaces");
+			hasError = true;
 		} else {
 			setEmailError("");
 		}
 
 		// Password validation
-		if (password.length < 8) {
+		if (!password) {
+			setPasswordError("Password is required");
+			hasError = true;
+		} else if (password.length < 8) {
 			setPasswordError("Password must be at least 8 characters");
+			hasError = true;
 		} else {
 			setPasswordError("");
 		}
 
-		// If there are any errors, stop the submission
-		if (
-			firstNameError ||
-			lastNameError ||
-			emailError ||
-			passwordError ||
-			confirmPasswordError ||
-			termsAcceptedError
-		) {
-			return;
+		// confirm Password validation
+		if (!confirmPassword) {
+			setConfirmPasswordError("Please confirm your password");
+			hasError = true;
+		} else if (password !== confirmPassword) {
+			setConfirmPasswordError("Passwords do not match");
+			hasError = true;
+		} else {
+			setConfirmPasswordError("");
 		}
+
+		// If there are any errors, stop the submission
+		if (hasError) return;
 
 		const userData = {
 			firstName,
@@ -164,7 +182,7 @@ export default function Signup() {
 		};
 
 		try {
-			const res = await fetch("http://127.0.0.1:5000/api/auth/register", {
+			const res = await fetch("http://localhost:5000/api/auth/register", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -178,9 +196,7 @@ export default function Signup() {
 				throw new Error(errorData.message || "Registration failed");
 			}
 			const data = await res.json();
-			console.log("Registration successful:", data);
-
-			localStorage.setItem("token", data.token);
+			console.log("Registration successful:", data.message);
 			localStorage.setItem("user", JSON.stringify(userData));
 
 			navigate("/login");
@@ -409,7 +425,7 @@ export default function Signup() {
 								onChange={handleChange}
 								className="mr-2"
 							/>
-							<label htmlFor="terms" className="text-[0.875rem] font-medium">
+							<label htmlFor="termsAccepted" className="text-[0.875rem] font-medium">
 								I agree to all the <span className="text-slamon font-semibold">Terms</span> and{" "}
 								<span className="text-slamon font-semibold">Privacy Policies</span>
 							</label>

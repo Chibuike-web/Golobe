@@ -77,8 +77,6 @@ export default function Login() {
 		} else {
 			setEmailError("");
 		}
-
-		// Password validation
 	};
 
 	return (

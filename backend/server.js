@@ -34,6 +34,7 @@ app.post("/api/auth/register", async (req, res) => {
 	};
 
 	users.push(newUser);
+	console.log(users);
 
 	res.status(201).json({ message: "User registered" });
 });
@@ -52,7 +53,7 @@ app.post("/api/auth/login", async (req, res) => {
 		return res.status(400).json({ message: "Invalid password" });
 	}
 
-	res.status(200).json({ message: "User authenticated" });
+	return res.status(200).json({ message: "User authenticated" });
 });
 
 const PORT = process.env.PORT || 5000;
