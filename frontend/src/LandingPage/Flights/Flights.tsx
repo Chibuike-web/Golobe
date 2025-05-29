@@ -1,21 +1,8 @@
 import { PaperPlaneIcon } from "../../Icons";
 import styles from "./Flights.module.css";
 import { motion } from "motion/react";
-import { travelOptions } from "../utils";
+import { travelOptions, fadeUp, itemFadeUp } from "../utils";
 import { FlightCardProps } from "../types";
-
-const fadeUp = {
-	initial: { opacity: 0, y: 50 },
-	animate: (i: number) => ({
-		opacity: 1,
-		y: 0,
-		transition: {
-			delay: i * 0.2,
-			duration: 0.6,
-			ease: "easeOut",
-		},
-	}),
-};
 
 export default function Flights() {
 	return (
@@ -50,19 +37,6 @@ export default function Flights() {
 		</section>
 	);
 }
-
-const itemFadeUp = {
-	initial: { opacity: 0, y: 20 },
-	animate: (i: number) => ({
-		opacity: 1,
-		y: 0,
-		transition: {
-			delay: i * 0.4,
-			duration: 0.5,
-			ease: "easeOut",
-		},
-	}),
-};
 
 const FlightCard = ({ destination, services, image }: FlightCardProps) => {
 	return (

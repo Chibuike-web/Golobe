@@ -9,8 +9,9 @@ import {
 	DownArrowIcon,
 	SwapIcon,
 } from "../../Icons";
-import { useFlightSearchFormState } from "../../Hooks";
+import { useFlightSearchFormState, useFormState } from "../../Hooks";
 import { motion } from "motion/react";
+import { handleChange } from "../utils";
 
 export default function HeroSection() {
 	return (
@@ -56,59 +57,10 @@ function HeroContent() {
 }
 
 function FlightSearchForm() {
-	const {
-		from,
-		setFrom,
-		to,
-		setTo,
-		trip,
-		setTrip,
-		departDate,
-		setDepartDate,
-		returnDate,
-		setReturnDate,
-		passenger,
-		setPassenger,
-		travelClass,
-		setTravelClass,
-	} = useFlightSearchFormState();
+	const { from, to, trip, departDate, returnDate, passenger, travelClass } =
+		useFlightSearchFormState();
 
-	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
-	const handleFocus = (id: string) => {
-		setFocusedInput(id);
-	};
-
-	const handleBlur = (id: string, value: string) => {
-		if (!value.trim() && focusedInput === id) {
-			setFocusedInput(null);
-		}
-	};
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const { id, value } = e.target;
-		switch (id) {
-			case "from":
-				setFrom(value);
-				break;
-			case "to":
-				setTo(value);
-				break;
-			case "trip":
-				setTrip(value);
-				break;
-			case "departDate":
-				setDepartDate(value);
-				break;
-			case "returnDate":
-				setReturnDate(value);
-				break;
-			case "passenger":
-				setPassenger(value);
-				break;
-			case "travelClass":
-				setTravelClass(value);
-		}
-	};
+	const { handleBlur, handleFocus, focusedInput } = useFormState();
 
 	const isFromToBlue =
 		(focusedInput === "from" || focusedInput === "to") && !from.trim() && !to.trim();

@@ -1,6 +1,6 @@
 .heroimage {
 	background-image: linear-gradient(to right, rgba(0, 35, 77, 0.63) 0%, rgba(0, 35, 77, 0) 100%),
-		url("../../assets/HotelSearch/HeroImage.png");
+		url("../../assets/HotelSearch/HeroImage.webp");
 	background-repeat: no-repeat;
 	background-size: cover;
 }

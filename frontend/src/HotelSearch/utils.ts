@@ -5,10 +5,10 @@ import London from "../assets/FlightSearch/London.png";
 import Paris from "../assets/FlightSearch/Paris.png";
 import Columbia from "../assets/FlightSearch/Columbia.png";
 import { HotelOption } from "./types";
-import Istanbul from "../assets/HotelSearch/Istanbul.png";
-import Sydney from "../assets/HotelSearch/Sydney.png";
-import Baku from "../assets/HotelSearch/Baku.png";
-import Maldives from "../assets/HotelSearch/Maldives.png";
+import Istanbul from "../assets/HotelSearch/Istanbul.webp";
+import Sydney from "../assets/HotelSearch/Sydney.webp";
+import Baku from "../assets/HotelSearch/Baku.webp";
+import Maldives from "../assets/HotelSearch/Maldives.webp";
 
 export const details: Detail[] = [
 	{

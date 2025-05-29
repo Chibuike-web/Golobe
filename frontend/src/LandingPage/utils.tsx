@@ -13,6 +13,7 @@ import Tokyo from "../assets/LandingPage/Tokyo.png";
 import Dubai from "../assets/LandingPage/Dubai.png";
 import { GoogleIcon } from "../Icons";
 import { ReviewsType, TravelOption } from "./types";
+import { useFlightSearchFormState } from "../Hooks";
 
 export const reviews: ReviewsType[] = [
 	{
@@ -103,3 +104,58 @@ export const travelOptions: TravelOption[] = [
 		image: Dubai,
 	},
 ];
+
+export const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const { setFrom, setTo, setTrip, setDepartDate, setReturnDate, setPassenger, setTravelClass } =
+		useFlightSearchFormState();
+
+	const { id, value } = e.target;
+	switch (id) {
+		case "from":
+			setFrom(value);
+			break;
+		case "to":
+			setTo(value);
+			break;
+		case "trip":
+			setTrip(value);
+			break;
+		case "departDate":
+			setDepartDate(value);
+			break;
+		case "returnDate":
+			setReturnDate(value);
+			break;
+		case "passenger":
+			setPassenger(value);
+			break;
+		case "travelClass":
+			setTravelClass(value);
+	}
+};
+
+export const fadeUp = {
+	initial: { opacity: 0, y: 50 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.2,
+			duration: 0.6,
+			ease: "easeOut",
+		},
+	}),
+};
+
+export const itemFadeUp = {
+	initial: { opacity: 0, y: 20 },
+	animate: (i: number) => ({
+		opacity: 1,
+		y: 0,
+		transition: {
+			delay: i * 0.4,
+			duration: 0.5,
+			ease: "easeOut",
+		},
+	}),
+};
