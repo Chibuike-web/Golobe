@@ -10,7 +10,7 @@ import {
 	RightArrowIcon,
 	VisaLogo,
 } from "../../Icons";
-import CardImage from "../../assets/HotelListing/HeroImage1.png";
+import CardImage from "../../assets/HotelListing/HeroImage1.webp";
 import CVK from "../../assets/HotelListing/Cvk.png";
 import styles from "./BookingDetail.module.css";
 import { useFormState } from "../../Hooks";

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../Icons";
-import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.png";
-import EresinHotel1 from "../../assets/HotelListing/EresinHotel-1.png";
-import EresinHotel2 from "../../assets/HotelListing/EresinHotel-2.png";
-import EresinHotel3 from "../../assets/HotelListing/EresinHotel-3.png";
+import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.webp";
+import EresinHotel1 from "../../assets/HotelListing/EresinHotel-1.webp";
+import EresinHotel2 from "../../assets/HotelListing/EresinHotel-2.webp";
+import EresinHotel3 from "../../assets/HotelListing/EresinHotel-3.webp";
 import styles from "./HotelLists.module.css";
 
 export default function HotelLists() {

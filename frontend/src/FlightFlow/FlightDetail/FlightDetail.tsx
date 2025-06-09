@@ -27,6 +27,8 @@ import {
 	TimeIcon,
 	WifiIcon,
 } from "../../Icons";
+import { useParams } from "react-router-dom";
+import { flightOptions } from "../FlightLists/utils";
 
 export default function FlightDetail() {
 	return (
@@ -94,6 +96,10 @@ const cardData: CardType[] = [
 ];
 
 const HeroSection = () => {
+	const { id } = useParams();
+
+	const flight = flightOptions.find((flight) => flight.id === id);
+	if (!flight) return <p>No flight available</p>;
 	return (
 		<div className="w-full mx-auto max-w-[77rem] mt-12">
 			<div className="w-full flex flex-col gap-8">
@@ -105,10 +111,10 @@ const HeroSection = () => {
 				<div className="flex md:flex-col justify-between w-full items-end md:items-start md:gap-6">
 					{/* Left */}
 					<div>
-						<h2 className="font-primary font-bold text-2xl mb-4">Emirates A380 Airbus</h2>
+						<h2 className="font-primary font-bold text-2xl mb-4">{flight.name}</h2>
 						<div>
 							<div className="flex items-center mb-[8px]">
-								<LocationIcon />{" "}
+								<LocationIcon />
 								<p className="font-medium text-[14px] opacity-75">
 									Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437
 								</p>
@@ -125,7 +131,10 @@ const HeroSection = () => {
 					</div>
 					{/* Right */}
 					<div className="flex flex-col md:justify-between md:w-full items-end md:items-start gap-4">
-						<h2 className="text-[32px] font-bold text-slamon leading-[39px]">$240</h2>
+						<h2 className="text-[32px] font-bold text-slamon leading-[39px]">
+							{flight.currency === "USD" ? "$" : ""}
+							{flight.price}
+						</h2>
 						<div className="flex gap-4 md:w-full">
 							<button
 								type="button"

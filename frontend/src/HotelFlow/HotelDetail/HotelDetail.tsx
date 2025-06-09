@@ -16,11 +16,11 @@ import {
 	TeaIcon,
 	WifiIcon,
 } from "../../Icons";
-import HeroImage1 from "../../assets/HotelListing/HeroImage1.png";
-import HeroImage2 from "../../assets/HotelListing/HeroImage2.png";
-import HeroImage3 from "../../assets/HotelListing/HeroImage3.png";
-import HeroImage4 from "../../assets/HotelListing/HeroImage4.png";
-import HeroImage5 from "../../assets/HotelListing/HeroImage5.png";
+import HeroImage1 from "../../assets/HotelListing/HeroImage1.webp";
+import HeroImage2 from "../../assets/HotelListing/HeroImage2.webp";
+import HeroImage3 from "../../assets/HotelListing/HeroImage3.webp";
+import HeroImage4 from "../../assets/HotelListing/HeroImage4.webp";
+import HeroImage5 from "../../assets/HotelListing/HeroImage5.webp";
 import Map from "../../assets/HotelListing/Map.png";
 import ReviewImage1 from "../../assets/HotelListing/OmarSiphron.png";
 import ReviewImage2 from "../../assets/HotelListing/CristoferEkstromBothman.png";
