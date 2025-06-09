@@ -27,7 +27,7 @@ import {
 	TimeIcon,
 	WifiIcon,
 } from "../../Icons";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { flightOptions } from "../FlightLists/utils";
 
 export default function FlightDetail() {
@@ -121,10 +121,10 @@ const HeroSection = () => {
 							</div>
 							<div className="flex items-center gap-2">
 								<span className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium">
-									4.2
+									{flight.rating}
 								</span>
 								<p className="text-[12px] font-medium">
-									<strong>Very Good</strong> 54 reviews
+									<strong>{flight.reviewSummary}</strong> {flight.reviewCount} reviews
 								</p>
 							</div>
 						</div>
@@ -148,12 +148,12 @@ const HeroSection = () => {
 							>
 								<ShareIcon />
 							</button>
-							<button
-								type="button"
+							<Link
+								to={`/bookingdetail/${id}`}
 								className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] py-[16px] px-[40px] rounded-[4px]"
 							>
 								Book now
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>

@@ -66,7 +66,7 @@ export default function FlightLists() {
 			</div>
 			<div className="flex justify-between md:flex-col md:gap-6">
 				<p className="text-[14px] font-semibold text-blackishGreen">
-					Showing {flightLists.length} of{" "}
+					Showing {displayedFlights.length} of{" "}
 					<span className="text-slamon">{flightOptions.length}</span>
 				</p>
 				<p className="flex items-center gap-[4px] text-[14px] md:justify-between md:w-full">
@@ -185,7 +185,7 @@ const FlightListCard = ({ flight }: { flight: Flight }) => {
 						<HeartIcon />
 					</button>
 					<Link
-						to={`/flightlisting/${flight.id}`}
+						to={`/flightdetail/${flight.id}`}
 						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
 					>
 						View Deals

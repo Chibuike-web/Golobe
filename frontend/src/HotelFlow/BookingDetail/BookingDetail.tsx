@@ -16,13 +16,15 @@ import styles from "./BookingDetail.module.css";
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
 import { Checkbox } from "../../Components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
 import { motion } from "motion/react";
+import { flightOptions } from "../../FlightFlow/FlightLists/utils";
 
 export default function BookingDetail() {
 	const [login, setLogin] = useState<boolean>(false);
 	const [activeRadio, setActiveRadio] = useState<string | null>("full");
+	const { id } = useParams();
 
 	const [addCard, setAddCard] = useState(false);
 
@@ -41,6 +43,9 @@ export default function BookingDetail() {
 			setAddCard(false);
 		}
 	};
+
+	const flight = flightOptions.map((flight) => flight.id === id);
+	if (!flight) return;
 	return (
 		<div className="w-full mt-12">
 			<div className="w-full flex flex-col gap-8 mx-auto max-w-[77rem] lg:px-4">
