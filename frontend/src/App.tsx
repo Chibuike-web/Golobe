@@ -37,8 +37,8 @@ function App() {
 					<Route path="hotelsearch" element={<HotelSearch />} />
 					<Route path="flightlisting" element={<FlightListing />} />
 					<Route path="flightdetail/:id" element={<FlightDetail />} />
-					<Route path="bookingdetail/:id" element={<FlightBookingDetail />} />
-					<Route path="flightlisting/bookingticket" element={<FlightBookingTicket />} />
+					<Route path="flightlisting/bookingdetail/:id" element={<FlightBookingDetail />} />
+					<Route path="flightlisting/bookingticket/:id" element={<FlightBookingTicket />} />
 					<Route path="hotellisting" element={<HotelListing />} />
 					<Route path="hotellisting/hoteldetail" element={<HotelDetail />} />
 					<Route path="hotellisting/bookingdetail" element={<HotelBookingDetail />} />

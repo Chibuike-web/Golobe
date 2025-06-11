@@ -396,7 +396,7 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to="/Hotellisting/bookingticket">
+						<Link to="/hotellisting/bookingticket">
 							<button
 								type="submit"
 								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"

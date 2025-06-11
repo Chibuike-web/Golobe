@@ -16,13 +16,17 @@ import { useState } from "react";
 import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
 import { Checkbox } from "../../Components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "motion/react";
+import { flightOptions } from "../FlightLists/utils";
 
 export default function BookingDetail() {
 	const [login, setLogin] = useState<boolean>(false);
 	const [activeRadio, setActiveRadio] = useState<string | null>("full");
-
+	const { id } = useParams();
+	const flight = flightOptions.find((flight) => flight.id === id);
+	if (!id) return <p>Invalid flight ID</p>;
+	if (!flight) return <p>No flight available</p>;
 	const [addCard, setAddCard] = useState(false);
 
 	const handleChange = (id: string) => {
@@ -125,7 +129,7 @@ export default function BookingDetail() {
 					<SummaryCard />
 				</div>
 			</div>
-			{addCard && <AddCardModal closeModal={handleCloseCardModal} />}
+			{addCard && <AddCardModal closeModal={handleCloseCardModal} id={id} />}
 		</div>
 	);
 }
@@ -198,8 +202,10 @@ const SummaryCard = () => {
 
 const AddCardModal = ({
 	closeModal,
+	id,
 }: {
 	closeModal: (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => void;
+	id: string;
 }) => {
 	const {
 		cardNumber,
@@ -350,7 +356,7 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to="/Hotellisting/bookingticket">
+						<Link to={`/flightlisting/bookingticket/${id}`}>
 							<button
 								type="submit"
 								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"

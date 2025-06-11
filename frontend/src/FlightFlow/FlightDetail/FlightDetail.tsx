@@ -149,7 +149,7 @@ const HeroSection = () => {
 								<ShareIcon />
 							</button>
 							<Link
-								to={`/bookingdetail/${id}`}
+								to={`/flightlisting/bookingdetail/${id}`}
 								className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] py-[16px] px-[40px] rounded-[4px]"
 							>
 								Book now
@@ -186,8 +186,13 @@ const HeroSection = () => {
 					</div>
 				</div>
 				<figure className="hide-scrollbar flex gap-[19px] mt-[20px] overflow-y-auto">
-					{imageImports.map((image) => (
-						<img src={image} alt={image} className="w-full min-w-[120px] rounded-[12px]" />
+					{imageImports.map((image, index) => (
+						<img
+							src={image}
+							key={index}
+							alt={image}
+							className="w-full min-w-[120px] rounded-[12px]"
+						/>
 					))}
 				</figure>
 			</div>
