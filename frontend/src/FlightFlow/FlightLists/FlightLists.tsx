@@ -38,10 +38,6 @@ export default function FlightLists() {
 		setSelectedTab(type);
 	};
 
-	const flightLists = useMemo(
-		() => (isShowMore ? flightOptions : flightOptions.slice(0, 6)),
-		[isShowMore, flightOptions]
-	);
 	const filteredLists = useMemo(() => {
 		return selectedTab === "Cheapest"
 			? flightOptions.filter((flight) => flight.category === "Cheap")
@@ -52,7 +48,8 @@ export default function FlightLists() {
 			: [];
 	}, [selectedTab, flightOptions]);
 
-	const displayedFlights = selectedTab ? filteredLists : flightLists;
+	const displayedFlights = isShowMore ? filteredLists : filteredLists.slice(0, 4);
+
 	return (
 		<div className="flex flex-col gap-6 w-full">
 			<div className="hide-scrollbar flex overflow-auto items-center gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
@@ -80,12 +77,14 @@ export default function FlightLists() {
 				{displayedFlights.map((item: Flight) => (
 					<FlightListCard key={item.id} flight={item} />
 				))}
-				<button
-					className="flex bg-blackishGreen justify-center items-center w-full font-semibold text-[14px] text-white rounded-[4px] py-4"
-					onClick={() => setIsShowMore(!isShowMore)}
-				>
-					{isShowMore ? "Show less result" : "Show more results"}
-				</button>
+				{displayedFlights.length > 5 && (
+					<button
+						className="flex bg-blackishGreen justify-center items-center w-full font-semibold text-[14px] text-white rounded-[4px] py-4"
+						onClick={() => setIsShowMore(!isShowMore)}
+					>
+						{isShowMore ? "Show less result" : "Show more results"}
+					</button>
+				)}
 			</div>
 		</div>
 	);
@@ -185,7 +184,7 @@ const FlightListCard = ({ flight }: { flight: Flight }) => {
 						<HeartIcon />
 					</button>
 					<Link
-						to={`/flightdetail/${flight.id}`}
+						to={`/flightlisting/flightdetail/${flight.id}`}
 						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
 					>
 						View Deals

@@ -282,12 +282,15 @@ const AddCardModal = ({
 						{/* Card Number */}
 						<div className="relative w-full mb-6">
 							{(focusedInput === "cardNumber" || cardNumber) && (
-								<label
+								<motion.label
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="cardNumber"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Card Number
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="cardNumber"

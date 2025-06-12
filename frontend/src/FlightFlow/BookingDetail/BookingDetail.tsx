@@ -17,7 +17,7 @@ import { useFormState } from "../../Hooks";
 import { usePaymentDetails } from "../../Hooks";
 import { Checkbox } from "../../Components";
 import { Link, useParams } from "react-router-dom";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { flightOptions } from "../FlightLists/utils";
 
 export default function BookingDetail() {
@@ -129,7 +129,9 @@ export default function BookingDetail() {
 					<SummaryCard />
 				</div>
 			</div>
-			{addCard && <AddCardModal closeModal={handleCloseCardModal} id={id} />}
+			<AnimatePresence>
+				{addCard && <AddCardModal closeModal={handleCloseCardModal} id={id!} />}
+			</AnimatePresence>
 		</div>
 	);
 }
@@ -223,13 +225,21 @@ const AddCardModal = ({
 		handleBlur,
 	} = usePaymentDetails();
 	return (
-		<div
+		<motion.div
 			className="fixed px-4 py-20 inset-0 justify-items-center content-center bg-black/50 z-[100] overflow-y-auto"
 			onClick={closeModal}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.2 }}
 		>
-			<div
+			<motion.div
 				className="bg-white w-full max-w-[640px] p-16 md:p-6 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
+				initial={{ scale: 0.8, opacity: 0 }}
+				animate={{ scale: 1, opacity: 1 }}
+				exit={{ scale: 0.8, opacity: 0 }}
+				transition={{ duration: 0.3, ease: "easeOut" }}
 			>
 				<div className="flex flex-col items-end">
 					<button id="cancelButton" onClick={closeModal}>
@@ -242,12 +252,15 @@ const AddCardModal = ({
 						{/* Card Number */}
 						<div className="relative w-full mb-6">
 							{(focusedInput === "cardNumber" || cardNumber) && (
-								<label
+								<motion.label
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="cardNumber"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Card Number
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="cardNumber"
@@ -267,12 +280,15 @@ const AddCardModal = ({
 						<div className="flex gap-4 mb-6">
 							<div className="w-1/2 relative">
 								{(focusedInput === "expiryDate" || expiryDate) && (
-									<label
+									<motion.label
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: "-50%" }}
+										transition={{ duration: 0.2, ease: "easeOut" }}
 										htmlFor="expiryDate"
 										className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 									>
 										Expiry Date
-									</label>
+									</motion.label>
 								)}
 								<input
 									id="expiryDate"
@@ -287,12 +303,15 @@ const AddCardModal = ({
 							</div>
 							<div className="w-1/2 relative">
 								{(focusedInput === "cvv" || cvv) && (
-									<label
+									<motion.label
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: "-50%" }}
+										transition={{ duration: 0.2, ease: "easeOut" }}
 										htmlFor="cvv"
 										className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 									>
 										CVV
-									</label>
+									</motion.label>
 								)}
 								<input
 									id="cvv"
@@ -310,12 +329,15 @@ const AddCardModal = ({
 						{/* Name on Card */}
 						<div className="relative w-full mb-6">
 							{(focusedInput === "nameOnCard" || nameOnCard) && (
-								<label
-									htmlFor="nameOnCard"
+								<motion.label
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
+									htmlFor="cardNumber"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Name on Card
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="nameOnCard"
@@ -334,12 +356,15 @@ const AddCardModal = ({
 						{/* Country or Region */}
 						<div className="relative w-full mb-4">
 							{(focusedInput === "country" || country) && (
-								<label
-									htmlFor="country"
+								<motion.label
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
+									htmlFor="cardNumber"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Country or Region
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="country"
@@ -371,8 +396,8 @@ const AddCardModal = ({
 						</p>
 					</form>
 				</div>
-			</div>
-		</div>
+			</motion.div>
+		</motion.div>
 	);
 };
 
