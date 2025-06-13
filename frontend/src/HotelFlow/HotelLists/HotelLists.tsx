@@ -1,8 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../Icons";
 import type { HotelListCardProps } from "./types";
 import styles from "./HotelLists.module.css";
 import { hotelListCardInfo } from "./utils";
+import { useHotelFavorites } from "../../store/useHotelFavorites";
+import { Link } from "react-router-dom";
 
 export default function HotelLists() {
 	const [selectedTab, setSelectedTab] = useState<string>("Hotels");
@@ -103,7 +105,7 @@ const Tabs = ({
 	);
 };
 
-const HotelListCard = (item: HotelListCardProps) => {
+export const HotelListCard = (item: HotelListCardProps) => {
 	return (
 		<div className={`flex rounded-[12px] overflow-hidden bg-white xl:flex-col ${styles.card}`}>
 			<figure className="max-w-[300px] xl:max-w-full xl:h-[300px] relative">
@@ -113,7 +115,7 @@ const HotelListCard = (item: HotelListCardProps) => {
 				<img src={item.images[0]} alt={item.name} className="w-full h-full object-cover" />
 			</figure>
 
-			<div className="p-4 flex flex-col w-full justify-between xl:gap-6">
+			<div className="p-6 flex flex-col w-full justify-between xl:gap-6">
 				{/* Top */}
 				<div className="flex justify-between md:flex-col md:gap-6 w-full">
 					{/* Left */}
@@ -160,7 +162,7 @@ const HotelListCard = (item: HotelListCardProps) => {
 				<span className="block h-[0.5px] w-full bg-blackishGreen opacity-25"></span>
 				{/* Bottom */}
 				<div className="flex gap-4">
-					<FavoriteButton />
+					<FavoriteButton hotel={item} />
 					<button
 						type="button"
 						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
@@ -173,15 +175,18 @@ const HotelListCard = (item: HotelListCardProps) => {
 	);
 };
 
-const FavoriteButton = ({ favorite = false }: { favorite?: boolean }) => {
-	const [isFavorite, setIsFavorite] = useState(favorite);
+const FavoriteButton = ({ hotel }: { hotel: HotelListCardProps }) => {
+	const { isFavorite, toggleFavorite, favorites } = useHotelFavorites();
 	return (
 		<button
 			type="button"
 			className="p-[14px] border-mintGreen border-[1px] rounded-[4px]"
-			onClick={() => setIsFavorite(!isFavorite)}
+			onClick={() => toggleFavorite(hotel)}
 		>
-			<HeartIcon fill={isFavorite ? "black" : "none"} stroke={isFavorite ? "" : "#4C4850"} />
+			<HeartIcon
+				fill={isFavorite(hotel.id) ? "black" : "none"}
+				stroke={isFavorite(hotel.id) ? "" : "#4C4850"}
+			/>
 		</button>
 	);
 };

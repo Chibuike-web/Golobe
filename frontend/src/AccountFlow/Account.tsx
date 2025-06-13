@@ -7,9 +7,9 @@ import HistoryTab from "./HistoryTab";
 import PaymentMethods from "./PaymentMethods";
 
 export default function Account() {
-	const [selectedTab, setSelectedTab] = useState<number>(1);
-	const handleClick = (id: number) => {
-		setSelectedTab(id);
+	const [selectedTab, setSelectedTab] = useState<string>("Account");
+	const handleClick = (text: string) => {
+		setSelectedTab(text);
 	};
 	return (
 		<div className="mx-auto w-full max-w-[1232px] py-6 md:py-0">
@@ -36,56 +36,56 @@ export default function Account() {
 			</div>
 			<div className="md:px-4">
 				<div className="hide-scrollbar flex items-center gap-4 py-4 px-3 mt-8 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] overflow-auto">
-					{TabData.map(({ id, text }: TabsProps, index) => (
-						<div key={id} className="flex w-full gap-4">
-							<Tabs id={id} text={text} selectedTab={selectedTab} handleClick={handleClick} />
+					{tabData.map(({ text }: TabsProps, index) => (
+						<div key={text} className="flex w-full gap-4">
+							<Tabs text={text} selectedTab={selectedTab} handleClick={handleClick} />
 							{index <= 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"></span>}
 						</div>
 					))}
 				</div>
 			</div>
-			{selectedTab === 1 ? <AccountTab /> : selectedTab === 2 ? <HistoryTab /> : <PaymentMethods />}
+			{selectedTab === "Account" ? (
+				<AccountTab />
+			) : selectedTab === "History" ? (
+				<HistoryTab />
+			) : (
+				<PaymentMethods />
+			)}
 		</div>
 	);
 }
 
 type TabsProps = {
-	id: number;
 	text: string;
 };
-const TabData: TabsProps[] = [
+const tabData: TabsProps[] = [
 	{
-		id: 1,
 		text: "Account",
 	},
 	{
-		id: 2,
 		text: "History",
 	},
 	{
-		id: 3,
 		text: "Payment methods",
 	},
 ];
 
 const Tabs = ({
-	id,
 	text,
 	selectedTab,
 	handleClick,
 }: {
-	id: number;
 	text: string;
-	selectedTab: number;
-	handleClick: (id: number) => void;
+	selectedTab: string;
+	handleClick: (text: string) => void;
 }) => {
 	return (
-		<button className="relative w-full" onClick={() => handleClick(id)}>
+		<button className="relative w-full" onClick={() => handleClick(text)}>
 			<h3 className="font-semibold px-[12px] py-2 flex flex-col items-start gap-[8px] w-full min-w-[160px]">
 				{text}
 			</h3>
 
-			{selectedTab === id && (
+			{selectedTab === text && (
 				<div className="h-[4px] w-full bg-mintGreen absolute bottom-[-1rem]"></div>
 			)}
 		</button>
