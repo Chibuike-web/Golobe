@@ -532,7 +532,7 @@ export function CancelIcon() {
 	);
 }
 
-export function FunnyArrowIcon({ className = "" }: { className?: string }) {
+export function FunnyArrowIconDown({ className = "" }: { className?: string }) {
 	return (
 		<svg
 			className={className}
@@ -552,6 +552,25 @@ export function FunnyArrowIcon({ className = "" }: { className?: string }) {
 	);
 }
 
+export function FunnyArrowIconUp({ className = "" }: { className?: string }) {
+	return (
+		<svg
+			className={className}
+			width="38"
+			height="27"
+			viewBox="0 0 38 27"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				opacity="0.25"
+				d="M37 26.5L19 16.5M1 26.5L19 16.5M19 16.5V0.5"
+				stroke="#112211"
+				stroke-width="0.5"
+			/>
+		</svg>
+	);
+}
 export function BuildingIcon({ className = "opacity-20" }: { className?: string }) {
 	return (
 		<svg

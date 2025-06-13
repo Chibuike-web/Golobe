@@ -4,11 +4,12 @@ import {
 	Calender,
 	ClockIcon,
 	DoorIcon,
-	FunnyArrowIcon,
 	LocationIcon,
 	RightArrowIcon,
 	ShareIcon,
 	AirlineSeatIcon,
+	FunnyArrowIconUp,
+	FunnyArrowIconDown,
 } from "../../Icons";
 
 import TicketImage from "../../assets/FlightListing/Ticket Image.png";
@@ -63,10 +64,10 @@ export default function BookingTicket() {
 							<h1 className="font-semibold text-[32px]">12:00 pm</h1>
 							<p className="text-[12px] opacity-60">Newark(EWR)</p>
 						</div>
-						<figure className="flex flex-col items-center gap-[8px] w-max">
-							<FunnyArrowIcon />
+						<figure className="flex flex-col xl:flex-row items-center gap-[8px] w-max">
+							<FunnyArrowIconDown className="sm:rotate-0 xl:rotate-90" />
 							<AirplaneIcon />
-							<FunnyArrowIcon className="rotate-180" />
+							<FunnyArrowIconUp className="sm:rotate-0 xl:rotate-90" />
 						</figure>
 						<div className="md:text-center">
 							<h1 className="font-semibold text-[32px]">12:00 pm</h1>

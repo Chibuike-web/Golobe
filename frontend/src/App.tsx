@@ -40,9 +40,9 @@ function App() {
 					<Route path="/flightlisting/bookingdetail/:id" element={<FlightBookingDetail />} />
 					<Route path="/flightlisting/bookingticket/:id" element={<FlightBookingTicket />} />
 					<Route path="/hotellisting" element={<HotelListing />} />
-					<Route path="/hotellisting/hoteldetail" element={<HotelDetail />} />
-					<Route path="/hotellisting/bookingdetail" element={<HotelBookingDetail />} />
-					<Route path="/hotellisting/bookingticket" element={<HotelBookingTicket />} />
+					<Route path="/hotellisting/hoteldetail/:id" element={<HotelDetail />} />
+					<Route path="/hotellisting/bookingdetail/:id" element={<HotelBookingDetail />} />
+					<Route path="/hotellisting/bookingticket/:id" element={<HotelBookingTicket />} />
 					<Route path="/favorites" element={<Favorites />} />
 					<Route path="/account" element={<Account />} />
 				</Route>

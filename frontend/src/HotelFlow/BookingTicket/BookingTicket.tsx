@@ -3,7 +3,8 @@ import {
 	BuildingIcon,
 	ClockIcon,
 	DoorIcon,
-	FunnyArrowIcon,
+	FunnyArrowIconDown,
+	FunnyArrowIconUp,
 	LocationIcon,
 	RightArrowIcon,
 	ShareIcon,
@@ -63,10 +64,10 @@ export default function BookingTicket() {
 							<h1 className="font-semibold text-[32px]">Thur, Dec 8</h1>
 							<p className="text-[12px] opacity-60">Check-In</p>
 						</div>
-						<figure className="flex flex-col items-center gap-[8px] w-max">
-							<FunnyArrowIcon />
+						<figure className="flex flex-col xl:flex-row items-center gap-[8px] w-max">
+							<FunnyArrowIconDown className="sm:rotate-0 xl:rotate-90" />
 							<BuildingIcon />
-							<FunnyArrowIcon className="rotate-180" />
+							<FunnyArrowIconUp className="sm:rotate-0 xl:rotate-90" />
 						</figure>
 						<div className="md:text-center">
 							<h1 className="font-semibold text-[32px]">Fri, Dec 9</h1>

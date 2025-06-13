@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
 import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../Icons";
-import type { HotelListCardProps } from "./types";
+import type { HotelListCardProps, TabsProps } from "./types";
 import styles from "./HotelLists.module.css";
-import { hotelListCardInfo } from "./utils";
+import { hotelListCardInfo, tabData } from "./utils";
 import { useHotelFavorites } from "../../store/useHotelFavorites";
 import { Link } from "react-router-dom";
 
@@ -27,7 +27,7 @@ export default function HotelLists() {
 	return (
 		<div className="flex flex-col gap-6 w-full">
 			<div className=" hide-scrollbar  flex overflow-auto items-center py-4 gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
-				{TabData.map(({ type, place }: TabsProps, index) => (
+				{tabData.map(({ type, place }: TabsProps, index) => (
 					<div key={type} className="flex w-full gap-4">
 						<Tabs type={type} place={place} selectedTab={selectedTab} handleClick={handleClick} />
 						{index <= 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"></span>}
@@ -36,7 +36,8 @@ export default function HotelLists() {
 			</div>
 			<div className="flex justify-between md:flex-col md:gap-4">
 				<p className="text-[14px] font-semibold text-blackishGreen">
-					Showing 4 of <span className="text-slamon">257 places</span>
+					Showing {displayHotels.length} of{" "}
+					<span className="text-slamon">{hotelListCardInfo.length}</span>
 				</p>
 				<p className="flex items-center md:justify-between gap-[4px] text-[14px]">
 					Sort by
@@ -59,25 +60,6 @@ export default function HotelLists() {
 		</div>
 	);
 }
-
-type TabsProps = {
-	type: string;
-	place: string;
-};
-const TabData: TabsProps[] = [
-	{
-		type: "Hotels",
-		place: "257 places",
-	},
-	{
-		type: "Motels",
-		place: "51 places",
-	},
-	{
-		type: "Resorts",
-		place: "72 places",
-	},
-];
 
 const Tabs = ({
 	type,
@@ -110,7 +92,7 @@ export const HotelListCard = (item: HotelListCardProps) => {
 		<div className={`flex rounded-[12px] overflow-hidden bg-white xl:flex-col ${styles.card}`}>
 			<figure className="max-w-[300px] xl:max-w-full xl:h-[300px] relative">
 				<p className="text-blackishGreen/75 font-medium text-[12px] absolute p-[8px] bg-white/50 backdrop-blur-sm rounded-[8px] leading-[15px] top-[8px] right-[8px]">
-					9 images
+					{item.images.length} images
 				</p>
 				<img src={item.images[0]} alt={item.name} className="w-full h-full object-cover" />
 			</figure>
@@ -163,19 +145,20 @@ export const HotelListCard = (item: HotelListCardProps) => {
 				{/* Bottom */}
 				<div className="flex gap-4">
 					<FavoriteButton hotel={item} />
-					<button
-						type="button"
+
+					<Link
+						to={`/hotellisting/hoteldetail/${item.id}`}
 						className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] rounded-[4px]"
 					>
 						View Place
-					</button>
+					</Link>
 				</div>
 			</div>
 		</div>
 	);
 };
 
-const FavoriteButton = ({ hotel }: { hotel: HotelListCardProps }) => {
+export const FavoriteButton = ({ hotel }: { hotel: HotelListCardProps }) => {
 	const { isFavorite, toggleFavorite, favorites } = useHotelFavorites();
 	return (
 		<button

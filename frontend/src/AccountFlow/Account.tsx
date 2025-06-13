@@ -39,7 +39,7 @@ export default function Account() {
 					{tabData.map(({ text }: TabsProps, index) => (
 						<div key={text} className="flex w-full gap-4">
 							<Tabs text={text} selectedTab={selectedTab} handleClick={handleClick} />
-							{index <= 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"></span>}
+							{index <= 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"/>}
 						</div>
 					))}
 				</div>

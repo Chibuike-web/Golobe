@@ -28,8 +28,16 @@ import ReviewImage3 from "../../assets/HotelListing/KaiyaLubin.png";
 import ReviewImage4 from "../../assets/HotelListing/ErinSeptimus.png";
 import ReviewImage5 from "../../assets/HotelListing/TerryGeorge.png";
 import { ReactNode, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import { hotelListCardInfo } from "../HotelLists/utils";
+import { FavoriteButton } from "../HotelLists/HotelLists";
 
 export default function HotelDetail() {
+	const { id } = useParams();
+	const hotel = hotelListCardInfo.find((item) => item.id === id);
+	if (!hotel) {
+		return <p>No Hotel found</p>;
+	}
 	return (
 		<div className="w-full mx-auto max-w-[77rem] mt-12 lg:px-4">
 			<div className="w-full flex flex-col gap-8">
@@ -41,22 +49,18 @@ export default function HotelDetail() {
 				<div className="flex justify-between w-full items-end md:flex-col md:items-start md:gap-6">
 					{/* Left */}
 					<div>
-						<h2 className="font-primary font-bold text-2xl mb-4">
-							CVK Park Bosphorus Hotel Istanbul
-						</h2>
+						<h2 className="font-primary font-bold text-2xl mb-4">{hotel.name}</h2>
 						<div>
 							<div className="flex items-center mb-[8px]">
 								<LocationIcon />{" "}
-								<p className="font-medium text-[14px] opacity-75">
-									Gümüssuyu Mah. Inönü Cad. No:8, Istanbul 34437
-								</p>
+								<p className="font-medium text-[14px] opacity-75">{hotel.address}</p>
 							</div>
 							<div className="flex items-center gap-2">
 								<span className="text-[12px] border-mintGreen border-[1px] leading-[15px] px-[12px] py-[8px] rounded-[4px] font-medium">
-									4.2
+									{hotel.rating}
 								</span>
 								<p className="text-[12px] font-medium">
-									<strong>Very Good</strong> 371 reviews
+									<strong>{hotel.reviewSummary}</strong> {hotel.reviewCount} reviews
 								</p>
 							</div>
 						</div>
@@ -64,27 +68,24 @@ export default function HotelDetail() {
 					{/* Right */}
 					<div className="flex flex-col items-end gap-4 md:items-start md:w-full">
 						<h2 className="text-[32px] flex items-end font-bold text-slamon leading-[29px]">
-							$240 <span className="text-[14px] leading-[19px]">/night</span>
+							{hotel.pricePerNight} <span className="text-[14px] leading-[19px]">/night</span>
 						</h2>
 						<div className="flex gap-4 md:w-full">
-							<button
-								type="button"
-								className="p-[14px] border-mintGreen border-[1px] rounded-[4px]"
-							>
-								<HeartIcon />
-							</button>
+							<FavoriteButton hotel={hotel} />
 							<button
 								type="button"
 								className="p-[14px] border-mintGreen border-[1px] rounded-[4px]"
 							>
 								<ShareIcon />
 							</button>
-							<button
-								type="button"
+
+							<Link
+								to={`/hotellisting/bookingdetail/${hotel.id}`}
 								className="flex bg-mintGreen justify-center items-center w-full font-semibold text-[14px] py-[16px] px-[40px] rounded-[4px]"
 							>
+								{" "}
 								Book now
-							</button>
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -104,7 +105,7 @@ export default function HotelDetail() {
 			</div>
 			<span className="block h-[0.5px] w-full bg-blackishGreen/25 my-16"></span>
 			<div>
-				<h3>Overview</h3>
+				<h3 className="font-bold text-[20px] font-primary mb-4">Overview</h3>
 				<p>
 					Located in Taksim Gmsuyu, the heart of Istanbul, the CVK Park Bosphorus Hotel Istanbul has
 					risen from the ashes of the historic Park Hotel, which also served as Foreign Affairs

@@ -18,13 +18,14 @@ import { usePaymentDetails } from "../../Hooks";
 import { Checkbox } from "../../Components";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { flightOptions } from "../../FlightFlow/FlightLists/utils";
+import { hotelListCardInfo } from "../HotelLists/utils";
 
 export default function BookingDetail() {
 	const [login, setLogin] = useState<boolean>(false);
+
 	const [activeRadio, setActiveRadio] = useState<string | null>("full");
-	const { id } = useParams();
 
 	const [addCard, setAddCard] = useState(false);
 
@@ -44,15 +45,18 @@ export default function BookingDetail() {
 		}
 	};
 
-	const flight = flightOptions.map((flight) => flight.id === id);
-	if (!flight) return;
+	const { id } = useParams();
+	const hotel = hotelListCardInfo.find((item) => item.id === id);
+	if (!hotel) {
+		return <p>No Hotel found</p>;
+	}
 	return (
 		<div className="w-full mt-12">
 			<div className="w-full flex flex-col gap-8 mx-auto max-w-[77rem] lg:px-4">
 				<div className="flex items-center">
 					<p className="text-slamon text-[14px] font-medium">Turkey</p> <RightArrowIcon />
 					<p className="text-slamon text-[14px] font-medium">Istanbul</p> <RightArrowIcon />
-					<p className="text-[14px] font-medium opacity-75">CVK Park Bosphorus Hotel Istanbul</p>
+					<p className="text-[14px] font-medium opacity-75">{hotel.name}</p>
 				</div>
 				<div className="flex justify-between w-full items-end"></div>
 			</div>
@@ -67,16 +71,15 @@ export default function BookingDetail() {
 								Superior room - 1 double bed or 2 twin beds
 							</h1>
 							<h1 className="font-bold text-[2rem] text-slamon">
-								$240<span className="font-semibold text-[14px]">/night</span>
+								${hotel.pricePerNight}
+								<span className="font-semibold text-[14px]">/night</span>
 							</h1>
 						</div>
 						{/* Middle */}
 						<div className="flex items-center px-8 py-4 border-[0.5px] gap-6 rounded-[8px] mt-[24px] md:flex-col md:items-start">
 							<img src={CVK} className="w-full max-w-[63px] md:max-w-full" />
 							<div>
-								<h2 className="-font-semibold text-[24px] leading-[em]">
-									CVK Park Bosphorus Hotel Istanbul
-								</h2>
+								<h2 className="-font-semibold text-[24px] leading-[em]">{hotel.name}</h2>
 								<div>
 									<div className="flex items-center gap-[8px] mt-[8px] ">
 										<LocationIcon />{" "}
@@ -171,7 +174,10 @@ export default function BookingDetail() {
 				{/* Right */}
 				<SummaryCard />
 			</div>
-			{addCard && <AddCardModal closeModal={handleCloseCardModal} />}
+			<AnimatePresence>
+				{" "}
+				{addCard && <AddCardModal closeModal={handleCloseCardModal} id={hotel.id} />}
+			</AnimatePresence>
 		</div>
 	);
 }
@@ -244,8 +250,10 @@ const SummaryCard = () => {
 
 const AddCardModal = ({
 	closeModal,
+	id,
 }: {
 	closeModal: (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => void;
+	id: string;
 }) => {
 	const {
 		cardNumber,
@@ -263,13 +271,21 @@ const AddCardModal = ({
 		handleBlur,
 	} = usePaymentDetails();
 	return (
-		<div
+		<motion.div
 			className="fixed px-4 py-20 inset-0 justify-items-center content-center bg-black/50 z-[100] overflow-y-auto"
 			onClick={closeModal}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.2 }}
 		>
-			<div
+			<motion.div
 				className="bg-white w-full max-w-[640px] p-16 md:p-6 rounded-[12px]"
 				onClick={(e) => e.stopPropagation()}
+				initial={{ scale: 0.8, opacity: 0 }}
+				animate={{ scale: 1, opacity: 1 }}
+				exit={{ scale: 0.8, opacity: 0 }}
+				transition={{ duration: 0.3, ease: "easeOut" }}
 			>
 				<div className="flex flex-col items-end">
 					<button id="cancelButton" onClick={closeModal}>
@@ -399,14 +415,8 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to="/hotellisting/bookingticket">
-							<button
-								type="submit"
-								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
-							>
-								Add Card
-							</button>
-						</Link>
+						<Link to={`/hotellisting/bookingticket/${id}`}>Add Card</Link>
+
 						<p className="text-blackishGreen opacity-75 text-[12px] mt-4">
 							By confirming your subscription, you allow The Outdoor Inn Crowd Limited to charge
 							your card for this payment and future payments in accordance with their terms. You can
@@ -414,8 +424,8 @@ const AddCardModal = ({
 						</p>
 					</form>
 				</div>
-			</div>
-		</div>
+			</motion.div>
+		</motion.div>
 	);
 };
 
