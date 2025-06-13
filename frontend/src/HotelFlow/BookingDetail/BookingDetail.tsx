@@ -326,12 +326,15 @@ const AddCardModal = ({
 						<div className="flex gap-4 mb-6">
 							<div className="w-1/2 relative">
 								{(focusedInput === "expiryDate" || expiryDate) && (
-									<label
+									<motion.label
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: "-50%" }}
+										transition={{ duration: 0.2, ease: "easeOut" }}
 										htmlFor="expiryDate"
 										className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 									>
 										Expiry Date
-									</label>
+									</motion.label>
 								)}
 								<input
 									id="expiryDate"
@@ -346,12 +349,15 @@ const AddCardModal = ({
 							</div>
 							<div className="w-1/2 relative">
 								{(focusedInput === "cvv" || cvv) && (
-									<label
+									<motion.label
+										initial={{ opacity: 0, y: 10 }}
+										animate={{ opacity: 1, y: "-50%" }}
+										transition={{ duration: 0.2, ease: "easeOut" }}
 										htmlFor="cvv"
 										className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 									>
 										CVV
-									</label>
+									</motion.label>
 								)}
 								<input
 									id="cvv"
@@ -369,12 +375,15 @@ const AddCardModal = ({
 						{/* Name on Card */}
 						<div className="relative w-full mb-6">
 							{(focusedInput === "nameOnCard" || nameOnCard) && (
-								<label
+								<motion.label
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="nameOnCard"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Name on Card
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="nameOnCard"
@@ -393,12 +402,15 @@ const AddCardModal = ({
 						{/* Country or Region */}
 						<div className="relative w-full mb-4">
 							{(focusedInput === "country" || country) && (
-								<label
+								<motion.label
+									initial={{ opacity: 0, y: 10 }}
+									animate={{ opacity: 1, y: "-50%" }}
+									transition={{ duration: 0.2, ease: "easeOut" }}
 									htmlFor="country"
 									className="absolute bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 								>
 									Country or Region
-								</label>
+								</motion.label>
 							)}
 							<input
 								id="country"
@@ -415,7 +427,14 @@ const AddCardModal = ({
 							<Checkbox title="Securely save my information for 1-click checkout" />
 						</figure>
 
-						<Link to={`/hotellisting/bookingticket/${id}`}>Add Card</Link>
+						<Link to={`/hotellisting/bookingticket/${id}`}>
+							<button
+								type="submit"
+								className="bg-mintGreen text-blackishGreen text-[0.875rem] font-medium p-2 rounded w-full py-4"
+							>
+								Add Card
+							</button>
+						</Link>
 
 						<p className="text-blackishGreen opacity-75 text-[12px] mt-4">
 							By confirming your subscription, you allow The Outdoor Inn Crowd Limited to charge
