@@ -38,7 +38,7 @@ export default function HotelSearch() {
 
 				<div className="grid grid-cols-[1fr_318px_318px] grid-rows-2 gap-6 lg:grid-cols-1 xl:px-4">
 					<article className="w-full row-span-2 flex flex-col p-[1.5rem] bg-mintGreen rounded-[1.25rem]">
-						<header className="flex justify-between items-start mb-[1.5rem]">
+						<header className="flex justify-between items-start mb-[1.5rem] md:flex-col md:gap-4">
 							<h2 className="font-primary font-bold text-[2.5rem] leading-[3.188rem] max-w-[22.688rem] w-full">
 								Backpacking Sri Lanka
 							</h2>

@@ -38,9 +38,11 @@ export default function NavbarGuest() {
 						</NavLink>
 					</li>
 				</ul>
-				<figure>
+				<Link to="/">
+					s
 					<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-[6rem]" />
-				</figure>
+				</Link>
+				s{" "}
 				<div className="flex gap-[1.875rem] items-center md:hidden">
 					<Link to="/login" className="text-blackishGreen text-sm font-semibold">
 						Login
@@ -61,7 +63,6 @@ export default function NavbarGuest() {
 				>
 					{isShow ? <CancelIcon /> : <MenuIcon />}
 				</button>
-
 				{isShow && <MobileNavDropdown />}
 			</nav>
 		</header>

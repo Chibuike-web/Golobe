@@ -5,7 +5,7 @@ import { BookingCardProps } from "./types";
 export default function Bookings() {
 	return (
 		<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full px-4">
-			<header className="w-full mb-6 flex justify-between items-center md:flex-col md:items-start">
+			<header className="w-full mb-6 flex justify-between items-center md:flex-col md:items-start md:gap-4">
 				<div>
 					<h2 className="text-[32px] mb-4">Fall into travel</h2>
 					<p className="max-w-[851px]">

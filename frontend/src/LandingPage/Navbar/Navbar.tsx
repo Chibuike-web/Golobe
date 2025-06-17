@@ -76,7 +76,7 @@ const MobileNav = () => {
 	const { isShow, setIsShow } = useIsShow();
 	return (
 		<nav
-			className="flex items-center justify-between mt-[2rem] w-full z-[100] px-4 py-4"
+			className="flex items-center justify-between mt-[1rem] w-full z-[100] px-4 py-4"
 			aria-label="Main Navigation"
 		>
 			<figure>

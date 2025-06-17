@@ -231,13 +231,14 @@ function HotelSearchForm() {
 					</span>
 					Add Promo Code
 				</button>
-				<Link to="/hotellisting">
-					<button className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full">
-						<span>
-							<BuildingIcon className="opacity-100" />
-						</span>
-						Show Places
-					</button>
+				<Link
+					to="/hotellisting"
+					className="flex gap-1 items-center justify-center font-medium bg-mintGreen p-4 rounded-md md:w-full"
+				>
+					<span>
+						<BuildingIcon className="opacity-100" />
+					</span>
+					Show Places
 				</Link>
 			</div>
 		</aside>
