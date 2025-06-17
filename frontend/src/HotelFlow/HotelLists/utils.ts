@@ -3,7 +3,7 @@ import HotelIstanbul from "../../assets/HotelListing/HotelIstanbul.webp";
 import EresinHotel1 from "../../assets/HotelListing/EresinHotel-1.webp";
 import EresinHotel2 from "../../assets/HotelListing/EresinHotel-2.webp";
 import EresinHotel3 from "../../assets/HotelListing/EresinHotel-3.webp";
-import type { HotelListCardProps, TabsProps } from "./types";
+import type { HotelListCardProps } from "./types";
 
 export const hotelListCardInfo: HotelListCardProps[] = [
 	{
@@ -210,17 +210,4 @@ export const hotelListCardInfo: HotelListCardProps[] = [
 	},
 ];
 
-export const tabData: TabsProps[] = [
-	{
-		type: "Hotels",
-		place: "257 places",
-	},
-	{
-		type: "Motels",
-		place: "51 places",
-	},
-	{
-		type: "Resorts",
-		place: "72 places",
-	},
-];
+export const tabData: string[] = ["Hotels", "Motels", "Resorts"];

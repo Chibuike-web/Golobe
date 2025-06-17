@@ -12,8 +12,3 @@ export type HotelListCardProps = {
 	reviewSummary: string;
 	reviewCount: number;
 };
-
-export type TabsProps = {
-	type: string;
-	place: string;
-};

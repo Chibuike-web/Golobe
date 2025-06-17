@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { CafeIcon, DownArrowIcon, HeartIcon, LocationIcon, StarIcon } from "../../Icons";
-import type { HotelListCardProps, TabsProps } from "./types";
+import type { HotelListCardProps } from "./types";
 import styles from "./HotelLists.module.css";
 import { hotelListCardInfo, tabData } from "./utils";
 import { useHotelFavorites } from "../../store/useHotelFavorites";
@@ -27,9 +27,9 @@ export default function HotelLists() {
 	return (
 		<div className="flex flex-col gap-6 w-full">
 			<div className=" hide-scrollbar  flex overflow-auto items-center py-4 gap-4 mt-[65px] lg:mt-0 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)]">
-				{tabData.map(({ type, place }: TabsProps, index) => (
-					<div key={type} className="flex w-full gap-4">
-						<Tabs type={type} place={place} selectedTab={selectedTab} handleClick={handleClick} />
+				{tabData.map((item: string, index) => (
+					<div key={item} className="flex w-full gap-4">
+						<Tabs item={item} selectedTab={selectedTab} handleClick={handleClick} />
 						{index <= 1 && <span className="min-h-full w-[1px] bg-blackishGreen/10 block"></span>}
 					</div>
 				))}
@@ -49,7 +49,7 @@ export default function HotelLists() {
 			{displayHotels.map((item: HotelListCardProps) => (
 				<HotelListCard key={item.id} {...item} />
 			))}
-			{displayHotels.length > 5 && (
+			{displayHotels.length > 3 && (
 				<button
 					className="flex bg-blackishGreen justify-center items-center w-full font-semibold text-[14px] text-white rounded-[4px] py-4"
 					onClick={() => setIsShowMore(!isShowMore)}
@@ -62,25 +62,29 @@ export default function HotelLists() {
 }
 
 const Tabs = ({
-	type,
-	place,
+	item,
 	selectedTab,
 	handleClick,
 }: {
-	type: string;
-	place: string;
+	item: string;
 	selectedTab: string;
-	handleClick: (type: string) => void;
+	handleClick: (item: string) => void;
 }) => {
+	const Hotels = hotelListCardInfo.filter((hotel) => hotel.category === "Hotel");
+	const Motels = hotelListCardInfo.filter((hotel) => hotel.category === "Motel");
+	const Resorts = hotelListCardInfo.filter((hotel) => hotel.category === "Resort");
 	return (
-		<button className="relative w-full" onClick={() => handleClick(type)}>
+		<button className="relative w-full" onClick={() => handleClick(item)}>
 			<div className="px-[12px] flex flex-col items-start gap-[8px] w-full min-w-[160px] text-left">
-				<h3 className="font-semibold text-blackishGreen">{type}</h3>
+				<h3 className="font-semibold text-blackishGreen">{item}</h3>
 				<div className="text-blackishGreen opacity-40 text-[14px]">
-					<span>{place}</span>
+					<span>
+						{item === "Hotels" ? Hotels.length : item === "Motels" ? Motels.length : Resorts.length}{" "}
+						places
+					</span>
 				</div>
 			</div>
-			{selectedTab === type && (
+			{selectedTab === item && (
 				<div className="h-[4px] w-full bg-mintGreen absolute bottom-[-1rem]"></div>
 			)}
 		</button>

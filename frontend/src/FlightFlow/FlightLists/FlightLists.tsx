@@ -78,7 +78,7 @@ export default function FlightLists() {
 				{displayedFlights.map((item: Flight) => (
 					<FlightListCard key={item.id} {...item} />
 				))}
-				{displayedFlights.length > 5 && (
+				{displayedFlights.length > 3 && (
 					<button
 						className="flex bg-blackishGreen justify-center items-center w-full font-semibold text-[14px] text-white rounded-[4px] py-4"
 						onClick={() => setIsShowMore(!isShowMore)}
