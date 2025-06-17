@@ -14,13 +14,13 @@ export default function HotelSearch() {
 			<section className=" mx-auto max-w-[77rem] mt-20 w-full md:justify-items-center">
 				<div className="grid grid-cols-[repeat(auto-fill,minmax(14.875rem,max-content))] gap-x-[5rem] justify-between gap-y-[4rem] xl:px-6">
 					{hotelOptions.map(({ id, destination, image }: HotelOption) => (
-						<HotelCard id={id} destination={destination} image={image} />
+						<HotelCard key={id} id={id} destination={destination} image={image} />
 					))}
 				</div>
 			</section>
 			<Bookings />
 			<section className="mx-auto max-w-[77rem] mt-20 flex flex-col w-full">
-				<header className="w-full mb-[1.5rem] flex justify-between items-center xl:px-4 md:flex-col md:items-start">
+				<header className="w-full mb-[1.5rem] flex justify-between items-center xl:px-4 md:flex-col md:items-start md:gap-4">
 					<div>
 						<h2 className="text-[2rem] mb-[1rem]">Fall into travel</h2>
 						<p className="w-full max-w-[53.188rem]">
