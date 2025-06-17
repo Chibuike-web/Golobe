@@ -74,23 +74,27 @@ const DesktopNav = () => {
 
 const MobileNav = () => {
 	const { isShow, setIsShow } = useIsShow();
+	const scrollHeight = useScroll();
 	return (
-		<nav
-			className="flex items-center justify-between mt-[1rem] w-full z-[100] px-4 py-4"
-			aria-label="Main Navigation"
-		>
-			<figure>
-				<img src={GolobeLogo} alt="Golobe Travel Logo" className="w-full max-w-24" />
-			</figure>
-			<button
-				type="button"
-				onClick={() => {
-					setIsShow(!isShow);
-				}}
-			>
-				{" "}
-				<MenuIcon fill={"white"} />
-			</button>
+		<nav className={scrollHeight ? styles.sticky : ""} aria-label="Main Navigation">
+			<header className="flex items-center justify-between mt-[1rem] w-full z-[100] px-4 py-4">
+				<figure>
+					<img
+						src={scrollHeight ? ColourLogo : GolobeLogo}
+						alt="Golobe Travel Logo"
+						className="w-full max-w-24"
+					/>
+				</figure>
+				<button
+					type="button"
+					onClick={() => {
+						setIsShow(!isShow);
+					}}
+				>
+					{" "}
+					<MenuIcon fill={scrollHeight ? "black" : "white"} />
+				</button>
+			</header>
 
 			{isShow && <MobileNavDropdown isShow={isShow} setIsShow={setIsShow} />}
 		</nav>
