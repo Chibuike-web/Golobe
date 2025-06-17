@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../../Icons";
 import styles from "./Navbar.module.css";
 import ColourLogo from "../../assets/LandingPage/ColourLogo.svg";
-import { useIsShow, useScroll, useWindowWidth } from "../../Hooks";
+import { useIsShow, useMediaQuery, useScroll } from "../../Hooks";
 
 export default function Navbar() {
-	const windowSize = useWindowWidth();
-	return windowSize > 700 ? <DesktopNav /> : <MobileNav />;
+	const isDesktop = useMediaQuery("(min-width: 701px)");
+	return isDesktop ? <DesktopNav /> : <MobileNav />;
 }
 
 const DesktopNav = () => {
