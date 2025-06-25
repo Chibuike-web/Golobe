@@ -1,8 +1,8 @@
-import CTAImage from "../assets/LandingPage/emojione-v1_open-mailbox-with-lowered-flag.svg";
+import CTAImage from "../assets/landing-page/emojione-v1_open-mailbox-with-lowered-flag.svg";
 import { FacebookIcon, InstagramIcon, TwitterIcon, YoutubeIcon } from "../Icons";
-import FooterLogo from "../assets/LandingPage/Logo.svg";
+import FooterLogo from "../assets/landing-page/Logo.svg";
 import { motion } from "motion/react";
-import { FooterColumnProps } from "../LandingPage/types";
+import { FooterColumnProps } from "../landing-page/types";
 
 export default function FooterSection() {
 	return (

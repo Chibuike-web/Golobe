@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Navbar.module.css";
-import ProfileImage from "../assets/FlightListing/ProfileImage.png";
+import ProfileImage from "../assets/flight-listing/ProfileImage.png";
 import {
 	AirplaneIcon,
 	BedIcon,
@@ -13,7 +13,7 @@ import {
 	Settings,
 	Support,
 } from "../Icons";
-import GolobeLogo from "../assets/FlightSearch/LogoWhiteBackground.svg";
+import GolobeLogo from "../assets/flight-search/LogoWhiteBackground.svg";
 
 import { NavLink } from "react-router-dom";
 export default function NavbarSignedIn() {

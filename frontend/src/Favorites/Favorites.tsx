@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useFlightFavorites } from "../store/useFlightFavorites";
-import { FlightListCard } from "../FlightFlow/FlightLists/FlightLists";
-import { Flight } from "../FlightFlow/FlightLists/types";
+import { FlightListCard } from "../flight-flow/flight-lists/FlightLists";
+import { Flight } from "../flight-flow/flight-lists/types";
 import { useHotelFavorites } from "../store/useHotelFavorites";
-import { HotelListCardProps } from "../HotelFlow/HotelLists/types";
-import { HotelListCard } from "../HotelFlow/HotelLists/HotelLists";
+import { HotelListCardProps } from "../hotel-flow/hotel-lists/types";
+import { HotelListCard } from "../hotel-flow/hotel-lists/HotelLists";
 
 export default function Favorites() {
 	const [selectedTab, setSelectedTab] = useState<string>("Flights");

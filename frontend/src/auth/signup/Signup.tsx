@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
+import GolobeLogo from "../../assets/authentication/LogoWhiteBackground.svg";
 import styles from "./Signup.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../Icons";
 import { useFormState } from "../../Hooks";
@@ -115,64 +115,81 @@ export default function Signup() {
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		let hasError = false;
-		// Basic Validation
+		// Declare local error variables
+		let firstNameErr = "";
+		let lastNameErr = "";
+		let phoneNumberErr = "";
+		let termsAcceptedErr = "";
+		let emailErr = "";
+		let passwordErr = "";
+		let confirmPasswordErr = "";
+
+		// First Name
 		if (!firstName) {
-			setFirstNameError("First name is required");
-			hasError = true;
+			firstNameErr = "First name is required";
 		}
+
+		// Last Name
 		if (!lastName) {
-			setLastNameError("Last name is required");
-			hasError = true;
+			lastNameErr = "Last name is required";
 		}
+
+		// Phone Number
 		if (phoneNumber && !/^\d{10,11}$/.test(phoneNumber)) {
-			setPhoneNumberError("Enter a valid 10 or 11 digit phone number");
-			hasError = true;
+			phoneNumberErr = "Enter a valid 10 or 11 digit phone number";
 		}
+
+		// Terms
 		if (!termsAccepted) {
-			setTermsAcceptedError("You must accept the terms and conditions");
-			hasError = true;
+			termsAcceptedErr = "You must accept the terms and conditions";
 		}
 
-		// Email validation
+		// Email
 		if (!email) {
-			setEmailError("Email is required");
-			hasError = true;
+			emailErr = "Email is required";
 		} else if (email.length < 6) {
-			setEmailError("Email should be minimum 6 characters");
-			hasError = true;
+			emailErr = "Email should be minimum 6 characters";
 		} else if (email.includes(" ")) {
-			setEmailError("Email cannot contain spaces");
-			hasError = true;
-		} else {
-			setEmailError("");
+			emailErr = "Email cannot contain spaces";
 		}
 
-		// Password validation
+		// Password
 		if (!password) {
-			setPasswordError("Password is required");
-			hasError = true;
+			passwordErr = "Password is required";
 		} else if (password.length < 8) {
-			setPasswordError("Password must be at least 8 characters");
-			hasError = true;
-		} else {
-			setPasswordError("");
+			passwordErr = "Password must be at least 8 characters";
 		}
 
-		// confirm Password validation
+		// Confirm Password
 		if (!confirmPassword) {
-			setConfirmPasswordError("Please confirm your password");
-			hasError = true;
+			confirmPasswordErr = "Please confirm your password";
 		} else if (password !== confirmPassword) {
-			setConfirmPasswordError("Passwords do not match");
-			hasError = true;
-		} else {
-			setConfirmPasswordError("");
+			confirmPasswordErr = "Passwords do not match";
 		}
 
-		// If there are any errors, stop the submission
-		if (hasError) return;
+		// Set error states for UI
+		setFirstNameError(firstNameErr);
+		setLastNameError(lastNameErr);
+		setPhoneNumberError(phoneNumberErr);
+		setTermsAcceptedError(termsAcceptedErr);
+		setEmailError(emailErr);
+		setPasswordError(passwordErr);
+		setConfirmPasswordError(confirmPasswordErr);
 
+		// If any error exists, stop submission
+		if (
+			firstNameErr ||
+			lastNameErr ||
+			phoneNumberErr ||
+			termsAcceptedErr ||
+			emailErr ||
+			passwordErr ||
+			confirmPasswordErr
+		) {
+			return;
+		}
+
+		// No errors — proceed
 		const userData = {
 			firstName,
 			lastName,
