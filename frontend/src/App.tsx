@@ -31,7 +31,6 @@ function App() {
 				<Route path="verifycode" element={<VerifyCode />} />
 				<Route path="resetpassword" element={<ResetPassword />} />
 
-				{/* routes under Layout */}
 				<Route element={<Layout />}>
 					<Route path="/flightsearch" element={<FlightSearch />} />
 					<Route path="/hotelsearch" element={<HotelSearch />} />
