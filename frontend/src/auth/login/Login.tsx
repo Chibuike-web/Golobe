@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import GolobeLogo from "../../assets/Authentication/LogoWhiteBackground.svg";
+import GolobeLogo from "../../assets/authentication/LogoWhiteBackground.svg";
 import styles from "./Login.module.css";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../Icons";
 import { useFormState } from "../../Hooks";
