@@ -22,7 +22,7 @@ import Account from "./account-flow/Account";
 
 function App() {
 	return (
-		<Router basename="/Golobe">
+		<Router>
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="signup" element={<Signup />} />
