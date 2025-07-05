@@ -14,8 +14,8 @@ import {
 	Support,
 } from "../Icons";
 import GolobeLogo from "../assets/flight-search/LogoWhiteBackground.svg";
-
 import { NavLink } from "react-router-dom";
+
 export default function NavbarSignedIn() {
 	const [menuBox, setMenuBox] = useState(false);
 	return (

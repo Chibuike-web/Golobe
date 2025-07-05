@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { HotelListCardProps } from "../HotelFlow/HotelLists/types";
+import type { HotelListCardProps } from "../hotel-flow/hotel-lists/types";
 
 interface HotelFavoritesState {
 	favorites: HotelListCardProps[];

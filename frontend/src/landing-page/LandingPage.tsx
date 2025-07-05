@@ -1,4 +1,4 @@
-import Flights from "./Flights/Flights";
+import Flights from "./flights/Flights";
 import HeroSection from "./hero-section/HeroSection";
 import Reviews from "./reviews/Reviews";
 import Footer from "../footer/Footer";

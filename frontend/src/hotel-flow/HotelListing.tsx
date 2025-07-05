@@ -1,5 +1,5 @@
 import HeroSection from "./hero-section/HeroSection";
-import { DesktopFilters, MobileFilters } from "./Filters/Filters";
+import { DesktopFilters, MobileFilters } from "./filters/Filters";
 import HotelLists from "./hotel-lists/HotelLists";
 import { useWindowWidth } from "../Hooks";
 

@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { Flight } from "../FlightFlow/FlightLists/types";
+import type { Flight } from "../flight-flow/flight-lists/types";
 
 interface FlightFavoritesState {
 	favorites: Flight[];
