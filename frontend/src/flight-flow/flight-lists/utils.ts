@@ -6,7 +6,7 @@ import Etihad from "../../assets/flight-listing/Etihad.png";
 
 export const flightOptions = [
 	{
-		id: uuidv4(),
+		id: "1a2b3c4d-0001-0000-0000-000000000001",
 		image: Emirates,
 		name: "Emirates A380 Airbus",
 		rating: 4.8,
@@ -35,7 +35,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "1a2b3c4d-0002-0000-0000-000000000002",
 		image: FlyDubai,
 		name: "FlyDubai Premium Express",
 		rating: 4.6,
@@ -64,7 +64,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "1a2b3c4d-0003-0000-0000-000000000003",
 		image: Qatar,
 		name: "Qatar JetSpeed 300",
 		rating: 3.9,
@@ -93,7 +93,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "1a2b3c4d-0004-0000-0000-000000000004",
 		image: Etihad,
 		name: "Etihad Skyline",
 		rating: 4.1,
@@ -122,7 +122,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "1a2b3c4d-0005-0000-0000-000000000005",
 		image: "/images/flight5.jpg",
 		name: "United Skypath 720",
 		rating: 4.7,
@@ -151,7 +151,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "12ac6bc4-b61b-458a-b874-3cff9f02f4e7",
 		image: "/images/flight6.jpg",
 		name: "Southwest Budget Flyer",
 		rating: 3.7,
@@ -180,7 +180,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "6c882520-c71b-44bb-8759-30a27554d2c5",
 		image: "/images/flight7.jpg",
 		name: "Delta Urban Dash",
 		rating: 4.0,
@@ -209,7 +209,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "88d82e1f-d4eb-446e-af86-c34691b683af",
 		image: "/images/flight8.jpg",
 		name: "Qatar Elite Wings",
 		rating: 4.9,
@@ -238,7 +238,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "cdd2169d-25c8-4ef2-8b5f-fdce7bb7976e",
 		image: "/images/flight9.jpg",
 		name: "Spirit Value Hopper",
 		rating: 3.8,
@@ -267,7 +267,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "bec640cd-7cb4-4d7b-88cd-fccedb661169",
 		image: "/images/flight10.jpg",
 		name: "Alaska Coastal Glide",
 		rating: 4.3,
@@ -296,7 +296,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "c605510e-8bfd-41b7-97af-282f0a15e426",
 		image: "/images/flight11.jpg",
 		name: "JetBlue Special 1",
 		rating: 4.0,
@@ -325,7 +325,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "0c247359-e970-4fff-89dd-ed93b47dfec6",
 		image: "/images/flight12.jpg",
 		name: "American Airlines Special 2",
 		rating: 3.6,
@@ -354,7 +354,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "c68975d5-0b9c-4dc4-8a06-a5af2cc9f4d9",
 		image: "/images/flight13.jpg",
 		name: "Hawaiian Airlines Special 3",
 		rating: 3.7,
@@ -383,7 +383,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "55a221c7-cc46-47c3-8453-554140dd9805",
 		image: "/images/flight14.jpg",
 		name: "Frontier Special 4",
 		rating: 4.7,
@@ -412,7 +412,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "fa29542c-848b-4ac7-b8f5-12d2352401ed",
 		image: "/images/flight15.jpg",
 		name: "Jetstar Special 5",
 		rating: 4.8,
@@ -441,7 +441,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "8ae87533-faaf-481b-966c-9a50539748df",
 		image: "/images/flight16.jpg",
 		name: "Allegiant Special 6",
 		rating: 3.9,
@@ -470,7 +470,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "e9a710a2-1944-4556-9a04-9c0219d9a5f3",
 		image: "/images/flight17.jpg",
 		name: "Norwegian Special 7",
 		rating: 4.3,
@@ -499,7 +499,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "30bfc28c-66ae-4ba1-a1ce-411cb4d1a6fd",
 		image: "/images/flight18.jpg",
 		name: "Scoot Special 8",
 		rating: 4.6,
@@ -528,7 +528,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "e580fee8-648d-47c3-b5fa-00f29b98c75d",
 		image: "/images/flight19.jpg",
 		name: "Volaris Special 9",
 		rating: 3.7,
@@ -557,7 +557,7 @@ export const flightOptions = [
 		],
 	},
 	{
-		id: uuidv4(),
+		id: "3efa71cb-24ab-4fd5-a40c-8960bed3d87c",
 		image: "/images/flight20.jpg",
 		name: "Avianca Special 10",
 		rating: 4.2,
