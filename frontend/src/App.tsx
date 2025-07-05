@@ -12,13 +12,13 @@ import FlightDetail from "./flight-flow/flight-detail/FlightDetail";
 import FlightBookingDetail from "./flight-flow/booking-detail/BookingDetail";
 import FlightBookingTicket from "./flight-flow/booking-ticket/BookingTicket";
 import Layout from "./Layout";
-import Favorites from "./favorites/Favorites";
 import HotelSearch from "./hotel-search/HotelSearch";
 import HotelListing from "./hotel-flow/HotelListing";
 import HotelDetail from "./hotel-flow/hotel-detail/HotelDetail";
 import HotelBookingDetail from "./hotel-flow/booking-detail/BookingDetail";
 import HotelBookingTicket from "./hotel-flow/booking-ticket/BookingTicket";
 import Account from "./account-flow/Account";
+import Favorites from "./favorites/Favorites";
 
 function App() {
 	return (

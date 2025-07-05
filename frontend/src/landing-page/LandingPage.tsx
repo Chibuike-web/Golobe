@@ -1,9 +1,10 @@
 import Flights from "./flights/Flights";
 import HeroSection from "./hero-section/HeroSection";
 import Reviews from "./reviews/Reviews";
-import Footer from "../footer/Footer";
 import Navbar from "./navbar/Navbar";
 import styles from "./hero-section/HeroSection.module.css";
+import FooterSection from "../footer/Footer";
+
 export default function LandingPage() {
 	return (
 		<>
@@ -12,7 +13,7 @@ export default function LandingPage() {
 			<HeroSection />
 			<Flights />
 			<Reviews />
-			<Footer />
+			<FooterSection />
 		</>
 	);
 }

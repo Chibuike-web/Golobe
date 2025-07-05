@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
 import { StarIcon } from "../../Icons";
 import styles from "./Reviews.module.css";
-
 import { ReviewsType } from "../types";
 import { reviews } from "../utils";
 
