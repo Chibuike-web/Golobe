@@ -32,7 +32,7 @@ function App() {
 				<Route path="resetpassword" element={<ResetPassword />} />
 
 				{/* routes under Layout */}
-				<Route path="/" element={<Layout />}>
+				<Route element={<Layout />}>
 					<Route path="/flightsearch" element={<FlightSearch />} />
 					<Route path="/hotelsearch" element={<HotelSearch />} />
 					<Route path="/flightlisting" element={<FlightListing />} />
