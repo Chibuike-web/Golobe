@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../Icons";
-import { useFormState } from "../Hooks";
-import { useEffect, useRef, useState } from "react";
-import { motion } from "motion/react";
+import { useCarousel, useFormState } from "../Hooks";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import image1 from "../assets/authentication/SwimmingPool.webp";
 import image2 from "../assets/authentication/Airplane.webp";
 import {
@@ -16,28 +16,16 @@ import {
 	validateTermsAccepted,
 } from "./validations";
 
-const images = [
-	{
-		id: "firstImage",
-		src: image1,
-	},
-	{
-		id: "secondImage",
-		src: image2,
-	},
-];
+const images = [image1, image2, image1, image2];
 
 export default function Signup() {
 	const navigate = useNavigate();
-	const [imageIndex, setImageIndex] = useState(0);
 
-	const handleCarousel = (id: string) => {
-		if (id === "firstImage") {
-			setImageIndex(0);
-		} else if (id === "secondImage") {
-			setImageIndex(1);
-		}
-	};
+	const [showPassword, setShowPassword] = useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+	const [registrationError, setRegistrationError] = useState("");
+	const submitRef = useRef(false);
+
 	const {
 		firstName,
 		setFirstName,
@@ -71,20 +59,6 @@ export default function Signup() {
 		setFocusedInput,
 		focusedInput,
 	} = useFormState();
-
-	const [showPassword, setShowPassword] = useState(false);
-	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-	const [registrationError, setRegistrationError] = useState("");
-	const submitRef = useRef(false);
-
-	useEffect(() => {
-		const userData = localStorage.getItem("user");
-
-		if (userData) {
-			const parsedUser = JSON.parse(userData);
-			console.log("Registered user details:", parsedUser);
-		}
-	}, []);
 
 	const togglePasswordVisibility = (id: string) => {
 		if (id === "password") {
@@ -231,27 +205,38 @@ export default function Signup() {
 		}
 	};
 
+	const { imageIndex, handleCarousel } = useCarousel(images);
+
 	return (
 		<main className="w-full m-[104px] max-w-[77rem] mx-auto flex gap-[104px] lg:flex-col lg:px-4">
 			<section className="lg:hidden">
 				<figure className="w-[488px] h-[816px] rounded-[30px] overflow-hidden relative">
-					<motion.img
-						key={images[imageIndex].id}
-						src={images[imageIndex].src}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						transition={{ duration: 0.5 }}
-						className="w-full h-full object-cover"
-					/>
+					<AnimatePresence>
+						<motion.img
+							key={images[imageIndex]}
+							src={images[imageIndex]}
+							initial={{ opacity: 0, x: 488 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: -488 }}
+							transition={{ duration: 0.5 }}
+							className="w-full h-full object-cover absolute top-0 left-0"
+						/>
+					</AnimatePresence>
+
 					<div className="absolute bottom-6 flex gap-[8px] left-1/2 -translate-x-1/2">
-						{images.map(({ id }, index) => (
-							<span
-								key={id}
+						{images.map((_, index) => (
+							<motion.button
+								animate={{
+									width: index === imageIndex ? 32 : 10,
+									backgroundColor: index === imageIndex ? "#53F2C7" : "#FFFFFF",
+								}}
+								transition={{ duration: 0.3, ease: "easeOut" }}
+								aria-label={`Go to slide ${index + 1}`}
+								key={index}
 								className={`block rounded-full ${
 									index === imageIndex ? "bg-mintGreen w-8 h-[10px]" : "bg-white size-[10px]"
 								}`}
-								onClick={() => handleCarousel(id)}
+								onClick={() => handleCarousel(index)}
 							/>
 						))}
 					</div>

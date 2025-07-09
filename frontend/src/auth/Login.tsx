@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../Icons";
-import { useFormState } from "../Hooks";
+import { useCarousel, useFormState } from "../Hooks";
 import { useRef, useState } from "react";
-import { motion } from "motion/react";
-import image from "../assets/authentication/SwimmingPool.webp";
+import { AnimatePresence, motion } from "motion/react";
+import image1 from "../assets/authentication/SwimmingPool.webp";
+import image2 from "../assets/authentication/Airplane.webp";
 import { validateEmail, validatePassword } from "./validations";
 
+const images = [image1, image2, image1, image2];
 export default function Login() {
 	const {
 		email,
@@ -87,6 +89,8 @@ export default function Login() {
 
 		console.log("Form Submitted");
 	};
+
+	const { imageIndex, handleCarousel } = useCarousel(images);
 
 	return (
 		<main className="w-full m-[104px] max-w-[77rem] mx-auto flex gap-[104px] lg:flex-col lg:px-4">
@@ -221,8 +225,34 @@ export default function Login() {
 				</footer>
 			</section>
 			<section className="lg:hidden">
-				<figure className="w-[618px] h-[816px] rounded-[30px] overflow-hidden">
-					<img src={image} alt="" className="w-full h-full object-cover" />
+				<figure className="w-[618px] h-[816px] rounded-[30px] overflow-hidden relative">
+					<AnimatePresence>
+						<motion.img
+							key={images[imageIndex]}
+							src={images[imageIndex]}
+							initial={{ opacity: 0, x: 617 }}
+							animate={{ opacity: 1, x: 0 }}
+							exit={{ opacity: 0, x: -617 }}
+							transition={{ duration: 0.5 }}
+							className="w-full h-full object-cover absolute top-0 left-0"
+						/>
+					</AnimatePresence>
+					<div className="absolute bottom-6 flex gap-[8px] left-1/2 -translate-x-1/2">
+						{images.map((_, index) => (
+							<motion.button
+								animate={{
+									width: index === imageIndex ? 32 : 10,
+									backgroundColor: index === imageIndex ? "#53F2C7" : "#FFFFFF",
+								}}
+								transition={{ duration: 0.3, ease: "easeOut" }}
+								key={index}
+								className={`block rounded-full ${
+									index === imageIndex ? "bg-mintGreen w-8 h-[10px]" : "bg-white size-[10px]"
+								}`}
+								onClick={() => handleCarousel(index)}
+							/>
+						))}
+					</div>
 				</figure>
 			</section>
 		</main>

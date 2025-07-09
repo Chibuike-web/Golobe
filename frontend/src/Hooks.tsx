@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 export const useFormState = () => {
 	// Form state
@@ -261,3 +261,28 @@ export const useActive = () => {
 		isHotelActive,
 	};
 };
+
+export function useCarousel(images: string[]) {
+	const intervalRef = useRef<number | null>(null);
+	const [imageIndex, setImageIndex] = useState(0);
+	const handleCarousel = (index: number) => {
+		setImageIndex(index);
+	};
+
+	useEffect(() => {
+		intervalRef.current = window.setInterval(() => {
+			setImageIndex((prev) => (prev + 1) % images.length);
+		}, 3000);
+
+		return () => {
+			if (intervalRef.current !== null) {
+				clearInterval(intervalRef.current);
+			}
+		};
+	}, []);
+
+	return {
+		imageIndex,
+		handleCarousel,
+	};
+}
