@@ -2,11 +2,11 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./landing-page/LandingPage";
 import FlightSearch from "./flight-search/FlightSearch";
-import Signup from "./auth/signup/Signup";
-import Login from "./auth/login/Login";
-import VerifyCode from "./auth/verify-code/VerifyCode";
-import ForgetPassword from "./auth/forget-password/ForgetPassword";
-import ResetPassword from "./auth/reset-password/ResetPassword";
+import Signup from "./auth/Signup";
+import Login from "./auth/Login";
+import VerifyCode from "./auth/VerifyCode";
+import ForgetPassword from "./auth/ForgetPassword";
+import ResetPassword from "./auth/ResetPassword";
 import FlightListing from "./flight-flow/FlightListing";
 import FlightDetail from "./flight-flow/flight-detail/FlightDetail";
 import FlightBookingDetail from "./flight-flow/booking-detail/BookingDetail";
@@ -28,7 +28,7 @@ function App() {
 				<Route path="signup" element={<Signup />} />
 				<Route path="login" element={<Login />} />
 				<Route path="forgetpassword" element={<ForgetPassword />} />
-				<Route path="verifycode" element={<VerifyCode />} />
+				<Route path="verify-code" element={<VerifyCode />} />
 				<Route path="resetpassword" element={<ResetPassword />} />
 
 				<Route element={<Layout />}>

@@ -3,10 +3,10 @@ export default {
 	content: ["./index.html", "./src/***/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		screens: {
-			xl: { max: "1440px" }, // Styles apply from 1440px and down
-			lg: { max: "976px" }, // Styles apply from 976px and down
-			md: { max: "768px" }, // Styles apply from 768px and down
-			sm: { max: "480px" }, // Styles apply from 480px and down
+			xl: { max: "1440px" },
+			lg: { max: "976px" },
+			md: { max: "768px" },
+			sm: { max: "480px" },
 		},
 		extend: {
 			colors: {

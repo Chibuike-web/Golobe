@@ -1,21 +1,25 @@
 import { Link } from "react-router-dom";
-import GolobeLogo from "../../assets/authentication/LogoWhiteBackground.svg";
-import styles from "./Login.module.css";
-import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../Icons";
-import { useFormState } from "../../Hooks";
-import { useState } from "react";
+import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
+import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../Icons";
+import { useFormState } from "../Hooks";
+import { useRef, useState } from "react";
 import { motion } from "motion/react";
+import image from "../assets/authentication/SwimmingPool.webp";
+import { validateEmail, validatePassword } from "./validations";
 
 export default function Login() {
 	const {
 		email,
-		setEmail,
+		focusedInput,
 		password,
-		setPassword,
 		emailError,
-		setEmailError,
 		passwordError,
+		setEmail,
+		setPassword,
+		setEmailError,
 		setPasswordError,
+		setFocusedInput,
+		handleFocus,
 	} = useFormState();
 
 	const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -28,17 +32,7 @@ export default function Login() {
 		}
 	};
 
-	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
-
-	const handleFocus = (id: string) => {
-		setFocusedInput(id);
-	};
-
-	const handleBlur = (id: string, value: string) => {
-		if (!value.trim() && focusedInput === id) {
-			setFocusedInput(null);
-		}
-	};
+	const submitRef = useRef(false);
 
 	const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
 		const { id, value, checked } = target;
@@ -46,11 +40,11 @@ export default function Login() {
 		switch (id) {
 			case "password":
 				setPassword(value);
-				if (value.length > 0) setPasswordError("");
+				if (passwordError && value.trim() !== "") setPasswordError("");
 				break;
 			case "email":
 				setEmail(value);
-				if (value.trim() && value.includes("@")) setEmailError("");
+				if (emailError && value.trim() !== "") setEmailError("");
 				break;
 			case "rememberMe":
 				setRememberMe(checked);
@@ -60,23 +54,38 @@ export default function Login() {
 		}
 	};
 
+	const handleBlur = (id: string, value: string) => {
+		setFocusedInput(null);
+
+		if (!submitRef.current) return;
+		if (id === "email") {
+			const error = validateEmail(email);
+			setEmailError(error);
+		} else if (id === "password") {
+			const error = validatePassword(password);
+			setPasswordError(error);
+		}
+	};
+
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
 
-		// Basic Validation
-		if (!email) setEmailError("Email is required");
-		if (!password) setPasswordError("Password is required");
+		submitRef.current = true;
 
-		// Email validation
-		if (email.length === 0) {
-			setEmailError("Email is required");
-		} else if (email.length < 6) {
-			setEmailError("Email should be minimum 6 characters");
-		} else if (email.indexOf(" ") >= 0) {
-			setEmailError("Email cannot contain spaces");
-		} else {
-			setEmailError("");
+		let emailErr = "";
+		let passwordErr = "";
+
+		emailErr = validateEmail(email);
+		passwordErr = validatePassword(password);
+
+		setEmailError(emailErr);
+		setPasswordError(passwordErr);
+
+		if (emailErr || passwordErr) {
+			return;
 		}
+
+		console.log("Form Submitted");
 	};
 
 	return (
@@ -107,6 +116,7 @@ export default function Login() {
 								</motion.label>
 							)}
 							<input
+								autoComplete="email"
 								id="email"
 								value={email}
 								type="email"
@@ -160,7 +170,7 @@ export default function Login() {
 
 					{/* Remember me*/}
 					<div className="my-4 flex justify-between">
-						<div className="flex items-center">
+						<label htmlFor="rememberMe" className="text-[0.875rem] font-medium flex items-center">
 							<input
 								id="rememberMe"
 								type="checkbox"
@@ -168,24 +178,19 @@ export default function Login() {
 								onChange={handleChange}
 								className="mr-2"
 							/>
-							<label htmlFor="remember me" className="text-[0.875rem] font-medium">
-								Remember me
-							</label>
-						</div>
+							Remember me
+						</label>
 						<Link to="/forgetpassword" className="text-slamon font-medium text-[0.875rem]">
 							Forgot Password
 						</Link>
 					</div>
 
-					{/* Submit Button */}
-					<Link to="/verifycode">
-						<button
-							type="submit"
-							className="bg-mintGreen text-blackishGreen mt-8 text-[0.875rem] font-medium p-2 rounded w-full py-4"
-						>
-							Submit
-						</button>
-					</Link>
+					<button
+						type="submit"
+						className="bg-mintGreen text-blackishGreen mt-8 text-[0.875rem] font-medium p-2 rounded w-full py-4"
+					>
+						Submit
+					</button>
 				</form>
 
 				<footer className="mt-4 flex flex-col items-center text-[0.875rem] gap-10">
@@ -216,7 +221,9 @@ export default function Login() {
 				</footer>
 			</section>
 			<section className="lg:hidden">
-				<figure className={`w-[618px] h-[816px] rounded-[30px] ${styles.image}`}></figure>
+				<figure className="w-[618px] h-[816px] rounded-[30px] overflow-hidden">
+					<img src={image} alt="" className="w-full h-full object-cover" />
+				</figure>
 			</section>
 		</main>
 	);

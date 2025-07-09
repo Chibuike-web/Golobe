@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import GolobeLogo from "../../assets/authentication/LogoWhiteBackground.svg";
-import { LeftArrowIcon, Eye, EyeSlash } from "../../Icons";
-import styles from "./VerifyCode.module.css";
+import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
+import { LeftArrowIcon, Eye, EyeSlash } from "../Icons";
+import image from "../assets/authentication/SwimmingPool.webp";
+import { useFormState } from "../Hooks";
 
 export default function VerifyPassword() {
-	const [focusedInput, setFocusedInput] = useState<string | null>(null);
+	const { focusedInput, handleBlur, handleFocus } = useFormState();
 	const [code, setCode] = useState<string>("");
 	const [codeError, setCodeError] = useState<string>("");
 	const [showCode, setShowCode] = useState(false);
@@ -13,15 +14,6 @@ export default function VerifyPassword() {
 	const toggleCodeVisibility = (id: string) => {
 		if (id === "code") {
 			setShowCode((prev) => !prev);
-		}
-	};
-	const handleFocus = (id: string) => {
-		setFocusedInput(id);
-	};
-
-	const handleBlur = (id: string, value: string) => {
-		if (!value.trim() && focusedInput === id) {
-			setFocusedInput(null);
 		}
 	};
 
@@ -57,8 +49,6 @@ export default function VerifyPassword() {
 					<p className="mb-12 opacity-75">An authentication code has been sent to your email. </p>
 				</header>
 				<form onSubmit={handleSubmit}>
-					{/* Verification Code */}
-
 					<div className="relative w-full">
 						{(focusedInput === "code" || code) && (
 							<label
@@ -103,7 +93,9 @@ export default function VerifyPassword() {
 				</form>
 			</section>
 			<section className="lg:hidden">
-				<figure className={`w-[618px] h-[816px] rounded-[30px] ${styles.image}`}></figure>
+				<figure className="w-[618px] h-[816px] rounded-[30px] overflow-hidden">
+					<img src={image} alt="" className="w-full h-full object-cover" />
+				</figure>
 			</section>
 		</main>
 	);

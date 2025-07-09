@@ -1,14 +1,43 @@
 import { Link, useNavigate } from "react-router-dom";
-import GolobeLogo from "../../assets/authentication/LogoWhiteBackground.svg";
-import styles from "./Signup.module.css";
-import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../../Icons";
-import { useFormState } from "../../Hooks";
-import { useEffect, useState } from "react";
+import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
+import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../Icons";
+import { useFormState } from "../Hooks";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import image1 from "../assets/authentication/SwimmingPool.webp";
+import image2 from "../assets/authentication/Airplane.webp";
+import {
+	validateConfirmPassword,
+	validateEmail,
+	validateFirstName,
+	validateLastName,
+	validatePassword,
+	validatePhoneNumber,
+	validateTermsAccepted,
+} from "./validations";
+
+const images = [
+	{
+		id: "firstImage",
+		src: image1,
+	},
+	{
+		id: "secondImage",
+		src: image2,
+	},
+];
 
 export default function Signup() {
 	const navigate = useNavigate();
+	const [imageIndex, setImageIndex] = useState(0);
 
+	const handleCarousel = (id: string) => {
+		if (id === "firstImage") {
+			setImageIndex(0);
+		} else if (id === "secondImage") {
+			setImageIndex(1);
+		}
+	};
 	const {
 		firstName,
 		setFirstName,
@@ -38,12 +67,15 @@ export default function Signup() {
 		setPhoneNumberError,
 		termsAcceptedError,
 		setTermsAcceptedError,
+		handleFocus,
+		setFocusedInput,
+		focusedInput,
 	} = useFormState();
 
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-	const [focusedInput, setFocusedInput] = useState<string | null | boolean>(null);
 	const [registrationError, setRegistrationError] = useState("");
+	const submitRef = useRef(false);
 
 	useEffect(() => {
 		const userData = localStorage.getItem("user");
@@ -60,16 +92,6 @@ export default function Signup() {
 		}
 		if (id === "confirmPassword") {
 			setShowConfirmPassword(!showConfirmPassword);
-		}
-	};
-
-	const handleFocus = (id: string) => {
-		setFocusedInput(id);
-	};
-
-	const handleBlur = (id: string, value: string) => {
-		if (!value.trim() && focusedInput === id) {
-			setFocusedInput(null);
 		}
 	};
 
@@ -112,10 +134,35 @@ export default function Signup() {
 		}
 	};
 
+	const handleBlur = (id: string, value: string) => {
+		setFocusedInput(null);
+
+		if (!submitRef.current) return;
+		if (id === "email") {
+			const error = validateEmail(value);
+			setEmailError(error);
+		} else if (id === "password") {
+			const error = validatePassword(value);
+			setPasswordError(error);
+		} else if (id === "firstName") {
+			const error = validateFirstName(value);
+			setFirstNameError(error);
+		} else if (id === "lastName") {
+			const error = validateLastName(value);
+			setLastNameError(error);
+		} else if (id === "termsAccepted") {
+			const error = validateTermsAccepted(termsAccepted);
+			setTermsAcceptedError(error);
+		} else if (id === "confirmPassword") {
+			const error = validateConfirmPassword(value, password);
+			setConfirmPasswordError(error);
+		}
+	};
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
-		// Declare local error variables
+		submitRef.current = true;
+
 		let firstNameErr = "";
 		let lastNameErr = "";
 		let phoneNumberErr = "";
@@ -124,50 +171,14 @@ export default function Signup() {
 		let passwordErr = "";
 		let confirmPasswordErr = "";
 
-		// First Name
-		if (!firstName) {
-			firstNameErr = "First name is required";
-		}
+		firstNameErr = validateFirstName(firstName);
+		lastNameErr = validateLastName(lastName);
+		emailErr = validateEmail(email);
+		phoneNumberErr = validatePhoneNumber(phoneNumber);
+		termsAcceptedErr = validateTermsAccepted(termsAccepted);
+		passwordErr = validatePassword(password);
+		confirmPasswordErr = validateConfirmPassword(confirmPassword, password);
 
-		// Last Name
-		if (!lastName) {
-			lastNameErr = "Last name is required";
-		}
-
-		// Phone Number
-		if (phoneNumber && !/^\d{10,11}$/.test(phoneNumber)) {
-			phoneNumberErr = "Enter a valid 10 or 11 digit phone number";
-		}
-
-		// Terms
-		if (!termsAccepted) {
-			termsAcceptedErr = "You must accept the terms and conditions";
-		}
-
-		// Email
-		if (!email) {
-			emailErr = "Email is required";
-		} else if (email.length < 6) {
-			emailErr = "Email should be minimum 6 characters";
-		} else if (email.includes(" ")) {
-			emailErr = "Email cannot contain spaces";
-		}
-
-		// Password
-		if (!password) {
-			passwordErr = "Password is required";
-		} else if (password.length < 8) {
-			passwordErr = "Password must be at least 8 characters";
-		}
-
-		// Confirm Password
-		if (!confirmPassword) {
-			confirmPasswordErr = "Please confirm your password";
-		} else if (password !== confirmPassword) {
-			confirmPasswordErr = "Passwords do not match";
-		}
-
-		// Set error states for UI
 		setFirstNameError(firstNameErr);
 		setLastNameError(lastNameErr);
 		setPhoneNumberError(phoneNumberErr);
@@ -176,20 +187,18 @@ export default function Signup() {
 		setPasswordError(passwordErr);
 		setConfirmPasswordError(confirmPasswordErr);
 
-		// If any error exists, stop submission
-		if (
-			firstNameErr ||
-			lastNameErr ||
-			phoneNumberErr ||
-			termsAcceptedErr ||
-			emailErr ||
-			passwordErr ||
-			confirmPasswordErr
-		) {
-			return;
-		}
+		const errors = [
+			firstNameErr,
+			lastNameErr,
+			phoneNumberErr,
+			termsAcceptedErr,
+			emailErr,
+			passwordErr,
+			confirmPasswordErr,
+		];
 
-		// No errors — proceed
+		if (errors.some(Boolean)) return;
+
 		const userData = {
 			firstName,
 			lastName,
@@ -218,14 +227,35 @@ export default function Signup() {
 
 			navigate("/login");
 		} catch (error) {
-			console.error("Registration error:", (error as any).message);
+			console.error("Registration error:", error);
 		}
 	};
 
 	return (
 		<main className="w-full m-[104px] max-w-[77rem] mx-auto flex gap-[104px] lg:flex-col lg:px-4">
 			<section className="lg:hidden">
-				<figure className={` w-[488px] h-[816px] rounded-[30px]  ${styles.image}`}></figure>
+				<figure className="w-[488px] h-[816px] rounded-[30px] overflow-hidden relative">
+					<motion.img
+						key={images[imageIndex].id}
+						src={images[imageIndex].src}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5 }}
+						className="w-full h-full object-cover"
+					/>
+					<div className="absolute bottom-6 flex gap-[8px] left-1/2 -translate-x-1/2">
+						{images.map(({ id }, index) => (
+							<span
+								key={id}
+								className={`block rounded-full ${
+									index === imageIndex ? "bg-mintGreen w-8 h-[10px]" : "bg-white size-[10px]"
+								}`}
+								onClick={() => handleCarousel(id)}
+							/>
+						))}
+					</div>
+				</figure>
 			</section>
 			<section className="w-full ">
 				<figure className="mb-16">
@@ -395,7 +425,7 @@ export default function Signup() {
 
 					{/* Confirm Password */}
 					<div className="relative w-full mb-6">
-						{focusedInput === "confirmPassword" && (
+						{(focusedInput === "confirmPassword" || confirmPassword) && (
 							<motion.label
 								initial={{ opacity: 0, y: 10 }}
 								animate={{ opacity: 1, y: "-50%" }}

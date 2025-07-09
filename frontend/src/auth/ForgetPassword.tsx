@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useFormState } from "../../Hooks";
-import GolobeLogo from "../../assets/authentication/LogoWhiteBackground.svg";
-import { FacebookIcon, GoogleIcon, AppleIcon, LeftArrowIcon } from "../../Icons";
-import styles from "./ForgetPassword.module.css";
+import { useFormState } from "../Hooks";
+import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
+import { FacebookIcon, GoogleIcon, AppleIcon, LeftArrowIcon } from "../Icons";
 import { motion } from "motion/react";
+import image from "../assets/authentication/SwimmingPool.webp";
 
 export default function ForgetPassword() {
 	const { email, setEmail, emailError, setEmailError } = useFormState();
@@ -132,7 +132,9 @@ export default function ForgetPassword() {
 				</footer>
 			</section>
 			<section className="lg:hidden">
-				<figure className={`w-[618px] h-[816px] rounded-[30px] ${styles.image}`}></figure>
+				<figure className="w-[618px] h-[816px] rounded-[30px]">
+					<img src={image} alt="" className="w-full h-full object-cover" />
+				</figure>
 			</section>
 		</main>
 	);

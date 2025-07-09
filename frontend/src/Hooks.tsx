@@ -26,9 +26,7 @@ export const useFormState = () => {
 	};
 
 	const handleBlur = (id: string, value: string) => {
-		if (!value.trim() && focusedInput === id) {
-			setFocusedInput(null);
-		}
+		setFocusedInput(null);
 	};
 
 	const handlePhoneNumber = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
