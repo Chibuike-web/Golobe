@@ -247,21 +247,6 @@ export const useIsShow = () => {
 	return { isShow, setIsShow };
 };
 
-export const useActive = () => {
-	const location = useLocation();
-
-	const isFlightActive =
-		location.pathname.startsWith("/flightsearch") || location.pathname.startsWith("/flightlisting");
-
-	const isHotelActive =
-		location.pathname.startsWith("/hotelsearch") || location.pathname.startsWith("/hotellisting");
-
-	return {
-		isFlightActive,
-		isHotelActive,
-	};
-};
-
 export function useCarousel(images: string[]) {
 	const intervalRef = useRef<number | null>(null);
 	const [imageIndex, setImageIndex] = useState(0);

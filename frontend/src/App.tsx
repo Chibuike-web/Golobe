@@ -19,10 +19,11 @@ import HotelBookingDetail from "./hotel-flow/booking-detail/BookingDetail";
 import HotelBookingTicket from "./hotel-flow/booking-ticket/BookingTicket";
 import Account from "./account-flow/Account";
 import Favorites from "./favorites/Favorites";
-
+import ScrollRestoration from "./ScrollRestoration";
 function App() {
 	return (
 		<Router>
+			<ScrollRestoration />
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
 				<Route path="signup" element={<Signup />} />

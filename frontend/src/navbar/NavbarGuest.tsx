@@ -2,11 +2,10 @@ import GolobeLogo from "../assets/flight-search/LogoWhiteBackground.svg";
 import { NavLink, Link } from "react-router-dom";
 import { AirplaneIcon, BedIcon, CancelIcon, MenuIcon } from "../Icons";
 import styles from "./Navbar.module.css";
-import { useActive, useIsShow } from "../Hooks";
+import { useIsShow } from "../Hooks";
 
 export default function NavbarGuest() {
 	const { isShow, setIsShow } = useIsShow();
-	const { isFlightActive, isHotelActive } = useActive();
 
 	return (
 		<header className="w-full bg-white sticky z-[100] top-0" role="banner">
@@ -17,9 +16,9 @@ export default function NavbarGuest() {
 				<ul className="flex gap-8 md:hidden">
 					<li role="tab">
 						<NavLink
-							to={"flightsearch"}
-							className={() =>
-								`${isFlightActive ? styles.flights : ""} relative flex items-center gap-2`
+							to={"/flightsearch"}
+							className={({ isActive }) =>
+								`${isActive ? styles.flights : ""} relative flex items-center gap-2`
 							}
 						>
 							<AirplaneIcon color="#112211" />
@@ -28,9 +27,9 @@ export default function NavbarGuest() {
 					</li>
 					<li>
 						<NavLink
-							to={"hotelsearch"}
-							className={() =>
-								`${isHotelActive ? styles.flights : ""} relative flex items-center gap-2`
+							to={"/hotelsearch"}
+							className={({ isActive }) =>
+								`${isActive ? styles.flights : ""} relative flex items-center gap-2`
 							}
 						>
 							<BedIcon color="#112211" />
@@ -61,38 +60,49 @@ export default function NavbarGuest() {
 				>
 					{isShow ? <CancelIcon /> : <MenuIcon />}
 				</button>
-				{isShow && <MobileNavDropdown />}
+				{isShow && <MobileNavDropdown isShow={isShow} setIsShow={setIsShow} />}
 			</nav>
 		</header>
 	);
 }
 
-const MobileNavDropdown = () => {
-	const { isFlightActive, isHotelActive } = useActive();
+const MobileNavDropdown = ({
+	isShow,
+	setIsShow,
+}: {
+	isShow: boolean;
+	setIsShow: (value: boolean) => void;
+}) => {
 	return (
 		<div className="fixed flex flex-col h-[calc(100% - 4rem)] w-full left-1/2 -translate-x-1/2 bottom-0 top-[4rem] bg-white z-[100] p-6 shadow-lg">
 			<ul className="flex flex-col w-full">
 				<li>
-					<Link
+					<NavLink
 						to="/flightsearch"
-						className={`flex space-x-1 items-center py-8 border-b ${
-							isFlightActive ? "border-mintGreen border-b-[4px]" : ""
-						} `}
+						className={({ isActive }) =>
+							`flex space-x-1 items-center py-8 border-b ${
+								isActive ? "border-mintGreen border-b-[4px]" : ""
+							} `
+						}
+						onClick={() => setIsShow(!isShow)}
 					>
 						<AirplaneIcon color={"#112211"} />
 						<span className="text-sm font-semibold text-blackishGreen">Find Flight</span>
-					</Link>
+					</NavLink>
 				</li>
 				<li>
-					<Link
+					<NavLink
 						to="/hotelsearch"
-						className={`flex space-x-1 items-center py-8 border-b ${
-							isHotelActive ? "border-mintGreen border-b-[4px]" : ""
-						} `}
+						className={({ isActive }) =>
+							`flex space-x-1 items-center py-8 border-b ${
+								isActive ? "border-mintGreen border-b-[4px]" : ""
+							} `
+						}
+						onClick={() => setIsShow(!isShow)}
 					>
 						<BedIcon color={"#112211"} />
 						<span className="text-sm font-semibold text-blackishGreen">Find Stays</span>
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 			<div className="flex flex-col items-center w-full mt-auto">
