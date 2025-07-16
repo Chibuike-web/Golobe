@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
 import { FacebookIcon, GoogleIcon, AppleIcon, Eye, EyeSlash } from "../Icons";
 import { useCarousel, useFormState } from "../Hooks";
@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "motion/react";
 import image1 from "../assets/authentication/SwimmingPool.webp";
 import image2 from "../assets/authentication/Airplane.webp";
 import { validateEmail, validatePassword } from "./validations";
+import { useSignedIn } from "../store/useUserStore";
 
 const images = [image1, image2, image1, image2];
 export default function Login() {
@@ -25,8 +26,9 @@ export default function Login() {
 	} = useFormState();
 
 	const [rememberMe, setRememberMe] = useState<boolean>(false);
-
 	const [showPassword, setShowPassword] = useState(false);
+	const navigate = useNavigate();
+	const { setIsSignedIn } = useSignedIn();
 
 	const togglePasswordVisibility = (id: string) => {
 		if (id === "password") {
@@ -69,7 +71,7 @@ export default function Login() {
 		}
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 
 		submitRef.current = true;
@@ -87,7 +89,33 @@ export default function Login() {
 			return;
 		}
 
-		console.log("Form Submitted");
+		try {
+			const res = await fetch("http://localhost:5000/api/auth/login", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ email: email, password: password }),
+			});
+
+			if (!res.ok) {
+				const errorData = await res.json();
+				if (errorData.message === "Email does not exist") {
+					setEmailError(errorData.message);
+				} else if (errorData.message === "Incorrect password") {
+					setEmailError(errorData.message);
+				} else if (errorData.message === "User has not been verified") {
+					setEmailError(errorData.message);
+				}
+				return;
+			}
+			const data = await res.json();
+			console.log(data.message);
+			setEmail("");
+			setPassword("");
+			setEmailError("");
+			setPasswordError("");
+			setIsSignedIn();
+			navigate(`/${data.id}`);
+		} catch (err) {}
 	};
 
 	const { imageIndex, handleCarousel } = useCarousel(images);

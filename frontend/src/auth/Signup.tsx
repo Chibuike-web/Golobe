@@ -197,9 +197,8 @@ export default function Signup() {
 			}
 			const data = await res.json();
 			console.log("Registration successful:", data.message);
-			localStorage.setItem("user", JSON.stringify(userData));
 
-			navigate("/login");
+			navigate(`/verify-code/${data.user.id}`);
 		} catch (error) {
 			console.error("Registration error:", error);
 		}

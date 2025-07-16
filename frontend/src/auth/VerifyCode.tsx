@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
 import { LeftArrowIcon, Eye, EyeSlash } from "../Icons";
 import image from "../assets/authentication/SwimmingPool.webp";
 import { useFormState } from "../Hooks";
+import { motion } from "motion/react";
 
 export default function VerifyPassword() {
 	const { focusedInput, handleBlur, handleFocus } = useFormState();
 	const [code, setCode] = useState<string>("");
 	const [codeError, setCodeError] = useState<string>("");
 	const [showCode, setShowCode] = useState(false);
+	const [success, setSuccess] = useState("");
+	const { id } = useParams();
+	const navigate = useNavigate();
 
 	const toggleCodeVisibility = (id: string) => {
 		if (id === "code") {
@@ -27,9 +31,30 @@ export default function VerifyPassword() {
 		}
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
 		if (!code) setCodeError("Enter the verification code");
+
+		try {
+			const res = await fetch("http://localhost:5000/api/auth/verify", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({ id: id, code: code }),
+			});
+
+			if (!res.ok) {
+				const errorData = await res.json();
+				console.log(errorData.message);
+				setCodeError(errorData.message);
+				return;
+			}
+			const data = await res.json();
+			console.log(data.message);
+			setSuccess(data.message);
+			setTimeout(() => navigate("/login"), 1000);
+		} catch (err) {
+			console.log("Issue verifying OTP", err);
+		}
 	};
 
 	return (
@@ -51,18 +76,22 @@ export default function VerifyPassword() {
 				<form onSubmit={handleSubmit}>
 					<div className="relative w-full">
 						{(focusedInput === "code" || code) && (
-							<label
+							<motion.label
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: "-50%" }}
+								transition={{ duration: 0.2, ease: "easeOut" }}
 								htmlFor="code"
 								className="absolute z-[1000] bg-white left-[1rem] px-1 top-0 -translate-y-1/2 text-[0.875rem]"
 							>
 								Enter Code
-							</label>
+							</motion.label>
 						)}
 						<div className="relative">
 							<input
 								id="code"
 								value={code}
 								type={showCode ? "text" : "password"}
+								className="border border-[#79747e]"
 								placeholder={`${
 									focusedInput === "code" || code ? "" : "Enter your verification code"
 								}`}
@@ -90,6 +119,16 @@ export default function VerifyPassword() {
 					>
 						Verify
 					</button>
+					{codeError && (
+						<p className="mt-4 rounded-md bg-red-100 text-center text-red-700 px-4 py-3 border border-red-300">
+							{codeError}
+						</p>
+					)}
+					{success && (
+						<p className="mt-4 rounded-md bg-green-100 text-center text-green-700 px-4 py-3 border border-green-300">
+							{success}
+						</p>
+					)}
 				</form>
 			</section>
 			<section className="lg:hidden">

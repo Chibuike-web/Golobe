@@ -26,11 +26,11 @@ function App() {
 			<ScrollRestoration />
 			<Routes>
 				<Route path="/" element={<LandingPage />} />
-				<Route path="signup" element={<Signup />} />
-				<Route path="login" element={<Login />} />
-				<Route path="forgetpassword" element={<ForgetPassword />} />
-				<Route path="verify-code" element={<VerifyCode />} />
-				<Route path="resetpassword" element={<ResetPassword />} />
+				<Route path="/signup" element={<Signup />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/forgetpassword" element={<ForgetPassword />} />
+				<Route path="/verify-code/:id" element={<VerifyCode />} />
+				<Route path="/resetpassword" element={<ResetPassword />} />
 
 				<Route element={<Layout />}>
 					<Route path="/flightsearch" element={<FlightSearch />} />
@@ -46,6 +46,8 @@ function App() {
 					<Route path="/favorites" element={<Favorites />} />
 					<Route path="/account" element={<Account />} />
 				</Route>
+
+				<Route path="/:id" element={<LandingPage />} />
 			</Routes>
 		</Router>
 	);
