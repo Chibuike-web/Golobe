@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 export const useFormState = () => {
 	// Form state
 	const [firstName, setFirstName] = useState<string>("");
@@ -271,3 +271,27 @@ export function useCarousel(images: string[]) {
 		handleCarousel,
 	};
 }
+
+export const useUserMiddleware = (id: string) => {
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const controller = new AbortController();
+
+		async function checkUser() {
+			try {
+				const res = await fetch(`http://localhost:5000/auth/users/${id}`);
+				if (!res.ok) {
+					navigate("/signup");
+					return;
+				}
+			} catch (error) {
+				console.log("User check failed", error);
+				navigate("/signup");
+			}
+		}
+		checkUser();
+
+		return () => controller.abort();
+	}, [id, navigate]);
+};

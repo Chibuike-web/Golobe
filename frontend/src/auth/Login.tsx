@@ -114,7 +114,7 @@ export default function Login() {
 			setEmailError("");
 			setPasswordError("");
 			setIsSignedIn();
-			navigate(`/${data.id}`);
+			navigate("/flightlisting");
 		} catch (err) {}
 	};
 

@@ -20,6 +20,7 @@ import HotelBookingTicket from "./hotel-flow/booking-ticket/BookingTicket";
 import Account from "./account-flow/Account";
 import Favorites from "./favorites/Favorites";
 import ScrollRestoration from "./ScrollRestoration";
+import NotFound from "./NotFound";
 function App() {
 	return (
 		<Router>
@@ -31,6 +32,7 @@ function App() {
 				<Route path="/forgetpassword" element={<ForgetPassword />} />
 				<Route path="/verify-code/:id" element={<VerifyCode />} />
 				<Route path="/resetpassword" element={<ResetPassword />} />
+				<Route path="*" element={<NotFound />} />
 
 				<Route element={<Layout />}>
 					<Route path="/flightsearch" element={<FlightSearch />} />
@@ -47,7 +49,7 @@ function App() {
 					<Route path="/account" element={<Account />} />
 				</Route>
 
-				<Route path="/:id" element={<LandingPage />} />
+				{/* <Route path="/:id" element={<LandingPage />} /> */}
 			</Routes>
 		</Router>
 	);

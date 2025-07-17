@@ -12,7 +12,7 @@ export default function Favorites() {
 		setSelectedTab(type);
 	};
 	return (
-		<main className="w-full mx-auto max-w-[77rem] mt-12 ">
+		<main className="w-full mx-auto max-w-[77rem] mt-12 lg:px-6">
 			<h1 className="text-[2rem] font-primary font-bold">Favorites</h1>
 			<div className="hide-scrollbar mt-6 mb-10 flex items-center gap-4 py-4 px-3 bg-white rounded-[12px] w-full shadow-[0px_4px_16px_rgba(17,34,17,0.05)] overflow-auto">
 				{tabData.map(({ type }, index) => (

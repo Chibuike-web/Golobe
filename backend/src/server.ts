@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import { v4 as uuidv4 } from "uuid";
-import { generateOTP } from "./utils.js";
+import { generateOTP } from "./utils";
 
 dotenv.config();
 
@@ -12,7 +12,26 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const users = [];
+type User = {
+	id: string;
+	firstName: string;
+	lastName: string;
+	email: string;
+	phoneNumber: string;
+	password: string;
+	isVerified: boolean;
+	code?: string;
+};
+
+const users: User[] = [];
+
+// Send user
+app.get("/auth/users/:id", async (req, res) => {
+	const id = req.params.id;
+	const user = users.find((u) => u.id === id);
+	if (!user) return res.status(400).json({ message: "User does not exist" });
+	res.status(200).json({ message: "User exist", user: user });
+});
 
 // Register a new user
 app.post("/api/auth/register", async (req, res) => {
@@ -28,7 +47,7 @@ app.post("/api/auth/register", async (req, res) => {
 
 		const hashedPassword = await bcrypt.hash(password, 10);
 
-		const newUser = {
+		const newUser: User = {
 			id: uuidv4(),
 			firstName,
 			lastName,
@@ -65,7 +84,9 @@ app.post("/api/auth/verify", async (req, res) => {
 		const isCodeExist = user?.code;
 
 		if (isCodeExist && isCodeExist !== code) {
-			res.status(400).json({ message: "The OTP you entered is incorrect. Please try again." });
+			return res
+				.status(400)
+				.json({ message: "The OTP you entered is incorrect. Please try again." });
 		}
 		if (user) {
 			user.isVerified = true;

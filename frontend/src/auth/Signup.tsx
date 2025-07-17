@@ -134,6 +134,7 @@ export default function Signup() {
 	};
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();
+		console.log("click");
 
 		submitRef.current = true;
 

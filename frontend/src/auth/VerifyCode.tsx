@@ -3,7 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import GolobeLogo from "../assets/authentication/LogoWhiteBackground.svg";
 import { LeftArrowIcon, Eye, EyeSlash } from "../Icons";
 import image from "../assets/authentication/SwimmingPool.webp";
-import { useFormState } from "../Hooks";
+import { useFormState, useUserMiddleware } from "../Hooks";
 import { motion } from "motion/react";
 
 export default function VerifyPassword() {
@@ -14,6 +14,10 @@ export default function VerifyPassword() {
 	const [success, setSuccess] = useState("");
 	const { id } = useParams();
 	const navigate = useNavigate();
+
+	if (!id) return;
+
+	useUserMiddleware(id);
 
 	const toggleCodeVisibility = (id: string) => {
 		if (id === "code") {

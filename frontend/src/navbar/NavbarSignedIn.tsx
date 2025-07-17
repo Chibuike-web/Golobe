@@ -19,7 +19,7 @@ import { NavLink } from "react-router-dom";
 export default function NavbarSignedIn() {
 	const [menuBox, setMenuBox] = useState(false);
 	return (
-		<header className="w-full relative z-[1] bg-white" role="banner">
+		<header className="w-full relative z-[100] bg-white" role="banner">
 			<nav
 				className="mx-auto max-w-[77rem] relative py-5 flex items-center justify-between h-max lg:px-4 md:py-4"
 				aria-label="Main Navigation"
@@ -27,7 +27,7 @@ export default function NavbarSignedIn() {
 				<ul className="flex gap-8 md:hidden">
 					<li role="tab">
 						<NavLink
-							to="flightlisting"
+							to="/flightlisting"
 							className={({ isActive }) =>
 								`${isActive ? styles.flights : ""} relative flex items-center gap-2`
 							}
@@ -112,7 +112,7 @@ interface MenuItemProps {
 const MenuItem = ({ text, icon, logout = false }: MenuItemProps) => {
 	return (
 		<article className="flex justify-between items-center text-blackishGreen">
-			<span className=" flex gap-[8px]">
+			<span className=" flex items-center gap-[8px]">
 				{icon} <p>{text}</p>
 			</span>
 			{!logout && <RightArrowIcon />}
